@@ -1,0 +1,16 @@
+#profile-title: FLOKI
+#profile-update-interval: 1
+#subscription-userinfo: upload=0; download=0; total=1,0; expire=1,0
+#profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/FLOKI#Floki
+
+vless://3f67be01-0c26-4baf-b551-958530986237@www.speedtest.net:443?security=tls&sni=WORKER-CanfIgvPn-JS.canfIgVPN-CaNFigvPN.woRkErS.DeV&fp=chrome&type=ws&path=/wCA93zVzVxCP2WRm?ed%3D2560&host=wOrKER-canFIGVpN-JS.CAnfigvpn-CAnfiGvpN.worKeRs.DeV&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.Server.0
+vless://9782e7ec-145e-4859-9522-8811e005a283@www.speedtest.net:8443?security=tls&sni=ambatukamnotthatship1.v2logy.ir&fp=chrome&type=grpc&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.Server.1
+vless://9782e7ec-145e-4859-9522-8811e005a283@www.speedtest.net:2083?security=tls&sni=ambatukamnotthatship2.v2logy.ir&fp=chrome&type=grpc&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.Server.2
+vless://9782e7ec-145e-4859-9522-8811e005a283@www.speedtest.net:2087?security=tls&sni=re3.v2logy.xyz&fp=chrome&type=grpc&encryption=none#%F0%9F%87%AB%F0%9F%87%AE.Server.3
+vless://9782e7ec-145e-4859-9522-8811e005a283@www.speedtest.net:2096?security=tls&sni=re4.v2logy.xyz&fp=chrome&type=grpc&encryption=none#%F0%9F%87%AB%F0%9F%87%AE.Server.4
+vless://9782e7ec-145e-4859-9522-8811e005a283@[2a01:4f8:c013:361a::1]:4585?security=reality&sni=zula.ir&fp=chrome&pbk=CNxW0v0QjOWucgPVbXIIa0MSvZMYchsJ2l_Ug960-Rk&sid=de6908fb5f85d85b&type=tcp&flow=xtls-rprx-vision&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.Server.5
+vless://9782e7ec-145e-4859-9522-8811e005a283@[2a01:4f8:c17:2a67::1]:4586?security=reality&sni=zula.ir&fp=chrome&pbk=Y48zbvuR1KveU8H9H8zum8KPvVJ7emhKXTWp7YdpwiI&sid=7e21537d84aeef78&type=tcp&flow=xtls-rprx-vision&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.Server.6
+trojan://dba20dcb635e430fa4d3bfc303a149d2@www.speedtest.net:443?security=tls&sni=jobscareerforlawyers.com&type=ws&path=6b777a91&host=jobscareerforlawyers.com#%F0%9F%87%BA%F0%9F%87%B8.Server.7
+vless://b7997f0c-d61a-11ee-aaa8-00505603e70d@www.speedtest.net:443?security=tls&sni=st-fr-1.brocdn.com&type=ws&path=/websocket&host=st-fr-1.brocdn.com&encryption=none#%F0%9F%87%AB%F0%9F%87%B7.Server.8
+vless://b7997f0c-d61a-11ee-aaa8-00505603e70d@www.speedtest.net:443?security=tls&sni=st-gb-1.brocdn.com&fp=chrome&type=ws&path=/websocket&host=st-gb-1.brocdn.com&encryption=none#%F0%9F%87%AC%F0%9F%87%A7.Server.9
+vless://b7997f0c-d61a-11ee-aaa8-00505603e70d@www.speedtest.net:443?security=tls&sni=st-pl-1.brocdn.com&type=ws&path=/websocket&host=st-pl-1.brocdn.com&encryption=none#%F0%9F%87%B5%F0%9F%87%B1.Server.10
