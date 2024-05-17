@@ -1,10 +1,8 @@
 {
-  "remarks": "Game",
   "log": {
     "access": "",
     "error": "",
-    "loglevel": "none",
-    "dnsLog": false
+    "loglevel": "warning"
   },
   "dns": {
     "tag": "dns",
@@ -23,92 +21,60 @@
   },
   "inbounds": [
     {
-      "domainOverride": [
-        "http",
-        "tls"
-      ],
-      "protocol": "socks",
-      "tag": "socks-in",
-      "listen": "127.0.0.1",
+      "tag": "socks",
       "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
       "settings": {
         "auth": "noauth",
         "udp": true,
-        "userLevel": 8
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
+        "allowTransparent": false
       }
     },
     {
-      "protocol": "http",
-      "tag": "http-in",
-      "listen": "127.0.0.1",
+      "tag": "http",
       "port": 10809,
-      "settings": {
-        "userLevel": 8
-      },
+      "listen": "127.0.0.1",
+      "protocol": "http",
       "sniffing": {
         "enabled": true,
         "destOverride": [
           "http",
           "tls"
-        ]
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
-      "tag": "fragment-out",
-      "domainStrategy": "UseIP",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      },
-      "settings": {
-        "fragment": {
-          "packets": "tlshello",
-          "length": "100-200",
-          "interval": "1-2"
-        }
-      },
-      "streamSettings": {
-        "sockopt": {
-          "tcpNoDelay": true,
-          "tcpKeepAliveIdle": 10,
-          "mark": 100,
-          "domainStrategy": "UseIP"
-        }
-      }
-    },
-    {
-      "protocol": "dns",
-      "tag": "dns-out"
-    },
-    {
+      "tag": "proxy",
       "protocol": "vless",
-      "tag": "fakeproxy-out",
-      "domainStrategy": "",
       "settings": {
         "vnext": [
           {
-            "address": "youtube.com",
-            "port": 80,
+            "address": "www.speedtest.net",
+            "port": 2096,
             "users": [
               {
-                "encryption": "none",
-                "flow": "",
-                "id": "UUID",
-                "level": 8,
-                "security": "auto"
+                "id": "85cf29f3-529f-46f4-97f5-583ab077e095",
+                "alterId": 0,
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
               }
             ]
           }
@@ -119,23 +85,25 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": false,
+          "serverName": "worker-canfigvpn-floki000-v2ray.erfan-3rfan.workers.dev",
           "alpn": [
             "h2",
             "http/1.1"
           ],
-          "fingerprint": "randomized",
-          "publicKey": "",
-          "serverName": "google.com",
-          "shortId": "",
-          "show": false,
-          "spiderX": ""
+          "fingerprint": "firefox",
+          "show": false
         },
         "wsSettings": {
+          "path": "vless-ws/?ed=2048",
           "headers": {
-            "Host": "google.com"
-          },
-          "path": "/"
+            "Host": "worker-canfigvpn-floki000-v2ray.erfan-3rfan.workers.dev"
+          }
         }
+      },
+      "fragment": {
+        "packets": "tlshello",
+        "length": "10-20",
+        "interval": "1"
       },
       "mux": {
         "concurrency": 8,
