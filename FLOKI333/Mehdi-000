@@ -83,7 +83,7 @@
       "server_port": 987,
       "type": "wireguard",
       "domain_strategy": "",
-      "tag": "proxy"
+      "tag": "Mehdi"
     },
     {
       "tag": "direct",
