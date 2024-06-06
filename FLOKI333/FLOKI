@@ -9,7 +9,7 @@
     "rules": [],
     "servers": [
       {
-        "address": "129.250.35.3",
+        "address": "104.28.246.162",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only",
         "tag": "dns-remote"
