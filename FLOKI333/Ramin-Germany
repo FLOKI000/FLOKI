@@ -3,5 +3,5 @@
 #subscription-userinfo: upload=0; download=0; total=1,0; expire=1718928000
 #profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/Ramin-Germany
 
-vless://74bf2f01-9141-48a8-a818-35eb71d0f05a@85.9.103.28:17841?security=none&encryption=none&host=www.speedtest.net&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA.iP.3
-vless://74bf2f01-9141-48a8-a818-35eb71d0f05a@85.9.103.28:17841?security=none&encryption=none&host=www.speedtest.net&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA.iP.3
+vless://b9926c0b-2ab9-42c2-98ac-fa1a6fc6c67e@console.tezolmarketing.com:443?security=&type=tcp&headerType=http&host=www.speedtest.net&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.iP.3
+vless://b9926c0b-2ab9-42c2-98ac-fa1a6fc6c67e@console.tezolmarketing.com:443?security=&type=tcp&headerType=http&host=www.speedtest.net&encryption=none#%F0%9F%87%A9%F0%9F%87%AA.iP.3
