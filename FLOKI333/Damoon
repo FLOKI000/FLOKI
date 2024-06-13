@@ -146,7 +146,7 @@
       "tag": "dns-out"
     }
   ],
-  "remarks": "🇩🇪.iP.3",
+  "remarks": "🇩🇪.iP.0",
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
