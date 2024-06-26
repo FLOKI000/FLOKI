@@ -40,29 +40,50 @@
   "outbounds": [
     {
       "mux": {
-        "concurrency": -1,
-        "enabled": false,
-        "xudpConcurrency": 8,
-        "xudpProxyUDP443": ""
+        "concurrency": 1,
+        "enabled": true,
+        "xudpConcurrency": 1,
+        "xudpProxyUDP443": "reject"
       },
-      "protocol": "wireguard",
+      "protocol": "vless",
       "settings": {
-        "address": [
-          "45.80.111.0/32"
-        ],
-        "mtu": 512,
-        "peers": [
+        "vnext": [
           {
-            "endpoint": "188.114.99.0011:987",
-            "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="
+            "address": "www.speedtest.net",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "",
+                "id": "550d10b9-efed-52de-8d2c-10335822d9cd",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
           }
-        ],
-        "reserved": [
-          146,
-          145,
-          94
-        ],
-        "secretKey": "2MZL720csQSJrFw7Lyyvi/44N/NIaZ5uXa0UDtVEX0s="
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": {
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "allowInsecure": true,
+          "fingerprint": "chrome",
+          "publicKey": "",
+          "serverName": "worker-canfigvpn-js.canfigvpn-canfigvpn.wORkErs.dev",
+          "shortId": "",
+          "show": false,
+          "spiderX": ""
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "worker-canfigvpn-js.canfigvpn-canfigvpn.wORkErs.dev"
+          },
+          "path": "vless-ws/?ed=2048"
+        }
       },
       "tag": "proxy"
     },
@@ -79,9 +100,28 @@
         }
       },
       "tag": "block"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "interval": "10-20",
+          "length": "50-100",
+          "packets": "tlshello"
+        }
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "",
+        "sockopt": {
+          "TcpNoDelay": true,
+          "mark": 255
+        }
+      },
+      "tag": "fragment"
     }
   ],
-  "remarks": "🇮🇷 Warp",
+  "remarks": "🇩🇪 Worker",
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
