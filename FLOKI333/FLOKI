@@ -9,7 +9,7 @@
     "rules": [],
     "servers": [
       {
-        "address": "1.1.1.1",
+        "address": "http://www.google.com/generate_204",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only",
         "tag": "dns-remote"
@@ -27,7 +27,7 @@
         "tag": "dns-local"
       },
       {
-        "address": "rcode://success",
+        "address": "http://www.google.com/generate_204",
         "tag": "dns-block"
       }
     ]
@@ -36,7 +36,7 @@
     {
       "listen": "127.0.0.1",
       "listen_port": 6450,
-      "override_address": "8.8.8.8",
+      "override_address": "1.1.1.1",
       "override_port": 53,
       "tag": "dns-in",
       "type": "direct"
@@ -45,9 +45,9 @@
       "domain_strategy": "",
       "endpoint_independent_nat": true,
       "inet4_address": [
-        "172.19.0.1/28"
+        "45.80.111.0/32"
       ],
-      "mtu": 9000,
+      "mtu": 1500,
       "sniff": true,
       "sniff_override_destination": true,
       "stack": "system",
@@ -72,7 +72,7 @@
       "local_address": [
         "45.80.111.0/32"
       ],
-      "mtu": 128,
+      "mtu": 1024,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
       "pre_shared_key": "",
       "private_key": "2MZL720csQSJrFw7Lyyvi/44N/NIaZ5uXa0UDtVEX0s=",
