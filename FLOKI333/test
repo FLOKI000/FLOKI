@@ -1,205 +1,188 @@
 {
+  "remarks": "🔴 Google",
   "log": {
-    "level": "debug",
-    "output": "box.log",
-    "timestamp": true
+    "access": "",
+    "error": "",
+    "loglevel": "none",
+    "dnsLog": false
   },
   "dns": {
-    "servers": [
-      {
-        "tag": "dns-remote",
-        "address": "udp://1.1.1.1",
-        "address_resolver": "dns-direct",
-        "strategy": "ipv4_only"
-      },
-      {
-        "tag": "dns-trick-direct",
-        "address": "https://sky.rethinkdns.com/",
-        "strategy": "ipv4_only",
-        "detour": "direct-fragment"
-      },
-      {
-        "tag": "dns-direct",
-        "address": "1.1.1.1",
-        "address_resolver": "dns-local",
-        "strategy": "ipv4_only",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-local",
-        "address": "local",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-block",
-        "address": "rcode://success"
-      }
-    ],
-    "rules": [
-      {
-        "domain": "console.tezolmarketing.com",
-        "server": "dns-direct"
-      },
-      {
-        "domain_suffix": ".ir",
-        "geosite": "ir",
-        "server": "dns-direct"
-      },
-      {
-        "domain": "cp.cloudflare.com",
-        "server": "dns-remote",
-        "rewrite_ttl": 3000
-      }
-    ],
-    "final": "dns-remote",
-    "static_ips": {
-      "sky.rethinkdns.com": [
-        "188.114.99.0",
-        "188.114.98.0",
-        "2a06:98c1:3123::",
-        "2a06:98c1:3122::",
-        "104.17.147.22",
-        "104.17.148.22",
-        "188.114.96.3",
-        "188.114.97.3",
-        "2a06:98c1:3121::3",
-        "2a06:98c1:3120::3"
+    "tag": "dns",
+    "hosts": {
+      "cloudflare-dns.com": [
+        "10.202.10.10",
+        "188.114.99.13",
+        "37.218.240.15"
+      ],
+      "domain:youtube.com": [
+        "google.com"
       ]
     },
-    "independent_cache": true
+    "servers": [
+      "https://cloudflare-dns.com/dns-query"
+    ]
   },
   "inbounds": [
     {
-      "type": "tun",
-      "tag": "tun-in",
-      "mtu": 9000,
-      "inet4_address": "172.19.0.1/28",
-      "inet6_address": "fdfe:dcba:9876::1/126",
-      "auto_route": true,
-      "strict_route": true,
-      "endpoint_independent_nat": true,
-      "stack": "gvisor",
-      "sniff": true,
-      "sniff_override_destination": true
+      "domainOverride": [
+        "http",
+        "tls"
+      ],
+      "protocol": "socks",
+      "tag": "socks-in",
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
     },
     {
-      "type": "mixed",
-      "tag": "mixed-in",
+      "protocol": "http",
+      "tag": "http-in",
       "listen": "127.0.0.1",
-      "listen_port": 2334,
-      "sniff": true,
-      "sniff_override_destination": true
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "127.0.0.1",
-      "listen_port": 6450
+      "port": 10809,
+      "settings": {
+        "userLevel": 8
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
     }
   ],
   "outbounds": [
     {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "auto",
-        "🇩🇪.iP.100 § 0"
-      ],
-      "default": "auto"
-    },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-        "🇩🇪.iP.100 § 0"
-      ],
-      "url": "http://www.google.com/generate_204",
-      "interval": "1m0s",
-      "idle_timeout": "10m0s"
-    },
-    {
-      "type": "vless",
-      "tag": "🇩🇪.iP.100 § 0",
-      "server": "console.tezolmarketing.com",
-      "server_port": 443,
-      "uuid": "a8bcc94a-353d-49d3-884a-7cac7869014c",
-      "transport": {
-        "type": "http",
-        "host": "greenpepper.ir",
-        "path": "/",
-        "method": "GET"
+      "protocol": "freedom",
+      "tag": "fragment-out",
+      "domainStrategy": "UseIP",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
       },
-      "packet_encoding": ""
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "100-200",
+          "interval": "1-2"
+        }
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpNoDelay": true,
+          "tcpKeepAliveIdle": 10,
+          "mark": 100,
+          "domainStrategy": "UseIP"
+        }
+      }
     },
     {
-      "type": "dns",
+      "protocol": "dns",
       "tag": "dns-out"
     },
     {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "direct",
-      "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "1-500",
-        "sleep": "0-500"
+      "protocol": "vless",
+      "tag": "fakeproxy-out",
+      "domainStrategy": "",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.speedtest.net",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "",
+                "id": "550d10b9-efed-52de-8d2c-10335822d9cd",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "fingerprint": "randomized",
+          "publicKey": "",
+          "serverName": "worker-canfigvpn-js.canfigvpn-canfigvpn.WOrkerS.DeV",
+          "shortId": "",
+          "show": false,
+          "spiderX": ""
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "worker-canfigvpn-js.canfigvpn-canfigvpn.WOrkerS.DeV"
+          },
+          "path": "vless-ws/?ed=1024"
+        }
+      },
+      "mux": {
+        "concurrency": 8,
+        "enabled": true
       }
-    },
-    {
-      "type": "direct",
-      "tag": "bypass"
-    },
-    {
-      "type": "block",
-      "tag": "block"
     }
   ],
-  "route": {
-    "geoip": {
-      "path": "geo-assets/sagernet-sing-geoip-geoip.db"
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 100,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
     },
-    "geosite": {
-      "path": "geo-assets/sagernet-sing-geosite-geosite.db"
-    },
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
+        "inboundTag": [
+          "socks-in",
+          "http-in"
+        ],
+        "type": "field",
+        "port": "53",
+        "outboundTag": "dns-out",
+        "enabled": true
       },
       {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "domain_suffix": ".ir",
-        "geosite": "ir",
-        "geoip": "ir",
-        "outbound": "bypass"
+        "inboundTag": [
+          "socks-in",
+          "http-in"
+        ],
+        "type": "field",
+        "port": "0-65535",
+        "outboundTag": "fragment-out",
+        "enabled": true
       }
     ],
-    "final": "select",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
+    "strategy": "rules"
   },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "clash.db"
-    },
-    "clash_api": {
-      "external_controller": "127.0.0.1:6756",
-      "secret": "LjCUM3NuN6moJ9n0"
-    }
-  }
+  "stats": {}
 }
