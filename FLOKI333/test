@@ -1,3 +1,5 @@
+🔥 Test 🔥
+
 [
   {
     "remarks": "🔴.iP.300",
@@ -19,7 +21,7 @@
         ]
       },
       "servers": [
-        "http://www.google.com/generate_204"
+        "https://cloudflare-dns.com/dns-query"
       ]
     },
     "inbounds": [
@@ -78,7 +80,7 @@
           "fragment": {
             "packets": "tlshello",
             "length": "10-20",
-            "interval": "1-2"
+            "interval": "10-20"
           }
         },
         "streamSettings": {
@@ -119,7 +121,7 @@
           "network": "ws",
           "security": "tls",
           "tlsSettings": {
-            "allowInsecure": true,
+            "allowInsecure": false,
             "alpn": [
               "h2",
               "http/1.1"
@@ -128,7 +130,7 @@
             "publicKey": "",
             "serverName": "google.com",
             "shortId": "",
-            "show": true,
+            "show": false,
             "spiderX": ""
           },
           "wsSettings": {
@@ -140,7 +142,7 @@
         },
         "mux": {
           "concurrency": 8,
-          "enabled": true
+          "enabled": false
         }
       }
     ],
@@ -186,6 +188,7 @@
     },
     "stats": {}
   },
+  3339
   {
     "dns": {
       "hosts": {
@@ -283,7 +286,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇮🇷.iP.1",
+    "remarks": "🇮🇷.iP.200",
     "routing": {
       "domainStrategy": "IPIfNonMatch",
       "rules": [
@@ -338,7 +341,7 @@
       ]
     }
   },
-    {
+{
         "dns": {
           "hosts": {
             "domain:googleapis.cn": "googleapis.com"
