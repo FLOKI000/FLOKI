@@ -1,335 +1,534 @@
 [
-  {
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com"
-      },
-      "servers": [
-        "1.1.1.1",
-        {
-          "address": "223.5.5.5",
-          "domains": [
-            "geosite:cn",
-            "geosite:geolocation-cn"
-          ],
-          "expectIPs": [
-            "geoip:cn"
-          ],
-          "port": 53
-        }
-      ]
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
     },
-    "inbounds": [
+    "servers": [
+      "1.1.1.1",
       {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "socks"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "tag": "http"
+        "address": "223.5.5.5",
+        "domains": [
+          "geosite:cn",
+          "geosite:geolocation-cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "port": 53
       }
-    ],
-    "log": {
-      "loglevel": "warning"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "socks"
     },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false,
-          "xudpConcurrency": 8,
-          "xudpProxyUDP443": ""
-        },
-        "protocol": "wireguard",
-        "settings": {
-          "address": [
-            "172.16.0.2/32"
-          ],
-          "mtu": 512,
-          "peers": [
-            {
-              "endpoint": "188.114.99.3:987",
-              "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="
-            }
-          ],
-          "reserved": [
-            146,
-            145,
-            94
-          ],
-          "secretKey": "2MZL720csQSJrFw7Lyyvi/44N/NIaZ5uXa0UDtVEX0s="
-        },
-        "tag": "proxy"
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
       },
-      {
-        "protocol": "freedom",
-        "settings": {},
-        "tag": "direct"
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 32,
+        "enabled": true
       },
-      {
-        "protocol": "blackhole",
-        "settings": {
-          "response": {
+     "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "100-200",
+          "interval": "1-2"
+        }
+      },
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "console.tezolmarketing.com",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "",
+                "id": "6fb77738-21d6-4d18-9353-16f5531f20a8",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none",
+        "tcpSettings": {
+          "header": {
+            "request": {
+              "headers": {
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Host": [
+                  "greenpepper.ir"
+                ],
+                "Pragma": "no-cache",
+                "Accept-Encoding": [
+                  "gzip, deflate"
+                ],
+                "User-Agent": [
+                  "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36",
+                  "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/53.0.2785.109 Mobile/14A456 Safari/601.1.46"
+                ]
+              },
+              "method": "GET",
+              "path": [
+                "/"
+              ],
+              "version": "1.1"
+            },
             "type": "http"
           }
-        },
-        "tag": "block"
-      }
-    ],
-    "remarks": "🇮🇷.iP.200",
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "ip": [
-            "1.1.1.1"
-          ],
-          "outboundTag": "proxy",
-          "port": "53"
-        },
-        {
-          "ip": [
-            "223.5.5.5"
-          ],
-          "outboundTag": "direct",
-          "port": "53"
-        },
-        {
-          "domain": [
-            "domain:googleapis.cn"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "ip": [
-            "geoip:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "geoip:cn"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "geosite:cn"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "geosite:geolocation-cn"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "outboundTag": "proxy",
-          "port": "0-65535"
         }
-      ]
-    }
-  },
+      },
+      "tag": "proxy"
+    },
     {
-        "dns": {
-          "hosts": {
-            "domain:googleapis.cn": "googleapis.com"
-          },
-          "servers": [
-            "1.1.1.1",
-            {
-              "address": "223.5.5.5",
-              "domains": [
-                "geosite:cn",
-                "geosite:geolocation-cn"
-              ],
-              "expectIPs": [
-                "geoip:cn"
-              ],
-              "port": 53
-            }
-          ]
-        },
-        "inbounds": [
-          {
-            "listen": "127.0.0.1",
-            "port": 10808,
-            "protocol": "socks",
-            "settings": {
-              "auth": "noauth",
-              "udp": true,
-              "userLevel": 8
-            },
-            "sniffing": {
-              "destOverride": [
-                "http",
-                "tls"
-              ],
-              "enabled": true,
-              "routeOnly": false
-            },
-            "tag": "socks"
-          },
-          {
-            "listen": "127.0.0.1",
-            "port": 10809,
-            "protocol": "http",
-            "settings": {
-              "userLevel": 8
-            },
-            "tag": "http"
-          }
-        ],
-        "log": {
-          "loglevel": "warning"
-        },
-        "outbounds": [
-          {
-            "mux": {
-              "concurrency": 8,
-              "enabled": true
-            },
-            "protocol": "vless",
-            "settings": {
-              "vnext": [
-                {
-                  "address": "console.tezolmarketing.com",
-                  "port": 443,
-                  "users": [
-                    {
-                      "encryption": "none",
-                      "flow": "",
-                      "id": "a8bcc94a-353d-49d3-884a-7cac7869014c",
-                      "level": 8,
-                      "security": "auto"
-                    }
-                  ]
-                }
-              ]
-            },
-            "streamSettings": {
-              "network": "tcp",
-              "security": "",
-              "tcpSettings": {
-                "header": {
-                  "request": {
-                    "headers": {
-                      "Connection": [
-                        "keep-alive"
-                      ],
-                      "Host": [
-                        "greenpepper.ir"
-                      ],
-                      "Pragma": "no-cache",
-                      "Accept-Encoding": [
-                        "gzip, deflate"
-                      ],
-                      "User-Agent": [
-                        "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36",
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/601.1 (KHTML, like Gecko) CriOS/53.0.2785.109 Mobile/14A456 Safari/601.1.46"
-                      ]
-                    },
-                    "method": "GET",
-                    "path": [
-                      "/"
-                    ],
-                    "version": "1.1"
-                  },
-                  "type": "http"
-                }
-              }
-            },
-            "tag": "proxy"
-          },
-          {
-            "protocol": "freedom",
-            "settings": {},
-            "tag": "direct"
-          },
-          {
-            "protocol": "blackhole",
-            "settings": {
-              "response": {
-                "type": "http"
-              }
-            },
-            "tag": "block"
-          }
-        ],
-        "remarks": "🇩🇪.iP.100",
-        "routing": {
-          "domainStrategy": "IPIfNonMatch",
-          "rules": [
-            {
-              "ip": [
-                "1.1.1.1"
-              ],
-              "outboundTag": "proxy",
-              "port": "53"
-            },
-            {
-              "ip": [
-                "223.5.5.5"
-              ],
-              "outboundTag": "direct",
-              "port": "53"
-            },
-            {
-              "domain": [
-                "domain:googleapis.cn"
-              ],
-              "outboundTag": "proxy"
-            },
-            {
-              "ip": [
-                "geoip:private"
-              ],
-              "outboundTag": "direct"
-            },
-            {
-              "ip": [
-                "geoip:cn"
-              ],
-              "outboundTag": "direct"
-            },
-            {
-              "domain": [
-                "geosite:cn"
-              ],
-              "outboundTag": "direct"
-            },
-            {
-              "domain": [
-                "geosite:geolocation-cn"
-              ],
-              "outboundTag": "direct"
-            },
-            {
-              "outboundTag": "proxy",
-              "port": "0-65535"
-            }
-          ]
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
         }
+      },
+      "tag": "block"
+    }
+  ],
+  "remarks": "🇩🇪.iP.100",
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53"
+      },
+      {
+        "ip": [
+          "223.5.5.5"
+        ],
+        "outboundTag": "direct",
+        "port": "53"
+      },
+      {
+        "domain": [
+          "domain:googleapis.cn",
+          "domain:gstatic.com"
+        ],
+        "outboundTag": "proxy"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:geolocation-cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "outboundTag": "proxy",
+        "port": "0-65535"
       }
+    ]
+  }
+},
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "1.1.1.1",
+      {
+        "address": "223.5.5.5",
+        "domains": [
+          "geosite:cn",
+          "geosite:geolocation-cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "port": 53
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 8,
+        "enabled": false
+      },
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "10-20",
+          "interval": "10-20"
+        }
+      },
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.speedtest.net",
+            "port": 80,
+            "users": [
+              {
+                "alterId": 0,
+                "encryption": "",
+                "flow": "",
+                "id": "bc864078-dcf3-4bf4-8dbf-ca9f200b56be",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "",
+        "wsSettings": {
+          "headers": {
+            "Host": "worker-js.canfigvpn-canfigvpn.woRKers.dev"
+          },
+          "path": "/gwdef.sbs:80/linkws"
+        }
+      },
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "www.speedtest.net",
+            "port": 80,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "",
+                "id": "1d581a92-3d54-5541-9316-e3c33e5e0246",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "headers": {
+            "Host": "worker-js.canfigvpn-canfigvpn.wORKERs.dEV"
+          },
+          "path": "vless-ws/?ed=2048"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "remarks": "🇩🇪.iP.200",
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53"
+      },
+      {
+        "ip": [
+          "223.5.5.5"
+        ],
+        "outboundTag": "direct",
+        "port": "53"
+      },
+      {
+        "domain": [
+          "domain:googleapis.cn",
+          "domain:gstatic.com"
+        ],
+        "outboundTag": "proxy"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:geolocation-cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "outboundTag": "proxy",
+        "port": "0-65535"
+      }
+    ]
+  }
+},
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "1.1.1.1",
+      {
+        "address": "223.5.5.5",
+        "domains": [
+          "geosite:cn",
+          "geosite:geolocation-cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "port": 53
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "protocol": "wireguard",
+      "settings": {
+        "address": [
+          "172.16.0.2/32"
+        ],
+        "mtu": 512,
+        "peers": [
+          {
+            "endpoint": "188.114.99.13:987",
+            "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="
+          }
+        ],
+        "reserved": [
+          146,
+          145,
+          94
+        ],
+        "secretKey": "2MZL720csQSJrFw7Lyyvi/44N/NIaZ5uXa0UDtVEX0s="
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "remarks": "🇩🇪.iP.300",
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53"
+      },
+      {
+        "ip": [
+          "223.5.5.5"
+        ],
+        "outboundTag": "direct",
+        "port": "53"
+      },
+      {
+        "domain": [
+          "domain:googleapis.cn",
+          "domain:gstatic.com"
+        ],
+        "outboundTag": "proxy"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "domain": [
+          "geosite:geolocation-cn"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "outboundTag": "proxy",
+        "port": "0-65535"
+      }
+    ]
+  }
+}
 ]
