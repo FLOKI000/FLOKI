@@ -685,17 +685,6 @@
   },
   "outbounds": [
     {
-      "settings": {
-        "fragment": {
-          "packets": "1-3",
-          "length": "1-3",
-          "interval": "1-3"
-         }
-      },
-      "mux": {
-        "concurrency": 32,
-        "enabled": true
-      },
       "protocol": "trojan",
       "settings": {
         "servers": [
