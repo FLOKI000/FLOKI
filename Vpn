@@ -1,197 +1,179 @@
-#profile-title: 🔥VPN🔥
-#profile-update-interval: 1
-#subscription-userinfo: upload=0; download=0; total=1,0; expire=1,0
-#profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/VPN#VPN
-
 {
-  "log": {
-    "disabled": true,
-    "level": "panic"
-  },
   "dns": {
-    "servers": [
-      {
-        "tag": "Internet-dns",
-        "address": "tcp://94.140.14.14",
-        "strategy": "ipv4_only",
-        "detour": "Internet"
-      },
-      {
-        "tag": "direct-dns",
-        "address": "https://1.12.12.12/dns-query",
-        "strategy": "ipv4_only",
-        "detour": "direct"
-      },
-      {
-        "tag": "fake-dns",
-        "address": "fakeip"
-      }
-    ],
-    "rules": [
-      {
-        "network": "udp",
-        "port": 443,
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "outbound": "any",
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "domain_suffix": [
-          ".ir",
-          ".xn--mgba3a4fra",
-          ".xn--mgba3a4f16a"
-        ],
-        "server": "direct-dns",
-        "rewrite_ttl": 20
-      },
-      {
-        "inbound": "tun-in",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fake-dns",
-        "disable_cache": true
-      }
-    ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com",
+      "dns.alidns.com": [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "one.one.one.one": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "dot.pub": [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "dns.google": [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.quad9.net": [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "common.dot.dns.yandex.net": [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ]
     },
-    "strategy": "ipv4_only",
-    "independent_cache": true
+    "servers": [
+      "1.1.1.1"
+    ]
   },
   "inbounds": [
     {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "JNIR-Emergency",
-      "mtu": 9000,
-      "address": "172.18.0.1/30",
-      "auto_route": true,
-      "strict_route": true,
-      "route_exclude_address": [
-        "192.168.0.0/16",
-        "fc00::/7"
-      ],
-      "stack": "mixed"
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": true
+      },
+      "tag": "socks"
+    },
+    {
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
     }
   ],
+  "log": {
+    "loglevel": "debug"
+  },
   "outbounds": [
     {
-      "type": "selector",
-      "tag": "Internet",
-      "outbounds": [
-        "2"
-      ]
+      "mux": {
+        "concurrency": 1,
+        "enabled": true,
+        "xudpConcurrency": 1,
+        "xudpProxyUDP443": "allow"
+      },
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ir3.gonde.lat",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "25a8e3ac-3716-4216-89f9-e478f46b32f7",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "request": {
+              "headers": {
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Host": [
+                  "aparat.com"
+                ],
+                "Pragma": "no-cache",
+                "Accept-Encoding": [
+                  "gzip, deflate"
+                ],
+                "User-Agent": [
+                  "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.122 Mobile Safari/537.36"
+                ]
+              },
+              "method": "GET",
+              "path": [
+                "/Nim"
+              ],
+              "version": "1.1"
+            },
+            "type": "http"
+          }
+        }
+      },
+      "tag": "proxy"
     },
     {
-      "type": "http",
-      "tag": "2",
-      "domain_strategy": "ipv4_only",
-      "server": "homa.cybsecguru.com",
-      "server_port": 10001,
-      "username": "Usr1kw4KXi1dDHBdjXBGE1cfLSh1iZIe264",
-      "password": "Pass1Nh4h6DIEbMpgZQ0AsDW1leeu1TDKeG5",
-      "headers": {
-        "host": "ieee.org",
-        "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36"
-      }
-    },
-    {
-      "type": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
       "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
     }
   ],
-  "route": {
+  "remarks": "🇹🇷 𝐓𝐮𝐫𝐤𝐞𝐲² | تانل 💥 (𝐱𝟑) دانلود‌ نکنید",
+  "routing": {
+    "domainStrategy": "AsIs",
     "rules": [
       {
-        "action": "sniff"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "inbound": "dns-in"
-          },
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
+        "ip": [
+          "1.1.1.1"
         ],
-        "action": "hijack-dns"
+        "outboundTag": "proxy",
+        "port": "53",
+        "type": "field"
       },
       {
-        "network": "tcp",
-        "port": 853,
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "network": "udp",
-        "port": [
-          443,
-          853
+        "ip": [
+          "223.5.5.5"
         ],
-        "action": "reject",
-        "method": "default"
+        "outboundTag": "direct",
+        "port": "53",
+        "type": "field"
       },
       {
-        "protocol": "stun",
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
+        "domain": [
+          "Google.com"
         ],
-        "ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "ip_cidr": [
-          "10.10.34.34",
-          "10.10.34.35",
-          "10.10.34.36"
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "domain_suffix": [
-          ".ir",
-          ".xn--mgba3a4fra",
-          ".xn--mgba3a4f16a"
-        ],
-        "outbound": "direct"
+        "network": "udp|tcp",
+        "outboundTag": "proxy",
+        "port": "80",
+        "type": "field"
       }
-    ],
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "JNIR-Emergency",
-      "store_fakeip": true
-    }
+    ]
   }
 }
