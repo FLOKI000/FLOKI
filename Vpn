@@ -1,193 +1,630 @@
+#profile-title: 🌟FLOKI🌟
+#profile-update-interval: 1
+#subscription-userinfo: upload=0; download=0; total=1,0; expire=1,0
+#profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/FLOKI#Floki
+
 {
   "log": {
     "level": "warn",
-    "output": "box.log",
     "timestamp": true
   },
   "dns": {
     "servers": [
-      {
-        "tag": "dns-remote",
-        "address": "1.1.1.1",
-        "address_resolver": "dns-direct"
+        {
+        "tag": "default",
+        "address": "tls://8.8.8.8",
+        "detour": "رضا شاه روحت شاد"
       },
       {
-        "tag": "dns-trick-direct",
-        "address": "https://sky.rethinkdns.com/",
-        "detour": "direct-fragment"
-      },
-      {
-        "tag": "dns-direct",
-        "address": "1.1.1.1",
-        "address_resolver": "dns-local",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-local",
-        "address": "local",
-        "detour": "direct"
-      },
-      {
-        "tag": "dns-block",
-        "address": "rcode://success"
+        "tag": "local",
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "تظاهرات سراسری"
       }
+    
     ],
     "rules": [
       {
-        "domain": "homa.cybsecguru.com",
-        "server": "dns-direct"
+        "outbound": "any",
+        "server": "local"
       },
       {
-        "domain": "cp.cloudflare.com",
-        "server": "dns-remote",
-        "rewrite_ttl": 3000
+        "clash_mode": "Global",
+        "server": "default"
+      },
+      {
+        "clash_mode": "Direct",
+        "server": "local"
       }
+    
     ],
-    "final": "dns-remote",
-    "static_ips": {
-      "sky.rethinkdns.com": [
-        "194.50.216.61",
-        "104.17.147.22",
-        "104.17.148.22",
-        "188.114.97.3",
-        "188.114.96.3",
-        "2a06:98c1:3121::3",
-        "2a06:98c1:3120::3"
-      ]
-    },
-    "independent_cache": true
+    "final": "default",
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
-      "type": "tun",
-      "tag": "tun-in",
-      "mtu": 9000,
-      "inet4_address": "172.19.0.1/28",
-      "auto_route": true,
-      "endpoint_independent_nat": true,
-      "stack": "mixed",
-      "sniff": true,
-      "sniff_override_destination": true
-    },
-    {
       "type": "mixed",
-      "tag": "mixed-in",
       "listen": "127.0.0.1",
-      "listen_port": 2334,
+      "listen_port": 20122,
       "sniff": true,
-      "sniff_override_destination": true
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "127.0.0.1",
-      "listen_port": 6450,
-      "override_address": "1.1.1.1",
-      "override_port": 53
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "auto",
-        "2"
-      ],
-      "default": "auto"
-    },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": [
-        "2"
-      ],
-      "url": "http://1.1.1.1/generate_204",
-      "interval": "1m0s",
-      "idle_timeout": "10m0s"
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
     },
     {
       "type": "http",
-      "tag": "2",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "sniff": true,
+      "sniff_override_destination": true,
       "domain_strategy": "ipv4_only",
-      "server": "homa.cybsecguru.com",
-      "server_port": 10001,
-      "username": "Usr1kw4KXi1dDHBdjXBGE1cfLSh1iZIe264",
-      "password": "Pass1Nh4h6DIEbMpgZQ0AsDW1leeu1TDKeG5",
-      "headers": {
-        "host": "ieee.org",
-        "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36"
-      }
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
     },
     {
-      "type": "dns",
-      "tag": "dns-out"
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
     },
+    {
+      "type": "tun",
+     "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 20122
+        }
+      },
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    }
+  ],
+  "outbounds": [
+{
+        "type": "selector",
+        "tag": "منصوره سگوند مهسا موگویی",
+        "outbounds": [
+          "تظاهرات سراسری",
+          "تظاهرات سراسری"
+        
+        
+        ],
+        "default": "تظاهرات سراسری",
+        "interrupt_exist_connections": true
+      },
+
+   {
+        "type": "selector",
+        "tag": "نیکا شاکرمی مهسا امینی",
+        "outbounds": [
+          "تظاهرات سراسری",
+          "تظاهرات سراسری"
+        
+        
+        ],
+        "default": "تظاهرات سراسری",
+        "interrupt_exist_connections": true
+      },
+ {
+            "tag": "رضا شاه روحت شاد",
+            "type": "selector",
+            "interrupt_exist_connections": true,
+           
+            "outbounds": [
+                "تظاهرات سراسری",
+                "🇨🇦 T.ME/wearestand",
+                "🇨🇾 T.ME/iranramona",
+                "🇬🇪 T.ME/wearestand",
+                "🇧🇴 T.ME/iranramona",
+                "🇭🇳 T.ME/wearestand",
+                "🇩🇪 T.ME/wearestand",
+                "🇮🇹 T.ME/wearestand",
+                "🇩🇰 T.ME/iranramona",
+                "🇺🇸 T.ME/wearestand",
+                "🇫🇷 T.ME/iranramona",
+                "🇪🇪 T.ME/wearestand"
+             
+            ]
+        },
+
+        {
+            "tag": "تظاهرات سراسری",
+            "type": "urltest",
+            "url": "http://cp.cloudflare.com",
+            "interval": "10m0s",
+            "outbounds": [
+                "🇨🇦CANADA",
+                "🇨🇾CYPRUS",
+                "🇬🇪GEORGIA",
+                "🇧🇴BOLIVIA",
+                "🇭🇳HONDURAS",
+                "🇩🇪GERMANY",
+                "🇮🇹ITALY",
+                "🇩🇰DENMARK",
+                "🇺🇸UNITED STATES",
+                "🇫🇷FRANCE",
+                "🇪🇪ESTONIA"
+                
+  
+            ]
+        },
+
+{
+            "tag": "🇨🇦 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+               "🇨🇦CANADA"
+
+
+               ]
+        },
+{
+            "tag": "🇨🇾 T.ME/iranramona",
+            "type": "urltest",
+            "outbounds": [
+               "🇨🇾CYPRUS"
+
+
+            ]
+        },
+
+{
+            "tag": "🇬🇪 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇬🇪GEORGIA"
+
+
+
+            ]
+        },
+{
+            "tag": "🇧🇴 T.ME/iranramona",
+            "type": "urltest",
+            "outbounds": [
+                "🇧🇴BOLIVIA"
+
+
+            ]
+        },
+{
+            "tag": "🇭🇳 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇭🇳HONDURAS"
+ 
+
+            ]
+        },
+
+{
+            "tag": "🇩🇪 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇩🇪GERMANY"
+           
+
+
+            ]
+        },
+
+
+{
+            "tag": "🇮🇹 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇮🇹ITALY"
+
+
+            ]
+        },
+{
+            "tag": "🇩🇰 T.ME/iranramona",
+            "type": "urltest",
+            "outbounds": [
+                "🇩🇰DENMARK"
+
+
+            ]
+        },
+
+
+{
+            "tag": "🇺🇸 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇺🇸UNITED STATES"
+                
+
+
+            ]
+        },
+{
+            "tag": "🇫🇷 T.ME/iranramona",
+            "type": "urltest",
+            "outbounds": [
+                "🇫🇷FRANCE"
+
+
+            ]
+        },
+
+{
+            "tag": "🇪🇪 T.ME/wearestand",
+            "type": "urltest",
+            "outbounds": [
+                "🇪🇪ESTONIA"
+                
+
+
+            ]
+        },
+
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "66.111.61.161",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇨🇦CANADA",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "[::ffff:c32f:c211]",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇨🇾CYPRUS",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+
+
+       
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "81.17.123.114",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇬🇪GEORGIA",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+            },
+        
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "[::ffff:2d86:bd03]",
+            "server_port": 90,
+            "domain_strategy": "",
+            "tag": "🇧🇴BOLIVIA",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+               "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+        
+        
+
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "193.9.32.3",
+            "server_port": 90,
+            "domain_strategy": "",
+            "tag": "🇭🇳HONDURAS",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+        
+        
+       
+
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "194.233.96.24",
+            "server_port": 90,
+            "domain_strategy": "",
+            "tag": "🇩🇪GERMANY",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+        
+
+        
+        
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "85.190.232.156",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇮🇹ITALY",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+        
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "85.190.238.27",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇩🇰DENMARK",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+        
+
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "[::ffff:426f:3de9]",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇺🇸UNITED STATES",
+             "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+
+
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "185.81.125.67",
+            "server_port": 89,
+            "domain_strategy": "",
+            "tag": "🇫🇷FRANCE",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+    
+
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+            "path": "",
+            "server": "85.190.239.114",
+            "server_port": 90,
+            "domain_strategy": "",
+            "tag": "🇪🇪ESTONIA",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
+        },
+
+
     {
       "type": "direct",
       "tag": "direct"
-    },
-    {
-      "type": "direct",
-      "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "1-500",
-        "sleep": "0-500"
-      }
-    },
-    {
-      "type": "direct",
-      "tag": "bypass"
-    },
-    {
-      "type": "block",
-      "tag": "block"
     }
   ],
   "route": {
-    "geoip": {
-      "path": "geo-assets/sagernet-sing-geoip-geoip.db"
-    },
-    "geosite": {
-      "path": "geo-assets/sagernet-sing-geosite-geosite.db"
-    },
     "rules": [
       {
-        "inbound": "dns-in",
-        "outbound": "dns-out"
+        "inbound": "tun-in",
+        "action": "sniff"
       },
       {
-        "port": 53,
-        "outbound": "dns-out"
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "رضا شاه روحت شاد"
       },
       {
         "clash_mode": "Direct",
         "outbound": "direct"
       },
       {
-        "clash_mode": "Global",
-        "outbound": "select"
+        "network": "tcp",
+        "port": 853,
+        "action": "reject",
+        "method": "default"
       },
       {
-        "domain_suffix": ".ir",
-        "geosite": "ir",
-        "geoip": "ir",
-        "outbound": "bypass"
+        "network": "udp",
+        "port": 443,
+        "action": "reject",
+        "method": "default"
+      },
+      
+      {
+        "inbound": "tun-in",
+        "action": "resolve"
+      },
+      
+      {
+        "ip_cidr": "10.10.34.0/24",
+        "outbound": "رضا شاه روحت شاد"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
       }
     ],
-    "final": "select",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
+    "rule_set": [
+      
+    ],
+    "final": "رضا شاه روحت شاد",
+    "auto_detect_interface": true
   },
   "experimental": {
     "cache_file": {
-      "enabled": true,
-      "path": "clash.db"
-    },
-    "clash_api": {
-      "external_controller": "127.0.0.1:6756",
-      "secret": "maJbyv0l_3S3imCU"
+      "enabled": true
     }
   }
 }
