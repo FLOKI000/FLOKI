@@ -3,6 +3,7 @@
 #subscription-userinfo: upload=0; download=0; total=1,0; expire=1,0
 #profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/FLOKI#Floki
 
+
 {
   "log": {
     "level": "warn",
@@ -173,7 +174,7 @@
                "🇨🇦CANADA"
 
 
-               ]
+            ]
         },
 {
             "tag": "🇨🇾 T.ME/iranramona",
@@ -352,7 +353,7 @@
             },
             "type": "http",
             "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-            },
+        },
         
         {
             "headers": {
