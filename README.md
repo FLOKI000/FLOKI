@@ -1,3 +1,5 @@
+https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-Windows-Setup-x64.exe
+
 ### Hi there 👋
 
 <!--
