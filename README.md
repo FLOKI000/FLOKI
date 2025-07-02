@@ -1,6 +1,4 @@
-https://github.com/hiddify/hiddify-next/releases/download/v2.5.7/Hiddify-Windows-Setup-x64.exe
 
-https://pro.metalping.ir/sub/RkxPS0kwMDAtMTc3LDE3NTEzMDc1OTQGydcA1Z9bm
 
 ### Hi there 👋
 
