@@ -4,7 +4,7 @@ redir-port: 7892
 mixed-port: 7893
 allow-lan: true
 log-level: warning
-external-controller: 0.0.0.0:9090
+external-controller: 0.0.0.0:8080
 secret: ''
 bind-address: '*'
 find-process-mode: strict
@@ -13,6 +13,7 @@ unified-delay: true
 disable-keep-alive: true
 keep-alive-idle: 3
 keep-alive-interval: 3
+mux: 8
 profile:
   store-selected: true
   store-fake-ip: false
