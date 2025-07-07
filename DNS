@@ -27,6 +27,7 @@ dns:
   nameserver:
     - 10.202.10.10
     - 10.202.10.11
+    - 78.157.42.100
 
 tun:
   enable: true
