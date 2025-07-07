@@ -9,17 +9,17 @@ secret: ''
 bind-address: '*'
 find-process-mode: strict
 ipv6: true
-unified-delay: false
-disable-keep-alive: false
-keep-alive-idle: 30
-keep-alive-interval: 15
+unified-delay: true
+disable-keep-alive: true
+keep-alive-idle: 3
+keep-alive-interval: 3
 profile:
   store-selected: true
   store-fake-ip: false
 dns:
   enable: true
   ipv6: true
-  respect-rules: false
+  respect-rules: true
   prefer-h3: true
   cache-algorithm: arc   
   use-system-hosts: true
@@ -58,6 +58,6 @@ rules:
 
 ntp:
   enable: true
-  server: "time.apple.com"
+  server: "time.google.com"
   port: 123
-  interval: 30
+  interval: 3
