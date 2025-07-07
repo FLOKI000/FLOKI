@@ -38,6 +38,7 @@ tun:
   dns-hijack:
     - "any:53"
     - "tcp://any:53"
+    - "udp://any:53"
 
 proxies:
   - name: "Fake Proxy"
