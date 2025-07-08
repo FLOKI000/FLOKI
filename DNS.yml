@@ -6,14 +6,13 @@ allow-lan: true
 log-level: warning
 external-controller: 0.0.0.0:8080
 secret: ''
-bind-address: '*'
+bind-address: '0.0.0.0'
 find-process-mode: strict
 ipv6: true
 unified-delay: true
-disable-keep-alive: true
-keep-alive-idle: 3
-keep-alive-interval: 3
-mux: 8
+disable-keep-alive: false
+keep-alive-idle: 30
+keep-alive-interval: 30
 profile:
   store-selected: true
   store-fake-ip: false
@@ -38,7 +37,7 @@ dns:
 
 tun:
   enable: true
-  stack: mixed
+  stack: system
   auto-route: true
   auto-detect-interface: true
   auto-redir: true
@@ -50,21 +49,20 @@ tun:
 proxies:
   - name: "Fake Proxy"
     type: http
-    server: 127.0.0.1
+    server: 0.0.0.0
     port: 8080
 
 proxy-groups:
-  - name: 🔀 DIRECT
+  - name: 🔥 Game Proxy 🔥
     type: select
     proxies:
-      - DIRECT
-      - Fake Proxy
+     - 🔥 Game Proxy 🔥
 
 rules:
-  - MATCH,🔀 DIRECT
+ - 🔥 Game Proxy 🔥
 
 ntp:
   enable: true
   server: "time.google.com"
   port: 123
-  interval: 3
+  interval: 1800
