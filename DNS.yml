@@ -13,15 +13,17 @@ unified-delay: true
 disable-keep-alive: false
 keep-alive-idle: 30
 keep-alive-interval: 30
+
 profile:
   store-selected: true
   store-fake-ip: false
+
 dns:
   enable: true
   ipv6: true
   respect-rules: true
   prefer-h3: true
-  cache-algorithm: arc   
+  cache-algorithm: arc
   use-system-hosts: true
   use-host: true
   nameserver:
@@ -46,20 +48,24 @@ tun:
     - "tcp://any:53"
     - "udp://any:53"
 
-proxies:
-  - name: "Fake Proxy"
-    type: http
-    server: 0.0.0.0
-    port: 8080
-
 proxy-groups:
   - name: 🔥 Game Proxy 🔥
     type: select
     proxies:
-     - 🔥 Game Proxy 🔥
+      - MyGameProxy
+      - DIRECT
 
 rules:
- - 🔥 Game Proxy 🔥
+  - DOMAIN-SUFFIX,riotgames.com,🔥 Game Proxy 🔥
+  - DOMAIN-SUFFIX,epicgames.com,🔥 Game Proxy 🔥
+  - DOMAIN-SUFFIX,steampowered.com,🔥 Game Proxy 🔥
+  - DOMAIN-KEYWORD,steam,🔥 Game Proxy 🔥
+  - DOMAIN-SUFFIX,xboxlive.com,🔥 Game Proxy 🔥
+  - DOMAIN-SUFFIX,playstation.net,🔥 Game Proxy 🔥
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - MATCH,DIRECT
 
 ntp:
   enable: true
