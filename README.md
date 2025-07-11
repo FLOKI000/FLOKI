@@ -3,15 +3,7 @@
 
   <h1 style="font-family: 'Arial', sans-serif; color: #2c3e50;">سلام! من فلوکی هستم</h1>
   <p style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 20px;">
-    توسعه‌دهنده خلاق | عاشق فناوری و نوآوری
-  </p>
 
-  <!-- Telegram Button with Icon and Animation -->
-  <div style="margin: 20px 0;">
-    <a href="https://t.me/your-telegram" target="_blank">
-      <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    </a>
-  </div>
 
   <h2 style="font-family: 'Arial', sans-serif; color: #34495e; margin-top: 30px;">درباره من</h2>
   <p style="max-width: 600px; text-align: center; color: #2c3e50; line-height: 1.6;">
