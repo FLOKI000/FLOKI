@@ -921,6 +921,15 @@
       "method": "chacha20-ietf-poly1305",
       "password": "ljqdalu13.."
     },
+{
+      "type": "direct",
+      "tag": "direct-fragment",
+      "tls_fragment": {
+        "enabled": true,
+        "size": "10-30",
+        "sleep": "2-8"
+      }
+    },
     {
       "type": "dns",
       "tag": "dns-out"
