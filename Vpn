@@ -10,7 +10,7 @@
     "rules": [],
     "servers": [
       {
-        "address": "http://www.google.com/generate_204",
+        "address": "http://google.com/generate_204",
         "address_resolver": "dns-direct",
         "strategy": "ipv4_only",
         "tag": "dns-remote"
@@ -28,7 +28,7 @@
         "tag": "dns-local"
       },
       {
-        "address": "http://www.google.com/generate_204",
+        "address": "http://google.com/generate_204",
         "tag": "dns-block"
       }
     ]
@@ -48,7 +48,7 @@
       "inet4_address": [
         "45.80.111.0/32"
       ],
-      "mtu": 1500,
+      "mtu": 9000,
       "sniff": true,
       "sniff_override_destination": true,
       "stack": "system",
@@ -937,15 +937,6 @@
     {
       "type": "direct",
       "tag": "direct"
-    },
-    {
-      "type": "direct",
-      "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "10-30",
-        "sleep": "2-8"
-      }
     },
     {
       "type": "direct",
