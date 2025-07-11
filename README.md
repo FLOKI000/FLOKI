@@ -21,9 +21,13 @@
   <h2 style="font-family: 'Arial', sans-serif; color: #34495e; margin-top: 30px;">تماس با من</h2>
   <p style="color: #2c3e50;">
     برای همکاری یا هرگونه سؤال، از طریق 
-    <a href="https://t.me/your-telegram" style="color: #3498db; text-decoration: none;">
-      <img src="https://img.icons8.com/color/24/000000/telegram-app.png" alt="Telegram Icon" style="vertical-align: middle; margin-right: 5px;"> تلگرام
-    </a> 
+   <!-- Telegram Button with Icon and Animation -->
+  <div style="margin: 20px 0;">
+    <a href="https://t.me/your-telegram" target="_blank">
+      <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    </a>
+  </div>
+
     با من در ارتباط باشید.
   </p>
 
