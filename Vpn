@@ -3,7 +3,6 @@
 #subscription-userinfo: upload=0; download=0; total=1,0; expire=1,0
 #profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/main/FLOKI333/FLOKI#Floki
 
-
 {
   "log": {
     "level": "warn",
@@ -11,273 +10,910 @@
   },
   "dns": {
     "servers": [
-        {
-        "tag": "default",
-        "address": "tls://8.8.8.8",
-        "detour": "رضا شاه روحت شاد"
+      {
+        "tag": "dns-remote",
+        "address": "1.1.1.1",
+        "address_resolver": "dns-direct"
       },
       {
-        "tag": "local",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "تظاهرات سراسری"
+        "tag": "dns-trick-direct",
+        "address": "https://sky.rethinkdns.com/",
+        "detour": "direct-fragment"
+      },
+      {
+        "tag": "dns-direct",
+        "address": "1.1.1.1",
+        "address_resolver": "dns-local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-block",
+        "address": "rcode://success"
       }
-    
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "local"
+        "domain": "1.1.1.1",
+        "server": "dns-remote",
+        "rewrite_ttl": 3000
       },
       {
-        "clash_mode": "Global",
-        "server": "default"
+        "domain_suffix": ".ir",
+        "server": "dns-direct"
       },
       {
-        "clash_mode": "Direct",
-        "server": "local"
+        "rule_set": [
+          "geoip-ir",
+          "geosite-ir"
+        ],
+        "server": "dns-direct"
       }
-    
     ],
-    "final": "default",
-    "strategy": "ipv4_only"
+    "final": "dns-remote",
+    "static_ips": {
+      "sky.rethinkdns.com": [
+        "104.17.148.22",
+        "104.17.147.22",
+        "188.114.96.7",
+        "188.114.97.7",
+        "2a06:98c1:3121::7",
+        "2a06:98c1:3120::7"
+      ]
+    },
+    "independent_cache": true
   },
   "inbounds": [
     {
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 20122,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
-    },
-    {
-      "type": "http",
-      "listen": "127.0.0.1",
-      "listen_port": 8181,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
-    },
-    {
-      "type": "socks",
-      "listen": "127.0.0.1",
-      "listen_port": 8080,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
-    },
-    {
       "type": "tun",
-     "address": [
-        "172.19.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
+      "tag": "tun-in",
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/28",
       "auto_route": true,
       "strict_route": true,
-      "endpoint_independent_nat": false,
+      "endpoint_independent_nat": true,
       "stack": "mixed",
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 20122
-        }
-      },
+      "sniff": true
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 12334,
       "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only"
+      "sniff_override_destination": true
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 16450
     }
   ],
   "outbounds": [
-{
-        "type": "selector",
-        "tag": "منصوره سگوند مهسا موگویی",
-        "outbounds": [
-          "تظاهرات سراسری",
-          "تظاهرات سراسری"
-        
-        
-        ],
-        "default": "تظاهرات سراسری",
-        "interrupt_exist_connections": true
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇩🇪(1)@vpn_xw § 0",
+        "🇩🇪(2)@vpn_xw § 1",
+        "🇩🇪(3)@vpn_xw § 2",
+        "🇩🇪(4)@vpn_xw § 3",
+        "🇩🇪(5)@vpn_xw § 4",
+        "🇺🇸(1)@vpn_xw § 5",
+        "🇩🇪(6)@vpn_xw § 6",
+        "🇩🇪(7)@vpn_xw § 7",
+        "🇩🇪(8)@vpn_xw § 8",
+        "🇩🇪(9)@vpn_xw § 9",
+        "🇺🇸(2)@vpn_xw § 10",
+        "🇩🇪(10)@vpn_xw § 11",
+        "🇩🇪(11)@vpn_xw § 12",
+        "🇺🇸(3)@vpn_xw § 13",
+        "🇩🇪(12)@vpn_xw § 14",
+        "🇩🇪(13)@vpn_xw § 15",
+        "🇩🇪(14)@vpn_xw § 16",
+        "🇩🇪(15)@vpn_xw § 17",
+        "🇩🇪(16)@vpn_xw § 18",
+        "🇩🇪(17)@vpn_xw § 19",
+        "🇩🇪(18)@vpn_xw § 20",
+        "🇩🇪(19)@vpn_xw § 21",
+        "🇺🇸(4)@vpn_xw § 22",
+        "🇩🇪(20)@vpn_xw § 23",
+        "🇩🇪(21)@vpn_xw § 24",
+        "🇩🇪(22)@vpn_xw § 25",
+        "🇺🇸(5)@vpn_xw § 26",
+        "🇩🇪(23)@vpn_xw § 27",
+        "🇿🇦(1)@vpn_xw § 28",
+        "🇺🇸(6)@vpn_xw § 29",
+        "🇯🇵(1)@vpn_xw § 30",
+        "🇸🇬(1)@vpn_xw § 31",
+        "🇸🇬(2)@vpn_xw § 32",
+        "🇸🇬(3)@vpn_xw § 33",
+        "🇸🇬(4)@vpn_xw § 34",
+        "🇨🇳(1)@vpn_xw § 35",
+        "🇨🇳(2)@vpn_xw § 36",
+        "🇨🇳(3)@vpn_xw § 37",
+        "🇨🇳(4)@vpn_xw § 38",
+        "🇨🇳(5)@vpn_xw § 39",
+        "🇩🇪(24)@vpn_xw § 40",
+        "🇺🇸(7)@vpn_xw § 41",
+        "🇲🇽(1)@vpn_xw § 42",
+        "🇭🇰(1)@vpn_xw § 43",
+        "🇭🇰(2)@vpn_xw § 44",
+        "🇭🇰(3)@vpn_xw § 45",
+        "🇭🇰(4)@vpn_xw § 46",
+        "🇺🇸(8)@vpn_xw § 47",
+        "🇺🇸(9)@vpn_xw § 48",
+        "🇩🇪(25)@vpn_xw § 49",
+        "🇺🇸(10)@vpn_xw § 50",
+        "🇯🇵(2)@vpn_xw § 51",
+        "🇯🇵(3)@vpn_xw § 52",
+        "🇺🇸(11)@vpn_xw § 53",
+        "🇯🇵(4)@vpn_xw § 54",
+        "🇯🇵(5)@vpn_xw § 55",
+        "🇵🇱(1)@vpn_xw § 56",
+        "🇵🇱(2)@vpn_xw § 57",
+        "🇪🇸(1)@vpn_xw § 58",
+        "🇸🇪(1)@vpn_xw § 59",
+        "🇮🇳(1)@vpn_xw § 60",
+        "🇮🇳(2)@vpn_xw § 61",
+        "🇨🇦CANADA",
+        "🇨🇾CYPRUS",
+        "🇬🇪GEORGIA",
+        "🇧🇴BOLIVIA",
+        "🇭🇳HONDURAS",
+        "🇩🇪GERMANY",
+        "🇮🇹ITALY",
+        "🇩🇰DENMARK",
+        "🇺🇸UNITED STATES",
+        "🇫🇷FRANCE",
+        "🇪🇪ESTONIA"
+      ],
+      "default": "auto",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇩🇪(1)@vpn_xw § 0",
+        "🇩🇪(2)@vpn_xw § 1",
+        "🇩🇪(3)@vpn_xw § 2",
+        "🇩🇪(4)@vpn_xw § 3",
+        "🇩🇪(5)@vpn_xw § 4",
+        "🇺🇸(1)@vpn_xw § 5",
+        "🇩🇪(6)@vpn_xw § 6",
+        "🇩🇪(7)@vpn_xw § 7",
+        "🇩🇪(8)@vpn_xw § 8",
+        "🇩🇪(9)@vpn_xw § 9",
+        "🇺🇸(2)@vpn_xw § 10",
+        "🇩🇪(10)@vpn_xw § 11",
+        "🇩🇪(11)@vpn_xw § 12",
+        "🇺🇸(3)@vpn_xw § 13",
+        "🇩🇪(12)@vpn_xw § 14",
+        "🇩🇪(13)@vpn_xw § 15",
+        "🇩🇪(14)@vpn_xw § 16",
+        "🇩🇪(15)@vpn_xw § 17",
+        "🇩🇪(16)@vpn_xw § 18",
+        "🇩🇪(17)@vpn_xw § 19",
+        "🇩🇪(18)@vpn_xw § 20",
+        "🇩🇪(19)@vpn_xw § 21",
+        "🇺🇸(4)@vpn_xw § 22",
+        "🇩🇪(20)@vpn_xw § 23",
+        "🇩🇪(21)@vpn_xw § 24",
+        "🇩🇪(22)@vpn_xw § 25",
+        "🇺🇸(5)@vpn_xw § 26",
+        "🇩🇪(23)@vpn_xw § 27",
+        "🇿🇦(1)@vpn_xw § 28",
+        "🇺🇸(6)@vpn_xw § 29",
+        "🇯🇵(1)@vpn_xw § 30",
+        "🇸🇬(1)@vpn_xw § 31",
+        "🇸🇬(2)@vpn_xw § 32",
+        "🇸🇬(3)@vpn_xw § 33",
+        "🇸🇬(4)@vpn_xw § 34",
+        "🇨🇳(1)@vpn_xw § 35",
+        "🇨🇳(2)@vpn_xw § 36",
+        "🇨🇳(3)@vpn_xw § 37",
+        "🇨🇳(4)@vpn_xw § 38",
+        "🇨🇳(5)@vpn_xw § 39",
+        "🇩🇪(24)@vpn_xw § 40",
+        "🇺🇸(7)@vpn_xw § 41",
+        "🇲🇽(1)@vpn_xw § 42",
+        "🇭🇰(1)@vpn_xw § 43",
+        "🇭🇰(2)@vpn_xw § 44",
+        "🇭🇰(3)@vpn_xw § 45",
+        "🇭🇰(4)@vpn_xw § 46",
+        "🇺🇸(8)@vpn_xw § 47",
+        "🇺🇸(9)@vpn_xw § 48",
+        "🇩🇪(25)@vpn_xw § 49",
+        "🇺🇸(10)@vpn_xw § 50",
+        "🇯🇵(2)@vpn_xw § 51",
+        "🇯🇵(3)@vpn_xw § 52",
+        "🇺🇸(11)@vpn_xw § 53",
+        "🇯🇵(4)@vpn_xw § 54",
+        "🇯🇵(5)@vpn_xw § 55",
+        "🇵🇱(1)@vpn_xw § 56",
+        "🇵🇱(2)@vpn_xw § 57",
+        "🇪🇸(1)@vpn_xw § 58",
+        "🇸🇪(1)@vpn_xw § 59",
+        "🇮🇳(1)@vpn_xw § 60",
+        "🇮🇳(2)@vpn_xw § 61",
+        "🇨🇦CANADA",
+        "🇨🇾CYPRUS",
+        "🇬🇪GEORGIA",
+        "🇧🇴BOLIVIA",
+        "🇭🇳HONDURAS",
+        "🇩🇪GERMANY",
+        "🇮🇹ITALY",
+        "🇩🇰DENMARK",
+        "🇺🇸UNITED STATES",
+        "🇫🇷FRANCE",
+        "🇪🇪ESTONIA"
+      ],
+      "url": "http://1.1.1.1",
+      "interval": "1m0s",
+      "tolerance": 1,
+      "idle_timeout": "3m0s",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(1)@vpn_xw § 0",
+      "server": "91.99.216.137",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
       },
-
-   {
-        "type": "selector",
-        "tag": "نیکا شاکرمی مهسا امینی",
-        "outbounds": [
-          "تظاهرات سراسری",
-          "تظاهرات سراسری"
-        
-        
-        ],
-        "default": "تظاهرات سراسری",
-        "interrupt_exist_connections": true
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(2)@vpn_xw § 1",
+      "server": "91.99.144.152",
+      "server_port": 443,
+      "uuid": "d67e296c-2aad-482d-9226-bf1bc665c783",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
       },
- {
-            "tag": "رضا شاه روحت شاد",
-            "type": "selector",
-            "interrupt_exist_connections": true,
-           
-            "outbounds": [
-                "تظاهرات سراسری",
-                "🇨🇦 T.ME/wearestand",
-                "🇨🇾 T.ME/iranramona",
-                "🇬🇪 T.ME/wearestand",
-                "🇧🇴 T.ME/iranramona",
-                "🇭🇳 T.ME/wearestand",
-                "🇩🇪 T.ME/wearestand",
-                "🇮🇹 T.ME/wearestand",
-                "🇩🇰 T.ME/iranramona",
-                "🇺🇸 T.ME/wearestand",
-                "🇫🇷 T.ME/iranramona",
-                "🇪🇪 T.ME/wearestand"
-             
-            ]
-        },
-
-        {
-            "tag": "تظاهرات سراسری",
-            "type": "urltest",
-            "url": "http://cp.cloudflare.com",
-            "interval": "10m0s",
-            "outbounds": [
-                "🇨🇦CANADA",
-                "🇨🇾CYPRUS",
-                "🇬🇪GEORGIA",
-                "🇧🇴BOLIVIA",
-                "🇭🇳HONDURAS",
-                "🇩🇪GERMANY",
-                "🇮🇹ITALY",
-                "🇩🇰DENMARK",
-                "🇺🇸UNITED STATES",
-                "🇫🇷FRANCE",
-                "🇪🇪ESTONIA"
-                
-  
-            ]
-        },
-
-{
-            "tag": "🇨🇦 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-               "🇨🇦CANADA"
-
-
-            ]
-        },
-{
-            "tag": "🇨🇾 T.ME/iranramona",
-            "type": "urltest",
-            "outbounds": [
-               "🇨🇾CYPRUS"
-
-
-            ]
-        },
-
-{
-            "tag": "🇬🇪 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇬🇪GEORGIA"
-
-
-
-            ]
-        },
-{
-            "tag": "🇧🇴 T.ME/iranramona",
-            "type": "urltest",
-            "outbounds": [
-                "🇧🇴BOLIVIA"
-
-
-            ]
-        },
-{
-            "tag": "🇭🇳 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇭🇳HONDURAS"
- 
-
-            ]
-        },
-
-{
-            "tag": "🇩🇪 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇩🇪GERMANY"
-           
-
-
-            ]
-        },
-
-
-{
-            "tag": "🇮🇹 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇮🇹ITALY"
-
-
-            ]
-        },
-{
-            "tag": "🇩🇰 T.ME/iranramona",
-            "type": "urltest",
-            "outbounds": [
-                "🇩🇰DENMARK"
-
-
-            ]
-        },
-
-
-{
-            "tag": "🇺🇸 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇺🇸UNITED STATES"
-                
-
-
-            ]
-        },
-{
-            "tag": "🇫🇷 T.ME/iranramona",
-            "type": "urltest",
-            "outbounds": [
-                "🇫🇷FRANCE"
-
-
-            ]
-        },
-
-{
-            "tag": "🇪🇪 T.ME/wearestand",
-            "type": "urltest",
-            "outbounds": [
-                "🇪🇪ESTONIA"
-                
-
-
-            ]
-        },
-
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(3)@vpn_xw § 2",
+      "server": "91.99.213.138",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(4)@vpn_xw § 3",
+      "server": "91.99.222.177",
+      "server_port": 443,
+      "uuid": "8fc13a32-42db-4303-9bb4-cd30d456a3a6",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(5)@vpn_xw § 4",
+      "server": "91.99.111.168",
+      "server_port": 443,
+      "uuid": "f666c68e-f1fd-498e-a187-2e7f58380504",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇺🇸(1)@vpn_xw § 5",
+      "server": "216.22.5.78",
+      "server_port": 443,
+      "uuid": "f2b37672-b280-472a-ae35-4189cc856817",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(6)@vpn_xw § 6",
+      "server": "91.99.179.201",
+      "server_port": 443,
+      "uuid": "88b9da00-7a25-45ec-859b-14ad57a6bd2b",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(7)@vpn_xw § 7",
+      "server": "91.99.189.136",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(8)@vpn_xw § 8",
+      "server": "91.99.186.25",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(9)@vpn_xw § 9",
+      "server": "91.99.158.34",
+      "server_port": 443,
+      "uuid": "d67e296c-2aad-482d-9226-bf1bc665c783",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇺🇸(2)@vpn_xw § 10",
+      "server": "216.22.5.67",
+      "server_port": 443,
+      "uuid": "dd553fea-ee58-4fc7-b33e-448d4d507897",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(10)@vpn_xw § 11",
+      "server": "91.99.197.183",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(11)@vpn_xw § 12",
+      "server": "91.99.83.168",
+      "server_port": 443,
+      "uuid": "f666c68e-f1fd-498e-a187-2e7f58380504",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇺🇸(3)@vpn_xw § 13",
+      "server": "216.22.5.79",
+      "server_port": 443,
+      "uuid": "e1c32bed-b458-4273-a953-a74eff15d54c",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(12)@vpn_xw § 14",
+      "server": "91.99.214.30",
+      "server_port": 443,
+      "uuid": "c39a101c-0a7b-4940-8e6a-f8346d70b24b",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(13)@vpn_xw § 15",
+      "server": "91.99.216.134",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(14)@vpn_xw § 16",
+      "server": "91.99.182.155",
+      "server_port": 443,
+      "uuid": "04bb5055-bc44-4d21-85c7-42317dd5fd37",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(15)@vpn_xw § 17",
+      "server": "91.99.153.233",
+      "server_port": 443,
+      "uuid": "04bb5055-bc44-4d21-85c7-42317dd5fd37",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(16)@vpn_xw § 18",
+      "server": "91.99.178.25",
+      "server_port": 443,
+      "uuid": "c39a101c-0a7b-4940-8e6a-f8346d70b24b",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(17)@vpn_xw § 19",
+      "server": "91.107.164.201",
+      "server_port": 443,
+      "uuid": "8fc13a32-42db-4303-9bb4-cd30d456a3a6",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(18)@vpn_xw § 20",
+      "server": "91.99.81.38",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(19)@vpn_xw § 21",
+      "server": "91.99.216.135",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇺🇸(4)@vpn_xw § 22",
+      "server": "216.22.5.68",
+      "server_port": 443,
+      "uuid": "5721967b-7414-4694-8110-fa524c96087f",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(20)@vpn_xw § 23",
+      "server": "91.99.179.203",
+      "server_port": 443,
+      "uuid": "88b9da00-7a25-45ec-859b-14ad57a6bd2b",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(21)@vpn_xw § 24",
+      "server": "91.99.214.14",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪(22)@vpn_xw § 25",
+      "server": "91.99.85.80",
+      "server_port": 443,
+      "uuid": "9a85ea24-bd5a-4380-94cb-ffb773cafb33",
+      "transport": {
+        "type": "http",
+        "host": "zula.ir",
+        "path": "/",
+        "method": "GET"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(5)@vpn_xw § 26",
+      "server": "104.207.151.6",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇩🇪(23)@vpn_xw § 27",
+      "server": "108.61.190.61",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇿🇦(1)@vpn_xw § 28",
+      "server": "139.84.239.126",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(6)@vpn_xw § 29",
+      "server": "149.28.241.141",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵(1)@vpn_xw § 30",
+      "server": "167.179.115.35",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬(1)@vpn_xw § 31",
+      "server": "175.41.157.91",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬(2)@vpn_xw § 32",
+      "server": "175.41.157.91",
+      "server_port": 8316,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬(3)@vpn_xw § 33",
+      "server": "175.41.157.91",
+      "server_port": 8316,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇬(4)@vpn_xw § 34",
+      "server": "175.41.157.91",
+      "server_port": 8319,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳(1)@vpn_xw § 35",
+      "server": "183.236.97.19",
+      "server_port": 33360,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳(2)@vpn_xw § 36",
+      "server": "183.236.97.19",
+      "server_port": 53774,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳(3)@vpn_xw § 37",
+      "server": "183.236.97.19",
+      "server_port": 54067,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳(4)@vpn_xw § 38",
+      "server": "183.236.97.19",
+      "server_port": 54203,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇨🇳(5)@vpn_xw § 39",
+      "server": "183.236.97.19",
+      "server_port": 54602,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇩🇪(24)@vpn_xw § 40",
+      "server": "192.248.186.146",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(7)@vpn_xw § 41",
+      "server": "207.246.117.20",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇲🇽(1)@vpn_xw § 42",
+      "server": "216.238.94.171",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰(1)@vpn_xw § 43",
+      "server": "43.199.75.50",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰(2)@vpn_xw § 44",
+      "server": "43.199.75.50",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰(3)@vpn_xw § 45",
+      "server": "43.199.75.50",
+      "server_port": 8316,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇭🇰(4)@vpn_xw § 46",
+      "server": "43.199.75.50",
+      "server_port": 8316,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(8)@vpn_xw § 47",
+      "server": "45.32.167.19",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(9)@vpn_xw § 48",
+      "server": "45.63.106.28",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇩🇪(25)@vpn_xw § 49",
+      "server": "45.76.94.32",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(10)@vpn_xw § 50",
+      "server": "45.77.120.125",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵(2)@vpn_xw § 51",
+      "server": "54.238.207.188",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵(3)@vpn_xw § 52",
+      "server": "54.238.207.188",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇺🇸(11)@vpn_xw § 53",
+      "server": "64.176.217.86",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵(4)@vpn_xw § 54",
+      "server": "64.176.42.10",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇯🇵(5)@vpn_xw § 55",
+      "server": "64.176.43.108",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇱(1)@vpn_xw § 56",
+      "server": "64.176.67.125",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇵🇱(2)@vpn_xw § 57",
+      "server": "64.176.72.194",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇪🇸(1)@vpn_xw § 58",
+      "server": "65.20.108.81",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇸🇪(1)@vpn_xw § 59",
+      "server": "65.20.114.22",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇮🇳(1)@vpn_xw § 60",
+      "server": "65.20.66.40",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "🇮🇳(2)@vpn_xw § 61",
+      "server": "65.20.79.237",
+      "server_port": 8313,
+      "method": "chacha20-ietf-poly1305",
+      "password": "ljqdalu13.."
+    },
+    
         {
             "headers": {
                 "Host": [
@@ -581,65 +1217,21 @@
       }
     },
 
+ 
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
     {
       "type": "direct",
       "tag": "direct"
-    }
-  ],
-  "route": {
-    "rules": [
-      {
-        "inbound": "tun-in",
-        "action": "sniff"
-      },
-      {
-        "protocol": "dns",
-        "action": "hijack-dns"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "رضا شاه روحت شاد"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "network": "tcp",
-        "port": 853,
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "action": "reject",
-        "method": "default"
-      },
-      
-      {
-        "inbound": "tun-in",
-        "action": "resolve"
-      },
-      
-      {
-        "ip_cidr": "10.10.34.0/24",
-        "outbound": "رضا شاه روحت شاد"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-fragment",
+      "tls_fragment": {
+        "enabled": true,
+        "size": "10-30",
+        "sleep": "2-8"
       }
-    ],
-    "rule_set": [
-      
-    ],
-    "final": "رضا شاه روحت شاد",
-    "auto_detect_interface": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true
-    }
-  }
-}
+    },
