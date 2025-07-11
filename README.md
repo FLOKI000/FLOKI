@@ -12,7 +12,7 @@
 
   <h2 style="font-family: 'Arial', sans-serif; color: #34495e; margin-top: 30px;">ازتباط با من</h2>
   <p style="color: #2c3e50;">
-    برای همکاری یا هرگونه سؤال، از طریق تلگرام با من در ارتباط باشید. 
+    برای همکاری یا هرگونه سؤال، از طریق شبکه های اجتماعی زیر با من در ارتباط باشید. 
    <!-- Telegram Button with Icon and Animation -->
   <div style="margin: 20px 0;">
     <a href="https://t.me/your-telegram" target="_blank">
