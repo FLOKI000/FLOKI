@@ -1,7 +1,7 @@
 mixed-port: 7890
 allow-lan: true
 mode: rule
-log-level: debug
+log-level: none
 external-controller: 138.68.114.187:6543
 proxies:
   - name: 🚀 آلمان 🚀
