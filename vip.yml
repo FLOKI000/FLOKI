@@ -32,7 +32,7 @@ proxy-groups:
       - 🚀 آلمان 🚀
   - name: ♻️ 自动选择
     type: url-test
-    url: http://www.gstatic.com/generate_204
+    url: http://www.google.com/generate_204
     interval: 300
     tolerance: 5000
     proxies:
@@ -49,6 +49,41 @@ proxy-groups:
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
+      - 🚀 آلمان 🚀
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - 🚀 آلمان 🚀
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - 🚀 آلمان 🚀
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
       - 🚀 آلمان 🚀
 rules:
 # 本地/局域网地址
