@@ -27,6 +27,6 @@
   </p>
 
   <footer style="margin-top: 40px; color: #7f8c8d;">
-    <p>```🔥 ساخته شده توسط فلوکی 🔥```</p>
+    <p>🔥 ساخته شده توسط فلوکی 🔥</p>
   </footer>
 </div>
