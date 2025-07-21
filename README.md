@@ -10,7 +10,7 @@
     من فلوکی هستم، یک توسعه‌دهنده پرشور که روی پروژه‌های نوآورانه کار می‌کنم. هدفم خلق راه‌حل‌های جذاب و کاربردی است!
   </p>
 
-  <h2 style="font-family: 'Arial', sans-serif; color: #34495e; margin-top: 30px;">ارتباط با من</h2>
+  <h2 style="font-family: 'Arial', sans-serif; color: #34495e; margin-top: 30px;"></h2>
   <p style="color: #2c3e50;">
     برای همکاری یا هرگونه سؤال، از طریق شبکه های اجتماعی زیر با من در ارتباط باشید. 
    <!-- Telegram Button with Icon and Animation -->
