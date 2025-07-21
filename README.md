@@ -1,12 +1,4 @@
-127.0.0.1:10808,
-domain:[{"domain":["Google.com"],
-domain:"enabled":true,
-domain:"locked":false,
-domain:"network":"udp|tcp",
-domain:"outboundTag":"proxy",
-domain:"port":"80",
-domain:"remarks":"Google.com"}
-
+http://google.com/generate_204
 
 
 <div align="center">
