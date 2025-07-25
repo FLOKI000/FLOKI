@@ -1,9 +1,3 @@
-http://google.com/generate_204
-
-
-https://pro.metalping.ir:443/sub/RkxPS0kwMDAtMTgyLDE3NTMyMTMzNjMIRIFFmlN2m
-
-
 <div align="center">
   <img src="https://your-image-url.com/floki-profile-pic.png" alt="Profile Picture" width="150" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
 
