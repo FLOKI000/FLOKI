@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://your-image-url.com/floki-profile-pic.png" alt="Profile Picture" width="150" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <img src="https://raw.githubusercontent.com/FLOKI000/FLOKI000/refs/heads/main/FLOKI333/PNG.png" alt="Profile Picture" width="150" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
 
   <h1 style="font-family: 'Arial', sans-serif; color: #2c3e50;">سلام! من فلوکی هستم</h1>
   <p style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 20px;">
