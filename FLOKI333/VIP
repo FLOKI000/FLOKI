@@ -502,6 +502,55 @@
         "port": "53",
         "type": "field"
       },
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "46.8.230.40",
+            "port": 6543,
+            "users": [
+              {
+                "id": "9671d7a1-1533-4631-8e6c-a168b65bd597",
+                "security": "auto",
+                "encryption": "none",
+                "email": "https://gozargah.github.io/marzban/",
+                "alterId": 0,
+                "flow": ""
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "latimes.com",
+          "fingerprint": "chrome",
+          "show": false,
+          "publicKey": "xheIZ8YJgvHbF50sAut6jvw_s2e8kyjhj5JV3eyuQDw",
+          "shortId": "df8974d967f2fe3d"
+        }
+      }
+    }
+  ],
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ]
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": []
+  },
+  {
+  "remarks": "🇫🇮 فنلاند (direct)"
+"tag": "proxy"
+},
               {
                 "ip": [
                   "223.5.5.5"
