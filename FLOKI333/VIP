@@ -44,8 +44,8 @@
     "outbounds": [
       {
         "mux": {
-          "concurrency": 1,
-          "enabled": true
+          "concurrency": 8,
+          "enabled": false
           },
          "settings": {
           "fragment": {
@@ -298,6 +298,7 @@
     },
     "remarks": "🇫🇮 فنلاند (direct)"
   },
+
   {
     "log": {
       "access": "",
@@ -405,6 +406,7 @@
     },
     "remarks": "🇫🇮 فنلاند"
   },
+
       {
           "remarks": "🔴.Google.Youtube",
           "log": {
@@ -546,7 +548,7 @@
                 }
               },
               "mux": {
-                "concurrency": 1,
+                "concurrency": 8,
                 "enabled": true
               }
             }
@@ -649,8 +651,8 @@
           "outbounds": [
     {
       "mux": {
-        "concurrency": 1,
-        "enabled": true
+        "concurrency": -1,
+        "enabled": false
       },
       "protocol": "wireguard",
       "settings": {
@@ -690,7 +692,6 @@
       "tag": "block"
     }
   ],
-  "remarks": "wireguard",
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
