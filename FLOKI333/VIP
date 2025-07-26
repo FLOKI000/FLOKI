@@ -3,8 +3,6 @@
 #subscription-userinfo: upload=0; download=0; total=1.0; expire=1.0
 #profile-web-page-url: https://raw.githubusercontent.com/FLOKI000/FLOKI000/refs/heads/main/FLOKI333/VIP
 
-wireguard://AKiJT3q9jbO7OUHaJaOcd2WB7kRibJ9GNnM93BwgOHQ%3D@8.6.112.0:878?address=172.16.0.2%2F32&presharedkey=&reserved=64%2C238%2C44&publickey=bmXOC%2BF1FxEMF9dyiK2H5%2F1SUtzH0JuVo51h2wPfgyo%3D&mtu=1280#%F0%9F%8C%9F.iP.1.%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%D8%B3%D9%84
-
 {
   "dns": {
     "hosts": {
