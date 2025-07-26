@@ -548,7 +548,17 @@
     "rules": []
   },
   "remarks": "🇫🇮 فنلاند (direct)"
-},
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53",
+        "type": "field"
+      },
 "outbounds": [
     {
       "tag": "proxy",
@@ -609,7 +619,17 @@
     "rules": []
   },
   "remarks": "🇫🇮 فنلاند"
-},
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "ip": [
+          "1.1.1.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53",
+        "type": "field"
+      },
               {
                 "ip": [
                   "223.5.5.5"
