@@ -44,9 +44,9 @@
     "outbounds": [
       {
         "mux": {
-                "concurrency": 1,
-                "enabled": true
-              }
+          "concurrency": 1,
+          "enabled": true
+          },
          "settings": {
           "fragment": {
             "packets": "tlshello",
@@ -649,9 +649,9 @@
           "outbounds": [
     {
       "mux": {
-                "concurrency": 1,
-                "enabled": true
-              },
+        "concurrency": 1,
+        "enabled": true
+      },
       "protocol": "wireguard",
       "settings": {
         "address": [
