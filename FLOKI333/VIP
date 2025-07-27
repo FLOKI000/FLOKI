@@ -735,16 +735,49 @@
         "port": "53",
         "type": "field"
       },
-      {
-        "domain": [
-          "Google.com"
-        ],
-        "network": "udp|tcp",
-        "outboundTag": "proxy",
-        "port": "80",
-        "type": "field"
+                  {
+              "ip": [
+                "223.5.5.5"
+              ],
+              "outboundTag": "direct",
+              "port": "53"
+            },
+            {
+              "domain": [
+                "domain:googleapis.cn"
+              ],
+              "outboundTag": "proxy"
+            },
+            {
+              "ip": [
+                "geoip:private"
+              ],
+              "outboundTag": "direct"
+            },
+            {
+              "ip": [
+                "geoip:cn"
+              ],
+              "outboundTag": "direct"
+            },
+            {
+              "domain": [
+                "geosite:cn"
+              ],
+              "outboundTag": "direct"
+            },
+            {
+              "domain": [
+                "geosite:geolocation-cn"
+              ],
+              "outboundTag": "direct"
+            },
+            {
+              "outboundTag": "proxy",
+              "port": "0-65535"
+            }
+          ]
+        }
       }
-    ]
-  }
 ]
-  
+
