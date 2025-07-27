@@ -159,7 +159,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "@Floki000-TLS",
+    "remarks": "🇩🇪 iP.4 مخصوص چت",
     "routing": {
       "domainStrategy": "IPIfNonMatch",
       "rules": [
@@ -296,7 +296,7 @@
       "domainStrategy": "AsIs",
       "rules": []
     },
-    "remarks": "🇫🇮 فنلاند (direct)"
+    "remarks": "🇫🇮 iP.1"
   },
 
   {
@@ -404,11 +404,11 @@
       "domainStrategy": "AsIs",
       "rules": []
     },
-    "remarks": "🇫🇮 فنلاند"
+    "remarks": "🇫🇮 iP.2"
   },
 
       {
-          "remarks": "🔴.Google.Youtube",
+          "remarks": "🇮🇷.IRAN",
           "log": {
             "access": "",
             "error": "",
