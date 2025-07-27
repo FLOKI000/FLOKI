@@ -673,7 +673,8 @@
         ],
         "secretKey": "AKiJT3q9jbO7OUHaJaOcd2WB7kRibJ9GNnM93BwgOHQ="
       },
-      "tag": "proxy"
+      "tag": "proxy",
+          "remarks": "🇶🇦 iP.3 ایرانسل"
     },
     {
       "protocol": "freedom",
