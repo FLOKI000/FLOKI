@@ -159,7 +159,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇩🇪 iP.4 مخصوص چت",
+    "remarks": "🇩🇪 iP.4",
     "routing": {
       "domainStrategy": "IPIfNonMatch",
       "rules": [
