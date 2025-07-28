@@ -5,15 +5,17 @@
   </div>
   
   <!-- Text Content -->
-  <div style="flex: 1; text-align: right;">
-    <h1 style="font-size: 1.5em; color: #34495e;">فلوکی</h1>
-    <p style="font-size: 1em; color: #2c3e50; line-height: 1.6; max-width: 400px;">
+  <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end;">
+    <div style="display: flex; align-items: center;">
+      <h1 style="font-size: 1.5em; color: #34495e; margin-left: 10px;">فلوکی</h1>
+    </div>
+    <p style="font-size: 1em; color: #2c3e50; line-height: 1.6; max-width: 400px; text-align: right;">
       من فلوکی هستم، توسعه‌دهنده‌ای پرشور که روی پروژه‌های نوآورانه کار می‌کنم.
     </p>
-    <!-- Telegram Button -->
+    <!-- Telegram Button with Custom ID -->
     <div style="margin-top: 20px;">
-      <a href="https://t.me/your-telegram" target="_blank">
-        <img src="https://telegram.org/img/t_logo.png" alt="Telegram" width="40" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <a href="https://t.me/FLOKI000" target="_blank">
+        <img src="https://img.shields.io/badge/Telegram-FLOKI000-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
       </a>
     </div>
   </div>
