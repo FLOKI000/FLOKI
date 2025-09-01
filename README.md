@@ -9,9 +9,6 @@
 </div>
 
 <footer style="margin-top: 20px; text-align: center; color: #7f8c8d;">
-  <p>🔥 ساخته شده توسط فلوکی 🔥</p>
-</footer>
-
 <!-- Telegram Button with Custom ID -->
 <div style="margin-top: 15px;">
   <a href="https://t.me/FLOKI000" target="_blank">
@@ -32,6 +29,4 @@
   </div>
 </div>
 
-<footer style="margin-top: 20px; text-align: center; color: #7f8c8d;">
-  <p>🔥 ساخته شده توسط فلوکی 🔥</p>
-</footer>
+<footer style="margin-top: 20px; text-align: center; color: #7f8c8d;"
