@@ -20,13 +20,3 @@
 
 <footer style="margin-top: 20px; text-align: center; color: #7f8c8d;">
 <footer style="margin-top: 20px; text-align: center; color: #7f8c8d;">    </p>
-    <!-- Telegram Button with Custom ID -->
-    <div style="margin-top: 15px;">
-      <a href="https://t.me/FLOKI000" target="_blank">
-        <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-      </a>
-    </div>
-  </div>
-</div>
-
-<footer style="margin-top: 20px; text-align: center; color: #7f8c8d;"
