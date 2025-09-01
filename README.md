@@ -1,7 +1,7 @@
 </p>
 <!-- GitHub Button with Text -->
 <div style="margin-top: 15px; text-align: center;">
-  <p style="color: #7f8c8d; font-size: 16px;">به گیت‌هاب من سر بزن، پروژه‌های خفن منتظرتن! 🚀🔥</p>
+  <p style="color: #7f8c8d; font-size: 16px;">فایلای باحالم رو تو گیت‌هاب ببین! 📂😜</p>
   <a href="https://github.com/FLOKI000/FLOKI000" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-FLOKI000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
   </a>
@@ -9,7 +9,7 @@
 
 <!-- Telegram Button with Text -->
 <div style="margin-top: 15px; text-align: center;">
-  <p style="color: #7f8c8d; font-size: 16px;">تو تلگرام من بیا، اخبار باحال داریم! 📩😎</p>
+  <p style="color: #7f8c8d; font-size: 16px;">تو تلگرام بهم پی‌وی بزن، گپ باحال داریم! 💬😎</p>
   <a href="https://t.me/FLOKI000" target="_blank">
     <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
   </a>
