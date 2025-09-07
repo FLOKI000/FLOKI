@@ -3,122 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت من با لینک تلگرام و ویدیو</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>سایت ریسپانسیو با تنظیمات</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+
+        body {
             background: linear-gradient(135deg, #00c4ff, #007bff);
             color: #fff;
             direction: rtl;
-            text-align: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+        /* منوی اصلی */
+        .nav-menu {
             text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .telegram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background-color: #0088cc;
+        .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-size: 1.2em;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 25px;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .telegram-link:hover {
-            background-color: #006699;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
         }
 
-        .telegram-link i {
-            font-size: 1.5em;
+        /* محتوای اصلی */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
         }
 
-        .message {
-            margin-top: 20px;
-            font-size: 1em;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+        .content.active {
+            display: block;
         }
 
-        .message.show {
-            opacity: 1;
-        }
-
-        .readme-content {
-            margin-top: 30px;
+        /* صفحه تنظیمات */
+        .settings {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion {
+            margin: 10px 0;
+        }
+
+        .accordion-item {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
 
-        .readme-content h2 {
-            font-size: 1.8em;
-            color: #ffd700;
+        .accordion-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
         }
 
-        .video-container {
-            margin-top: 30px;
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .accordion-content {
+            padding: 0 15px 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 200px; /* تنظیم دستی بر اساس محتوا */
+        }
+
+        .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .icon.rotate {
+            transform: rotate(90deg);
+        }
+
+        /* ریسپانسیویتی */
+        @media (max-width: 768px) {
+            .nav-menu a {
+                display: block;
+                margin: 10px 0;
+                font-size: 1em;
+            }
+
+            .settings {
+                padding: 15px;
+            }
+
+            .accordion-header {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .accordion-content {
+                padding: 0 10px 10px;
+            }
+
+            video {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>به کانال تلگرام من بپیوندید!</h1>
-        <a href="https://t.me/floki1234567890" class="telegram-link" onclick="showMessage()">
-            <i class="fab fa-telegram-plane"></i>
-            ورود به کانال تلگرام
-        </a>
-        <p class="message" id="message">در حال انتقال به تلگرام...</p>
+    <!-- منوی ناوبری -->
+    <div class="nav-menu">
+        <a href="#" onclick="showSection('main')">صفحه اصلی</a>
+        <a href="#" onclick="showSection('settings')">تنظیمات</a>
+    </div>
 
-        <div class="readme-content">
-            <h2>پیشنهادات ویژه نرم‌افزاری</h2>
-            <p>Exclusive Software Deals for Developers and Startups - Dealsbe</p>
-            <p><a href="#">Post a Deal</a></p>
-        </div>
+    <!-- صفحه اصلی -->
+    <div id="main" class="content active">
+        <h1 style="text-align: center; margin-bottom: 20px;">خوش آمدید!</h1>
+        <video width="560" height="315" controls>
+            <source src="https://raw.githubusercontent.com/FLOKI000/FLOKI000/refs/heads/main/FLOKI333/video.mp4" type="video/mp4">
+            مرورگرت از ویدیو پشتیبانی نمی‌کنه.
+        </video>
+    </div>
 
-        <div class="video-container">
-            <h2>ویدیوی آموزشی</h2>
-            <video width="560" height="315" controls>
-                <source src="https://raw.githubusercontent.com/FLOKI000/FLOKI000/refs/heads/main/FLOKI333/video.mp4" type="video/mp4">
-                مرورگرت از ویدیو پشتیبانی نمی‌کنه یا لینک ناموفق بوده.
-            </video>
+    <!-- صفحه تنظیمات -->
+    <div id="settings" class="content">
+        <div class="settings">
+            <h2 style="margin-bottom: 20px;">تنظیمات دستگاه‌ها</h2>
+            <div class="accordion">
+                <!-- کادر اندروید -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('android')">
+                        <span>اندروید</span>
+                        <span class="icon">▶</span>
+                    </div>
+                    <div id="android-content" class="accordion-content">
+                        <p>تنظیمات مربوط به دستگاه‌های اندروید را اینجا وارد کنید.</p>
+                    </div>
+                </div>
+                <!-- کادر آیفون -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('iphone')">
+                        <span>آیفون</span>
+                        <span class="icon">▶</span>
+                    </div>
+                    <div id="iphone-content" class="accordion-content">
+                        <p>تنظیمات مربوط به دستگاه‌های آیفون را اینجا وارد کنید.</p>
+                    </div>
+                </div>
+                <!-- کادر کامپیوتر -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion('pc')">
+                        <span>کامپیوتر</span>
+                        <span class="icon">▶</span>
+                    </div>
+                    <div id="pc-content" class="accordion-content">
+                        <p>تنظیمات مربوط به دستگاه‌های کامپیوتر را اینجا وارد کنید.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        function showMessage() {
-            const message = document.getElementById('message');
-            message.classList.add('show');
-            setTimeout(() => {
-                message.classList.remove('show');
-            }, 2000);
+        // نمایش بخش‌های مختلف
+        function showSection(sectionId) {
+            const contents = document.getElementsByClassName('content');
+            for (let content of contents) {
+                content.classList.remove('active');
+            }
+            document.getElementById(sectionId).classList.add('active');
         }
+
+        // باز و بسته کردن آکاردئون
+        function toggleAccordion(id) {
+            const content = document.getElementById(`${id}-content`);
+            const icon = content.previousElementSibling.querySelector('.icon');
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('rotate');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('rotate');
+            }
+        }
+
+        // بارگذاری اولیه
+        window.onload = function() {
+            showSection('main'); // صفحه اصلی به‌عنوان پیش‌فرض
+        };
     </script>
 </body>
 </html>
