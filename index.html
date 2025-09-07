@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت من با لینک تلگرام</title>
-    <!-- لود آیکون‌های FontAwesome برای آیکون تلگرام -->
+    <title>سایت من با لینک تلگرام و ویدیو</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* استایل‌های CSS */
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
@@ -70,6 +69,22 @@
         .message.show {
             opacity: 1;
         }
+
+        .readme-content {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .readme-content h2 {
+            font-size: 1.8em;
+            color: #ffd700;
+        }
+
+        .video-container {
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -80,16 +95,26 @@
             ورود به کانال تلگرام
         </a>
         <p class="message" id="message">در حال انتقال به تلگرام...</p>
+
+        <div class="readme-content">
+            <h2>پیشنهادات ویژه نرم‌افزاری</h2>
+            <p>Exclusive Software Deals for Developers and Startups - Dealsbe</p>
+            <p><a href="#">Post a Deal</a></p>
+        </div>
+
+        <div class="video-container">
+            <h2>ویدیوی آموزشی</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
-        // JavaScript برای افزودن تعامل
         function showMessage() {
             const message = document.getElementById('message');
             message.classList.add('show');
             setTimeout(() => {
                 message.classList.remove('show');
-            }, 2000); // پیام بعد از 2 ثانیه محو می‌شه
+            }, 2000);
         }
     </script>
 </body>
