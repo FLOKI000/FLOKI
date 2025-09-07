@@ -1,18 +1,18 @@
 </p>
 <!-- GitHub Button with Text -->
-<div style="margin-top: 1000px; text-align: center;">
-  <p style="color: #7f8c8d; font-size: 200px;">گیت هاب فلوکی 👇</p>
+<div style="margin-top: 20px; text-align: center;">
+  <p style="color: #7f8c8d; font-size: 20px;">گیت هاب فلوکی 👇</p>
   <a href="https://github.com/FLOKI000/FLOKI000" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-FLOKI000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" style="transition: transform 0.1s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="https://img.shields.io/badge/GitHub-FLOKI000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" style="transition: transform 0.1s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1.3)'">
   </a>
 </div>
 
 <!-- Telegram Button with Text -->
-<div style="margin-top: 15000px; text-align: center;">
-  <p style="color: #7f8c8d; font-size: 16px;">تلگرام فلوکی 👇</p>
+<div style="margin-top: 20px; text-align: center;">
+  <p style="color: #7f8c8d; font-size: 20px;">تلگرام فلوکی 👇</p>
   <a href="https://t.me/FLOKI000" target="_blank">
-    <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.1s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1.3)'">
   </a>
 </div>
 
-<footer style="margin-top: 20px; text-align: center; color: #7f8c8d;">
+<footer style="margin-top: 50px; text-align: center; color: #7f8c8d;">
