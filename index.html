@@ -3,218 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت ریسپانسیو با تنظیمات</title>
+    <title>دانلود اپلیکیشن</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        :root {
+            --bg-light: #f0f4f8;
+            --bg-dark: #2c3e50;
+            --text-light: #333;
+            --text-dark: #ecf0f1;
+            --card-bg: rgba(255, 255, 255, 0.2);
+            --card-dark-bg: rgba(44, 62, 80, 0.5);
         }
 
         body {
-            background: linear-gradient(135deg, #00c4ff, #007bff);
-            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
             direction: rtl;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        /* منوی اصلی */
-        .nav-menu {
             text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: all 0.3s ease;
         }
 
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2em;
-            margin: 0 15px;
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* محتوای اصلی */
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: none;
-        }
-
-        .content.active {
-            display: block;
-        }
-
-        /* صفحه تنظیمات */
-        .settings {
-            background: rgba(255, 255, 255, 0.1);
+        .container {
+            max-width: 800px;
+            width: 90%;
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .accordion {
-            margin: 10px 0;
-        }
-
-        .accordion-item {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .accordion-header {
-            padding: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+            font-size: 1.5em;
+        }
+
+        body.dark .accordion-header {
+            background: var(--card-dark-bg);
         }
 
         .accordion-header:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .accordion-content {
-            padding: 0 15px 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+        body.dark .accordion-header:hover {
+            background: rgba(44, 62, 80, 0.7);
         }
 
-        .accordion-content.active {
-            max-height: 200px; /* تنظیم دستی بر اساس محتوا */
+        .accordion-header .icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
         }
 
-        .icon {
+        .accordion-header .arrow {
+            font-size: 1.2em;
             transition: transform 0.3s ease;
         }
 
-        .icon.rotate {
-            transform: rotate(90deg);
+        .accordion-header.active .arrow {
+            transform: rotate(180deg);
         }
 
-        /* ریسپانسیویتی */
-        @media (max-width: 768px) {
-            .nav-menu a {
-                display: block;
-                margin: 10px 0;
-                font-size: 1em;
-            }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+            background: var(--card-bg);
+            border-radius: 0 0 10px 10px;
+            backdrop-filter: blur(5px);
+        }
 
-            .settings {
-                padding: 15px;
-            }
+        body.dark .accordion-content {
+            background: var(--card-dark-bg);
+        }
 
+        .sub-section {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+        }
+
+        body.dark .sub-section {
+            background: rgba(44, 62, 80, 0.3);
+        }
+
+        .theme-toggle {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background: var(--card-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        body.dark .theme-toggle {
+            background: var(--card-dark-bg);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        body.dark .theme-toggle:hover {
+            background: rgba(44, 62, 80, 0.7);
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .social-links a {
+            color: var(--text-dark);
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
             .accordion-header {
-                font-size: 1em;
-                padding: 10px;
+                font-size: 1.2em;
+                padding: 10px 15px;
             }
-
-            .accordion-content {
-                padding: 0 10px 10px;
-            }
-
-            video {
-                width: 100%;
-                height: auto;
+            .accordion-header .icon {
+                width: 25px;
+                height: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- منوی ناوبری -->
-    <div class="nav-menu">
-        <a href="#" onclick="showSection('main')">صفحه اصلی</a>
-        <a href="#" onclick="showSection('settings')">تنظیمات</a>
-    </div>
+    <div class="container">
+        <h1>دانلود اپلیکیشن</h1>
 
-    <!-- صفحه اصلی -->
-    <div id="main" class="content active">
-        <h1 style="text-align: center; margin-bottom: 20px;">خوش آمدید!</h1>
-        <video width="560" height="315" controls>
-            <source src="https://raw.githubusercontent.com/FLOKI000/FLOKI000/refs/heads/main/FLOKI333/video.mp4" type="video/mp4">
-            مرورگرت از ویدیو پشتیبانی نمی‌کنه.
-        </video>
-    </div>
-
-    <!-- صفحه تنظیمات -->
-    <div id="settings" class="content">
-        <div class="settings">
-            <h2 style="margin-bottom: 20px;">تنظیمات دستگاه‌ها</h2>
-            <div class="accordion">
-                <!-- کادر اندروید -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion('android')">
-                        <span>اندروید</span>
-                        <span class="icon">▶</span>
-                    </div>
-                    <div id="android-content" class="accordion-content">
-                        <p>تنظیمات مربوط به دستگاه‌های اندروید را اینجا وارد کنید.</p>
-                    </div>
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>اندروید</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Icon" class="icon">
+                <span class="arrow">↑</span>
+            </div>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
                 </div>
-                <!-- کادر آیفون -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion('iphone')">
-                        <span>آیفون</span>
-                        <span class="icon">▶</span>
-                    </div>
-                    <div id="iphone-content" class="accordion-content">
-                        <p>تنظیمات مربوط به دستگاه‌های آیفون را اینجا وارد کنید.</p>
-                    </div>
-                </div>
-                <!-- کادر کامپیوتر -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion('pc')">
-                        <span>کامپیوتر</span>
-                        <span class="icon">▶</span>
-                    </div>
-                    <div id="pc-content" class="accordion-content">
-                        <p>تنظیمات مربوط به دستگاه‌های کامپیوتر را اینجا وارد کنید.</p>
-                    </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
                 </div>
             </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>آی او اس</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Icon" class="icon">
+                <span class="arrow">↑</span>
+            </div>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>ویندوز</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" alt="Windows Icon" class="icon">
+                <span class="arrow">↑</span>
+            </div>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+            </div>
+        </div>
+
+        <button class="theme-toggle" onclick="toggleTheme()">تغییر تم</button>
+        <div class="social-links">
+            <a href="https://t.me/floki1234567890" target="_blank"><i class="fab fa-telegram-plane" style="color: #0088cc;"></i></a>
+            <a href="https://github.com/FLOKI000" target="_blank"><i class="fab fa-github" style="color: #333;"></i></a>
         </div>
     </div>
 
     <script>
-        // نمایش بخش‌های مختلف
-        function showSection(sectionId) {
-            const contents = document.getElementsByClassName('content');
-            for (let content of contents) {
-                content.classList.remove('active');
-            }
-            document.getElementById(sectionId).classList.add('active');
-        }
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.arrow');
+            const isActive = header.classList.contains('active');
 
-        // باز و بسته کردن آکاردئون
-        function toggleAccordion(id) {
-            const content = document.getElementById(`${id}-content`);
-            const icon = content.previousElementSibling.querySelector('.icon');
-            if (content.classList.contains('active')) {
-                content.classList.remove('active');
-                icon.classList.remove('rotate');
+            document.querySelectorAll('.accordion-header.active').forEach(el => {
+                if (el !== header) {
+                    el.classList.remove('active');
+                    el.nextElementSibling.style.maxHeight = null;
+                    el.querySelector('.arrow').textContent = '↑';
+                }
+            });
+
+            if (isActive) {
+                header.classList.remove('active');
+                content.style.maxHeight = null;
+                arrow.textContent = '↑';
             } else {
-                content.classList.add('active');
-                icon.classList.add('rotate');
+                header.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                arrow.textContent = '↓';
             }
         }
 
-        // بارگذاری اولیه
-        window.onload = function() {
-            showSection('main'); // صفحه اصلی به‌عنوان پیش‌فرض
-        };
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // تنظیم تم پیش‌فرض (روشن)
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
     </script>
 </body>
 </html>
