@@ -78,9 +78,9 @@
 
         /* دکمه همبرگر */
         .hamburger {
-            position: absolute; /* داخل منو */
+            position: fixed;
             top: 20px;
-            right: 20px; /* فاصله از لبه راست منو */
+            right: 0; /* چسبیده به لبه راست صفحه */
             font-size: 1.5rem;
             background-color: #000000; /* پس‌زمینه مشکی */
             color: #ffffff; /* آیکون سفید */
@@ -167,12 +167,13 @@
     </style>
 </head>
 <body>
+    <!-- دکمه همبرگر در صفحه اصلی -->
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span> <!-- خطوط همبرگر -->
+    </button>
+
     <!-- منوی کناری -->
     <div class="sidebar" id="sidebar">
-        <!-- دکمه همبرگر داخل منو -->
-        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span> <!-- خطوط همبرگر -->
-        </button>
         <div class="sidebar-header">منوی اصلی</div>
         <ul class="sidebar-menu">
             <li><i class="fas fa-home"></i><a href="#home">صفحه اصلی</a></li>
