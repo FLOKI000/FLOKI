@@ -1,319 +1,157 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود اپلیکیشن</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>منوی کشویی</title>
     <style>
-        :root {
-            --bg-light: #ffffff;
-            --bg-dark: #2f2f2f; /* مشکی مالت */
-            --text-light: #333;
-            --text-dark: #ffffff;
-            --card-bg: rgba(0, 150, 136, 0.2); /* لئونی با شفافیت کم */
-            --card-dark-bg: rgba(0, 150, 136, 0.3); /* لئونی تیره‌تر با شفافیت */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif; /* فونت فارسی */
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-light);
-            direction: rtl;
-            text-align: center;
+            background-color: #f0f2f5;
+            overflow-x: hidden;
+        }
+
+        /* استایل منوی کناری */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -250px; /* مخفی در ابتدا */
+            width: 250px;
+            height: 100%;
+            background-color: #2c3e50;
+            color: white;
+            transition: right 0.3s ease;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar.active {
+            right: 0; /* نمایش منو */
+        }
+
+        /* هدر منو */
+        .sidebar-header {
+            padding: 20px;
+            background-color: #1a252f;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* لیست منو */
+        .sidebar-menu {
+            list-style: none;
+            flex: 1;
+            padding: 10px 0;
+        }
+
+        .sidebar-menu li {
+            padding: 15px 20px;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.5s ease-in;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
 
-        body.dark {
-            background-color: var(--bg-dark);
-            color: var(--text-dark);
+        .sidebar-menu li:hover {
+            background-color: #34495e;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .sidebar-menu li i {
+            margin-left: 10px;
+            font-size: 1.2rem;
         }
 
-        .menu {
+        .sidebar-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* دکمه همبرگر */
+        .hamburger {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
-        }
-
-        .menu-btn {
-            background: var(--card-bg);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px 0 0 5px;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2em;
-            backdrop-filter: blur(5px);
-        }
-
-        .menu-content {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 200px; /* کاهش عرض به 200px */
-            height: 100vh;
-            background: var(--card-bg);
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .menu-content.active {
-            display: block;
-            transform: translateX(0); /* حرکت کامل به سمت چپ */
-        }
-
-        .menu-content a, .menu-content button {
-            display: block;
-            padding: 15px 20px;
-            text-decoration: none;
-            color: white;
-            border: none;
+            font-size: 1.5rem;
             background: none;
-            width: 100%;
-            text-align: right;
+            border: none;
+            color: #2c3e50;
             cursor: pointer;
-            transition: background 0.3s;
+            z-index: 1100;
         }
 
-        .menu-content a:hover, .menu-content button:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .menu-content .close-btn {
-            text-align: left;
-            padding: 10px 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            width: 90%;
+        /* محتوای اصلی */
+        .main-content {
+            margin: 20px;
             padding: 20px;
-            margin-top: 60px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: margin-right 0.3s ease;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        /* برای حالت باز بودن منو */
+        .main-content.active {
+            margin-right: 270px; /* جابجایی محتوا وقتی منو بازه */
         }
 
-        .accordion {
-            margin-bottom: 20px;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .accordion-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: background 0.3s ease;
-            font-size: 1.5em;
-        }
-
-        body.dark .accordion-header {
-            background: var(--card-dark-bg);
-        }
-
-        .accordion-header:hover {
-            background: rgba(0, 150, 136, 0.4);
-        }
-
-        body.dark .accordion-header:hover {
-            background: rgba(0, 150, 136, 0.5);
-        }
-
-        .accordion-header .arrow {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-header.active .arrow {
-            transform: rotate(180deg); /* فقط 180 درجه */
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 20px;
-            background: var(--card-bg);
-            border-radius: 0 0 10px 10px;
-            backdrop-filter: blur(5px);
-        }
-
-        body.dark .accordion-content {
-            background: var(--card-dark-bg);
-        }
-
-        .sub-section {
-            margin: 15px 0;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            transition: background 0.3s ease;
-        }
-
-        body.dark .sub-section {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .sub-section:hover {
-            background: rgba(0, 150, 136, 0.4);
-        }
-
-        body.dark .sub-section:hover {
-            background: rgba(0, 150, 136, 0.5);
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
+        /* پاسخ‌گویی برای موبایل */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                right: -200px;
             }
-            .accordion-header {
-                font-size: 1.2em;
-                padding: 10px 15px;
+
+            .sidebar.active {
+                right: 0;
+            }
+
+            .main-content.active {
+                margin-right: 220px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="menu">
-        <button class="menu-btn" onclick="toggleMenu()">منو</button>
-        <div class="menu-content" id="menuContent">
-            <button class="close-btn" onclick="toggleMenu()">بستن</button>
-            <button onclick="toggleTheme()">تغییر تم</button>
-            <a href="https://t.me/floki1234567890" target="_blank">تلگرام</a>
-            <a href="https://github.com/FLOKI000" target="_blank">گیت‌هاب</a>
-        </div>
+    <!-- دکمه همبرگر -->
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+    <!-- منوی کناری -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">منوی اصلی</div>
+        <ul class="sidebar-menu">
+            <li><i class="fas fa-home"></i><a href="#home">صفحه اصلی</a></li>
+            <li><i class="fas fa-user"></i><a href="#profile">پروفایل</a></li>
+            <li><i class="fas fa-cog"></i><a href="#settings">تنظیمات</a></li>
+            <li><i class="fas fa-sign-out-alt"></i><a href="#logout">خروج</a></li>
+        </ul>
     </div>
 
-    <div class="container">
-        <h1>دانلود اپلیکیشن</h1>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>اندروید</span>
-                <i class="fas fa-angle-down arrow"></i>
-            </div>
-            <div class="accordion-content">
-                <div class="sub-section">
-                    <strong>اسم اپ: happ</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش استفاده از نرم‌افزار</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش با تصاویر</strong>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>IOS</span>
-                <i class="fas fa-angle-down arrow"></i>
-            </div>
-            <div class="accordion-content">
-                <div class="sub-section">
-                    <strong>اسم اپ: happ</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش استفاده از نرم‌افزار</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش با تصاویر</strong>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span>ویندوز</span>
-                <i class="fas fa-angle-down arrow"></i>
-            </div>
-            <div class="accordion-content">
-                <div class="sub-section">
-                    <strong>اسم اپ: happ</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش استفاده از نرم‌افزار</strong>
-                </div>
-                <div class="sub-section">
-                    <strong>آموزش با تصاویر</strong>
-                </div>
-            </div>
-        </div>
+    <!-- محتوای اصلی -->
+    <div class="main-content" id="mainContent">
+        <h1>خوش آمدید!</h1>
+        <p>این یک نمونه منوی کشویی است که با HTML، CSS و JavaScript ساخته شده. برای باز کردن منو، روی دکمه همبرگر کلیک کنید.</p>
     </div>
 
     <script>
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.arrow');
-            const isActive = header.classList.contains('active');
-
-            document.querySelectorAll('.accordion-header.active').forEach(el => {
-                if (el !== header) {
-                    el.classList.remove('active');
-                    el.nextElementSibling.style.maxHeight = null;
-                    el.querySelector('.arrow').classList.remove('fa-angle-up');
-                    el.querySelector('.arrow').classList.add('fa-angle-down');
-                }
-            });
-
-            if (isActive) {
-                header.classList.remove('active');
-                content.style.maxHeight = null;
-                arrow.classList.remove('fa-angle-up');
-                arrow.classList.add('fa-angle-down');
-            } else {
-                header.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + 'px';
-                arrow.classList.remove('fa-angle-down');
-                arrow.classList.add('fa-angle-up');
-            }
-        }
-
         function toggleMenu() {
-            const menuContent = document.getElementById('menuContent');
-            menuContent.classList.toggle('active');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        }
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
         }
     </script>
+
+    <!-- آیکون‌های Font Awesome (برای آیکون‌های منو) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
