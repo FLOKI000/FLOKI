@@ -8,7 +8,7 @@
     <style>
         :root {
             --bg-light: #ffffff;
-            --bg-dark: #000000;
+            --bg-dark: #2f2f2f; /* مشکی مالت */
             --text-light: #333;
             --text-dark: #ffffff;
             --card-bg: rgba(0, 150, 136, 0.2); /* لئونی با شفافیت کم */
@@ -96,6 +96,11 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
+        .menu-content .close-btn {
+            text-align: left;
+            padding: 10px 20px;
+        }
+
         .container {
             max-width: 800px;
             width: 90%;
@@ -150,7 +155,7 @@
         }
 
         .accordion-header.active .arrow {
-            transform: rotate(180deg);
+            transform: rotate(180deg); /* فقط 180 درجه */
         }
 
         .accordion-content {
@@ -203,6 +208,7 @@
     <div class="menu">
         <button class="menu-btn" onclick="toggleMenu()">منو</button>
         <div class="menu-content" id="menuContent">
+            <button class="close-btn" onclick="toggleMenu()">بستن</button>
             <button onclick="toggleTheme()">تغییر تم</button>
             <a href="https://t.me/floki1234567890" target="_blank">تلگرام</a>
             <a href="https://github.com/FLOKI000" target="_blank">گیت‌هاب</a>
