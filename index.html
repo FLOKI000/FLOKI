@@ -24,7 +24,7 @@
             right: -250px; /* مخفی در ابتدا */
             width: 250px;
             height: 100%;
-            background-color: #2c3e50;
+            background-color: #000000; /* مشکی یکدست */
             color: white;
             transition: right 0.3s ease;
             z-index: 1000;
@@ -40,7 +40,7 @@
         /* هدر منو */
         .sidebar-header {
             padding: 20px;
-            background-color: #1a252f;
+            background-color: #000000; /* مشکی یکدست */
             text-align: center;
             font-size: 1.2rem;
             font-weight: bold;
@@ -62,7 +62,7 @@
         }
 
         .sidebar-menu li:hover {
-            background-color: #34495e;
+            background-color: #333333; /* خاکستری تیره برای Hover */
         }
 
         .sidebar-menu li i {
@@ -78,27 +78,26 @@
 
         /* دکمه همبرگر */
         .hamburger {
-            position: fixed;
+            position: absolute; /* داخل منو */
             top: 20px;
-            right: 0; /* چسبیده به لبه راست */
+            right: 20px; /* فاصله از لبه راست منو */
             font-size: 1.5rem;
-            background-color: #95a5a6; /* پس‌زمینه خاکستری در حالت عادی */
-            color: #ffffff; /* رنگ آیکون در حالت عادی */
+            background-color: #000000; /* پس‌زمینه مشکی */
+            color: #ffffff; /* آیکون سفید */
             border: none;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0 8px 8px 0; /* لبه گرد فقط سمت چپ */
+            border-radius: 8px 0 0 8px; /* لبه گرد سمت چپ */
             cursor: pointer;
             z-index: 1100;
-            transition: right 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .hamburger.active {
-            right: 250px; /* حرکت دکمه همراه با منو */
-            background-color: #2c3e50; /* هم‌رنگ منو در حالت باز */
+            background-color: #000000; /* همچنان مشکی */
             color: #ffffff; /* آیکون سفید در حالت × */
             transform: rotate(90deg); /* انیمیشن چرخش برای × */
         }
@@ -164,21 +163,16 @@
             .sidebar.active {
                 right: 0;
             }
-
-            .hamburger.active {
-                right: 200px; /* حرکت دکمه در موبایل */
-            }
         }
     </style>
 </head>
 <body>
-    <!-- دکمه همبرگر -->
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span> <!-- خطوط همبرگر -->
-    </button>
-
     <!-- منوی کناری -->
     <div class="sidebar" id="sidebar">
+        <!-- دکمه همبرگر داخل منو -->
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span> <!-- خطوط همبرگر -->
+        </button>
         <div class="sidebar-header">منوی اصلی</div>
         <ul class="sidebar-menu">
             <li><i class="fas fa-home"></i><a href="#home">صفحه اصلی</a></li>
