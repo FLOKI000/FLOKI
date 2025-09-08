@@ -109,38 +109,62 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .gallery img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        .accordion-content {
+        .accordion {
             margin-bottom: 20px;
             animation: slideUp 0.5s ease-out;
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
         }
 
         @keyframes slideUp {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+            font-size: 1.5em;
+        }
+
+        body.dark .accordion-header {
+            background: var(--card-dark-bg);
+        }
+
+        .accordion-header:hover {
+            background: rgba(0, 150, 136, 0.4);
+        }
+
+        body.dark .accordion-header:hover {
+            background: rgba(0, 150, 136, 0.5);
+        }
+
+        .accordion-header .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+            background: var(--card-bg);
+            border-radius: 0 0 10px 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        body.dark .accordion-content {
+            background: var(--card-dark-bg);
         }
 
         .sub-section {
@@ -168,9 +192,9 @@
             h1 {
                 font-size: 2em;
             }
-            .gallery img {
-                width: 150px;
-                height: 100px;
+            .accordion-header {
+                font-size: 1.2em;
+                padding: 10px 15px;
             }
         }
     </style>
@@ -188,50 +212,89 @@
     <div class="container">
         <h1>دانلود اپلیکیشن</h1>
 
-        <div class="gallery">
-            <img src="https://via.placeholder.com/200x150?text=اسکرین+اندروید" alt="اندروید">
-            <img src="https://via.placeholder.com/200x150?text=اسکرین+IOS" alt="iOS">
-            <img src="https://via.placeholder.com/200x150?text=اسکرین+ویندوز" alt="ویندوز">
-        </div>
-
-        <div class="accordion-content">
-            <div class="sub-section">
-                <strong>اندروید - اسم اپ: happ</strong>
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>اندروید</span>
+                <i class="fas fa-angle-down arrow"></i>
             </div>
-            <div class="sub-section">
-                <strong>اندروید - آموزش استفاده از نرم‌افزار</strong>
-            </div>
-            <div class="sub-section">
-                <strong>اندروید - آموزش با تصاویر</strong>
-            </div>
-        </div>
-
-        <div class="accordion-content">
-            <div class="sub-section">
-                <strong>IOS - اسم اپ: happ</strong>
-            </div>
-            <div class="sub-section">
-                <strong>IOS - آموزش استفاده از نرم‌افزار</strong>
-            </div>
-            <div class="sub-section">
-                <strong>IOS - آموزش با تصاویر</strong>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
+                </div>
             </div>
         </div>
 
-        <div class="accordion-content">
-            <div class="sub-section">
-                <strong>ویندوز - اسم اپ: happ</strong>
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>IOS</span>
+                <i class="fas fa-angle-down arrow"></i>
             </div>
-            <div class="sub-section">
-                <strong>ویندوز - آموزش استفاده از نرم‌افزار</strong>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
+                </div>
             </div>
-            <div class="sub-section">
-                <strong>ویندوز - آموزش با تصاویر</strong>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>ویندوز</span>
+                <i class="fas fa-angle-down arrow"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="sub-section">
+                    <strong>اسم اپ: happ</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.arrow');
+            const isActive = header.classList.contains('active');
+
+            document.querySelectorAll('.accordion-header.active').forEach(el => {
+                if (el !== header) {
+                    el.classList.remove('active');
+                    el.nextElementSibling.style.maxHeight = null;
+                    el.querySelector('.arrow').classList.remove('fa-angle-up');
+                    el.querySelector('.arrow').classList.add('fa-angle-down');
+                }
+            });
+
+            if (isActive) {
+                header.classList.remove('active');
+                content.style.maxHeight = null;
+                arrow.classList.remove('fa-angle-up');
+                arrow.classList.add('fa-angle-down');
+            } else {
+                header.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                arrow.classList.remove('fa-angle-down');
+                arrow.classList.add('fa-angle-up');
+            }
+        }
+
         function toggleMenu() {
             const menuContent = document.getElementById('menuContent');
             menuContent.classList.toggle('active');
