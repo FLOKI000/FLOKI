@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --bg-light: #f9f9f9;
-            --bg-dark: #1a2a3a;
+            --bg-light: #ffffff;
+            --bg-dark: #000000;
             --text-light: #333;
-            --text-dark: #e0e8f0;
-            --card-android: rgba(0, 150, 136, 0.7);
-            --card-ios: rgba(0, 122, 255, 0.7);
-            --card-windows: rgba(0, 120, 215, 0.7);
+            --text-dark: #ffffff;
+            --card-bg: rgba(0, 150, 136, 0.2); /* لئونی با شفافیت کم */
+            --card-dark-bg: rgba(0, 150, 136, 0.3); /* لئونی تیره‌تر با شفافیت */
         }
 
         body {
@@ -51,29 +50,38 @@
         }
 
         .menu-btn {
-            background: var(--card-android);
+            background: var(--card-bg);
             border: none;
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             color: white;
             cursor: pointer;
             font-size: 1.2em;
+            backdrop-filter: blur(5px);
         }
 
         .menu-content {
             display: none;
-            position: absolute;
+            position: fixed;
+            top: 0;
             right: 0;
-            top: 50px;
-            background: var(--card-android);
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            min-width: 150px;
+            width: 250px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-content.active {
+            display: block;
+            transform: translateX(0);
         }
 
         .menu-content a, .menu-content button {
             display: block;
-            padding: 10px 20px;
+            padding: 15px 20px;
             text-decoration: none;
             color: white;
             border: none;
@@ -86,10 +94,6 @@
 
         .menu-content a:hover, .menu-content button:hover {
             background: rgba(255, 255, 255, 0.2);
-        }
-
-        .menu:hover .menu-content {
-            display: block;
         }
 
         .container {
@@ -148,46 +152,20 @@
             font-size: 1.5em;
         }
 
-        .accordion-header.android {
-            background: var(--card-android);
-        }
-
-        .accordion-header.ios {
-            background: var(--card-ios);
-        }
-
-        .accordion-header.windows {
-            background: var(--card-windows);
-        }
-
-        body.dark .accordion-header.android {
-            background: rgba(0, 150, 136, 0.9);
-        }
-
-        body.dark .accordion-header.ios {
-            background: rgba(0, 122, 255, 0.9);
-        }
-
-        body.dark .accordion-header.windows {
-            background: rgba(0, 120, 215, 0.9);
+        body.dark .accordion-header {
+            background: var(--card-dark-bg);
         }
 
         .accordion-header:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 150, 136, 0.4);
         }
 
         body.dark .accordion-header:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .accordion-header .icon {
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
+            background: rgba(0, 150, 136, 0.5);
         }
 
         .accordion-header .arrow {
-            font-size: 1em;
+            font-size: 1.2em;
             transition: transform 0.3s ease;
         }
 
@@ -206,40 +184,19 @@
         }
 
         body.dark .accordion-content {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--card-dark-bg);
         }
 
         .sub-section {
             margin: 15px 0;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             backdrop-filter: blur(5px);
         }
 
         body.dark .sub-section {
             background: rgba(255, 255, 255, 0.05);
-        }
-
-        .social-links {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            color: var(--text-light);
-            font-size: 1.5em;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        body.dark .social-links a {
-            color: var(--text-dark);
-        }
-
-        .social-links a:hover {
-            color: #ffd700;
-            transform: scale(1.2);
         }
 
         @media (max-width: 600px) {
@@ -250,10 +207,6 @@
                 font-size: 1.2em;
                 padding: 10px 15px;
             }
-            .accordion-header .icon {
-                width: 25px;
-                height: 25px;
-            }
             .gallery img {
                 width: 150px;
                 height: 100px;
@@ -263,8 +216,8 @@
 </head>
 <body>
     <div class="menu">
-        <button class="menu-btn">منو</button>
-        <div class="menu-content">
+        <button class="menu-btn" onclick="toggleMenu()">منو</button>
+        <div class="menu-content" id="menuContent">
             <button onclick="toggleTheme()">تغییر تم</button>
             <a href="https://t.me/floki1234567890" target="_blank">تلگرام</a>
             <a href="https://github.com/FLOKI000" target="_blank">گیت‌هاب</a>
@@ -276,15 +229,14 @@
 
         <div class="gallery">
             <img src="https://via.placeholder.com/200x150?text=اسکرین+اندروید" alt="اندروید">
-            <img src="https://via.placeholder.com/200x150?text=اسکرین+iOS" alt="iOS">
+            <img src="https://via.placeholder.com/200x150?text=اسکرین+IOS" alt="iOS">
             <img src="https://via.placeholder.com/200x150?text=اسکرین+ویندوز" alt="ویندوز">
         </div>
 
         <div class="accordion">
-            <div class="accordion-header android" onclick="toggleAccordion(this)">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
                 <span>اندروید</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Icon" class="icon">
-                <span class="arrow">↑</span>
+                <i class="fas fa-angle-down arrow"></i>
             </div>
             <div class="accordion-content">
                 <div class="sub-section">
@@ -300,10 +252,9 @@
         </div>
 
         <div class="accordion">
-            <div class="accordion-header ios" onclick="toggleAccordion(this)">
-                <span>آی او اس</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Icon" class="icon">
-                <span class="arrow">↑</span>
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span>IOS</span>
+                <i class="fas fa-angle-down arrow"></i>
             </div>
             <div class="accordion-content">
                 <div class="sub-section">
@@ -319,10 +270,9 @@
         </div>
 
         <div class="accordion">
-            <div class="accordion-header windows" onclick="toggleAccordion(this)">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
                 <span>ویندوز</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" alt="Windows Icon" class="icon">
-                <span class="arrow">↑</span>
+                <i class="fas fa-angle-down arrow"></i>
             </div>
             <div class="accordion-content">
                 <div class="sub-section">
@@ -348,19 +298,27 @@
                 if (el !== header) {
                     el.classList.remove('active');
                     el.nextElementSibling.style.maxHeight = null;
-                    el.querySelector('.arrow').textContent = '↑';
+                    el.querySelector('.arrow').classList.remove('fa-angle-up');
+                    el.querySelector('.arrow').classList.add('fa-angle-down');
                 }
             });
 
             if (isActive) {
                 header.classList.remove('active');
                 content.style.maxHeight = null;
-                arrow.textContent = '↑';
+                arrow.classList.remove('fa-angle-up');
+                arrow.classList.add('fa-angle-down');
             } else {
                 header.classList.add('active');
                 content.style.maxHeight = content.scrollHeight + 'px';
-                arrow.textContent = '↓';
+                arrow.classList.remove('fa-angle-down');
+                arrow.classList.add('fa-angle-up');
             }
+        }
+
+        function toggleMenu() {
+            const menuContent = document.getElementById('menuContent');
+            menuContent.classList.toggle('active');
         }
 
         function toggleTheme() {
