@@ -80,7 +80,7 @@
         .hamburger {
             position: fixed;
             top: 20px;
-            right: 0; /* چسبیده به لبه راست صفحه */
+            right: 0; /* چسبیده به لبه راست صفحه در حالت عادی */
             font-size: 1.5rem;
             background-color: #000000; /* پس‌زمینه مشکی */
             color: #ffffff; /* آیکون سفید */
@@ -93,10 +93,11 @@
             border-radius: 8px 0 0 8px; /* لبه گرد سمت چپ */
             cursor: pointer;
             z-index: 1100;
-            transition: transform 0.3s ease;
+            transition: right 0.3s ease, transform 0.3s ease;
         }
 
         .hamburger.active {
+            right: 250px; /* حرکت به لبه چپ منو */
             background-color: #000000; /* همچنان مشکی */
             color: #ffffff; /* آیکون سفید در حالت × */
             transform: rotate(90deg); /* انیمیشن چرخش برای × */
@@ -162,6 +163,10 @@
 
             .sidebar.active {
                 right: 0;
+            }
+
+            .hamburger.active {
+                right: 200px; /* حرکت به لبه چپ منو در موبایل */
             }
         }
     </style>
