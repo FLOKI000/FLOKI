@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --bg-light: #f0f4f8;
-            --bg-dark: #2c3e50;
+            --bg-light: #f9f9f9;
+            --bg-dark: #1a2a3a;
             --text-light: #333;
-            --text-dark: #ecf0f1;
-            --card-bg: rgba(255, 255, 255, 0.2);
-            --card-dark-bg: rgba(44, 62, 80, 0.5);
+            --text-dark: #e0e8f0;
+            --card-android: rgba(0, 150, 136, 0.7);
+            --card-ios: rgba(0, 122, 255, 0.7);
+            --card-windows: rgba(0, 120, 215, 0.7);
         }
 
         body {
@@ -32,15 +33,70 @@
             animation: fadeIn 0.5s ease-in;
         }
 
+        body.dark {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .menu-btn {
+            background: var(--card-android);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--card-android);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            min-width: 150px;
+        }
+
+        .menu-content a, .menu-content button {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: right;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .menu-content a:hover, .menu-content button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu:hover .menu-content {
+            display: block;
         }
 
         .container {
             max-width: 800px;
             width: 90%;
             padding: 20px;
+            margin-top: 60px;
         }
 
         h1 {
@@ -92,8 +148,28 @@
             font-size: 1.5em;
         }
 
-        body.dark .accordion-header {
-            background: var(--card-dark-bg);
+        .accordion-header.android {
+            background: var(--card-android);
+        }
+
+        .accordion-header.ios {
+            background: var(--card-ios);
+        }
+
+        .accordion-header.windows {
+            background: var(--card-windows);
+        }
+
+        body.dark .accordion-header.android {
+            background: rgba(0, 150, 136, 0.9);
+        }
+
+        body.dark .accordion-header.ios {
+            background: rgba(0, 122, 255, 0.9);
+        }
+
+        body.dark .accordion-header.windows {
+            background: rgba(0, 120, 215, 0.9);
         }
 
         .accordion-header:hover {
@@ -101,7 +177,7 @@
         }
 
         body.dark .accordion-header:hover {
-            background: rgba(44, 62, 80, 0.7);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .accordion-header .icon {
@@ -111,7 +187,7 @@
         }
 
         .accordion-header .arrow {
-            font-size: 1.2em;
+            font-size: 1em;
             transition: transform 0.3s ease;
         }
 
@@ -130,42 +206,19 @@
         }
 
         body.dark .accordion-content {
-            background: var(--card-dark-bg);
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .sub-section {
             margin: 15px 0;
             padding: 10px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 5px;
+            border-radius: 10px;
             backdrop-filter: blur(5px);
         }
 
         body.dark .sub-section {
-            background: rgba(44, 62, 80, 0.3);
-        }
-
-        .theme-toggle {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            background: var(--card-bg);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        body.dark .theme-toggle {
-            background: var(--card-dark-bg);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        body.dark .theme-toggle:hover {
-            background: rgba(44, 62, 80, 0.7);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .social-links {
@@ -209,6 +262,15 @@
     </style>
 </head>
 <body>
+    <div class="menu">
+        <button class="menu-btn">منو</button>
+        <div class="menu-content">
+            <button onclick="toggleTheme()">تغییر تم</button>
+            <a href="https://t.me/floki1234567890" target="_blank">تلگرام</a>
+            <a href="https://github.com/FLOKI000" target="_blank">گیت‌هاب</a>
+        </div>
+    </div>
+
     <div class="container">
         <h1>دانلود اپلیکیشن</h1>
 
@@ -219,7 +281,7 @@
         </div>
 
         <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header android" onclick="toggleAccordion(this)">
                 <span>اندروید</span>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Icon" class="icon">
                 <span class="arrow">↑</span>
@@ -238,7 +300,7 @@
         </div>
 
         <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header ios" onclick="toggleAccordion(this)">
                 <span>آی او اس</span>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Icon" class="icon">
                 <span class="arrow">↑</span>
@@ -257,7 +319,7 @@
         </div>
 
         <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-header windows" onclick="toggleAccordion(this)">
                 <span>ویندوز</span>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" alt="Windows Icon" class="icon">
                 <span class="arrow">↑</span>
@@ -273,12 +335,6 @@
                     <strong>آموزش با تصاویر</strong>
                 </div>
             </div>
-        </div>
-
-        <button class="theme-toggle" onclick="toggleTheme()">تغییر تم</button>
-        <div class="social-links">
-            <a href="https://t.me/floki1234567890" target="_blank"><i class="fab fa-telegram-plane" style="color: #0088cc;"></i></a>
-            <a href="https://github.com/FLOKI000" target="_blank"><i class="fab fa-github" style="color: #333;"></i></a>
         </div>
     </div>
 
