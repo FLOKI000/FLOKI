@@ -97,7 +97,8 @@
         }
 
         .hamburger.active {
-            right: 250px; /* حرکت به لبه چپ منو */
+            right: auto; /* حذف تنظیم right */
+            left: 0; /* چسبیدن به لبه چپ صفحه */
             background-color: #000000; /* همچنان مشکی */
             color: #ffffff; /* آیکون سفید در حالت × */
             transform: rotate(90deg); /* انیمیشن چرخش برای × */
@@ -166,7 +167,7 @@
             }
 
             .hamburger.active {
-                right: 200px; /* حرکت به لبه چپ منو در موبایل */
+                left: 0; /* چسبیدن به لبه چپ در موبایل */
             }
         }
     </style>
