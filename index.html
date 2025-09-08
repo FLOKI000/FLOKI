@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی همبرگری با دکمه بستن در چپ</title>
+    <title>منوی همبرگری با کادرهای صفحه اصلی</title>
     <style>
         * {
             margin: 0;
@@ -87,6 +86,26 @@
             text-align: center;
             background-color: #fff;
         }
+
+        /* استایل کادرهای صفحه اصلی */
+        .section {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        /* استایل برای اسکرول نرم */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
@@ -97,10 +116,11 @@
     <nav class="hamburger-menu" id="menu">
         <button class="close-btn" onclick="toggleMenu()">×</button>
         <ul class="menu-items">
-            <li><a href="#">خانه</a></li>
-            <li><a href="#">درباره ما</a></li>
-            <li><a href="#">خدمات</a></li>
-            <li><a href="#">تماس با ما</a></li>
+            <li><a href="#android">اندروید</a></li>
+            <li><a href="#iphone">آیفون</a></li>
+            <li><a href="#windows">ویندوز</a></li>
+            <li><a href="#" onclick="showTelegramID()">تلگرام</a></li>
+            <li><a href="https://github.com/yourusername" target="_blank">گیت‌هاب</a></li>
         </ul>
     </nav>
 
@@ -109,10 +129,35 @@
         <h1>خوش آمدید به وبسایت ما</h1>
     </header>
 
+    <!-- کادرهای صفحه اصلی -->
+    <div class="section" id="intro">
+        <h2>مقدمه</h2>
+        <p>این بخش مقدمه سایت شماست. می‌توانید توضیحات کلی درباره سایت را اینجا بنویسید.</p>
+    </div>
+    <div class="section" id="android">
+        <h2>اندروید</h2>
+        <p>محتوای مربوط به بخش اندروید. اطلاعات درباره اپلیکیشن‌ها یا ویژگی‌های اندروید.</p>
+    </div>
+    <div class="section" id="iphone">
+        <h2>آیفون</h2>
+        <p>محتوای مربوط به بخش آیفون. اطلاعات درباره iOS یا اپلیکیشن‌های اپل.</p>
+    </div>
+    <div class="section" id="windows">
+        <h2>ویندوز</h2>
+        <p>محتوای مربوط به بخش ویندوز. اطلاعات درباره سیستم‌عامل ویندوز یا نرم‌افزارها.</p>
+    </div>
+
     <script>
+        // تابع برای باز و بسته کردن منو
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('active');
+        }
+
+        // تابع برای نمایش آیدی تلگرام
+        function showTelegramID() {
+            alert('آیدی تلگرام: @YourTelegramID');
+            toggleMenu(); // بستن منو بعد از کلیک
         }
     </script>
 </body>
