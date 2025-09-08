@@ -3,211 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی کشویی اصلاح‌شده</title>
+    <title>منوی همبرگری با دکمه بستن در سمت چپ</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', sans-serif; /* فونت فارسی */
-        }
-
         body {
-            background-color: #f0f2f5;
-            overflow-x: hidden;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
-        /* استایل منوی کناری */
-        .sidebar {
+        /* استایل منوی همبرگری */
+        .hamburger-menu {
+            display: none;
             position: fixed;
             top: 0;
-            right: -250px; /* مخفی در ابتدا */
+            right: 0;
             width: 250px;
             height: 100%;
-            background-color: #000000; /* مشکی یکدست */
+            background-color: #333;
             color: white;
-            transition: right 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .sidebar.active {
-            right: 0; /* نمایش منو */
-        }
-
-        /* هدر منو */
-        .sidebar-header {
             padding: 20px;
-            background-color: #000000; /* مشکی یکدست */
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
         }
 
-        /* لیست منو */
-        .sidebar-menu {
-            list-style: none;
-            flex: 1;
-            padding: 10px 0;
+        /* نمایش منو وقتی فعال است */
+        .hamburger-menu.active {
+            transform: translateX(0);
         }
 
-        .sidebar-menu li {
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .sidebar-menu li:hover {
-            background-color: #333333; /* خاکستری تیره برای Hover */
-        }
-
-        .sidebar-menu li i {
-            margin-left: 10px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar-menu li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        /* دکمه همبرگر */
-        .hamburger {
+        /* استایل دکمه همبرگر */
+        .hamburger-btn {
             position: fixed;
             top: 20px;
-            right: 0; /* چسبیده به لبه راست صفحه در حالت عادی */
-            font-size: 1.5rem;
-            background-color: #000000; /* پس‌زمینه مشکی */
-            color: #ffffff; /* آیکون سفید */
+            right: 20px;
+            font-size: 30px;
+            background: none;
             border: none;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px 0 0 8px; /* لبه گرد سمت چپ */
+            color: #333;
             cursor: pointer;
-            z-index: 1100;
-            transition: right 0.3s ease, left 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
         }
 
-        .sidebar.active .hamburger {
-            right: auto; /* حذف right */
-            left: 0; /* چسبیدن به لبه چپ کادر سیاه */
-        }
-
-        .hamburger.active {
-            background-color: #000000; /* همچنان مشکی */
-            color: #ffffff; /* آیکون سفید در حالت × */
-            transform: rotate(90deg); /* انیمیشن چرخش برای × */
-        }
-
-        /* انیمیشن تبدیل همبرگر به × */
-        .hamburger span {
-            position: relative;
-            width: 20px;
-            height: 2px;
-            background-color: currentColor;
-            display: block;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger span::before,
-        .hamburger span::after {
-            content: '';
+        /* استایل دکمه بستن (×) */
+        .close-btn {
             position: absolute;
-            width: 20px;
-            height: 2px;
-            background-color: currentColor;
-            transition: all 0.3s ease;
+            top: 20px;
+            left: 20px; /* دکمه × به سمت چپ منتقل شده */
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
         }
 
-        .hamburger span::before {
-            top: -6px;
+        /* استایل آیتم‌های منو */
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin-top: 60px;
         }
 
-        .hamburger span::after {
-            top: 6px;
+        .menu-items li {
+            margin: 15px 0;
         }
 
-        .hamburger.active span {
-            background: transparent; /* مخفی کردن خط وسط */
+        .menu-items li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
         }
 
-        .hamburger.active span::before {
-            transform: rotate(45deg);
-            top: 0;
+        .menu-items li a:hover {
+            color: #ddd;
         }
 
-        .hamburger.active span::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
-
-        /* محتوای اصلی */
-        .main-content {
-            margin: 20px;
+        /* استایل هدر */
+        header {
+            background-color: #f4f4f4;
             padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* پاسخ‌گویی برای موبایل */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-                right: -200px;
-            }
-
-            .sidebar.active {
-                right: 0;
-            }
-
-            .sidebar.active .hamburger {
-                left: 0; /* چسبیدن به لبه چپ کادر سیاه در موبایل */
-            }
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- دکمه همبرگر در صفحه اصلی -->
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span> <!-- خطوط همبرگر -->
-    </button>
+    <!-- دکمه همبرگر -->
+    <button class="hamburger-btn" onclick="toggleMenu()">☰</button>
 
-    <!-- منوی کناری -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">منوی اصلی</div>
-        <ul class="sidebar-menu">
-            <li><i class="fas fa-home"></i><a href="#home">صفحه اصلی</a></li>
-            <li><i class="fas fa-user"></i><a href="#profile">پروفایل</a></li>
-            <li><i class="fas fa-cog"></i><a href="#settings">تنظیمات</a></li>
-            <li><i class="fas fa-sign-out-alt"></i><a href="#logout">خروج</a></li>
+    <!-- منوی همبرگری -->
+    <nav class="hamburger-menu" id="menu">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <ul class="menu-items">
+            <li><a href="#">خانه</a></li>
+            <li><a href="#">درباره ما</a></li>
+            <li><a href="#">خدمات</a></li>
+            <li><a href="#">تماس با ما</a></li>
         </ul>
-    </div>
+    </nav>
 
     <!-- محتوای اصلی -->
-    <div class="main-content" id="mainContent">
-        <h1>خوش آمدید!</h1>
-        <p>این یک نمونه منوی کشویی است که با HTML، CSS و JavaScript ساخته شده. برای باز کردن منو، روی دکمه همبرگر کلیک کنید.</p>
-    </div>
+    <header>
+        <h1>خوش آمدید به وبسایت ما</h1>
+    </header>
 
     <script>
         function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const hamburger = document.getElementById('hamburger');
-            sidebar.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
         }
     </script>
-
-    <!-- آیکون‌های Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
