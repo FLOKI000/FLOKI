@@ -78,9 +78,9 @@
 
         /* دکمه همبرگر */
         .hamburger {
-            position: fixed;
+            position: absolute;
             top: 20px;
-            right: 0; /* چسبیده به لبه راست صفحه در حالت عادی */
+            right: 20px; /* در حالت عادی نزدیک لبه راست */
             font-size: 1.5rem;
             background-color: #000000; /* پس‌زمینه مشکی */
             color: #ffffff; /* آیکون سفید */
@@ -93,12 +93,17 @@
             border-radius: 8px 0 0 8px; /* لبه گرد سمت چپ */
             cursor: pointer;
             z-index: 1100;
-            transition: right 0.3s ease, transform 0.3s ease;
+            transition: right 0.3s ease, left 0.3s ease, transform 0.3s ease;
+            opacity: 0; /* مخفی در حالت بسته */
+        }
+
+        .sidebar.active .hamburger {
+            opacity: 1; /* نمایش دکمه وقتی منو بازه */
+            right: auto; /* حذف right */
+            left: 10px; /* چسبیدن به لبه چپ داخل کادر */
         }
 
         .hamburger.active {
-            right: auto; /* حذف تنظیم right */
-            left: 0; /* چسبیدن به لبه چپ صفحه */
             background-color: #000000; /* همچنان مشکی */
             color: #ffffff; /* آیکون سفید در حالت × */
             transform: rotate(90deg); /* انیمیشن چرخش برای × */
@@ -166,20 +171,19 @@
                 right: 0;
             }
 
-            .hamburger.active {
-                left: 0; /* چسبیدن به لبه چپ در موبایل */
+            .sidebar.active .hamburger {
+                left: 10px; /* چسبیدن به لبه چپ داخل کادر در موبایل */
             }
         }
     </style>
 </head>
 <body>
-    <!-- دکمه همبرگر در صفحه اصلی -->
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span> <!-- خطوط همبرگر -->
-    </button>
-
     <!-- منوی کناری -->
     <div class="sidebar" id="sidebar">
+        <!-- دکمه همبرگر داخل منو -->
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span> <!-- خطوط همبرگر -->
+        </button>
         <div class="sidebar-header">منوی اصلی</div>
         <ul class="sidebar-menu">
             <li><i class="fas fa-home"></i><a href="#home">صفحه اصلی</a></li>
