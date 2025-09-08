@@ -29,6 +29,12 @@
             justify-content: center;
             min-height: 100vh;
             transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .container {
@@ -43,8 +49,34 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
+        .gallery {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
         .accordion {
             margin-bottom: 20px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .accordion-header {
@@ -145,7 +177,7 @@
         .social-links a {
             color: var(--text-light);
             font-size: 1.5em;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         body.dark .social-links a {
@@ -154,6 +186,7 @@
 
         .social-links a:hover {
             color: #ffd700;
+            transform: scale(1.2);
         }
 
         @media (max-width: 600px) {
@@ -168,12 +201,22 @@
                 width: 25px;
                 height: 25px;
             }
+            .gallery img {
+                width: 150px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>دانلود اپلیکیشن</h1>
+
+        <div class="gallery">
+            <img src="https://via.placeholder.com/200x150?text=اسکرین+اندروید" alt="اندروید">
+            <img src="https://via.placeholder.com/200x150?text=اسکرین+iOS" alt="iOS">
+            <img src="https://via.placeholder.com/200x150?text=اسکرین+ویندوز" alt="ویندوز">
+        </div>
 
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -187,6 +230,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
                 </div>
             </div>
         </div>
@@ -204,6 +250,9 @@
                 <div class="sub-section">
                     <strong>آموزش استفاده از نرم‌افزار</strong>
                 </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
+                </div>
             </div>
         </div>
 
@@ -219,6 +268,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>آموزش استفاده از نرم‌افزار</strong>
+                </div>
+                <div class="sub-section">
+                    <strong>آموزش با تصاویر</strong>
                 </div>
             </div>
         </div>
@@ -260,7 +312,6 @@
             localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
         }
 
-        // تنظیم تم پیش‌فرض (روشن)
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
         }
