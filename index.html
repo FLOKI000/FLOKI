@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وب‌سایت با منوی همبرگری</title>
+    <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #e6e6e6; /* تم روز پیش‌فرض */
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1516321310768-61d7c93e7081?auto=format&fit=crop&q=80') no-repeat center center fixed;
+            background-size: cover;
+            background-color: rgba(230, 230, 230, 0.95); /* تم روز با شفافیت */
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
             color: #000;
+            direction: rtl;
         }
 
         body.night {
-            background-color: #121212; /* تم شب */
+            background-color: rgba(18, 18, 18, 0.95); /* تم شب */
             color: #fff;
+        }
+
+        /* استایل آفلاین */
+        .offline-message {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            background-color: rgba(255, 50, 50, 0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1003;
+        }
+
+        body.offline .offline-message {
+            display: block;
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -25,34 +46,33 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(5px);
-            border-radius: 10px;
-            width: 50px;
-            height: 50px;
+            border-radius: 15px;
+            width: 60px;
+            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
-            box-shadow: 0 0 10px #00ffcc; /* نئون خاکستری */
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #00ffcc;
         }
 
         body.night .nav-container {
             background-color: rgba(40, 40, 40, 0.9);
+            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .nav-container.active {
-            width: 80px;
-            height: 50px;
-            border-radius: 15px;
+            width: 90px;
+            height: 60px;
         }
 
-        /* استایل منوی همبرگری */
         .nav {
             --color: #000000;
             background: none;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             position: relative;
             display: flex;
             justify-content: center;
@@ -120,19 +140,20 @@
         /* استایل منوی کناری */
         .sidebar {
             height: 100%;
-            width: 120px; /* عرض بیشتر */
+            width: 140px;
             position: fixed;
             top: 0;
-            right: -120px;
-            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            right: -140px;
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(5px);
             transition: right 0.3s ease;
             z-index: 1001;
-            padding-top: 70px;
+            padding-top: 80px;
         }
 
         body.night .sidebar {
             background-color: rgba(40, 40, 40, 0.9);
+            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .sidebar.active {
@@ -140,30 +161,32 @@
         }
 
         .sidebar a, .sidebar button {
-            margin: 12px; /* فاصله بیشتر */
-            padding: 12px; /* هم‌تراز با گزینه‌ها */
+            margin: 12px;
+            padding: 12px;
             text-decoration: none;
             font-size: 16px;
             color: #000;
             display: block;
-            background-color: transparent;
-            border: none;
-            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
             text-align: center;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             cursor: pointer;
+            transform: scale(1);
         }
 
         body.night .sidebar a, body.night .sidebar button {
             color: #fff;
+            background-color: rgba(60, 60, 60, 0.3);
         }
 
         .sidebar a:hover, .sidebar button:hover {
-            background-color: rgba(200, 200, 200, 0.3);
+            background-color: rgba(200, 200, 200, 0.5);
+            transform: scale(1.05);
         }
 
         body.night .sidebar a:hover, body.night .sidebar button:hover {
-            background-color: rgba(100, 100, 100, 0.3);
+            background-color: rgba(100, 100, 100, 0.5);
         }
 
         /* رنگ‌های نئونی برای گزینه‌های منو */
@@ -172,49 +195,53 @@
             box-shadow: 0 0 8px transparent;
         }
 
-        body.night .sidebar a.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
-        body.night .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
-        body.night .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
-        body.night .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; } /* آبی نئونی */
-        body.night .sidebar a.github { box-shadow: 0 0 8px #800080; } /* بنفش نئونی */
-        body.night .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; } /* صورتی نئونی */
+        body.night .sidebar a.android { box-shadow: 0 0 8px #00ff00; }
+        body.night .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; }
+        body.night .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; }
+        body.night .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; }
+        body.night .sidebar a.github { box-shadow: 0 0 8px #800080; }
+        body.night .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; }
 
         /* استایل محتوای اصلی */
         .content {
             position: relative;
-            top: 10px; /* هم‌تراز با منوی همبرگری */
+            top: 10px;
             padding: 20px;
             text-align: center;
         }
 
         /* استایل کادر مقدمه */
         .section {
-            margin: 20px auto; /* فاصله بیشتر */
+            margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(5px);
-            border-radius: 10px;
+            border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
+            box-shadow: 0 0 10px #ffffff;
+            animation: fadeIn 0.5s ease;
         }
 
         body.night .section {
             background-color: rgba(40, 40, 40, 0.9);
+            background-image: linear-gradient(45deg, #121212, #1e1e1e);
             box-shadow: 0 0 10px #ffffff;
         }
 
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
-            margin: 20px auto; /* فاصله بیشتر */
+            margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
+            animation: fadeIn 0.5s ease;
         }
 
         body.night .os-box {
             background-color: rgba(40, 40, 40, 0.9);
+            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .os-box-header {
@@ -226,17 +253,33 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
         body.night .os-box-header {
             color: #fff;
         }
 
+        .os-box-header:hover {
+            background-color: rgba(200, 200, 200, 0.3);
+            transform: scale(1.02);
+        }
+
+        body.night .os-box-header:hover {
+            background-color: rgba(100, 100, 100, 0.3);
+        }
+
         .os-box-header::after {
-            content: '▼';
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
             position: absolute;
             left: 20px;
             transition: transform 0.3s ease;
+        }
+
+        body.night .os-box-header::after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -249,11 +292,13 @@
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
+            box-shadow: 0 0 10px #ffffff;
+            animation: fadeIn 0.5s ease;
         }
 
         body.night .os-box-content {
             background-color: rgba(40, 40, 40, 0.9);
+            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .os-box-content.active {
@@ -266,6 +311,7 @@
             background-color: rgba(249, 249, 249, 0.9);
             border-radius: 5px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         body.night .os-box-content div {
@@ -274,6 +320,7 @@
 
         .os-box-content div:hover {
             background-color: rgba(224, 224, 224, 0.9);
+            transform: scale(1.02);
         }
 
         body.night .os-box-content div:hover {
@@ -281,16 +328,57 @@
         }
 
         /* رنگ‌های نئونی برای کادرهای سیستم‌عامل */
-        .os-box.android { box-shadow: 0 0 10px #00ff00; } /* سبز نئونی */
-        .os-box.iphone { box-shadow: 0 0 10px #c0c0c0; } /* نقره‌ای نئونی */
-        .os-box.windows { box-shadow: 0 0 10px #00b7eb; } /* آبی تیره نئونی */
+        .os-box.android { box-shadow: 0 0 10px #00ff00; }
+        .os-box.iphone { box-shadow: 0 0 10px #c0c0c0; }
+        .os-box.windows { box-shadow: 0 0 10px #00b7eb; }
+
+        /* استایل اسلایدر تصاویر */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-image {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .slider-button.prev {
+            left: 10px;
+        }
+
+        .slider-button.next {
+            right: 10px;
+        }
 
         /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .sidebar {
-                width: 100px;
-                right: -100px;
-                padding-top: 60px;
+                width: 110px;
+                right: -110px;
+                padding-top: 70px;
             }
 
             .sidebar.active {
@@ -304,37 +392,41 @@
             }
 
             .nav-container {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
             }
 
             .nav-container.active {
-                width: 60px;
-                height: 40px;
+                width: 70px;
+                height: 50px;
                 border-radius: 12px;
             }
 
             .nav {
-                width: 30px;
-                height: 30px;
+                width: 40px;
+                height: 40px;
                 margin: 0 5px;
             }
 
             .section, .os-box {
                 max-width: 90%;
-                margin: 12px auto; /* فاصله بیشتر */
+                margin: 12px auto;
             }
 
             .os-box-header::after {
                 left: 15px;
             }
+
+            .slider-image {
+                height: 200px;
+            }
         }
 
         @media (min-width: 601px) and (max-width: 1024px) {
             .sidebar {
-                width: 110px;
-                right: -110px;
-                padding-top: 65px;
+                width: 120px;
+                right: -120px;
+                padding-top: 75px;
             }
 
             .sidebar.active {
@@ -349,19 +441,30 @@
 
             .section, .os-box {
                 max-width: 80%;
-                margin: 15px auto; /* فاصله بیشتر */
+                margin: 15px auto;
+            }
+
+            .slider-image {
+                height: 250px;
             }
         }
 
         @media (min-width: 1025px) {
             .section, .os-box {
                 max-width: 600px;
-                margin: 20px auto; /* فاصله بیشتر */
+                margin: 20px auto;
             }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+    <div class="offline-message">شما آفلاین هستید!</div>
+
     <div class="nav-container" id="nav-container">
         <div class="nav">
             <input type="checkbox" id="menu-toggle" onclick="toggleMenu()">
@@ -390,27 +493,96 @@
         <div class="os-box android" id="android">
             <div class="os-box-header" onclick="toggleOsBox('android')">اندروید</div>
             <div class="os-box-content" id="android-content">
-                <div>نصب اپ</div>
-                <div>آموزش با ویدیو</div>
-                <div>آموزش با تصاویر</div>
+                <div class="install-app" onclick="toggleInstallOptions('android')">نصب اپ</div>
+                <div class="install-options" id="android-install-options" style="display: none;">
+                    <div>v2ray</div>
+                    <div>happ</div>
+                </div>
+                <div class="video-tutorial" onclick="toggleVideo('android')">آموزش ویدیویی</div>
+                <div class="video-content" id="android-video-content" style="display: none;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="image-tutorial" onclick="toggleSlider('android')">آموزش با تصاویر</div>
+                <div class="slider" id="android-slider" style="display: none;">
+                    <div class="slider-images" id="android-slider-images">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+1" alt="تصویر 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+2" alt="تصویر 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+3" alt="تصویر 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+4" alt="تصویر 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+5" alt="تصویر 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+6" alt="تصویر 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+7" alt="تصویر 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+8" alt="تصویر 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
+                    </div>
+                    <button class="slider-button prev" onclick="moveSlider('android', -1)">قبلی</button>
+                    <button class="slider-button next" onclick="moveSlider('android', 1)">بعدی</button>
+                </div>
             </div>
         </div>
 
         <div class="os-box iphone" id="iphone">
             <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
             <div class="os-box-content" id="iphone-content">
-                <div>نصب اپ</div>
-                <div>آموزش با ویدیو</div>
-                <div>آموزش با تصاویر</div>
+                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصب اپ</div>
+                <div class="install-options" id="iphone-install-options" style="display: none;">
+                    <div>v2ray</div>
+                    <div>happ</div>
+                </div>
+                <div class="video-tutorial" onclick="toggleVideo('iphone')">آموزش ویدیویی</div>
+                <div class="video-content" id="iphone-video-content" style="display: none;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="image-tutorial" onclick="toggleSlider('iphone')">آموزش با تصاویر</div>
+                <div class="slider" id="iphone-slider" style="display: none;">
+                    <div class="slider-images" id="iphone-slider-images">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+1" alt="تصویر 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+2" alt="تصویر 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+3" alt="تصویر 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+4" alt="تصویر 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+5" alt="تصویر 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+6" alt="تصویر 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+7" alt="تصویر 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+8" alt="تصویر 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
+                    </div>
+                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)">قبلی</button>
+                    <button class="slider-button next" onclick="moveSlider('iphone', 1)">بعدی</button>
+                </div>
             </div>
         </div>
 
         <div class="os-box windows" id="windows">
             <div class="os-box-header" onclick="toggleOsBox('windows')">ویندوز</div>
             <div class="os-box-content" id="windows-content">
-                <div>نصب اپ</div>
-                <div>آموزش با ویدیو</div>
-                <div>آموزش با تصاویر</div>
+                <div class="install-app" onclick="toggleInstallOptions('windows')">نصب اپ</div>
+                <div class="install-options" id="windows-install-options" style="display: none;">
+                    <div>v2ray</div>
+                    <div>happ</div>
+                </div>
+                <div class="video-tutorial" onclick="toggleVideo('windows')">آموزش ویدیویی</div>
+                <div class="video-content" id="windows-video-content" style="display: none;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="image-tutorial" onclick="toggleSlider('windows')">آموزش با تصاویر</div>
+                <div class="slider" id="windows-slider" style="display: none;">
+                    <div class="slider-images" id="windows-slider-images">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+1" alt="تصویر 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+2" alt="تصویر 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+3" alt="تصویر 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+4" alt="تصویر 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+5" alt="تصویر 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+6" alt="تصویر 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+7" alt="تصویر 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+8" alt="تصویر 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
+                    </div>
+                    <button class="slider-button prev" onclick="moveSlider('windows', -1)">قبلی</button>
+                    <button class="slider-button next" onclick="moveSlider('windows', 1)">بعدی</button>
+                </div>
             </div>
         </div>
     </div>
@@ -423,6 +595,7 @@
     </svg>
 
     <script>
+        // مدیریت منوی همبرگری
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const navContainer = document.getElementById('nav-container');
@@ -441,19 +614,118 @@
             menuToggle.checked = false;
         }
 
+        // تغییر تم
         function toggleTheme(event) {
-            event.stopPropagation(); // جلوگیری از بسته شدن منو
+            event.stopPropagation();
             document.body.classList.toggle('night');
+            document.querySelectorAll('.os-box-content').forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.os-box-header').forEach(header => {
+                header.classList.remove('active');
+            });
         }
 
+        // مدیریت کادرهای سیستم‌عامل
         function toggleOsBox(boxId) {
+            const boxes = ['android', 'iphone', 'windows'];
+            boxes.forEach(id => {
+                if (id !== boxId) {
+                    const content = document.getElementById(`${id}-content`);
+                    const header = document.querySelector(`#${id} .os-box-header`);
+                    content.classList.remove('active');
+                    header.classList.remove('active');
+                }
+            });
             const content = document.getElementById(`${boxId}-content`);
             const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
         }
 
-        // بستن منو با کلیک یا ضربه روی صفحه
+        // مدیریت گزینه‌های نصب اپ
+        function toggleInstallOptions(boxId) {
+            const options = document.getElementById(`${boxId}-install-options`);
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // مدیریت ویدیو
+        function toggleVideo(boxId) {
+            const video = document.getElementById(`${boxId}-video-content`);
+            video.style.display = video.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // مدیریت اسلایدر
+        function toggleSlider(boxId) {
+            const slider = document.getElementById(`${boxId}-slider`);
+            slider.style.display = slider.style.display === 'block' ? 'none' : 'block';
+        }
+
+        let currentSlides = { android: 0, iphone: 0, windows: 0 };
+
+        function moveSlider(boxId, direction) {
+            const sliderImages = document.getElementById(`${boxId}-slider-images`);
+            const images = sliderImages.querySelectorAll('.slider-image');
+            currentSlides[boxId] = (currentSlides[boxId] + direction + images.length) % images.length;
+            sliderImages.style.transform = `translateX(-${currentSlides[boxId] * 100}%)`;
+        }
+
+        // پشتیبانی از کشیدن (Drag) برای اسلایدر
+        document.querySelectorAll('.slider-images').forEach(slider => {
+            let isDragging = false, startX, scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+
+            slider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        // تشخیص حالت آفلاین
+        window.addEventListener('online', () => {
+            document.body.classList.remove('offline');
+        });
+
+        window.addEventListener('offline', () => {
+            document.body.classList.add('offline');
+        });
+
+        // بستن منو با کلیک خارج
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const nav = document.querySelector('.nav');
