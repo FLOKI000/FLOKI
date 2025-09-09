@@ -27,7 +27,7 @@
             padding: 10px;
             border-radius: 5px;
             z-index: 1003;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         body.offline .offline-message {
@@ -49,7 +49,7 @@
             justify-content: center;
             align-items: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .nav-container.active {
@@ -134,7 +134,7 @@
             transition: right 0.3s ease;
             z-index: 1001;
             padding-top: 80px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .sidebar.active {
@@ -157,7 +157,7 @@
             width: calc(100% - 24px);
             box-sizing: border-box;
             z-index: 2;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .sidebar a:hover {
@@ -181,7 +181,7 @@
             backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.5s ease;
         }
 
@@ -193,7 +193,7 @@
             backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.5s ease;
         }
 
@@ -209,7 +209,7 @@
             padding: 10px;
             border-radius: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .os-box-header:hover {
@@ -234,7 +234,7 @@
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.5s ease;
         }
 
@@ -249,7 +249,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .os-box-content div:hover {
@@ -275,7 +275,7 @@
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .slider-button {
@@ -289,7 +289,7 @@
             cursor: pointer;
             border-radius: 5px;
             z-index: 10;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
         .slider-button.prev {
@@ -405,11 +405,11 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <a href="#android" class="android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
-        <a href="#iphone" class="iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
-        <a href="#windows" class="windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
-        <a href="https://t.me/your_telegram_id" class="telegram" target="_blank" onclick="closeMenu()">تلگرام</a>
-        <a href="https://github.com/your_username" class="github" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
+        <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
+        <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
+        <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
+        <a href="https://t.me/your_telegram_id" target="_blank" onclick="closeMenu()">تلگرام</a>
+        <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
     </div>
 
     <div class="content">
