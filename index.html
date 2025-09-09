@@ -8,13 +8,15 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* تم روز پیش‌فرض */
+            background-color: #e6e6e6; /* تم روز پیش‌فرض */
             overflow-x: hidden;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #000;
         }
 
         body.night {
-            background-color: #1a1a1a; /* تم شب */
+            background-color: #121212; /* تم شب */
+            color: #fff;
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -23,8 +25,8 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: rgba(0, 0, 0, 0.7); /* شیشه‌ای مات */
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            backdrop-filter: blur(5px);
             border-radius: 10px;
             width: 50px;
             height: 50px;
@@ -35,6 +37,10 @@
             box-shadow: 0 0 10px #00ffcc; /* نئون خاکستری */
         }
 
+        body.night .nav-container {
+            background-color: rgba(40, 40, 40, 0.9);
+        }
+
         .nav-container.active {
             width: 80px;
             height: 50px;
@@ -43,7 +49,7 @@
 
         /* استایل منوی همبرگری */
         .nav {
-            --color: #ffffff;
+            --color: #000000;
             background: none;
             width: 40px;
             height: 40px;
@@ -52,6 +58,10 @@
             justify-content: center;
             align-items: center;
             margin: 0 5px;
+        }
+
+        body.night .nav {
+            --color: #ffffff;
         }
 
         .nav svg {
@@ -94,56 +104,35 @@
         }
 
         @keyframes stroke-animation {
-            0% {
-                stroke-dashoffset: 295;
-                stroke-dasharray: 25 270;
-            }
-            50% {
-                stroke-dashoffset: 68;
-                stroke-dasharray: 59 236;
-            }
-            65% {
-                stroke-dashoffset: 59;
-                stroke-dasharray: 59 236;
-            }
-            100% {
-                stroke-dashoffset: 68;
-                stroke-dasharray: 59 236;
-            }
+            0% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
+            50% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
+            65% { stroke-dashoffset: 59; stroke-dasharray: 59 236; }
+            100% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
         }
 
         @keyframes stroke-animation-reverse {
-            0% {
-                stroke-dashoffset: 68;
-                stroke-dasharray: 59 236;
-            }
-            50% {
-                stroke-dashoffset: 290;
-                stroke-dasharray: 25 270;
-            }
-            65% {
-                stroke-dashoffset: 295;
-                stroke-dasharray: 25 270;
-            }
-            100% {
-                stroke-dashoffset: 290;
-                stroke-dasharray: 25 270;
-            }
+            0% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
+            50% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
+            65% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
+            100% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
         }
 
         /* استایل منوی کناری */
         .sidebar {
             height: 100%;
-            width: 100px;
+            width: 120px; /* عرض بیشتر */
             position: fixed;
             top: 0;
-            right: -100px;
-            background-color: rgba(68, 68, 68, 0.7); /* شیشه‌ای مات */
-            backdrop-filter: blur(10px);
+            right: -120px;
+            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            backdrop-filter: blur(5px);
             transition: right 0.3s ease;
             z-index: 1001;
             padding-top: 70px;
-            box-shadow: 0 0 10px #00ffcc; /* نئون خاکستری */
+        }
+
+        body.night .sidebar {
+            background-color: rgba(40, 40, 40, 0.9);
         }
 
         .sidebar.active {
@@ -151,11 +140,11 @@
         }
 
         .sidebar a, .sidebar button {
-            margin: 5px;
+            margin: 8px; /* فاصله بیشتر */
             padding: 10px;
             text-decoration: none;
             font-size: 16px;
-            color: white;
+            color: #000;
             display: block;
             background-color: transparent;
             border: none;
@@ -165,17 +154,30 @@
             cursor: pointer;
         }
 
+        body.night .sidebar a, body.night .sidebar button {
+            color: #fff;
+        }
+
         .sidebar a:hover, .sidebar button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(200, 200, 200, 0.3);
+        }
+
+        body.night .sidebar a:hover, body.night .sidebar button:hover {
+            background-color: rgba(100, 100, 100, 0.3);
         }
 
         /* رنگ‌های نئونی برای گزینه‌های منو */
-        .sidebar a.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
-        .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
-        .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
-        .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; } /* آبی نئونی */
-        .sidebar a.github { box-shadow: 0 0 8px #800080; } /* بنفش نئونی */
-        .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; } /* صورتی نئونی برای دکمه تم */
+        .sidebar a.android, .sidebar a.iphone, .sidebar a.windows,
+        .sidebar a.telegram, .sidebar a.github, .sidebar button.theme-toggle {
+            box-shadow: 0 0 8px transparent;
+        }
+
+        body.night .sidebar a.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
+        body.night .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
+        body.night .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
+        body.night .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; } /* آبی نئونی */
+        body.night .sidebar a.github { box-shadow: 0 0 8px #800080; } /* بنفش نئونی */
+        body.night .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; } /* صورتی نئونی */
 
         /* استایل محتوای اصلی */
         .content {
@@ -184,39 +186,39 @@
             text-align: center;
         }
 
-        /* استایل کادرهای صفحه اصلی */
+        /* استایل کادر مقدمه */
         .section {
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.7); /* شیشه‌ای مات */
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            backdrop-filter: blur(5px);
             border-radius: 10px;
             max-width: 600px;
             box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
         }
 
         body.night .section {
-            background-color: rgba(40, 40, 40, 0.7); /* شیشه‌ای مات برای شب */
+            background-color: rgba(40, 40, 40, 0.9);
+            box-shadow: 0 0 10px #ffffff;
         }
 
-        /* استایل پوشه سیستم‌عامل‌ها */
-        .os-folder {
-            margin: 20px auto;
+        /* استایل کادرهای سیستم‌عامل */
+        .os-box {
+            margin: 10px auto;
             padding: 20px;
-            background-color: rgba(51, 51, 51, 0.7); /* شیشه‌ای مات */
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
+            backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 0 10px #00ffcc; /* خاکستری نئونی */
         }
 
-        body.night .os-folder {
-            background-color: rgba(30, 30, 30, 0.7); /* شیشه‌ای مات برای شب */
+        body.night .os-box {
+            background-color: rgba(40, 40, 40, 0.9);
         }
 
-        .os-folder-header {
+        .os-box-header {
             font-size: 18px;
-            color: white;
+            color: #000;
             text-align: center;
             cursor: pointer;
             display: flex;
@@ -225,90 +227,68 @@
             position: relative;
         }
 
-        .os-folder-header::after {
+        body.night .os-box-header {
+            color: #fff;
+        }
+
+        .os-box-header::after {
             content: '▼';
             position: absolute;
             left: 20px;
             transition: transform 0.3s ease;
         }
 
-        .os-folder-header.active::after {
+        .os-box-header.active::after {
             transform: rotate(180deg);
         }
 
-        .os-options {
+        .os-box-content {
             display: none;
             margin-top: 15px;
-        }
-
-        .os-options.active {
-            display: block;
-        }
-
-        .os-box {
-            margin: 10px 5px;
             padding: 15px;
-            background-color: transparent;
-            border-radius: 10px;
-            text-align: center;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .os-box:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* رنگ‌های نئونی برای گزینه‌های پوشه */
-        .os-box.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
-        .os-box.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
-        .os-box.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
-
-        /* استایل کادرهای زیرمجموعه */
-        .sub-section {
-            display: none;
-            margin: 10px 5px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.7); /* شیشه‌ای مات */
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
         }
 
-        body.night .sub-section {
-            background-color: rgba(40, 40, 40, 0.7); /* شیشه‌ای مات برای شب */
+        body.night .os-box-content {
+            background-color: rgba(40, 40, 40, 0.9);
         }
 
-        .sub-section.active {
+        .os-box-content.active {
             display: block;
         }
 
-        .sub-section div {
+        .os-box-content div {
             margin: 10px 0;
             padding: 10px;
-            background-color: rgba(249, 249, 249, 0.7);
+            background-color: rgba(249, 249, 249, 0.9);
             border-radius: 5px;
             cursor: pointer;
         }
 
-        body.night .sub-section div {
-            background-color: rgba(60, 60, 60, 0.7);
+        body.night .os-box-content div {
+            background-color: rgba(60, 60, 60, 0.9);
         }
 
-        .sub-section div:hover {
-            background-color: rgba(224, 224, 224, 0.7);
+        .os-box-content div:hover {
+            background-color: rgba(224, 224, 224, 0.9);
         }
 
-        body.night .sub-section div:hover {
-            background-color: rgba(80, 80, 80, 0.7);
+        body.night .os-box-content div:hover {
+            background-color: rgba(80, 80, 80, 0.9);
         }
 
-        /* استایل برای صفحه‌نمایش‌های کوچک */
+        /* رنگ‌های نئونی برای کادرهای سیستم‌عامل */
+        .os-box.android { box-shadow: 0 0 10px #00ff00; } /* سبز نئونی */
+        .os-box.iphone { box-shadow: 0 0 10px #c0c0c0; } /* نقره‌ای نئونی */
+        .os-box.windows { box-shadow: 0 0 10px #00b7eb; } /* آبی تیره نئونی */
+
+        /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .sidebar {
-                width: 80px;
-                right: -80px;
+                width: 100px; /* عرض بیشتر */
+                right: -100px;
                 padding-top: 60px;
             }
 
@@ -317,7 +297,7 @@
             }
 
             .sidebar a, .sidebar button {
-                margin: 3px;
+                margin: 6px; /* فاصله بیشتر */
                 padding: 8px;
                 font-size: 14px;
             }
@@ -339,17 +319,43 @@
                 margin: 0 5px;
             }
 
-            .os-folder, .section {
+            .section, .os-box {
                 max-width: 90%;
+                margin: 8px auto; /* فاصله برای موبایل */
             }
 
-            .os-box, .sub-section {
-                margin: 5px 3px;
-                padding: 10px;
-            }
-
-            .os-folder-header::after {
+            .os-box-header::after {
                 left: 15px;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .sidebar {
+                width: 110px;
+                right: -110px;
+                padding-top: 65px;
+            }
+
+            .sidebar.active {
+                right: 0;
+            }
+
+            .sidebar a, .sidebar button {
+                margin: 7px;
+                padding: 9px;
+                font-size: 15px;
+            }
+
+            .section, .os-box {
+                max-width: 80%;
+                margin: 10px auto;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .section, .os-box {
+                max-width: 600px;
+                margin: 10px auto;
             }
         }
     </style>
@@ -367,9 +373,9 @@
 
     <div class="sidebar" id="sidebar">
         <button class="theme-toggle" onclick="toggleTheme()">تم روز/شب</button>
-        <a href="#os-folder" class="android" onclick="closeMenu(); toggleOsFolder()">اندروید</a>
-        <a href="#os-folder" class="iphone" onclick="closeMenu(); toggleOsFolder()">آیفون</a>
-        <a href="#os-folder" class="windows" onclick="closeMenu(); toggleOsFolder()">ویندوز</a>
+        <a href="#android" class="android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
+        <a href="#iphone" class="iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
+        <a href="#windows" class="windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
         <a href="https://t.me/your_telegram_id" class="telegram" target="_blank" onclick="closeMenu()">تلگرام</a>
         <a href="https://github.com/your_username" class="github" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
     </div>
@@ -380,30 +386,30 @@
             <p>این یک وب‌سایت نمونه است که ویژگی‌های مختلف سیستم‌عامل‌ها را نمایش می‌دهد.</p>
         </div>
 
-        <div class="os-folder" id="os-folder">
-            <div class="os-folder-header" onclick="toggleOsFolder()">سیستم‌عامل‌ها</div>
-            <div class="os-options" id="os-options">
-                <div class="os-box android" id="android" onclick="toggleSubSection('android-sub', event)">اندروید</div>
-                <div class="sub-section" id="android-sub">
-                    <h3>اندروید</h3>
-                    <div>نصب اپ</div>
-                    <div>آموزش با ویدیو</div>
-                    <div>آموزش با تصاویر</div>
-                </div>
-                <div class="os-box iphone" id="iphone" onclick="toggleSubSection('iphone-sub', event)">آیفون</div>
-                <div class="sub-section" id="iphone-sub">
-                    <h3>آیفون</h3>
-                    <div>نصب اپ</div>
-                    <div>آموزش با ویدیو</div>
-                    <div>آموزش با تصاویر</div>
-                </div>
-                <div class="os-box windows" id="windows" onclick="toggleSubSection('windows-sub', event)">ویندوز</div>
-                <div class="sub-section" id="windows-sub">
-                    <h3>ویندوز</h3>
-                    <div>نصب اپ</div>
-                    <div>آموزش با ویدیو</div>
-                    <div>آموزش با تصاویر</div>
-                </div>
+        <div class="os-box android" id="android">
+            <div class="os-box-header" onclick="toggleOsBox('android')">اندروید</div>
+            <div class="os-box-content" id="android-content">
+                <div>نصب اپ</div>
+                <div>آموزش با ویدیو</div>
+                <div>آموزش با تصاویر</div>
+            </div>
+        </div>
+
+        <div class="os-box iphone" id="iphone">
+            <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
+            <div class="os-box-content" id="iphone-content">
+                <div>نصب اپ</div>
+                <div>آموزش با ویدیو</div>
+                <div>آموزش با تصاویر</div>
+            </div>
+        </div>
+
+        <div class="os-box windows" id="windows">
+            <div class="os-box-header" onclick="toggleOsBox('windows')">ویندوز</div>
+            <div class="os-box-content" id="windows-content">
+                <div>نصب اپ</div>
+                <div>آموزش با ویدیو</div>
+                <div>آموزش با تصاویر</div>
             </div>
         </div>
     </div>
@@ -439,21 +445,11 @@
             closeMenu();
         }
 
-        function toggleOsFolder() {
-            const osOptions = document.getElementById('os-options');
-            const osHeader = document.querySelector('.os-folder-header');
-            osOptions.classList.toggle('active');
-            osHeader.classList.toggle('active');
-        }
-
-        function toggleSubSection(sectionId, event) {
-            event.stopPropagation();
-            const subSection = document.getElementById(sectionId);
-            const isActive = subSection.classList.contains('active');
-            document.querySelectorAll('.sub-section').forEach(section => section.classList.remove('active'));
-            if (!isActive) {
-                subSection.classList.add('active');
-            }
+        function toggleOsBox(boxId) {
+            const content = document.getElementById(`${boxId}-content`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
+            content.classList.toggle('active');
+            header.classList.toggle('active');
         }
 
         // بستن منو با کلیک یا ضربه روی صفحه
