@@ -11,16 +11,11 @@
             font-family: 'Vazirmatn', Arial, sans-serif;
             background: url('https://images.unsplash.com/photo-1516321310768-61d7c93e7081?auto=format&fit=crop&q=80') no-repeat center center fixed;
             background-size: cover;
-            background-color: rgba(230, 230, 230, 0.95); /* تم روز */
+            background-color: rgba(230, 230, 230, 0.95); /* تم روشن */
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
             color: #000;
             direction: rtl;
-        }
-
-        body.night {
-            background-color: rgba(18, 18, 18, 0.95); /* تم شب */
-            color: #fff;
         }
 
         /* استایل آفلاین */
@@ -58,11 +53,6 @@
             box-shadow: 0 0 10px #00ffcc;
         }
 
-        body.night .nav-container {
-            background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
-        }
-
         .nav-container.active {
             width: 90px;
             height: 60px;
@@ -78,10 +68,6 @@
             justify-content: center;
             align-items: center;
             margin: 0 5px;
-        }
-
-        body.night .nav {
-            --color: #ffffff;
         }
 
         .nav svg {
@@ -151,16 +137,11 @@
             padding-top: 80px;
         }
 
-        body.night .sidebar {
-            background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
-        }
-
         .sidebar.active {
             right: 0;
         }
 
-        .sidebar a, .sidebar button {
+        .sidebar a {
             margin: 12px;
             padding: 12px;
             text-decoration: none;
@@ -176,34 +157,20 @@
             width: calc(100% - 24px);
             box-sizing: border-box;
             z-index: 2;
+            box-shadow: 0 0 8px transparent;
         }
 
-        body.night .sidebar a, body.night .sidebar button {
-            color: #fff;
-            background-color: rgba(60, 60, 60, 0.3);
-        }
-
-        .sidebar a:hover, .sidebar button:hover {
+        .sidebar a:hover {
             background-color: rgba(200, 200, 200, 0.5);
             transform: scale(1.05);
         }
 
-        body.night .sidebar a:hover, body.night .sidebar button:hover {
-            background-color: rgba(100, 100, 100, 0.5);
-        }
-
         /* رنگ‌های نئونی برای گزینه‌های منو */
-        .sidebar a.android, .sidebar a.iphone, .sidebar a.windows,
-        .sidebar a.telegram, .sidebar a.github, .sidebar button.theme-toggle {
-            box-shadow: 0 0 8px transparent;
-        }
-
-        body.night .sidebar a.android { box-shadow: 0 0 8px #00ff00; }
-        body.night .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; }
-        body.night .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; }
-        body.night .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; }
-        body.night .sidebar a.github { box-shadow: 0 0 8px #800080; }
-        body.night .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; }
+        .sidebar a.android { box-shadow: 0 0 8px #00ff00; }
+        .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; }
+        .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; }
+        .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; }
+        .sidebar a.github { box-shadow: 0 0 8px #800080; }
 
         /* استایل محتوای اصلی */
         .content {
@@ -225,12 +192,6 @@
             animation: fadeIn 0.5s ease;
         }
 
-        body.night .section {
-            background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
-            box-shadow: 0 0 10px #ffffff;
-        }
-
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
@@ -240,11 +201,6 @@
             border-radius: 15px;
             max-width: 600px;
             animation: fadeIn 0.5s ease;
-        }
-
-        body.night .os-box {
-            background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .os-box-header {
@@ -261,17 +217,9 @@
             transition: all 0.3s ease;
         }
 
-        body.night .os-box-header {
-            color: #fff;
-        }
-
         .os-box-header:hover {
             background-color: rgba(200, 200, 200, 0.3);
             transform: scale(1.02);
-        }
-
-        body.night .os-box-header:hover {
-            background-color: rgba(100, 100, 100, 0.3);
         }
 
         .os-box-header::after {
@@ -279,10 +227,6 @@
             position: absolute;
             left: 20px;
             transition: transform 0.3s ease;
-        }
-
-        body.night .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -299,11 +243,6 @@
             animation: fadeIn 0.5s ease;
         }
 
-        body.night .os-box-content {
-            background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
-        }
-
         .os-box-content.active {
             display: block;
         }
@@ -317,17 +256,9 @@
             transition: all 0.3s ease;
         }
 
-        body.night .os-box-content div {
-            background-color: rgba(60, 60, 60, 0.9);
-        }
-
         .os-box-content div:hover {
             background-color: rgba(224, 224, 224, 0.9);
             transform: scale(1.02);
-        }
-
-        body.night .os-box-content div:hover {
-            background-color: rgba(80, 80, 80, 0.9);
         }
 
         /* رنگ‌های نئونی برای کادرهای سیستم‌عامل */
@@ -388,7 +319,7 @@
                 right: 0;
             }
 
-            .sidebar a, .sidebar button {
+            .sidebar a {
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
@@ -437,7 +368,7 @@
                 right: 0;
             }
 
-            .sidebar a, .sidebar button {
+            .sidebar a {
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
@@ -481,7 +412,6 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" onclick="toggleTheme()">تغییر تم</button>
         <a href="#android" class="android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" class="iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" class="windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -618,32 +548,6 @@
             navContainer.classList.remove('active');
             menuToggle.checked = false;
         }
-
-        // تغییر تم
-        function toggleTheme(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const body = document.body;
-            body.classList.toggle('night');
-            // ذخیره تم در localStorage برای ماندگاری
-            localStorage.setItem('theme', body.classList.contains('night') ? 'night' : 'day');
-            // بستن تمام کادرهای سیستم‌عامل هنگام تغییر تم
-            document.querySelectorAll('.os-box-content').forEach(content => {
-                content.classList.remove('active');
-                content.style.display = 'none';
-            });
-            document.querySelectorAll('.os-box-header').forEach(header => {
-                header.classList.remove('active');
-            });
-        }
-
-        // بارگذاری تم ذخیره‌شده هنگام بارگذاری صفحه
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'night') {
-                document.body.classList.add('night');
-            }
-        });
 
         // مدیریت کادرهای سیستم‌عامل
         function toggleOsBox(boxId) {
