@@ -134,7 +134,7 @@
             background-color: #444;
             transition: right 0.3s ease;
             z-index: 1001;
-            padding-top: 70px; /* فاصله برای شروع گزینه‌ها زیر منوی همبرگری */
+            padding-top: 70px;
         }
 
         .sidebar.active {
@@ -175,20 +175,33 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* استایل کادر مستطیل برای اندروید، آیفون، ویندوز */
-        .os-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
+        /* استایل پوشه سیستم‌عامل‌ها */
+        .os-folder {
             margin: 20px auto;
             padding: 20px;
             background-color: #333;
             border-radius: 15px;
             max-width: 600px;
+            cursor: pointer;
+        }
+
+        .os-folder-header {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+        }
+
+        .os-options {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .os-options.active {
+            display: block;
         }
 
         .os-box {
-            flex: 1;
+            margin: 10px 5px;
             padding: 15px;
             background-color: #444;
             border-radius: 10px;
@@ -205,11 +218,10 @@
         /* استایل کادرهای زیرمجموعه */
         .sub-section {
             display: none;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 10px 5px;
+            padding: 15px;
             background-color: #fff;
             border-radius: 10px;
-            max-width: 600px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -264,17 +276,13 @@
                 margin: 0 5px;
             }
 
-            .os-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .os-box {
-                padding: 10px;
-            }
-
-            .section, .sub-section {
+            .os-folder, .section {
                 max-width: 90%;
+            }
+
+            .os-box, .sub-section {
+                margin: 5px 3px;
+                padding: 10px;
             }
         }
     </style>
@@ -291,9 +299,9 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <a href="#android" onclick="closeMenu()">اندروید</a>
-        <a href="#iphone" onclick="closeMenu()">آیفون</a>
-        <a href="#windows" onclick="closeMenu()">ویندوز</a>
+        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">اندروید</a>
+        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">آیفون</a>
+        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">ویندوز</a>
         <a href="https://t.me/your_telegram_id" target="_blank" onclick="closeMenu()">تلگرام</a>
         <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
     </div>
@@ -304,29 +312,31 @@
             <p>این یک وب‌سایت نمونه است که ویژگی‌های مختلف سیستم‌عامل‌ها را نمایش می‌دهد.</p>
         </div>
 
-        <div class="os-container">
-            <div class="os-box" id="android" onclick="showSubSection('android-sub')">اندروید</div>
-            <div class="os-box" id="iphone" onclick="showSubSection('iphone-sub')">آیفون</div>
-            <div class="os-box" id="windows" onclick="showSubSection('windows-sub')">ویندوز</div>
-        </div>
-
-        <div class="sub-section" id="android-sub">
-            <h3>اندروید</h3>
-            <div>نصب اپ</div>
-            <div>آموزش با ویدیو</div>
-            <div>آموزش با تصاویر</div>
-        </div>
-        <div class="sub-section" id="iphone-sub">
-            <h3>آیفون</h3>
-            <div>نصب اپ</div>
-            <div>آموزش با ویدیو</div>
-            <div>آموزش با تصاویر</div>
-        </div>
-        <div class="sub-section" id="windows-sub">
-            <h3>ویندوز</h3>
-            <div>نصب اپ</div>
-            <div>آموزش با ویدیو</div>
-            <div>آموزش با تصاویر</div>
+        <div class="os-folder" id="os-folder" onclick="toggleOsFolder()">
+            <div class="os-folder-header">سیستم‌عامل‌ها</div>
+            <div class="os-options" id="os-options">
+                <div class="os-box" id="android" onclick="showSubSection('android-sub', event)">اندروید</div>
+                <div class="os-box" id="iphone" onclick="showSubSection('iphone-sub', event)">آیفون</div>
+                <div class="os-box" id="windows" onclick="showSubSection('windows-sub', event)">ویندوز</div>
+                <div class="sub-section" id="android-sub">
+                    <h3>اندروید</h3>
+                    <div>نصب اپ</div>
+                    <div>آموزش با ویدیو</div>
+                    <div>آموزش با تصاویر</div>
+                </div>
+                <div class="sub-section" id="iphone-sub">
+                    <h3>آیفون</h3>
+                    <div>نصب اپ</div>
+                    <div>آموزش با ویدیو</div>
+                    <div>آموزش با تصاویر</div>
+                </div>
+                <div class="sub-section" id="windows-sub">
+                    <h3>ویندوز</h3>
+                    <div>نصب اپ</div>
+                    <div>آموزش با ویدیو</div>
+                    <div>آموزش با تصاویر</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -356,7 +366,13 @@
             menuToggle.checked = false;
         }
 
-        function showSubSection(sectionId) {
+        function toggleOsFolder() {
+            const osOptions = document.getElementById('os-options');
+            osOptions.classList.toggle('active');
+        }
+
+        function showSubSection(sectionId, event) {
+            event.stopPropagation(); // جلوگیری از بسته شدن پوشه هنگام کلیک روی گزینه‌ها
             const subSections = document.querySelectorAll('.sub-section');
             subSections.forEach(section => section.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
