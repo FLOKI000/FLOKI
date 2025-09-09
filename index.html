@@ -9,16 +9,11 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: #FBE4D8; /* تم روز */
+            background-color: #FBE4D8; /* تم پیش‌فرض */
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
             color: #000;
             direction: rtl;
-        }
-
-        body.night {
-            background-color: #31323e; /* تم شب */
-            color: #fff;
         }
 
         /* استایل آفلاین */
@@ -36,41 +31,6 @@
 
         body.offline .offline-message {
             display: block;
-        }
-
-        /* دکمه تغییر تم */
-        .theme-toggle {
-            position: fixed;
-            top: 80px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: 12px;
-            border: none;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 8px transparent;
-            z-index: 1002;
-        }
-
-        body.night .theme-toggle {
-            background-color: rgba(40, 40, 40, 0.9);
-            box-shadow: 0 0 8px #ff00ff;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            background-color: rgba(200, 200, 200, 0.5);
-        }
-
-        body.night .theme-toggle:hover {
-            background-color: rgba(100, 100, 100, 0.5);
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -91,10 +51,6 @@
             box-shadow: 0 0 10px #00ffcc;
         }
 
-        body.night .nav-container {
-            background-color: rgba(40, 40, 40, 0.9);
-        }
-
         .nav-container.active {
             width: 90px;
             height: 60px;
@@ -110,10 +66,6 @@
             justify-content: center;
             align-items: center;
             margin: 0 5px;
-        }
-
-        body.night .nav {
-            --color: #ffffff;
         }
 
         .nav svg {
@@ -183,10 +135,6 @@
             padding-top: 80px;
         }
 
-        body.night .sidebar {
-            background-color: rgba(40, 40, 40, 0.9);
-        }
-
         .sidebar.active {
             right: 0;
         }
@@ -209,31 +157,10 @@
             z-index: 2;
         }
 
-        body.night .sidebar a {
-            color: #fff;
-            background-color: rgba(60, 60, 60, 0.3);
-        }
-
         .sidebar a:hover {
             background-color: rgba(200, 200, 200, 0.5);
             transform: scale(1.05);
         }
-
-        body.night .sidebar a:hover {
-            background-color: rgba(100, 100, 100, 0.5);
-        }
-
-        /* رنگ‌های نئونی برای گزینه‌های منو */
-        .sidebar a.android, .sidebar a.iphone, .sidebar a.windows,
-        .sidebar a.telegram, .sidebar a.github {
-            box-shadow: 0 0 8px transparent;
-        }
-
-        body.night .sidebar a.android { box-shadow: 0 0 8px #00ff00; }
-        body.night .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; }
-        body.night .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; }
-        body.night .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; }
-        body.night .sidebar a.github { box-shadow: 0 0 8px #800080; }
 
         /* استایل محتوای اصلی */
         .content {
@@ -255,11 +182,6 @@
             animation: fadeIn 0.5s ease;
         }
 
-        body.night .section {
-            background-color: rgba(40, 40, 40, 0.9);
-            box-shadow: 0 0 10px #ffffff;
-        }
-
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
@@ -269,10 +191,6 @@
             border-radius: 15px;
             max-width: 600px;
             animation: fadeIn 0.5s ease;
-        }
-
-        body.night .os-box {
-            background-color: rgba(40, 40, 40, 0.9);
         }
 
         .os-box-header {
@@ -289,17 +207,9 @@
             transition: all 0.3s ease;
         }
 
-        body.night .os-box-header {
-            color: #fff;
-        }
-
         .os-box-header:hover {
             background-color: rgba(200, 200, 200, 0.3);
             transform: scale(1.02);
-        }
-
-        body.night .os-box-header:hover {
-            background-color: rgba(100, 100, 100, 0.3);
         }
 
         .os-box-header::after {
@@ -307,10 +217,6 @@
             position: absolute;
             left: 20px;
             transition: transform 0.3s ease;
-        }
-
-        body.night .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -327,10 +233,6 @@
             animation: fadeIn 0.5s ease;
         }
 
-        body.night .os-box-content {
-            background-color: rgba(40, 40, 40, 0.9);
-        }
-
         .os-box-content.active {
             display: block;
         }
@@ -344,26 +246,10 @@
             transition: all 0.3s ease;
         }
 
-        body.night .os-box-content div {
-            background-color: rgba(60, 60, 60, 0.9);
-        }
-
         .os-box-content div:hover {
             background-color: rgba(224, 224, 224, 0.9);
             transform: scale(1.02);
         }
-
-        body.night .os-box-content div:hover {
-            background-color: rgba(80, 80, 80, 0.9);
-        }
-
-        /* رنگ‌های نئونی برای کادرهای سیستم‌عامل */
-        .os-box.android { box-shadow: 0 0 10px transparent; }
-        .os-box.iphone { box-shadow: 0 0 10px transparent; }
-        .os-box.windows { box-shadow: 0 0 10px transparent; }
-        body.night .os-box.android { box-shadow: 0 0 10px #00ff00; }
-        body.night .os-box.iphone { box-shadow: 0 0 10px #c0c0c0; }
-        body.night .os-box.windows { box-shadow: 0 0 10px #00b7eb; }
 
         /* استایل اسلایدر تصاویر */
         .slider {
@@ -442,14 +328,6 @@
                 margin: 0 5px;
             }
 
-            .theme-toggle {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                top: 70px;
-                right: 10px;
-            }
-
             .section, .os-box {
                 max-width: 90%;
                 margin: 12px auto;
@@ -482,14 +360,6 @@
                 width: calc(100% - 20px);
             }
 
-            .theme-toggle {
-                width: 45px;
-                height: 45px;
-                font-size: 22px;
-                top: 75px;
-                right: 10px;
-            }
-
             .section, .os-box {
                 max-width: 80%;
                 margin: 15px auto;
@@ -515,8 +385,6 @@
 </head>
 <body>
     <div class="offline-message">شما آفلاین هستید!</div>
-
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
 
     <div class="nav-container" id="nav-container">
         <div class="nav">
@@ -577,7 +445,7 @@
         <div class="os-box iphone" id="iphone">
             <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
             <div class="os-box-content" id="iphone-content">
-                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصاب اپ</div>
+                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصب اپ</div>
                 <div class="install-options" id="iphone-install-options" style="display: none;">
                     <div>v2ray</div>
                     <div>happ</div>
@@ -642,7 +510,7 @@
     <!-- SVG برای انیمیشن منوی همبرگری -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
-            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,theme-toggle 17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
+            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
         </symbol>
     </svg>
 
@@ -666,39 +534,6 @@
             menuToggle.checked = false;
         }
 
-        // تغییر تم
-        function toggleTheme(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const body = document.body;
-            const themeToggle = document.getElementById('theme-toggle');
-            body.classList.toggle('night');
-            // به‌روزرسانی ایموجی
-            themeToggle.textContent = body.classList.contains('night') ? '☀️' : '🌙';
-            // ذخیره تم در localStorage
-            localStorage.setItem('theme', body.classList.contains('night') ? 'night' : 'day');
-            // بستن تمام کادرهای سیستم‌عامل
-            document.querySelectorAll('.os-box-content').forEach(content => {
-                content.classList.remove('active');
-                content.style.display = 'none';
-            });
-            document.querySelectorAll('.os-box-header').forEach(header => {
-                header.classList.remove('active');
-            });
-        }
-
-        // بارگذاری تم ذخیره‌شده
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            const themeToggle = document.getElementById('theme-toggle');
-            if (savedTheme === 'night') {
-                document.body.classList.add('night');
-                themeToggle.textContent = '☀️';
-            } else {
-                themeToggle.textContent = '🌙';
-            }
-        });
-
         // مدیریت کادرهای سیستم‌عامل
         function toggleOsBox(boxId) {
             const boxes = ['android', 'iphone', 'windows'];
@@ -711,7 +546,7 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${boxId} .os-box-header`);
+            const header = document.querySelector(`#${id} .os-box-header`);
             content.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
         }
@@ -801,12 +636,10 @@
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const nav = document.querySelector('.nav');
-            const themeToggle = document.getElementById('theme-toggle');
             const isClickInsideSidebar = sidebar.contains(event.target);
             const isClickInsideNav = nav.contains(event.target);
-            const isClickInsideThemeToggle = themeToggle.contains(event.target);
 
-            if (!isClickInsideSidebar && !isClickInsideNav && !isClickInsideThemeToggle && sidebar.classList.contains('active')) {
+            if (!isClickInsideSidebar && !isClickInsideNav && sidebar.classList.contains('active')) {
                 closeMenu();
             }
         });
