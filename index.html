@@ -280,12 +280,19 @@
             box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
         }
 
+        .slider-counter {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #1A1A1A;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+        }
+
         .slider-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: #007BFF; /* آبی فناوری */
-            color: #FFFFFF;
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -293,6 +300,11 @@
             z-index: 10;
             box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
             transition: background-color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .slider-button:hover {
@@ -305,6 +317,16 @@
 
         .slider-button.next {
             right: 10px;
+        }
+
+        .slider-button svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: #FFFFFF;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         /* استایل برای دستگاه‌های مختلف */
@@ -358,7 +380,18 @@
 
             .slider-button {
                 padding: 8px;
+                width: 32px;
+                height: 32px;
+            }
+
+            .slider-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .slider-counter {
                 font-size: 14px;
+                margin-top: 8px;
             }
         }
 
@@ -391,7 +424,18 @@
 
             .slider-button {
                 padding: 9px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .slider-button svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .slider-counter {
                 font-size: 15px;
+                margin-top: 9px;
             }
         }
 
@@ -403,7 +447,18 @@
 
             .slider-button {
                 padding: 10px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .slider-button svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .slider-counter {
                 font-size: 16px;
+                margin-top: 10px;
             }
         }
 
@@ -466,8 +521,17 @@
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('android', -1)">قبلی</button>
-                    <button class="slider-button next" onclick="moveSlider('android', 1)">بعدی</button>
+                    <button class="slider-button prev" onclick="moveSlider('android', -1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="slider-button next" onclick="moveSlider('android', 1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-counter" id="android-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
@@ -498,8 +562,17 @@
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)">قبلی</button>
-                    <button class="slider-button next" onclick="moveSlider('iphone', 1)">بعدی</button>
+                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="slider-button next" onclick="moveSlider('iphone', 1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-counter" id="iphone-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
@@ -530,8 +603,17 @@
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+9" alt="تصویر 9">
                         <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+10" alt="تصویر 10">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('windows', -1)">قبلی</button>
-                    <button class="slider-button next" onclick="moveSlider('windows', 1)">بعدی</button>
+                    <button class="slider-button prev" onclick="moveSlider('windows', -1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="slider-button next" onclick="moveSlider('windows', 1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-counter" id="windows-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
@@ -606,8 +688,10 @@
         function moveSlider(boxId, direction) {
             const sliderImages = document.getElementById(`${boxId}-slider-images`);
             const images = sliderImages.querySelectorAll('.slider-image');
+            const counter = document.getElementById(`${boxId}-slider-counter`);
             currentSlides[boxId] = (currentSlides[boxId] + direction + images.length) % images.length;
             sliderImages.style.transform = `translateX(-${currentSlides[boxId] * 100}%)`;
+            counter.textContent = `تصویر ${currentSlides[boxId] + 1}/10`;
         }
 
         // پشتیبانی از کشیدن (Drag) برای اسلایدر
