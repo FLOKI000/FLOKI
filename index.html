@@ -58,15 +58,18 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             width: calc(100% - 24px);
+            height: 48px;
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
-            user-select: none;
+            touch-action: manipulation;
+            pointer-events: auto;
+            box-sizing: border-box;
         }
 
         body.dark-theme .theme-toggle {
             background-color: #4FC3F7; /* آبی روشن (شب) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -81,35 +84,44 @@
 
         /* استایل ظرف منوی همبرگری */
         .nav-container {
-            margin: 12px;
-            padding: 12px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1002;
             background-color: #007BFF; /* آبی فناوری (روز) */
-            color: #FFFFFF;
             border: 2px solid #00BC97; /* سبز فیروزه‌ای */
-            border-radius: 10px;
-            width: calc(100% - 24px);
+            border-radius: 15px;
+            width: 60px;
+            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            transition: width 0.2s ease, height 0.2s ease, background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            user-select: none;
-            will-change: transform, background-color;
+            will-change: width, height, transform, background-color;
         }
 
         body.dark-theme .nav-container {
             background-color: #4FC3F7; /* آبی روشن (شب) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .nav-container:hover {
+        .sidebar.active .nav-container {
+            width: calc(100% - 24px);
+            height: 48px;
+            margin: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            transform: scale(1);
+        }
+
+        .sidebar.active .nav-container:hover {
             background-color: #005BBB; /* آبی تیره‌تر (روز) */
             transform: scale(1.05);
         }
 
-        body.dark-theme .nav-container:hover {
+        body.dark-theme .sidebar.active .nav-container:hover {
             background-color: #0288D1; /* آبی تیره‌تر (شب) */
         }
 
@@ -122,6 +134,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
+        }
+
+        .sidebar.active .nav {
+            width: 30px;
+            height: 30px;
         }
 
         .nav svg {
@@ -130,17 +148,6 @@
             stroke-width: 7px;
             stroke-linecap: round;
             stroke-linejoin: round;
-        }
-
-        .nav svg use:nth-of-type(1) {
-            opacity: 1;
-            stroke-dashoffset: 221;
-            stroke-dasharray: 46 249;
-            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
-        }
-
-        .nav svg use:nth-of-type(2) {
-            animation: stroke-animation-reverse 0.8s ease-out forwards;
         }
 
         .nav input {
@@ -188,7 +195,7 @@
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
-            padding-top: 20px;
+            padding-top: 10px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
         }
@@ -217,14 +224,16 @@
             cursor: pointer;
             transform: scale(1);
             width: calc(100% - 24px);
+            height: 48px;
             box-sizing: border-box;
+            z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
         }
 
         body.dark-theme .sidebar a {
             background-color: #4FC3F7; /* آبی روشن (شب) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -237,7 +246,7 @@
             background-color: #0288D1; /* آبی تیره‌تر (شب) */
         }
 
-        /* استایل محتوای اصلی */
+        /* استایل محتوای اصلی (بدون تغییر) */
         .content {
             position: relative;
             top: 10px;
@@ -245,7 +254,7 @@
             text-align: center;
         }
 
-        /* استایل کادر مقدمه */
+        /* استایل کادر مقدمه (بدون تغییر) */
         .section {
             margin: 20px auto;
             padding: 20px;
@@ -263,7 +272,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* استایل کادرهای سیستم‌عامل */
+        /* استایل کادرهای سیستم‌عامل (بدون تغییر) */
         .os-box {
             margin: 20px auto;
             padding: 20px;
@@ -279,7 +288,7 @@
 
         body.dark-theme .os-box {
             background-color: rgba(50, 50, 50, 0.95);
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -310,7 +319,7 @@
         }
 
         body.dark-theme .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
         }
 
         .os-box-header::after {
@@ -370,10 +379,10 @@
         }
 
         body.dark-theme .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
         }
 
-        /* استایل اسلایدر تصاویر */
+        /* استایل اسلایدر تصاویر (بدون تغییر) */
         .slider {
             position: relative;
             max-width: 100%;
@@ -416,8 +425,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #007BFF; /* آبی فناوری (روز) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
+            border: none;
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
@@ -432,17 +441,16 @@
         }
 
         body.dark-theme .slider-button {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .slider-button:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         body.dark-theme .slider-button:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+            background-color: #009B7D;
         }
 
         .slider-button svg {
@@ -475,11 +483,22 @@
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle, .nav-container {
+            .sidebar a, .theme-toggle, .sidebar.active .nav-container {
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
                 width: calc(100% - 16px);
+                height: 40px;
+            }
+
+            .nav-container {
+                width: 50px;
+                height: 50px;
+            }
+
+            .nav {
+                width: 24px;
+                height: 24px;
             }
 
             .section, .os-box {
@@ -516,18 +535,19 @@
             .sidebar {
                 width: 120px;
                 right: -120px;
-                padding-top: 15px;
+                padding-top: 10px;
             }
 
             .sidebar.active {
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle, .nav-container {
+            .sidebar a, .theme-toggle, .sidebar.active .nav-container {
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
                 width: calc(100% - 20px);
+                height: 44px;
             }
 
             .section, .os-box {
@@ -588,16 +608,17 @@
 <body>
     <div class="offline-message">شما آفلاین هستید!</div>
 
-    <div class="sidebar" id="sidebar">
-        <div class="nav-container" id="nav-container">
-            <div class="nav">
-                <input type="checkbox" id="menu-toggle" onclick="toggleMenu()">
-                <svg>
-                    <use xlink:href="#menu" />
-                    <use xlink:href="#menu" />
-                </svg>
-            </div>
+    <div class="nav-container" id="nav-container" onclick="toggleMenu()">
+        <div class="nav">
+            <input type="checkbox" id="menu-toggle">
+            <svg>
+                <use xlink:href="#menu" />
+                <use xlink:href="#menu" />
+            </svg>
         </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
         <button class="theme-toggle" onclick="toggleTheme(); closeMenu()">🌙</button>
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
@@ -874,18 +895,6 @@
             });
         });
 
-        // پشتیبانی از کلیک و لمس برای دکمه تم
-        const themeToggle = document.querySelector('.theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            toggleTheme();
-            closeMenu();
-        });
-        themeToggle.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            toggleTheme();
-            closeMenu();
-        });
-
         // تشخیص حالت آفلاین
         window.addEventListener('online', () => {
             document.body.classList.remove('offline');
@@ -898,9 +907,9 @@
         // بستن منو با کلیک خارج
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
-            const navContainer = document.getElementById('nav-container');
+            const nav = document.querySelector('.nav');
             const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickInsideNav = navContainer.contains(event.target);
+            const isClickInsideNav = nav.contains(event.target);
 
             if (!isClickInsideSidebar && !isClickInsideNav && sidebar.classList.contains('active')) {
                 closeMenu();
