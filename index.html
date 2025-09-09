@@ -140,8 +140,8 @@
         }
 
         .sidebar a, .sidebar button {
-            margin: 8px; /* فاصله بیشتر */
-            padding: 10px;
+            margin: 12px; /* فاصله بیشتر */
+            padding: 12px; /* هم‌تراز با گزینه‌ها */
             text-decoration: none;
             font-size: 16px;
             color: #000;
@@ -181,14 +181,15 @@
 
         /* استایل محتوای اصلی */
         .content {
-            margin-top: 70px;
+            position: relative;
+            top: 10px; /* هم‌تراز با منوی همبرگری */
             padding: 20px;
             text-align: center;
         }
 
         /* استایل کادر مقدمه */
         .section {
-            margin: 20px auto;
+            margin: 20px auto; /* فاصله بیشتر */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
             backdrop-filter: blur(5px);
@@ -204,7 +205,7 @@
 
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
-            margin: 10px auto;
+            margin: 20px auto; /* فاصله بیشتر */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9); /* شیشه‌ای مات */
             backdrop-filter: blur(5px);
@@ -287,7 +288,7 @@
         /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .sidebar {
-                width: 100px; /* عرض بیشتر */
+                width: 100px;
                 right: -100px;
                 padding-top: 60px;
             }
@@ -297,7 +298,7 @@
             }
 
             .sidebar a, .sidebar button {
-                margin: 6px; /* فاصله بیشتر */
+                margin: 8px;
                 padding: 8px;
                 font-size: 14px;
             }
@@ -321,7 +322,7 @@
 
             .section, .os-box {
                 max-width: 90%;
-                margin: 8px auto; /* فاصله برای موبایل */
+                margin: 12px auto; /* فاصله بیشتر */
             }
 
             .os-box-header::after {
@@ -341,21 +342,21 @@
             }
 
             .sidebar a, .sidebar button {
-                margin: 7px;
-                padding: 9px;
+                margin: 10px;
+                padding: 10px;
                 font-size: 15px;
             }
 
             .section, .os-box {
                 max-width: 80%;
-                margin: 10px auto;
+                margin: 15px auto; /* فاصله بیشتر */
             }
         }
 
         @media (min-width: 1025px) {
             .section, .os-box {
                 max-width: 600px;
-                margin: 10px auto;
+                margin: 20px auto; /* فاصله بیشتر */
             }
         }
     </style>
@@ -372,7 +373,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" onclick="toggleTheme()">تم روز/شب</button>
+        <button class="theme-toggle" onclick="toggleTheme()">تغییر تم</button>
         <a href="#android" class="android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" class="iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" class="windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -440,9 +441,9 @@
             menuToggle.checked = false;
         }
 
-        function toggleTheme() {
+        function toggleTheme(event) {
+            event.stopPropagation(); // جلوگیری از بسته شدن منو
             document.body.classList.toggle('night');
-            closeMenu();
         }
 
         function toggleOsBox(boxId) {
