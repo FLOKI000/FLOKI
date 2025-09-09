@@ -13,7 +13,7 @@
             background-size: cover;
             background-color: rgba(230, 230, 230, 0.95); /* تم روز */
             overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             color: #000;
             direction: rtl;
         }
@@ -173,7 +173,7 @@
             transition: all 0.3s ease;
             cursor: pointer;
             transform: scale(1);
-            width: calc(100% - 24px); /* هم‌ترازی کامل */
+            width: calc(100% - 24px);
             box-sizing: border-box;
             z-index: 2;
         }
@@ -623,7 +623,10 @@
         function toggleTheme(event) {
             event.preventDefault();
             event.stopPropagation();
-            document.body.classList.toggle('night');
+            const body = document.body;
+            body.classList.toggle('night');
+            // ذخیره تم در localStorage برای ماندگاری
+            localStorage.setItem('theme', body.classList.contains('night') ? 'night' : 'day');
             // بستن تمام کادرهای سیستم‌عامل هنگام تغییر تم
             document.querySelectorAll('.os-box-content').forEach(content => {
                 content.classList.remove('active');
@@ -633,6 +636,14 @@
                 header.classList.remove('active');
             });
         }
+
+        // بارگذاری تم ذخیره‌شده هنگام بارگذاری صفحه
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'night') {
+                document.body.classList.add('night');
+            }
+        });
 
         // مدیریت کادرهای سیستم‌عامل
         function toggleOsBox(boxId) {
