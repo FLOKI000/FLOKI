@@ -9,9 +9,7 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background: url('https://images.unsplash.com/photo-1516321310768-61d7c93e7081?auto=format&fit=crop&q=80') no-repeat center center fixed;
-            background-size: cover;
-            background-color: rgba(230, 230, 230, 0.95); /* تم روز */
+            background-color: #FBE4D8; /* تم روز */
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
             color: #000;
@@ -19,8 +17,7 @@
         }
 
         body.night {
-            background-color: rgba(18, 18, 18, 0.95); /* تم شب */
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
+            background-color: #31323e; /* تم شب */
             color: #fff;
         }
 
@@ -96,7 +93,6 @@
 
         body.night .nav-container {
             background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .nav-container.active {
@@ -189,7 +185,6 @@
 
         body.night .sidebar {
             background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .sidebar.active {
@@ -262,7 +257,6 @@
 
         body.night .section {
             background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
             box-shadow: 0 0 10px #ffffff;
         }
 
@@ -279,7 +273,6 @@
 
         body.night .os-box {
             background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .os-box-header {
@@ -336,7 +329,6 @@
 
         body.night .os-box-content {
             background-color: rgba(40, 40, 40, 0.9);
-            background-image: linear-gradient(45deg, #121212, #1e1e1e);
         }
 
         .os-box-content.active {
@@ -585,7 +577,7 @@
         <div class="os-box iphone" id="iphone">
             <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
             <div class="os-box-content" id="iphone-content">
-                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصب اپ</div>
+                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصاب اپ</div>
                 <div class="install-options" id="iphone-install-options" style="display: none;">
                     <div>v2ray</div>
                     <div>happ</div>
@@ -650,7 +642,7 @@
     <!-- SVG برای انیمیشن منوی همبرگری -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
-            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
+            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,theme-toggle 17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
         </symbol>
     </svg>
 
