@@ -27,6 +27,7 @@
             padding: 10px;
             border-radius: 5px;
             z-index: 1003;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         body.offline .offline-message {
@@ -48,7 +49,7 @@
             justify-content: center;
             align-items: center;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container.active {
@@ -133,6 +134,7 @@
             transition: right 0.3s ease;
             z-index: 1001;
             padding-top: 80px;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .sidebar.active {
@@ -155,6 +157,7 @@
             width: calc(100% - 24px);
             box-sizing: border-box;
             z-index: 2;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .sidebar a:hover {
@@ -178,7 +181,7 @@
             backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 0 10px #ffffff;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease;
         }
 
@@ -190,6 +193,7 @@
             backdrop-filter: blur(5px);
             border-radius: 15px;
             max-width: 600px;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease;
         }
 
@@ -205,6 +209,7 @@
             padding: 10px;
             border-radius: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .os-box-header:hover {
@@ -229,7 +234,7 @@
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 0 10px #ffffff;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease;
         }
 
@@ -244,6 +249,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .os-box-content div:hover {
@@ -269,6 +275,7 @@
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .slider-button {
@@ -282,6 +289,7 @@
             cursor: pointer;
             border-radius: 5px;
             z-index: 10;
+            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.5);
         }
 
         .slider-button.prev {
@@ -543,11 +551,13 @@
                     const header = document.querySelector(`#${id} .os-box-header`);
                     content.classList.remove('active');
                     content.style.display = 'none';
+                    header.classList.remove('active');
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
+            header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
         }
 
