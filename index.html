@@ -9,11 +9,16 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: #E6F0FA; /* آبی روشن فناوری */
+            background-color: #E6F0FA; /* آبی روشن فناوری (روز) */
             overflow-x: hidden;
-            transition: all 0.3s ease;
-            color: #1A1A1A; /* مشکی تیره برای کنتراست */
+            color: #1A1A1A; /* مشکی تیره (روز) */
             direction: rtl;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-theme {
+            background-color: #1E1E1E; /* خاکستری تیره (شب) */
+            color: #E0E0E0; /* خاکستری روشن (شب) */
         }
 
         /* استایل آفلاین */
@@ -22,16 +27,53 @@
             position: fixed;
             top: 60px;
             right: 10px;
-            background-color: #D32F2F; /* قرمز برای جلب توجه */
+            background-color: #D32F2F; /* قرمز (روز) */
             color: #FFFFFF;
             padding: 10px;
             border-radius: 5px;
             z-index: 1003;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-theme .offline-message {
+            background-color: #EF5350; /* قرمز روشن (شب) */
         }
 
         body.offline .offline-message {
             display: block;
+        }
+
+        /* استایل دکمه تغییر تم */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #007BFF; /* آبی فناوری (روز) */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1003;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-theme .theme-toggle {
+            background-color: #4FC3F7; /* آبی روشن (شب) */
+        }
+
+        .theme-toggle:hover {
+            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+        }
+
+        body.dark-theme .theme-toggle:hover {
+            background-color: #0288D1; /* آبی تیره‌تر (شب) */
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -41,16 +83,22 @@
             right: 10px;
             z-index: 1002;
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #007BFF; /* حاشیه آبی فناوری */
+            border: 2px solid #007BFF; /* حاشیه آبی (روز) */
             width: 60px;
             height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            transition: width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            will-change: width, height;
+        }
+
+        body.dark-theme .nav-container {
+            background-color: rgba(50, 50, 50, 0.95);
+            border-color: #4FC3F7; /* حاشیه آبی روشن (شب) */
         }
 
         .nav-container.active {
@@ -59,7 +107,7 @@
         }
 
         .nav {
-            --color: #007BFF; /* آبی فناوری */
+            --color: #007BFF; /* آبی فناوری (روز) */
             background: none;
             width: 50px;
             height: 50px;
@@ -68,6 +116,10 @@
             justify-content: center;
             align-items: center;
             margin: 0 5px;
+        }
+
+        body.dark-theme .nav {
+            --color: #4FC3F7; /* آبی روشن (شب) */
         }
 
         .nav svg {
@@ -82,11 +134,11 @@
             opacity: 1;
             stroke-dashoffset: 221;
             stroke-dasharray: 46 249;
-            transition: stroke-dashoffset .12s linear .2s, stroke-dasharray .12s linear .2s, opacity 0s linear .2s;
+            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
         }
 
         .nav svg use:nth-of-type(2) {
-            animation: stroke-animation-reverse 1.2s ease-out forwards;
+            animation: stroke-animation-reverse 0.8s ease-out forwards;
         }
 
         .nav input {
@@ -102,11 +154,11 @@
             stroke-dashoffset: 175;
             stroke-dasharray: 0 295;
             opacity: 0;
-            transition: stroke-dashoffset .07s linear .07s, stroke-dasharray .07s linear .07s, opacity 0s linear .14s;
+            transition: stroke-dashoffset .05s linear .05s, stroke-dasharray .05s linear .05s, opacity 0s linear .1s;
         }
 
         .nav input:checked + svg use:nth-of-type(2) {
-            animation: stroke-animation 1.2s ease-out forwards;
+            animation: stroke-animation 0.8s ease-out forwards;
         }
 
         @keyframes stroke-animation {
@@ -131,11 +183,16 @@
             top: 0;
             right: -140px;
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
-            transition: right 0.3s ease;
+            backdrop-filter: blur(4px);
+            transition: right 0.2s ease;
             z-index: 1001;
             padding-top: 80px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            will-change: right;
+        }
+
+        body.dark-theme .sidebar {
+            background-color: rgba(50, 50, 50, 0.95);
         }
 
         .sidebar.active {
@@ -152,19 +209,29 @@
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: background-color 0.2s ease, transform 0.2s ease, color 0.3s ease;
             cursor: pointer;
             transform: scale(1);
             width: calc(100% - 24px);
             box-sizing: border-box;
             z-index: 2;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            will-change: transform, background-color;
+        }
+
+        body.dark-theme .sidebar a {
+            color: #E0E0E0;
+            background-color: rgba(80, 80, 80, 0.3);
         }
 
         .sidebar a:hover {
-            background-color: #005BBB; /* آبی تیره‌تر */
+            background-color: #005BBB; /* آبی تیره‌تر (روز) */
             color: #FFFFFF;
             transform: scale(1.05);
+        }
+
+        body.dark-theme .sidebar a:hover {
+            background-color: #0288D1; /* آبی تیره‌تر (شب) */
         }
 
         /* استایل محتوای اصلی */
@@ -180,11 +247,16 @@
             margin: 20px auto;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(4px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.5s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease;
+            will-change: opacity, transform;
+        }
+
+        body.dark-theme .section {
+            background-color: rgba(50, 50, 50, 0.95);
         }
 
         /* استایل کادرهای سیستم‌عامل */
@@ -192,11 +264,16 @@
             margin: 20px auto;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(4px);
             border-radius: 15px;
             max-width: 600px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.5s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease;
+            will-change: opacity, transform;
+        }
+
+        body.dark-theme .os-box {
+            background-color: rgba(50, 50, 50, 0.95);
         }
 
         .os-box-header {
@@ -210,20 +287,33 @@
             position: relative;
             padding: 10px;
             border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            will-change: transform, background-color;
+        }
+
+        body.dark-theme .os-box-header {
+            color: #E0E0E0;
         }
 
         .os-box-header:hover {
-            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف */
+            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف (روز) */
             transform: scale(1.02);
+        }
+
+        body.dark-theme .os-box-header:hover {
+            background-color: rgba(79, 195, 247, 0.2); /* آبی روشن شفاف (شب) */
         }
 
         .os-box-header::after {
             content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23007BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
             position: absolute;
             left: 20px;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
+        }
+
+        body.dark-theme .os-box-header::after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%234FC3F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -236,8 +326,13 @@
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.5s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease;
+            will-change: opacity, transform;
+        }
+
+        body.dark-theme .os-box-content {
+            background-color: rgba(50, 50, 50, 0.95);
         }
 
         .os-box-content.active {
@@ -250,13 +345,22 @@
             background-color: rgba(249, 249, 249, 0.9);
             border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            will-change: transform, background-color;
+        }
+
+        body.dark-theme .os-box-content div {
+            background-color: rgba(80, 80, 80, 0.9);
         }
 
         .os-box-content div:hover {
-            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف */
+            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف (روز) */
             transform: scale(1.02);
+        }
+
+        body.dark-theme .os-box-content div:hover {
+            background-color: rgba(79, 195, 247, 0.2); /* آبی روشن شفاف (شب) */
         }
 
         /* استایل اسلایدر تصاویر */
@@ -268,7 +372,8 @@
 
         .slider-images {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .slider-image {
@@ -277,7 +382,7 @@
             height: 300px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
         .slider-counter {
@@ -286,20 +391,25 @@
             font-size: 16px;
             color: #1A1A1A;
             font-family: 'Vazirmatn', Arial, sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-theme .slider-counter {
+            color: #E0E0E0;
         }
 
         .slider-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #007BFF; /* آبی فناوری */
+            background-color: #007BFF; /* آبی فناوری (روز) */
             border: none;
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
             z-index: 10;
-            box-shadow: 0 4px 100px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s ease;
             width: 40px;
             height: 40px;
             display: flex;
@@ -307,8 +417,16 @@
             align-items: center;
         }
 
+        body.dark-theme .slider-button {
+            background-color: #4FC3F7; /* آبی روشن (شب) */
+        }
+
         .slider-button:hover {
-            background-color: #005BBB; /* آبی تیره‌تر */
+            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+        }
+
+        body.dark-theme .slider-button:hover {
+            background-color: #0288D1; /* آبی تیره‌تر (شب) */
         }
 
         .slider-button.prev {
@@ -365,6 +483,12 @@
                 margin: 0 5px;
             }
 
+            .theme-toggle {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
             .section, .os-box {
                 max-width: 90%;
                 margin: 12px auto;
@@ -411,6 +535,12 @@
                 padding: 10px;
                 font-size: 15px;
                 width: calc(100% - 20px);
+            }
+
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
             }
 
             .section, .os-box {
@@ -469,6 +599,7 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <div class="offline-message">شما آفلاین هستید!</div>
 
     <div class="nav-container" id="nav-container">
@@ -627,6 +758,24 @@
     </svg>
 
     <script>
+        // مدیریت تغییر تم
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
+            localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+        }
+
+        // بارگذاری تم ذخیره‌شده
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+        });
+
         // مدیریت منوی همبرگری
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
@@ -659,7 +808,7 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${boxId} .os-box-header`);
+            const header = document.querySelector(`#${id} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
