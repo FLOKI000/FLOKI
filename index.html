@@ -8,8 +8,13 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* تم روز پیش‌فرض */
             overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        body.night {
+            background-color: #1a1a1a; /* تم شب */
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -18,7 +23,8 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.7); /* شیشه‌ای مات */
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             width: 50px;
             height: 50px;
@@ -26,6 +32,7 @@
             justify-content: center;
             align-items: center;
             transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+            box-shadow: 0 0 10px #00ffcc; /* نئون خاکستری */
         }
 
         .nav-container.active {
@@ -131,32 +138,44 @@
             position: fixed;
             top: 0;
             right: -100px;
-            background-color: #444;
+            background-color: rgba(68, 68, 68, 0.7); /* شیشه‌ای مات */
+            backdrop-filter: blur(10px);
             transition: right 0.3s ease;
             z-index: 1001;
             padding-top: 70px;
+            box-shadow: 0 0 10px #00ffcc; /* نئون خاکستری */
         }
 
         .sidebar.active {
             right: 0;
         }
 
-        .sidebar a {
+        .sidebar a, .sidebar button {
             margin: 5px;
             padding: 10px;
             text-decoration: none;
             font-size: 16px;
             color: white;
             display: block;
-            background-color: #555;
+            background-color: transparent;
+            border: none;
             border-radius: 5px;
             text-align: center;
             transition: background 0.3s;
+            cursor: pointer;
         }
 
-        .sidebar a:hover {
-            background-color: #666;
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
+
+        /* رنگ‌های نئونی برای گزینه‌های منو */
+        .sidebar a.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
+        .sidebar a.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
+        .sidebar a.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
+        .sidebar a.telegram { box-shadow: 0 0 8px #0088cc; } /* آبی نئونی */
+        .sidebar a.github { box-shadow: 0 0 8px #800080; } /* بنفش نئونی */
+        .sidebar button.theme-toggle { box-shadow: 0 0 8px #ff00ff; } /* صورتی نئونی برای دکمه تم */
 
         /* استایل محتوای اصلی */
         .content {
@@ -169,19 +188,30 @@
         .section {
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.7); /* شیشه‌ای مات */
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             max-width: 600px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
+        }
+
+        body.night .section {
+            background-color: rgba(40, 40, 40, 0.7); /* شیشه‌ای مات برای شب */
         }
 
         /* استایل پوشه سیستم‌عامل‌ها */
         .os-folder {
             margin: 20px auto;
             padding: 20px;
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.7); /* شیشه‌ای مات */
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             max-width: 600px;
+            box-shadow: 0 0 10px #00ffcc; /* خاکستری نئونی */
+        }
+
+        body.night .os-folder {
+            background-color: rgba(30, 30, 30, 0.7); /* شیشه‌ای مات برای شب */
         }
 
         .os-folder-header {
@@ -218,7 +248,7 @@
         .os-box {
             margin: 10px 5px;
             padding: 15px;
-            background-color: #444;
+            background-color: transparent;
             border-radius: 10px;
             text-align: center;
             color: white;
@@ -227,17 +257,27 @@
         }
 
         .os-box:hover {
-            background-color: #555;
+            background-color: rgba(255, 255, 255, 0.2);
         }
+
+        /* رنگ‌های نئونی برای گزینه‌های پوشه */
+        .os-box.android { box-shadow: 0 0 8px #00ff00; } /* سبز نئونی */
+        .os-box.iphone { box-shadow: 0 0 8px #c0c0c0; } /* نقره‌ای نئونی */
+        .os-box.windows { box-shadow: 0 0 8px #00b7eb; } /* آبی تیره نئونی */
 
         /* استایل کادرهای زیرمجموعه */
         .sub-section {
             display: none;
             margin: 10px 5px;
             padding: 15px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.7); /* شیشه‌ای مات */
+            backdrop-filter: blur(10px);
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px #ffffff; /* سفید نئونی */
+        }
+
+        body.night .sub-section {
+            background-color: rgba(40, 40, 40, 0.7); /* شیشه‌ای مات برای شب */
         }
 
         .sub-section.active {
@@ -247,13 +287,21 @@
         .sub-section div {
             margin: 10px 0;
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: rgba(249, 249, 249, 0.7);
             border-radius: 5px;
             cursor: pointer;
         }
 
+        body.night .sub-section div {
+            background-color: rgba(60, 60, 60, 0.7);
+        }
+
         .sub-section div:hover {
-            background-color: #e0e0e0;
+            background-color: rgba(224, 224, 224, 0.7);
+        }
+
+        body.night .sub-section div:hover {
+            background-color: rgba(80, 80, 80, 0.7);
         }
 
         /* استایل برای صفحه‌نمایش‌های کوچک */
@@ -268,7 +316,7 @@
                 right: 0;
             }
 
-            .sidebar a {
+            .sidebar a, .sidebar button {
                 margin: 3px;
                 padding: 8px;
                 font-size: 14px;
@@ -318,11 +366,12 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">اندروید</a>
-        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">آیفون</a>
-        <a href="#os-folder" onclick="closeMenu(); toggleOsFolder()">ویندوز</a>
-        <a href="https://t.me/your_telegram_id" target="_blank" onclick="closeMenu()">تلگرام</a>
-        <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
+        <button class="theme-toggle" onclick="toggleTheme()">تم روز/شب</button>
+        <a href="#os-folder" class="android" onclick="closeMenu(); toggleOsFolder()">اندروید</a>
+        <a href="#os-folder" class="iphone" onclick="closeMenu(); toggleOsFolder()">آیفون</a>
+        <a href="#os-folder" class="windows" onclick="closeMenu(); toggleOsFolder()">ویندوز</a>
+        <a href="https://t.me/your_telegram_id" class="telegram" target="_blank" onclick="closeMenu()">تلگرام</a>
+        <a href="https://github.com/your_username" class="github" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
     </div>
 
     <div class="content">
@@ -334,21 +383,21 @@
         <div class="os-folder" id="os-folder">
             <div class="os-folder-header" onclick="toggleOsFolder()">سیستم‌عامل‌ها</div>
             <div class="os-options" id="os-options">
-                <div class="os-box" id="android" onclick="toggleSubSection('android-sub', event)">اندروید</div>
+                <div class="os-box android" id="android" onclick="toggleSubSection('android-sub', event)">اندروید</div>
                 <div class="sub-section" id="android-sub">
                     <h3>اندروید</h3>
                     <div>نصب اپ</div>
                     <div>آموزش با ویدیو</div>
                     <div>آموزش با تصاویر</div>
                 </div>
-                <div class="os-box" id="iphone" onclick="toggleSubSection('iphone-sub', event)">آیفون</div>
+                <div class="os-box iphone" id="iphone" onclick="toggleSubSection('iphone-sub', event)">آیفون</div>
                 <div class="sub-section" id="iphone-sub">
                     <h3>آیفون</h3>
                     <div>نصب اپ</div>
                     <div>آموزش با ویدیو</div>
                     <div>آموزش با تصاویر</div>
                 </div>
-                <div class="os-box" id="windows" onclick="toggleSubSection('windows-sub', event)">ویندوز</div>
+                <div class="os-box windows" id="windows" onclick="toggleSubSection('windows-sub', event)">ویندوز</div>
                 <div class="sub-section" id="windows-sub">
                     <h3>ویندوز</h3>
                     <div>نصب اپ</div>
@@ -385,6 +434,11 @@
             menuToggle.checked = false;
         }
 
+        function toggleTheme() {
+            document.body.classList.toggle('night');
+            closeMenu();
+        }
+
         function toggleOsFolder() {
             const osOptions = document.getElementById('os-options');
             const osHeader = document.querySelector('.os-folder-header');
@@ -393,12 +447,10 @@
         }
 
         function toggleSubSection(sectionId, event) {
-            event.stopPropagation(); // جلوگیری از بسته شدن پوشه هنگام کلیک روی گزینه‌ها
+            event.stopPropagation();
             const subSection = document.getElementById(sectionId);
             const isActive = subSection.classList.contains('active');
-            // ابتدا همه زیربخش‌ها را ببند
             document.querySelectorAll('.sub-section').forEach(section => section.classList.remove('active'));
-            // اگر زیربخش فعال نبود، آن را باز کن
             if (!isActive) {
                 subSection.classList.add('active');
             }
