@@ -182,13 +182,28 @@
             background-color: #333;
             border-radius: 15px;
             max-width: 600px;
-            cursor: pointer;
         }
 
         .os-folder-header {
             font-size: 18px;
             color: white;
             text-align: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .os-folder-header::after {
+            content: '▼';
+            position: absolute;
+            left: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .os-folder-header.active::after {
+            transform: rotate(180deg);
         }
 
         .os-options {
@@ -284,6 +299,10 @@
                 margin: 5px 3px;
                 padding: 10px;
             }
+
+            .os-folder-header::after {
+                left: 15px;
+            }
         }
     </style>
 </head>
@@ -312,24 +331,24 @@
             <p>این یک وب‌سایت نمونه است که ویژگی‌های مختلف سیستم‌عامل‌ها را نمایش می‌دهد.</p>
         </div>
 
-        <div class="os-folder" id="os-folder" onclick="toggleOsFolder()">
-            <div class="os-folder-header">سیستم‌عامل‌ها</div>
+        <div class="os-folder" id="os-folder">
+            <div class="os-folder-header" onclick="toggleOsFolder()">سیستم‌عامل‌ها</div>
             <div class="os-options" id="os-options">
-                <div class="os-box" id="android" onclick="showSubSection('android-sub', event)">اندروید</div>
-                <div class="os-box" id="iphone" onclick="showSubSection('iphone-sub', event)">آیفون</div>
-                <div class="os-box" id="windows" onclick="showSubSection('windows-sub', event)">ویندوز</div>
+                <div class="os-box" id="android" onclick="toggleSubSection('android-sub', event)">اندروید</div>
                 <div class="sub-section" id="android-sub">
                     <h3>اندروید</h3>
                     <div>نصب اپ</div>
                     <div>آموزش با ویدیو</div>
                     <div>آموزش با تصاویر</div>
                 </div>
+                <div class="os-box" id="iphone" onclick="toggleSubSection('iphone-sub', event)">آیفون</div>
                 <div class="sub-section" id="iphone-sub">
                     <h3>آیفون</h3>
                     <div>نصب اپ</div>
                     <div>آموزش با ویدیو</div>
                     <div>آموزش با تصاویر</div>
                 </div>
+                <div class="os-box" id="windows" onclick="toggleSubSection('windows-sub', event)">ویندوز</div>
                 <div class="sub-section" id="windows-sub">
                     <h3>ویندوز</h3>
                     <div>نصب اپ</div>
@@ -368,14 +387,21 @@
 
         function toggleOsFolder() {
             const osOptions = document.getElementById('os-options');
+            const osHeader = document.querySelector('.os-folder-header');
             osOptions.classList.toggle('active');
+            osHeader.classList.toggle('active');
         }
 
-        function showSubSection(sectionId, event) {
+        function toggleSubSection(sectionId, event) {
             event.stopPropagation(); // جلوگیری از بسته شدن پوشه هنگام کلیک روی گزینه‌ها
-            const subSections = document.querySelectorAll('.sub-section');
-            subSections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+            const subSection = document.getElementById(sectionId);
+            const isActive = subSection.classList.contains('active');
+            // ابتدا همه زیربخش‌ها را ببند
+            document.querySelectorAll('.sub-section').forEach(section => section.classList.remove('active'));
+            // اگر زیربخش فعال نبود، آن را باز کن
+            if (!isActive) {
+                subSection.classList.add('active');
+            }
         }
 
         // بستن منو با کلیک یا ضربه روی صفحه
