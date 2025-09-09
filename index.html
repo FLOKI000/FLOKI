@@ -48,7 +48,7 @@
         .theme-toggle {
             margin: 12px;
             padding: 12px;
-            background-color: #007BFF; /* آبی فناوری (روز) */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             color: #FFFFFF;
             border: none;
             border-radius: 10px; /* مستطیل با لبه‌های گرد */
@@ -64,17 +64,17 @@
         }
 
         body.dark-theme .theme-toggle {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .theme-toggle:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
             transform: scale(1.05);
         }
 
         body.dark-theme .theme-toggle:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -86,7 +86,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #007BFF; /* حاشیه آبی (روز) */
+            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
             width: 60px;
             height: 60px;
             display: flex;
@@ -99,7 +99,7 @@
 
         body.dark-theme .nav-container {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #4FC3F7; /* حاشیه آبی روشن (شب) */
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -109,7 +109,6 @@
         }
 
         .nav {
-            --color: #007BFF; /* آبی فناوری (روز) */
             background: none;
             width: 50px;
             height: 50px;
@@ -120,13 +119,9 @@
             margin: 0 5px;
         }
 
-        body.dark-theme .nav {
-            --color: #4FC3F7; /* آبی روشن (شب) */
-        }
-
         .nav svg {
             fill: none;
-            stroke: var(--color);
+            stroke: #00BC97; /* سبز فیروزه‌ای */
             stroke-width: 7px;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -209,7 +204,7 @@
             font-size: 16px;
             color: #1A1A1A;
             display: block;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             border-radius: 10px;
             text-align: center;
             transition: background-color 0.2s ease, transform 0.2s ease, color 0.3s ease;
@@ -224,18 +219,18 @@
 
         body.dark-theme .sidebar a {
             color: #E0E0E0;
-            background-color: rgba(80, 80, 80, 0.3);
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar a:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
             color: #FFFFFF;
             transform: scale(1.05);
         }
 
         body.dark-theme .sidebar a:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
         }
 
         /* استایل محتوای اصلی */
@@ -304,23 +299,23 @@
         }
 
         .os-box-header:hover {
-            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف (روز) */
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-header:hover {
-            background-color: rgba(79, 195, 247, 0.2); /* آبی روشن شفاف (شب) */
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
         .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23007BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300BC97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
             position: absolute;
             left: 20px;
             transition: transform 0.2s ease;
         }
 
         body.dark-theme .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%234FC3F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300BC97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -364,12 +359,12 @@
         }
 
         .os-box-content div:hover {
-            background-color: rgba(0, 123, 255, 0.2); /* آبی روشن شفاف (روز) */
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-content div:hover {
-            background-color: rgba(79, 195, 247, 0.2); /* آبی روشن شفاف (شب) */
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
         /* استایل اسلایدر تصاویر */
@@ -415,7 +410,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #007BFF; /* آبی فناوری (روز) */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -431,31 +426,23 @@
         }
 
         body.dark-theme .slider-button {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .slider-button:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
         }
 
         body.dark-theme .slider-button:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
-        }
-
-        .slider-button.prev {
-            left: 10px;
-        }
-
-        .slider-button.next {
-            right: 10px;
+            background-color: #009973; /* سبز تیره‌تر برای شناور */
         }
 
         .slider-button svg {
             width: 28px;
             height: 28px;
             fill: none;
-            stroke: #FFFFFF;
+            stroke: #FFFFFF; /* سفید برای آیکون */
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
