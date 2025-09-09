@@ -134,7 +134,7 @@
             background-color: #444;
             transition: right 0.3s ease;
             z-index: 1001;
-            padding-top: 20px;
+            padding-top: 70px; /* فاصله برای شروع گزینه‌ها زیر منوی همبرگری */
         }
 
         .sidebar.active {
@@ -142,16 +142,20 @@
         }
 
         .sidebar a {
-            padding: 10px 15px;
+            margin: 5px;
+            padding: 10px;
             text-decoration: none;
             font-size: 16px;
             color: white;
             display: block;
+            background-color: #555;
+            border-radius: 5px;
+            text-align: center;
             transition: background 0.3s;
         }
 
         .sidebar a:hover {
-            background-color: #555;
+            background-color: #666;
         }
 
         /* استایل محتوای اصلی */
@@ -198,7 +202,7 @@
             background-color: #555;
         }
 
-        /* استایل کادرهای زیرمجموعه (نصب اپ، آموزش با ویدیو، آموزش با تصاویر) */
+        /* استایل کادرهای زیرمجموعه */
         .sub-section {
             display: none;
             margin: 20px auto;
@@ -230,10 +234,17 @@
             .sidebar {
                 width: 80px;
                 right: -80px;
+                padding-top: 60px;
             }
 
             .sidebar.active {
                 right: 0;
+            }
+
+            .sidebar a {
+                margin: 3px;
+                padding: 8px;
+                font-size: 14px;
             }
 
             .nav-container {
@@ -294,9 +305,9 @@
         </div>
 
         <div class="os-container">
-            <div class="os-box" onclick="showSubSection('android-sub')">اندروید</div>
-            <div class="os-box" onclick="showSubSection('iphone-sub')">آیفون</div>
-            <div class="os-box" onclick="showSubSection('windows-sub')">ویندوز</div>
+            <div class="os-box" id="android" onclick="showSubSection('android-sub')">اندروید</div>
+            <div class="os-box" id="iphone" onclick="showSubSection('iphone-sub')">آیفون</div>
+            <div class="os-box" id="windows" onclick="showSubSection('windows-sub')">ویندوز</div>
         </div>
 
         <div class="sub-section" id="android-sub">
