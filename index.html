@@ -11,7 +11,7 @@
             font-family: 'Vazirmatn', Arial, sans-serif;
             background: url('https://images.unsplash.com/photo-1516321310768-61d7c93e7081?auto=format&fit=crop&q=80') no-repeat center center fixed;
             background-size: cover;
-            background-color: rgba(230, 230, 230, 0.95); /* تم روز با شفافیت */
+            background-color: rgba(230, 230, 230, 0.95); /* تم روز */
             overflow-x: hidden;
             transition: background-color 0.5s ease, color 0.5s ease;
             color: #000;
@@ -173,6 +173,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
             transform: scale(1);
+            width: calc(100% - 24px); /* هم‌ترازی کامل */
+            box-sizing: border-box;
+            z-index: 2;
         }
 
         body.night .sidebar a, body.night .sidebar button {
@@ -389,6 +392,7 @@
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
+                width: calc(100% - 16px);
             }
 
             .nav-container {
@@ -437,6 +441,7 @@
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
+                width: calc(100% - 20px);
             }
 
             .section, .os-box {
@@ -616,11 +621,13 @@
 
         // تغییر تم
         function toggleTheme(event) {
+            event.preventDefault();
             event.stopPropagation();
             document.body.classList.toggle('night');
+            // بستن تمام کادرهای سیستم‌عامل هنگام تغییر تم
             document.querySelectorAll('.os-box-content').forEach(content => {
-                content.style.display = 'none';
                 content.classList.remove('active');
+                content.style.display = 'none';
             });
             document.querySelectorAll('.os-box-header').forEach(header => {
                 header.classList.remove('active');
@@ -635,13 +642,13 @@
                     const content = document.getElementById(`${id}-content`);
                     const header = document.querySelector(`#${id} .os-box-header`);
                     content.classList.remove('active');
-                    header.classList.remove('active');
+                    content.style.display = 'none';
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
             const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
-            header.classList.toggle('active');
+            content.style.display = content.classList.contains('active') ? 'block' : 'none';
         }
 
         // مدیریت گزینه‌های نصب اپ
