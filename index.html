@@ -46,33 +46,31 @@
 
         /* استایل دکمه تغییر تم */
         .theme-toggle {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: 40px;
-            height: 40px;
+            margin: 12px;
+            padding: 12px;
             background-color: #007BFF; /* آبی فناوری (روز) */
             color: #FFFFFF;
             border: none;
-            border-radius: 50%;
+            border-radius: 10px; /* مستطیل با لبه‌های گرد */
             cursor: pointer;
-            z-index: 1003;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            width: calc(100% - 24px);
+            display: block;
+            transform: scale(1);
+            will-change: transform, background-color;
         }
 
         body.dark-theme .theme-toggle {
-            background-color: rgba(50, 50, 50, 0.95); /* آبی روشن (شب) */
+            background-color: #4FC3F7; /* آبی روشن (شب) */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid #007BFF;
         }
 
         .theme-toggle:hover {
             background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            transform: scale(1.05);
         }
 
         body.dark-theme .theme-toggle:hover {
@@ -475,7 +473,7 @@
                 right: 0;
             }
 
-            .sidebar a {
+            .sidebar a, .theme-toggle {
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
@@ -497,12 +495,6 @@
                 width: 40px;
                 height: 40px;
                 margin: 0 5px;
-            }
-
-            .theme-toggle {
-                width: 30px;
-                height: 30px;
-                font-size: 16px;
             }
 
             .section, .os-box {
@@ -546,17 +538,11 @@
                 right: 0;
             }
 
-            .sidebar a {
+            .sidebar a, .theme-toggle {
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
                 width: calc(100% - 20px);
-            }
-
-            .theme-toggle {
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
             }
 
             .section, .os-box {
@@ -615,7 +601,6 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <div class="offline-message">شما آفلاین هستید!</div>
 
     <div class="nav-container" id="nav-container">
@@ -629,6 +614,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
+        <button class="theme-toggle" onclick="toggleTheme(); closeMenu()">🌙</button>
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
