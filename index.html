@@ -50,7 +50,7 @@
             padding: 12px;
             background-color: #00BC97; /* سبز فیروزه‌ای */
             color: #FFFFFF;
-            border: none;
+            border: 1px solid #00BC97; /* حاشیه کاهش‌یافته */
             border-radius: 10px; /* مستطیل با لبه‌های گرد */
             cursor: pointer;
             font-size: 16px;
@@ -65,6 +65,7 @@
 
         body.dark-theme .theme-toggle {
             background-color: #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* حاشیه کاهش‌یافته */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -77,7 +78,41 @@
             background-color: #009B7D; /* سبز تیره‌تر */
         }
 
-        /* استایل ظرف منوی همبرگری */
+        /* استایل دکمه همبرگری در منوی کناری */
+        .menu-toggle-sidebar {
+            margin: 12px;
+            padding: 12px;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
+            color: #FFFFFF;
+            border: 1px solid #00BC97; /* حاشیه کاهش‌یافته */
+            border-radius: 10px; /* مستطیل با لبه‌های گرد */
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            width: calc(100% - 24px);
+            display: block;
+            transform: scale(1);
+            will-change: transform, background-color;
+        }
+
+        body.dark-theme .menu-toggle-sidebar {
+            background-color: #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* حاشیه کاهش‌یافته */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-toggle-sidebar:hover {
+            background-color: #009B7D; /* سبز تیره‌تر */
+            transform: scale(1.05);
+        }
+
+        body.dark-theme .menu-toggle-sidebar:hover {
+            background-color: #009B7D; /* سبز تیره‌تر */
+        }
+
+        /* استایل ظرف منوی همبرگری اصلی */
         .nav-container {
             position: fixed;
             top: 10px;
@@ -206,6 +241,7 @@
             color: #FFFFFF;
             display: block;
             background-color: #00BC97; /* سبز فیروزه‌ای */
+            border: 1px solid #00BC97; /* حاشیه کاهش‌یافته */
             border-radius: 10px;
             text-align: center;
             transition: background-color 0.2s ease, transform 0.2s ease;
@@ -220,6 +256,7 @@
 
         body.dark-theme .sidebar a {
             background-color: #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97; /* حاشیه کاهش‌یافته */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -469,7 +506,7 @@
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle {
+            .sidebar a, .theme-toggle, .menu-toggle-sidebar {
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
@@ -534,7 +571,7 @@
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle {
+            .sidebar a, .theme-toggle, .menu-toggle-sidebar {
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
@@ -611,6 +648,7 @@
 
     <div class="sidebar" id="sidebar">
         <button class="theme-toggle" onclick="toggleTheme(); closeMenu()">🌙</button>
+        <button class="menu-toggle-sidebar" onclick="toggleMenu()">☰</button>
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -748,7 +786,7 @@
         </div>
     </div>
 
-    <!-- SVG برای انیمیشن منوی همبرگری -->
+    <!-- SVG برای انیمیشن منوی همبرگری اصلی -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
             <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
