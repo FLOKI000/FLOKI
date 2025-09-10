@@ -58,7 +58,8 @@
             line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: calc(100% - 24px);
+            width: calc(100% - 30px); /* عرض مطابق با گیت‌هاب */
+            min-height: 40px; /* ارتفاع ثابت */
             box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             display: block;
             transform: scale(1);
@@ -214,7 +215,8 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
-            width: calc(100% - 24px);
+            width: calc(100% - 30px); /* عرض مطابق با گیت‌هاب */
+            min-height: 40px; /* ارتفاع ثابت */
             box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -476,7 +478,8 @@
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
-                width: calc(100% - 16px);
+                width: calc(100% - 16px); /* عرض متناسب با منوی کوچکتر */
+                min-height: 40px; /* ارتفاع ثابت */
                 line-height: 1.5;
             }
 
@@ -542,7 +545,8 @@
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
-                width: calc(100% - 20px);
+                width: calc(100% - 20px); /* عرض متناسب با منوی متوسط */
+                min-height: 40px; /* ارتفاع ثابت */
                 line-height: 1.5;
             }
 
