@@ -48,9 +48,9 @@
         .theme-toggle {
             margin: 12px;
             padding: 12px;
-            background-color: #007BFF; /* آبی فناوری (روز) */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             color: #FFFFFF;
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border: none;
             border-radius: 10px; /* مستطیل با لبه‌های گرد */
             cursor: pointer;
             font-size: 16px;
@@ -58,28 +58,23 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             width: calc(100% - 24px);
-            height: 48px;
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
-            touch-action: manipulation;
-            pointer-events: auto;
-            box-sizing: border-box;
         }
 
         body.dark-theme .theme-toggle {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
-            border-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .theme-toggle:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009B7D; /* سبز تیره‌تر */
             transform: scale(1.05);
         }
 
         body.dark-theme .theme-toggle:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -88,58 +83,41 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: #007BFF; /* آبی فناوری (روز) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
             border-radius: 15px;
+            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
             width: 60px;
             height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: width 0.2s ease, height 0.2s ease, background-color 0.3s ease, transform 0.2s ease;
+            transition: width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: width, height, transform, background-color;
+            will-change: width, height;
         }
 
         body.dark-theme .nav-container {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
+            background-color: rgba(50, 50, 50, 0.95);
             border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .sidebar.active .nav-container {
-            width: calc(100% - 24px);
-            height: 48px;
-            margin: 12px;
-            padding: 12px;
-            border-radius: 10px;
-            transform: scale(1);
-        }
-
-        .sidebar.active .nav-container:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
-            transform: scale(1.05);
-        }
-
-        body.dark-theme .sidebar.active .nav-container:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+        .nav-container.active {
+            width: 90px;
+            height: 60px;
         }
 
         .nav {
             --color: #00BC97; /* سبز فیروزه‌ای */
             background: none;
-            width: 30px;
-            height: 30px;
+            width: 50px;
+            height: 50px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
-        }
-
-        .sidebar.active .nav {
-            width: 30px;
-            height: 30px;
+            margin: 0 5px;
         }
 
         .nav svg {
@@ -148,6 +126,17 @@
             stroke-width: 7px;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        .nav svg use:nth-of-type(1) {
+            opacity: 1;
+            stroke-dashoffset: 221;
+            stroke-dasharray: 46 249;
+            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
+        }
+
+        .nav svg use:nth-of-type(2) {
+            animation: stroke-animation-reverse 0.8s ease-out forwards;
         }
 
         .nav input {
@@ -195,7 +184,7 @@
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
-            padding-top: 10px;
+            padding-top: 80px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
         }
@@ -216,15 +205,13 @@
             font-size: 16px;
             color: #FFFFFF;
             display: block;
-            background-color: #007BFF; /* آبی فناوری (روز) */
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             border-radius: 10px;
             text-align: center;
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
             width: calc(100% - 24px);
-            height: 48px;
             box-sizing: border-box;
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -232,21 +219,20 @@
         }
 
         body.dark-theme .sidebar a {
-            background-color: #4FC3F7; /* آبی روشن (شب) */
-            border-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar a:hover {
-            background-color: #005BBB; /* آبی تیره‌تر (روز) */
+            background-color: #009B7D; /* سبز تیره‌تر */
             transform: scale(1.05);
         }
 
         body.dark-theme .sidebar a:hover {
-            background-color: #0288D1; /* آبی تیره‌تر (شب) */
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
-        /* استایل محتوای اصلی (بدون تغییر) */
+        /* استایل محتوای اصلی */
         .content {
             position: relative;
             top: 10px;
@@ -254,7 +240,7 @@
             text-align: center;
         }
 
-        /* استایل کادر مقدمه (بدون تغییر) */
+        /* استایل کادر مقدمه */
         .section {
             margin: 20px auto;
             padding: 20px;
@@ -272,7 +258,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* استایل کادرهای سیستم‌عامل (بدون تغییر) */
+        /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
             padding: 20px;
@@ -288,7 +274,7 @@
 
         body.dark-theme .os-box {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #00BC97;
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -319,7 +305,7 @@
         }
 
         body.dark-theme .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
         .os-box-header::after {
@@ -379,10 +365,10 @@
         }
 
         body.dark-theme .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
-        /* استایل اسلایدر تصاویر (بدون تغییر) */
+        /* استایل اسلایدر تصاویر */
         .slider {
             position: relative;
             max-width: 100%;
@@ -441,7 +427,7 @@
         }
 
         body.dark-theme .slider-button {
-            background-color: #00BC97;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -450,7 +436,7 @@
         }
 
         body.dark-theme .slider-button:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         .slider-button svg {
@@ -476,19 +462,18 @@
             .sidebar {
                 width: 110px;
                 right: -110px;
-                padding-top: 10px;
+                padding-top: 70px;
             }
 
             .sidebar.active {
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle, .sidebar.active .nav-container {
+            .sidebar a, .theme-toggle {
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
                 width: calc(100% - 16px);
-                height: 40px;
             }
 
             .nav-container {
@@ -496,9 +481,16 @@
                 height: 50px;
             }
 
+            .nav-container.active {
+                width: 70px;
+                height: 50px;
+                border-radius: 12px;
+            }
+
             .nav {
-                width: 24px;
-                height: 24px;
+                width: 40px;
+                height: 40px;
+                margin: 0 5px;
             }
 
             .section, .os-box {
@@ -535,19 +527,18 @@
             .sidebar {
                 width: 120px;
                 right: -120px;
-                padding-top: 10px;
+                padding-top: 75px;
             }
 
             .sidebar.active {
                 right: 0;
             }
 
-            .sidebar a, .theme-toggle, .sidebar.active .nav-container {
+            .sidebar a, .theme-toggle {
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
                 width: calc(100% - 20px);
-                height: 44px;
             }
 
             .section, .os-box {
@@ -608,9 +599,9 @@
 <body>
     <div class="offline-message">شما آفلاین هستید!</div>
 
-    <div class="nav-container" id="nav-container" onclick="toggleMenu()">
+    <div class="nav-container" id="nav-container">
         <div class="nav">
-            <input type="checkbox" id="menu-toggle">
+            <input type="checkbox" id="menu-toggle" onclick="toggleMenu()">
             <svg>
                 <use xlink:href="#menu" />
                 <use xlink:href="#menu" />
@@ -815,7 +806,7 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
