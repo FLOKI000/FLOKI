@@ -55,14 +55,12 @@
             cursor: pointer;
             font-size: 16px;
             text-align: center;
+            line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             width: calc(100% - 24px);
-            height: auto;
+            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             display: block;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 2;
             transform: scale(1);
             will-change: transform, background-color;
         }
@@ -208,16 +206,16 @@
             text-decoration: none;
             font-size: 16px;
             color: #FFFFFF;
+            display: block;
             background-color: #00BC97; /* سبز فیروزه‌ای */
             border-radius: 10px;
             text-align: center;
+            line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
             width: calc(100% - 24px);
-            height: auto;
-            display: block;
-            box-sizing: border-box;
+            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
@@ -479,6 +477,7 @@
                 padding: 8px;
                 font-size: 14px;
                 width: calc(100% - 16px);
+                line-height: 1.5;
             }
 
             .nav-container {
@@ -544,6 +543,7 @@
                 padding: 10px;
                 font-size: 15px;
                 width: calc(100% - 20px);
+                line-height: 1.5;
             }
 
             .section, .os-box {
@@ -811,7 +811,7 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
