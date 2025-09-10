@@ -25,11 +25,11 @@
         .offline-message {
             display: none;
             position: fixed;
-            top: 50px;
+            top: 60px;
             right: 10px;
             background-color: #D32F2F; /* قرمز (روز) */
             color: #FFFFFF;
-            padding: 8px;
+            padding: 10px;
             border-radius: 5px;
             z-index: 1003;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -46,37 +46,37 @@
 
         /* استایل دکمه تغییر تم */
         .theme-toggle {
-            margin: 8px;
-            padding: 8px;
+            margin: 12px;
+            padding: 12px;
             background-color: #00BC97; /* سبز فیروزه‌ای */
             color: #FFFFFF;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px; /* مستطیل با لبه‌های گرد */
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: calc(100% - 16px);
-            box-sizing: border-box;
+            width: calc(100% - 24px);
+            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
         }
 
         body.dark-theme .theme-toggle {
-            background-color: #00BC97;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .theme-toggle:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
             transform: scale(1.05);
         }
 
         body.dark-theme .theme-toggle:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -87,10 +87,10 @@
             z-index: 1002;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
-            border-radius: 10px;
-            border: 2px solid #00BC97;
-            width: 30px;
-            height: 30px;
+            border-radius: 15px;
+            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            width: 30px; /* عرض جدید */
+            height: 30px; /* ارتفاع جدید */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,31 +101,31 @@
 
         body.dark-theme .nav-container {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #00BC97;
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container.active {
-            width: 100px;
-            height: 30px;
+            width: 100px; /* عرض جدید در حالت فعال */
+            height: 30px; /* ارتفاع جدید در حالت فعال */
         }
 
         .nav {
-            --color: #00BC97;
+            --color: #00BC97; /* سبز فیروزه‌ای */
             background: none;
-            width: 24px;
-            height: 24px;
+            width: 20px; /* تنظیم عرض داخلی برای هماهنگی با ابعاد جدید */
+            height: 20px; /* تنظیم ارتفاع داخلی برای هماهنگی با ابعاد جدید */
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 3px;
+            margin: 0 5px;
         }
 
         .nav svg {
             fill: none;
             stroke: var(--color);
-            stroke-width: 6px;
+            stroke-width: 7px;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -177,16 +177,16 @@
 
         /* استایل منوی کناری */
         .sidebar {
-            height: 100px;
-            width: 30px;
+            height: 100%;
+            width: 140px;
             position: fixed;
             top: 0;
-            right: -30px;
+            right: -140px;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
-            padding-top: 50px;
+            padding-top: 80px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
         }
@@ -201,38 +201,38 @@
         }
 
         .sidebar a {
-            margin: 8px;
-            padding: 8px;
+            margin: 12px;
+            padding: 12px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 16px;
             color: #FFFFFF;
             display: block;
-            background-color: #00BC97;
-            border-radius: 8px;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
+            border-radius: 10px;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
-            width: calc(100% - 16px);
-            box-sizing: border-box;
+            width: calc(100% - 24px);
+            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
         }
 
         body.dark-theme .sidebar a {
-            background-color: #00BC97;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar a:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
             transform: scale(1.05);
         }
 
         body.dark-theme .sidebar a:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         /* استایل محتوای اصلی */
@@ -268,7 +268,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #00BC97;
+            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -277,7 +277,7 @@
 
         body.dark-theme .os-box {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #00BC97;
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -303,12 +303,12 @@
         }
 
         .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
         .os-box-header::after {
@@ -363,12 +363,12 @@
         }
 
         .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2);
+            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
         }
 
         /* استایل اسلایدر تصاویر */
@@ -414,7 +414,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #00BC97;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -430,23 +430,23 @@
         }
 
         body.dark-theme .slider-button {
-            background-color: #00BC97;
+            background-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .slider-button:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         body.dark-theme .slider-button:hover {
-            background-color: #009B7D;
+            background-color: #009B7D; /* سبز تیره‌تر */
         }
 
         .slider-button svg {
             width: 28px;
             height: 28px;
             fill: none;
-            stroke: #FFFFFF;
+            stroke: #00BC97; /* سبز فیروزه‌ای */
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -463,10 +463,9 @@
         /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .sidebar {
-                width: 30px;
-                right: -30px;
-                height: 100px;
-                padding-top: 50px;
+                width: 110px;
+                right: -110px;
+                padding-top: 70px;
             }
 
             .sidebar.active {
@@ -474,28 +473,28 @@
             }
 
             .sidebar a, .theme-toggle {
-                margin: 6px;
-                padding: 6px;
-                font-size: 10px;
-                width: calc(100% - 12px);
+                margin: 8px;
+                padding: 8px;
+                font-size: 14px;
+                width: calc(100% - 16px);
                 line-height: 1.5;
             }
 
             .nav-container {
-                width: 30px;
-                height: 30px;
+                width: 30px; /* عرض جدید */
+                height: 30px; /* ارتفاع جدید */
             }
 
             .nav-container.active {
-                width: 100px;
-                height: 30px;
-                border-radius: 10px;
+                width: 100px; /* عرض جدید در حالت فعال */
+                height: 30px; /* ارتفاع جدید در حالت فعال */
+                border-radius: 12px;
             }
 
             .nav {
-                width: 24px;
-                height: 24px;
-                margin: 0 3px;
+                width: 20px; /* تنظیم عرض داخلی */
+                height: 20px; /* تنظیم ارتفاع داخلی */
+                margin: 0 5px;
             }
 
             .section, .os-box {
@@ -530,10 +529,9 @@
 
         @media (min-width: 601px) and (max-width: 1024px) {
             .sidebar {
-                width: 30px;
-                right: -30px;
-                height: 100px;
-                padding-top: 50px;
+                width: 120px;
+                right: -120px;
+                padding-top: 75px;
             }
 
             .sidebar.active {
@@ -541,10 +539,10 @@
             }
 
             .sidebar a, .theme-toggle {
-                margin: 7px;
-                padding: 7px;
-                font-size: 11px;
-                width: calc(100% - 14px);
+                margin: 10px;
+                padding: 10px;
+                font-size: 15px;
+                width: calc(100% - 20px);
                 line-height: 1.5;
             }
 
