@@ -25,11 +25,11 @@
         .offline-message {
             display: none;
             position: fixed;
-            top: 60px;
+            top: 50px;
             right: 10px;
             background-color: #D32F2F; /* قرمز (روز) */
             color: #FFFFFF;
-            padding: 10px;
+            padding: 8px;
             border-radius: 5px;
             z-index: 1003;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -46,37 +46,37 @@
 
         /* استایل دکمه تغییر تم */
         .theme-toggle {
-            margin: 12px;
-            padding: 12px;
+            margin: 8px;
+            padding: 8px;
             background-color: #00BC97; /* سبز فیروزه‌ای */
             color: #FFFFFF;
             border: none;
-            border-radius: 10px; /* مستطیل با لبه‌های گرد */
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
-            line-height: 1.5; /* هم‌ترازی عمودی متن */
+            line-height: 1.5;
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: calc(100% - 24px);
-            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
+            width: calc(100% - 16px);
+            box-sizing: border-box;
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
         }
 
         body.dark-theme .theme-toggle {
-            background-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .theme-toggle:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
             transform: scale(1.05);
         }
 
         body.dark-theme .theme-toggle:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -87,10 +87,10 @@
             z-index: 1002;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
-            border-radius: 15px;
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
-            width: 60px;
-            height: 60px;
+            border-radius: 10px;
+            border: 2px solid #00BC97;
+            width: 30px;
+            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,31 +101,31 @@
 
         body.dark-theme .nav-container {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container.active {
-            width: 90px;
-            height: 60px;
+            width: 100px;
+            height: 30px;
         }
 
         .nav {
-            --color: #00BC97; /* سبز فیروزه‌ای */
+            --color: #00BC97;
             background: none;
-            width: 50px;
-            height: 50px;
+            width: 24px;
+            height: 24px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 5px;
+            margin: 0 3px;
         }
 
         .nav svg {
             fill: none;
             stroke: var(--color);
-            stroke-width: 7px;
+            stroke-width: 6px;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -177,16 +177,16 @@
 
         /* استایل منوی کناری */
         .sidebar {
-            height: 100%;
-            width: 140px;
+            height: 100px;
+            width: 30px;
             position: fixed;
             top: 0;
-            right: -140px;
+            right: -30px;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
-            padding-top: 80px;
+            padding-top: 50px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
         }
@@ -201,38 +201,38 @@
         }
 
         .sidebar a {
-            margin: 12px;
-            padding: 12px;
+            margin: 8px;
+            padding: 8px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 12px;
             color: #FFFFFF;
             display: block;
-            background-color: #00BC97; /* سبز فیروزه‌ای */
-            border-radius: 10px;
+            background-color: #00BC97;
+            border-radius: 8px;
             text-align: center;
-            line-height: 1.5; /* هم‌ترازی عمودی متن */
+            line-height: 1.5;
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
-            width: calc(100% - 24px);
-            box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
+            width: calc(100% - 16px);
+            box-sizing: border-box;
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
         }
 
         body.dark-theme .sidebar a {
-            background-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar a:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
             transform: scale(1.05);
         }
 
         body.dark-theme .sidebar a:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
         }
 
         /* استایل محتوای اصلی */
@@ -268,7 +268,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
+            border: 2px solid #00BC97;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -277,7 +277,7 @@
 
         body.dark-theme .os-box {
             background-color: rgba(50, 50, 50, 0.95);
-            border-color: #00BC97; /* سبز فیروزه‌ای */
+            border-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -303,12 +303,12 @@
         }
 
         .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
         }
 
         .os-box-header::after {
@@ -363,12 +363,12 @@
         }
 
         .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
             transform: scale(1.02);
         }
 
         body.dark-theme .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+            background-color: rgba(0, 188, 151, 0.2);
         }
 
         /* استایل اسلایدر تصاویر */
@@ -414,7 +414,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97;
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -430,23 +430,23 @@
         }
 
         body.dark-theme .slider-button {
-            background-color: #00BC97; /* سبز فیروزه‌ای */
+            background-color: #00BC97;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .slider-button:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
         }
 
         body.dark-theme .slider-button:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
+            background-color: #009B7D;
         }
 
         .slider-button svg {
             width: 28px;
             height: 28px;
             fill: none;
-            stroke: #00BC97; /* سبز فیروزه‌ای */
+            stroke: #FFFFFF;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -463,9 +463,10 @@
         /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .sidebar {
-                width: 110px;
-                right: -110px;
-                padding-top: 70px;
+                width: 30px;
+                right: -30px;
+                height: 100px;
+                padding-top: 50px;
             }
 
             .sidebar.active {
@@ -473,28 +474,28 @@
             }
 
             .sidebar a, .theme-toggle {
-                margin: 8px;
-                padding: 8px;
-                font-size: 14px;
-                width: calc(100% - 16px);
+                margin: 6px;
+                padding: 6px;
+                font-size: 10px;
+                width: calc(100% - 12px);
                 line-height: 1.5;
             }
 
             .nav-container {
-                width: 50px;
-                height: 50px;
+                width: 30px;
+                height: 30px;
             }
 
             .nav-container.active {
-                width: 70px;
-                height: 50px;
-                border-radius: 12px;
+                width: 100px;
+                height: 30px;
+                border-radius: 10px;
             }
 
             .nav {
-                width: 40px;
-                height: 40px;
-                margin: 0 5px;
+                width: 24px;
+                height: 24px;
+                margin: 0 3px;
             }
 
             .section, .os-box {
@@ -529,9 +530,10 @@
 
         @media (min-width: 601px) and (max-width: 1024px) {
             .sidebar {
-                width: 120px;
-                right: -120px;
-                padding-top: 75px;
+                width: 30px;
+                right: -30px;
+                height: 100px;
+                padding-top: 50px;
             }
 
             .sidebar.active {
@@ -539,10 +541,10 @@
             }
 
             .sidebar a, .theme-toggle {
-                margin: 10px;
-                padding: 10px;
-                font-size: 15px;
-                width: calc(100% - 20px);
+                margin: 7px;
+                padding: 7px;
+                font-size: 11px;
+                width: calc(100% - 14px);
                 line-height: 1.5;
             }
 
