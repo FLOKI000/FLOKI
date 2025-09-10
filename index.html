@@ -58,19 +58,11 @@
             line-height: 1.5; /* هم‌ترازی عمودی متن */
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: calc(100% - 30px); /* عرض مطابق با گیت‌هاب */
-            min-height: 40px; /* ارتفاع ثابت */
+            width: calc(100% - 24px);
             box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
-            display: flex; /* برای هم‌ترازی بهتر محتوا */
-            justify-content: center;
-            align-items: center;
+            display: block;
             transform: scale(1);
             will-change: transform, background-color;
-            position: relative; /* برای کنترل بهتر رویدادها */
-        }
-
-        .theme-toggle span {
-            pointer-events: none; /* جلوگیری از تداخل کلیک روی ایموجی */
         }
 
         body.dark-theme .theme-toggle {
@@ -214,9 +206,7 @@
             text-decoration: none;
             font-size: 16px;
             color: #FFFFFF;
-            display: flex; /* برای هم‌ترازی بهتر محتوا */
-            justify-content: center;
-            align-items: center;
+            display: block;
             background-color: #00BC97; /* سبز فیروزه‌ای */
             border-radius: 10px;
             text-align: center;
@@ -224,8 +214,7 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             cursor: pointer;
             transform: scale(1);
-            width: calc(100% - 30px); /* عرض مطابق با گیت‌هاب */
-            min-height: 40px; /* ارتفاع ثابت */
+            width: calc(100% - 24px);
             box-sizing: border-box; /* اطمینان از محاسبه صحیح عرض */
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -487,8 +476,7 @@
                 margin: 8px;
                 padding: 8px;
                 font-size: 14px;
-                width: calc(100% - 16px); /* عرض متناسب با منوی کوچکتر */
-                min-height: 40px; /* ارتفاع ثابت */
+                width: calc(100% - 16px);
                 line-height: 1.5;
             }
 
@@ -554,8 +542,7 @@
                 margin: 10px;
                 padding: 10px;
                 font-size: 15px;
-                width: calc(100% - 20px); /* عرض متناسب با منوی متوسط */
-                min-height: 40px; /* ارتفاع ثابت */
+                width: calc(100% - 20px);
                 line-height: 1.5;
             }
 
@@ -628,7 +615,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" onclick="toggleTheme(); closeMenu()"><span>🌙</span></button>
+        <button class="theme-toggle" onclick="toggleTheme(); closeMenu()">🌙</button>
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -778,7 +765,7 @@
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('dark-theme');
-            const themeToggle = document.querySelector('.theme-toggle span');
+            const themeToggle = document.querySelector('.theme-toggle');
             themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
             localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
         }
@@ -788,9 +775,7 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
-                document.querySelector('.theme-toggle span').textContent = '☀️';
-            } else {
-                document.querySelector('.theme-toggle span').textContent = '🌙';
+                document.querySelector('.theme-toggle').textContent = '☀️';
             }
         });
 
@@ -826,7 +811,7 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
