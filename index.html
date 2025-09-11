@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وب‌سایت آموزش اتصال به نرم‌افزارها</title>
     <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
     <style>
@@ -348,62 +348,7 @@
             display: block;
         }
 
-        .install-options {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .install-options div.app-name {
-            flex: 2;
-            margin: 0 5px;
-            padding: 10px;
-            background-color: rgba(249, 249, 249, 0.9);
-            border-radius: 5px;
-            cursor: default;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background-color;
-            color: #000000; /* مشکی (روز) */
-        }
-
-        .install-options div.download-link {
-            flex: 1;
-            margin: 0 5px;
-            padding: 10px;
-            background-color: #00BC97; /* سبز فیروزه‌ای */
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background-color;
-            color: #FFFFFF; /* سفید */
-        }
-
-        body.dark-theme .install-options div.app-name {
-            background-color: rgba(80, 80, 80, 0.9);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            color: #FFFFFF; /* سفید (شب) */
-        }
-
-        body.dark-theme .install-options div.download-link {
-            background-color: #00BC97; /* سبز فیروزه‌ای */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            color: #FFFFFF; /* سفید */
-        }
-
-        .install-options div.download-link:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
-            transform: scale(1.02);
-        }
-
-        body.dark-theme .install-options div.download-link:hover {
-            background-color: #009B7D; /* سبز تیره‌تر */
-        }
-
-        .os-box-content div:not(.install-options):not(.slider):not(.video-content) {
+        .os-box-content div {
             margin: 10px 0;
             padding: 10px;
             background-color: rgba(249, 249, 249, 0.9);
@@ -415,19 +360,26 @@
             color: #000000; /* مشکی (روز) */
         }
 
-        body.dark-theme .os-box-content div:not(.install-options):not(.slider):not(.video-content) {
+        body.dark-theme .os-box-content div {
             background-color: rgba(80, 80, 80, 0.9);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
             color: #FFFFFF; /* سفید (شب) */
         }
 
-        .os-box-content div:not(.install-options):not(.slider):not(.video-content):hover {
+        .os-box-content div:hover {
             background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
             transform: scale(1.02);
         }
 
-        body.dark-theme .os-box-content div:not(.install-options):not(.slider):not(.video-content):hover {
+        body.dark-theme .os-box-content div:hover {
             background-color: rgba(0, 188, 151, 0.2); /* سبز فیروزه‌ای شفاف */
+        }
+
+        /* استایل لینک‌های دانلود */
+        .os-box-content a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         /* استایل اسلایدر تصاویر */
@@ -584,15 +536,6 @@
                 font-size: 14px;
                 margin-top: 8px;
             }
-
-            .install-options {
-                flex-direction: column;
-            }
-
-            .install-options div.app-name, .install-options div.download-link {
-                width: calc(100% - 10px);
-                margin: 5px 0;
-            }
         }
 
         @media (min-width: 601px) and (max-width: 1024px) {
@@ -702,28 +645,25 @@
             <div class="os-box-content" id="android-content">
                 <div class="install-app" onclick="toggleInstallOptions('android')">نصب اپ</div>
                 <div class="install-options" id="android-install-options" style="display: none;">
-                    <div class="app-name">v2ray</div>
-                    <div class="download-link"><a href="https://example.com/android/v2ray.apk" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
-                    <div class="app-name">happ</div>
-                    <div class="download-link"><a href="https://example.com/android/happ.apk" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
+                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><div>v2rayNG</div></a>
                 </div>
                 <div class="video-tutorial" onclick="toggleVideo('android')">آموزش ویدیویی</div>
                 <div class="video-content" id="android-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_specific_video" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="image-tutorial" onclick="toggleSlider('android')">آموزش با تصاویر</div>
                 <div class="slider" id="android-slider" style="display: none;">
                     <div class="slider-images" id="android-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+1" alt="اندروید تصویر 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+2" alt="اندروید تصویر 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+3" alt="اندروید تصویر 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+4" alt="اندروید تصویر 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+5" alt="اندروید تصویر 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+6" alt="اندروید تصویر 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+7" alt="اندروید تصویر 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+8" alt="اندروید تصویر 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+9" alt="اندروید تصویر 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=اندروید+تصویر+10" alt="اندروید تصویر 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+1" alt="تصویر اندروید 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+2" alt="تصویر اندروید 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+3" alt="تصویر اندروید 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+4" alt="تصویر اندروید 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+5" alt="تصویر اندروید 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+6" alt="تصویر اندروید 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+7" alt="تصویر اندروید 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+8" alt="تصویر اندروید 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+9" alt="تصویر اندروید 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+10" alt="تصویر اندروید 10">
                     </div>
                     <button class="slider-button prev" onclick="moveSlider('android', -1)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -745,28 +685,25 @@
             <div class="os-box-content" id="iphone-content">
                 <div class="install-app" onclick="toggleInstallOptions('iphone')">نصب اپ</div>
                 <div class="install-options" id="iphone-install-options" style="display: none;">
-                    <div class="app-name">v2ray</div>
-                    <div class="download-link"><a href="https://example.com/iphone/v2ray.ipa" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
-                    <div class="app-name">happ</div>
-                    <div class="download-link"><a href="https://example.com/iphone/happ.ipa" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
+                    <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank"><div>Streisand</div></a>
                 </div>
                 <div class="video-tutorial" onclick="toggleVideo('iphone')">آموزش ویدیویی</div>
                 <div class="video-content" id="iphone-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_specific_video" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="image-tutorial" onclick="toggleSlider('iphone')">آموزش با تصاویر</div>
                 <div class="slider" id="iphone-slider" style="display: none;">
                     <div class="slider-images" id="iphone-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+1" alt="آیفون تصویر 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+2" alt="آیفون تصویر 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+3" alt="آیفون تصویر 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+4" alt="آیفون تصویر 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+5" alt="آیفون تصویر 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+6" alt="آیفون تصویر 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+7" alt="آیفون تصویر 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+8" alt="آیفون تصویر 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+9" alt="آیفون تصویر 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=آیفون+تصویر+10" alt="آیفون تصویر 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+1" alt="تصویر آیفون 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+2" alt="تصویر آیفون 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+3" alt="تصویر آیفون 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+4" alt="تصویر آیفون 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+5" alt="تصویر آیفون 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+6" alt="تصویر آیفون 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+7" alt="تصویر آیفون 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+8" alt="تصویر آیفون 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+9" alt="تصویر آیفون 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+10" alt="تصویر آیفون 10">
                     </div>
                     <button class="slider-button prev" onclick="moveSlider('iphone', -1)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -788,28 +725,25 @@
             <div class="os-box-content" id="windows-content">
                 <div class="install-app" onclick="toggleInstallOptions('windows')">نصب اپ</div>
                 <div class="install-options" id="windows-install-options" style="display: none;">
-                    <div class="app-name">v2ray</div>
-                    <div class="download-link"><a href="https://example.com/windows/v2ray.exe" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
-                    <div class="app-name">happ</div>
-                    <div class="download-link"><a href="https://example.com/windows/happ.exe" target="_blank" style="color: #FFFFFF; text-decoration: none;">برای دانلود نرم‌افزار کلیک کنید</a></div>
+                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank"><div>v2rayN</div></a>
                 </div>
                 <div class="video-tutorial" onclick="toggleVideo('windows')">آموزش ویدیویی</div>
                 <div class="video-content" id="windows-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_specific_video" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="image-tutorial" onclick="toggleSlider('windows')">آموزش با تصاویر</div>
                 <div class="slider" id="windows-slider" style="display: none;">
                     <div class="slider-images" id="windows-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+1" alt="ویندوز تصویر 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+2" alt="ویندوز تصویر 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+3" alt="ویندوز تصویر 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+4" alt="ویندوز تصویر 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+5" alt="ویندوز تصویر 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+6" alt="ویندوز تصویر 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+7" alt="ویندوز تصویر 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+8" alt="ویندوز تصویر 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+9" alt="ویندوز تصویر 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=ویندوز+تصویر+10" alt="ویندوز تصویر 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+1" alt="تصویر ویندوز 1">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+2" alt="تصویر ویندوز 2">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+3" alt="تصویر ویندوز 3">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+4" alt="تصویر ویندوز 4">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+5" alt="تصویر ویندوز 5">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+6" alt="تصویر ویندوز 6">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+7" alt="تصویر ویندوز 7">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+8" alt="تصویر ویندوز 8">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+9" alt="تصویر ویندوز 9">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+10" alt="تصویر ویندوز 10">
                     </div>
                     <button class="slider-button prev" onclick="moveSlider('windows', -1)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
