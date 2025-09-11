@@ -11,14 +11,14 @@
             font-family: 'Vazirmatn', Arial, sans-serif;
             background-color: #E6F0FA; /* آبی روشن فناوری (روز) */
             overflow-x: hidden;
-            color: #1A1A1A; /* مشکی تیره (روز) */
+            color: #000000; /* مشکی (روز) */
             direction: rtl;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body.dark-theme {
             background-color: #1E1E1E; /* خاکستری تیره (شب) */
-            color: #E0E0E0; /* خاکستری روشن (شب) */
+            color: #FFFFFF; /* سفید (شب) */
         }
 
         /* استایل آفلاین */
@@ -95,7 +95,7 @@
             justify-content: center;
             align-items: center;
             transition: width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: width, height;
         }
 
@@ -107,7 +107,7 @@
 
         .nav-container.active {
             width: 100px; /* عرض جدید در حالت فعال */
-            height: 40px; /* ارتفاع جدید در حالت فعال */
+            height: 30px; /* ارتفاع جدید در حالت فعال */
         }
 
         .nav {
@@ -250,6 +250,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 15px;
+            border: 2px solid #00BC97; /* سبز فیروزه‌ای */
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -258,6 +259,7 @@
 
         body.dark-theme .section {
             background-color: rgba(50, 50, 50, 0.95);
+            border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -283,7 +285,7 @@
 
         .os-box-header {
             font-size: 18px;
-            color: #1A1A1A;
+            color: #000000; /* مشکی (روز) */
             text-align: center;
             cursor: pointer;
             display: flex;
@@ -298,7 +300,7 @@
         }
 
         body.dark-theme .os-box-header {
-            color: #E0E0E0;
+            color: #FFFFFF; /* سفید (شب) */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -355,11 +357,13 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
+            color: #000000; /* مشکی (روز) */
         }
 
         body.dark-theme .os-box-content div {
             background-color: rgba(80, 80, 80, 0.9);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* سفید (شب) */
         }
 
         .os-box-content div:hover {
@@ -401,13 +405,13 @@
             text-align: center;
             margin-top: 10px;
             font-size: 16px;
-            color: #1A1A1A;
+            color: #000000; /* مشکی (روز) */
             font-family: 'Vazirmatn', Arial, sans-serif;
             transition: color 0.3s ease;
         }
 
         body.dark-theme .slider-counter {
-            color: #E0E0E0;
+            color: #FFFFFF; /* سفید (شب) */
         }
 
         .slider-button {
@@ -808,6 +812,10 @@
                     content.classList.remove('active');
                     content.style.display = 'none';
                     header.classList.remove('active');
+                    // بستن تمام زیربخش‌ها
+                    document.getElementById(`${id}-install-options`).style.display = 'none';
+                    document.getElementById(`${id}-video-content`).style.display = 'none';
+                    document.getElementById(`${id}-slider`).style.display = 'none';
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
@@ -820,19 +828,31 @@
         // مدیریت گزینه‌های نصب اپ
         function toggleInstallOptions(boxId) {
             const options = document.getElementById(`${boxId}-install-options`);
+            const video = document.getElementById(`${boxId}-video-content`);
+            const slider = document.getElementById(`${boxId}-slider`);
             options.style.display = options.style.display === 'block' ? 'none' : 'block';
+            video.style.display = 'none';
+            slider.style.display = 'none';
         }
 
         // مدیریت ویدیو
         function toggleVideo(boxId) {
+            const options = document.getElementById(`${boxId}-install-options`);
             const video = document.getElementById(`${boxId}-video-content`);
+            const slider = document.getElementById(`${boxId}-slider`);
             video.style.display = video.style.display === 'block' ? 'none' : 'block';
+            options.style.display = 'none';
+            slider.style.display = 'none';
         }
 
         // مدیریت اسلایدر
         function toggleSlider(boxId) {
+            const options = document.getElementById(`${boxId}-install-options`);
+            const video = document.getElementById(`${boxId}-video-content`);
             const slider = document.getElementById(`${boxId}-slider`);
             slider.style.display = slider.style.display === 'block' ? 'none' : 'block';
+            options.style.display = 'none';
+            video.style.display = 'none';
         }
 
         let currentSlides = { android: 0, iphone: 0, windows: 0 };
