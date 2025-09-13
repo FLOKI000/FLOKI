@@ -85,7 +85,7 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #FBF4F8; /* تغییر به رنگ روز */
             backdrop-filter: blur(4px);
             border-radius: 15px;
             border: 2px solid #00BC97; /* سبز فیروزه‌ای */
@@ -97,10 +97,11 @@
             transition: width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: width, height;
+            cursor: pointer; /* افزودن cursor برای کل ناحیه */
         }
 
         body.dark-theme .nav-container {
-            background-color: rgba(50, 50, 50, 0.95);
+            background-color: #424242; /* تغییر به رنگ شب */
             border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
@@ -182,7 +183,7 @@
             position: fixed;
             top: 0;
             right: -140px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #FBF4F8; /* تغییر به رنگ روز */
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
@@ -192,7 +193,7 @@
         }
 
         body.dark-theme .sidebar {
-            background-color: rgba(50, 50, 50, 0.95);
+            background-color: #424242; /* تغییر به رنگ شب */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -247,7 +248,7 @@
         .section {
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #FBF4F8; /* تغییر به رنگ روز */
             backdrop-filter: blur(4px);
             border-radius: 15px;
             border: 2px solid #00BC97; /* سبز فیروزه‌ای */
@@ -258,7 +259,7 @@
         }
 
         body.dark-theme .section {
-            background-color: rgba(50, 50, 50, 0.95);
+            background-color: #424242; /* تغییر به رنگ شب */
             border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
@@ -267,7 +268,7 @@
         .os-box {
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #FBF4F8; /* تغییر به رنگ روز */
             backdrop-filter: blur(4px);
             border-radius: 15px;
             border: 2px solid #00BC97; /* سبز فیروزه‌ای */
@@ -278,7 +279,7 @@
         }
 
         body.dark-theme .os-box {
-            background-color: rgba(50, 50, 50, 0.95);
+            background-color: #424242; /* تغییر به رنگ شب */
             border-color: #00BC97; /* سبز فیروزه‌ای */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
@@ -332,7 +333,7 @@
             display: none;
             margin-top: 15px;
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #FBF4F8; /* تغییر به رنگ روز */
             border-radius: 10px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -340,7 +341,7 @@
         }
 
         body.dark-theme .os-box-content {
-            background-color: rgba(50, 50, 50, 0.95);
+            background-color: #424242; /* تغییر به رنگ شب */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -351,7 +352,7 @@
         .os-box-content div {
             margin: 10px 0;
             padding: 10px;
-            background-color: rgba(249, 249, 249, 0.9);
+            background-color: #F9F9F9; /* رنگ روز برای محتوای داخلی */
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.2s ease;
@@ -361,7 +362,7 @@
         }
 
         body.dark-theme .os-box-content div {
-            background-color: rgba(80, 80, 80, 0.9);
+            background-color: #505050; /* رنگ شب برای محتوای داخلی */
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
             color: #FFFFFF; /* سفید (شب) */
         }
@@ -457,7 +458,7 @@
             width: 28px;
             height: 28px;
             fill: none;
-            stroke: #00BC97; /* سبز فیروزه‌ای */
+            stroke: #FFFFFF; /* سفید برای آیکون‌های دکمه */
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -615,9 +616,9 @@
 <body>
     <div class="offline-message">شما آفلاین هستید!</div>
 
-    <div class="nav-container" id="nav-container">
+    <div class="nav-container" id="nav-container" onclick="toggleMenu()">
         <div class="nav">
-            <input type="checkbox" id="menu-toggle" onclick="toggleMenu()">
+            <input type="checkbox" id="menu-toggle">
             <svg>
                 <use xlink:href="#menu" />
                 <use xlink:href="#menu" />
@@ -927,9 +928,9 @@
         // بستن منو با کلیک خارج
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
-            const nav = document.querySelector('.nav');
+            const navContainer = document.getElementById('nav-container');
             const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickInsideNav = nav.contains(event.target);
+            const isClickInsideNav = navContainer.contains(event.target);
 
             if (!isClickInsideSidebar && !isClickInsideNav && sidebar.classList.contains('active')) {
                 closeMenu();
