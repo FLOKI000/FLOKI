@@ -1,7 +1,7 @@
 </p>
 <!-- SITE Button with Text -->
 <div style="margin-top: 20px; text-align: center;">
-  <p style="color: #7f8c8d; font-size: 20px;">تلگرام فلوکی 👇</p>
+  <p style="color: #7f8c8d; font-size: 20px;">سایت فلوکی 👇</p>
   <a href="https://floki000.github.io/FLOKI000/" target="_blank">
     <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" style="transition: transform 0.1s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1.3)'">
   </a>
