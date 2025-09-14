@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light"> <!-- جلوگیری از تأثیر حالت تاریک -->
+    <meta name="color-scheme" content="light only"> <!-- اجبار به تم روشن -->
     <title>وب‌سایت آموزش اتصال به نرم‌افزارها</title>
     <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
     <style>
@@ -11,17 +11,17 @@
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
             background-color: #FCEFAF; /* زرد روشن - ثابت در sRGB */
-            color: #000000; /* مشکی (روز) */
+            color: #000000; /* مشکی */
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
             overflow-x: hidden;
             direction: rtl;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        body.dark-theme {
-            background-color: #303030; /* تغییر رنگ پس‌زمینه شب */
-            color: #FFFFFF; /* سفید (شب) */
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+        /* غیرفعال کردن هرگونه تغییر تم توسط مرورگر */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: light only; /* فقط تم روشن */
+            }
         }
 
         /* استایل آفلاین */
@@ -30,7 +30,7 @@
             position: fixed;
             top: 60px;
             right: 10px;
-            background-color: #D32F2F; /* قرمز (روز) */
+            background-color: #D32F2F; /* قرمز */
             color: #FFFFFF;
             padding: 10px;
             border-radius: 5px;
@@ -38,16 +38,11 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
         }
 
-        body.dark-theme .offline-message {
-            background-color: #EF5350; /* قرمز روشن (شب) */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         body.offline .offline-message {
             display: block;
         }
 
-        /* استایل دکمه تغییر تم */
+        /* استایل دکمه تغییر تم (حذف عملکرد تغییر تم) */
         .theme-toggle {
             margin: 12px;
             padding: 12px;
@@ -68,18 +63,9 @@
             will-change: transform, background-color;
         }
 
-        body.dark-theme .theme-toggle {
-            background-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .theme-toggle:hover {
             background-color: #009B7D;
             transform: scale(1.05);
-        }
-
-        body.dark-theme .theme-toggle:hover {
-            background-color: #009B7D;
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -102,12 +88,6 @@
             will-change: width, height;
             cursor: pointer;
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
-        }
-
-        body.dark-theme .nav-container {
-            background-color: #454545;
-            border-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container.active {
@@ -197,11 +177,6 @@
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
         }
 
-        body.dark-theme .sidebar {
-            background-color: #454545;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .sidebar.active {
             right: 0;
         }
@@ -227,18 +202,9 @@
             will-change: transform, background-color;
         }
 
-        body.dark-theme .sidebar a {
-            background-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .sidebar a:hover {
             background-color: #009B7D;
             transform: scale(1.05);
-        }
-
-        body.dark-theme .sidebar a:hover {
-            background-color: #009B7D;
         }
 
         /* استایل محتوای اصلی */
@@ -264,12 +230,6 @@
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
         }
 
-        body.dark-theme .section {
-            background-color: #454545;
-            border-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
@@ -283,12 +243,6 @@
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
-        }
-
-        body.dark-theme .os-box {
-            background-color: #454545;
-            border-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .os-box-header {
@@ -307,18 +261,9 @@
             will-change: transform, background-color;
         }
 
-        body.dark-theme .os-box-header {
-            color: #FFFFFF;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .os-box-header:hover {
             background-color: rgba(0, 188, 151, 0.2);
             transform: scale(1.02);
-        }
-
-        body.dark-theme .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2);
         }
 
         .os-box-header::after {
@@ -326,10 +271,6 @@
             position: absolute;
             left: 20px;
             transition: transform 0.2s ease;
-        }
-
-        body.dark-theme .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300BC97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -346,11 +287,6 @@
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
-        }
-
-        body.dark-theme .os-box-content {
-            background-color: #454545;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .os-box-content.active {
@@ -370,19 +306,9 @@
             color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
         }
 
-        body.dark-theme .os-box-content div {
-            background-color: #505050;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            color: #FFFFFF;
-        }
-
         .os-box-content div:hover {
             background-color: rgba(0, 188, 151, 0.2);
             transform: scale(1.02);
-        }
-
-        body.dark-theme .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2);
         }
 
         /* استایل لینک‌های دانلود */
@@ -414,21 +340,12 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
         }
 
-        body.dark-theme .slider-image {
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .slider-counter {
             text-align: center;
             margin-top: 10px;
             font-size: 16px;
             color: #000000;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-theme .slider-counter {
-            color: #FFFFFF;
         }
 
         .slider-button {
@@ -450,16 +367,7 @@
             align-items: center;
         }
 
-        body.dark-theme .slider-button {
-            background-color: #00BC97;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .slider-button:hover {
-            background-color: #009B7D;
-        }
-
-        body.dark-theme .slider-button:hover {
             background-color: #009B7D;
         }
 
@@ -636,7 +544,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" onclick="toggleTheme(); closeMenu()">🌙</button>
+        <button class="theme-toggle" disabled>🌙</button> <!-- دکمه غیرفعال برای تم -->
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -779,23 +687,10 @@
     </svg>
 
     <script>
-        // مدیریت تغییر تم
+        // حذف مدیریت تغییر تم
         function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-theme');
-            const themeToggle = document.querySelector('.theme-toggle');
-            themeToggle.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
-            localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+            // دکمه غیرفعال است، هیچ عملی انجام نمی‌شود
         }
-
-        // بارگذاری تم ذخیره‌شده
-        window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-theme');
-                document.querySelector('.theme-toggle').textContent = '☀️';
-            }
-        });
 
         // مدیریت منوی همبرگری
         function toggleMenu() {
