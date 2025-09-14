@@ -3,25 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light only"> <!-- اجبار به تم روشن -->
+    <meta name="color-scheme" content="light only">
     <title>وب‌سایت آموزش اتصال به نرم‌افزارها</title>
     <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: #F1F9F8; /* زرد روشن - ثابت در sRGB */
-            color: #000000; /* مشکی */
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            background-color: #fcefaf; /* رنگ اصلی ثابت */
+            color: #000000;
+            color-profile: sRGB;
             overflow-x: hidden;
             direction: rtl;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* غیرفعال کردن هرگونه تغییر تم توسط مرورگر */
+        /* غیرفعال کردن تغییر تم توسط مرورگر */
         @media (prefers-color-scheme: dark) {
             :root {
-                color-scheme: light only; /* فقط تم روشن */
+                color-scheme: light only;
             }
+        }
+
+        /* تم روز */
+        body.day {
+            background-color: #fcefaf;
+            color: #000000;
+        }
+
+        body.day .offline-message {
+            background-color: #d32f2f;
+            color: #ffffff;
+        }
+
+        body.day .nav-container {
+            background-color: #f7e1a1;
+            border-color: #d49b5e;
+        }
+
+        body.day .nav svg {
+            stroke: #d49b5e;
+        }
+
+        body.day .sidebar {
+            background-color: #f7e1a1;
+        }
+
+        body.day .sidebar a, body.day .theme-toggle {
+            background-color: #f0d394;
+            color: #ffffff;
+        }
+
+        body.day .sidebar a:hover, body.day .theme-toggle:hover {
+            background-color: #e9c586;
+        }
+
+        body.day .section, body.day .os-box {
+            background-color: #f7e1a1;
+            border-color: #d49b5e;
+        }
+
+        body.day .os-box-header {
+            color: #dba96b;
+        }
+
+        body.day .os-box-header:hover {
+            background-color: #e2b779;
+        }
+
+        body.day .os-box-content {
+            background-color: #fcefaf;
+        }
+
+        body.day .os-box-content div {
+            background-color: #f7e1a1;
+        }
+
+        body.day .os-box-content div:hover {
+            background-color: #e2b779;
+        }
+
+        body.day .slider-button {
+            background-color: #f0d394;
+        }
+
+        body.day .slider-button:hover {
+            background-color: #e9c586;
+        }
+
+        /* تم شب */
+        body.night {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        body.night .offline-message {
+            background-color: #d32f2f;
+            color: #ffffff;
+        }
+
+        body.night .nav-container {
+            background-color: #3c3c3c;
+            border-color: #969696;
+        }
+
+        body.night .nav svg {
+            stroke: #969696;
+        }
+
+        body.night .sidebar {
+            background-color: #3c3c3c;
+        }
+
+        body.night .sidebar a, body.night .theme-toggle {
+            background-color: #4e4e4e;
+            color: #ffffff;
+        }
+
+        body.night .sidebar a:hover, body.night .theme-toggle:hover {
+            background-color: #606060;
+        }
+
+        body.night .section, body.night .os-box {
+            background-color: #3c3c3c;
+            border-color: #969696;
+        }
+
+        body.night .os-box-header {
+            color: #848484;
+        }
+
+        body.night .os-box-header:hover {
+            background-color: #727272;
+        }
+
+        body.night .os-box-content {
+            background-color: #2a2a2a;
+        }
+
+        body.night .os-box-content div {
+            background-color: #3c3c3c;
+        }
+
+        body.night .os-box-content div:hover {
+            background-color: #727272;
+        }
+
+        body.night .slider-button {
+            background-color: #4e4e4e;
+        }
+
+        body.night .slider-button:hover {
+            background-color: #606060;
         }
 
         /* استایل آفلاین */
@@ -30,8 +163,6 @@
             position: fixed;
             top: 60px;
             right: 10px;
-            background-color: #D32F2F; /* قرمز */
-            color: #FFFFFF;
             padding: 10px;
             border-radius: 5px;
             z-index: 1003;
@@ -42,12 +173,10 @@
             display: block;
         }
 
-        /* استایل دکمه تغییر تم (حذف عملکرد تغییر تم) */
+        /* استایل دکمه تغییر تم */
         .theme-toggle {
             margin: 12px;
             padding: 12px;
-            background-color: #00BC97; /* سبز فیروزه‌ای */
-            color: #FFFFFF;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -64,7 +193,6 @@
         }
 
         .theme-toggle:hover {
-            background-color: #009B7D;
             transform: scale(1.05);
         }
 
@@ -74,10 +202,8 @@
             top: 10px;
             right: 10px;
             z-index: 1002;
-            background-color: #D9F0EC; /* زرد روشن - ثابت در sRGB */
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #00BC97;
             width: 40px;
             height: 40px;
             display: flex;
@@ -87,7 +213,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: width, height;
             cursor: pointer;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            color-profile: sRGB;
         }
 
         .nav-container.active {
@@ -96,7 +222,6 @@
         }
 
         .nav {
-            --color: #00BC97;
             background: none;
             width: 20px;
             height: 20px;
@@ -109,7 +234,6 @@
 
         .nav svg {
             fill: none;
-            stroke: var(--color);
             stroke-width: 7px;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -167,14 +291,13 @@
             position: fixed;
             top: 0;
             right: -140px;
-            background-color: #F1F9F8; /* زرد روشن - ثابت در sRGB */
             backdrop-filter: blur(4px);
             transition: right 0.2s ease;
             z-index: 1001;
             padding-top: 80px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            color-profile: sRGB;
         }
 
         .sidebar.active {
@@ -186,9 +309,7 @@
             padding: 12px;
             text-decoration: none;
             font-size: 16px;
-            color: #FFFFFF;
             display: block;
-            background-color: #00BC97;
             border-radius: 10px;
             text-align: center;
             line-height: 1.5;
@@ -200,11 +321,6 @@
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
-        }
-
-        .sidebar a:hover {
-            background-color: #009B7D;
-            transform: scale(1.05);
         }
 
         /* استایل محتوای اصلی */
@@ -219,35 +335,30 @@
         .section {
             margin: 20px auto;
             padding: 20px;
-            background-color: #D9F0EC; /* زرد روشن - ثابت در sRGB */
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #00BC97;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            color-profile: sRGB;
         }
 
         /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
             padding: 20px;
-            background-color: #D9F0EC; /* زرد روشن - ثابت در sRGB */
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid #00BC97;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            color-profile: sRGB;
         }
 
         .os-box-header {
             font-size: 18px;
-            color: #000000;
             text-align: center;
             cursor: pointer;
             display: flex;
@@ -261,16 +372,15 @@
             will-change: transform, background-color;
         }
 
-        .os-box-header:hover {
-            background-color: rgba(0, 188, 151, 0.2);
-            transform: scale(1.02);
-        }
-
         .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300BC97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23d49b5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
             position: absolute;
             left: 20px;
             transition: transform 0.2s ease;
+        }
+
+        body.night .os-box-header::after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23969696" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -281,12 +391,11 @@
             display: none;
             margin-top: 15px;
             padding: 15px;
-            background-color: #F1F9F8; /* زرد روشن - ثابت در sRGB */
             border-radius: 10px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
+            color-profile: sRGB;
         }
 
         .os-box-content.active {
@@ -296,19 +405,11 @@
         .os-box-content div {
             margin: 10px 0;
             padding: 10px;
-            background-color: #F9F9F9;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
-            color: #000000;
-            color-profile: sRGB; /* اجبار به فضای رنگی sRGB */
-        }
-
-        .os-box-content div:hover {
-            background-color: rgba(0, 188, 151, 0.2);
-            transform: scale(1.02);
         }
 
         /* استایل لینک‌های دانلود */
@@ -344,15 +445,21 @@
             text-align: center;
             margin-top: 10px;
             font-size: 16px;
-            color: #000000;
             font-family: 'Vazirmatn', Arial, sans-serif;
+        }
+
+        body.day .slider-counter {
+            color: #dba96b;
+        }
+
+        body.night .slider-counter {
+            color: #848484;
         }
 
         .slider-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: #00BC97;
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -367,15 +474,11 @@
             align-items: center;
         }
 
-        .slider-button:hover {
-            background-color: #009B7D;
-        }
-
         .slider-button svg {
             width: 28px;
             height: 28px;
             fill: none;
-            stroke: #FFFFFF;
+            stroke: #ffffff;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -530,12 +633,12 @@
         }
     </style>
 </head>
-<body>
+<body class="day">
     <div class="offline-message">شما آفلاین هستید!</div>
 
-    <div class="nav-container" id="nav-container" onclick="toggleMenu()">
+    <div class="nav-container" id="nav-container">
         <div class="nav">
-            <input type="checkbox" id="menu-toggle">
+            <input type="checkbox" id="menu-toggle" onchange="toggleMenu()">
             <svg>
                 <use xlink:href="#menu" />
                 <use xlink:href="#menu" />
@@ -544,7 +647,7 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" disabled>🌙</button> <!-- دکمه غیرفعال برای تم -->
+        <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
         <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
         <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
         <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
@@ -687,19 +790,27 @@
     </svg>
 
     <script>
-        // حذف مدیریت تغییر تم
+        // مدیریت تغییر تم
         function toggleTheme() {
-            // دکمه غیرفعال است، هیچ عملی انجام نمی‌شود
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (body.classList.contains('day')) {
+                body.classList.remove('day');
+                body.classList.add('night');
+                themeToggle.textContent = '🌞';
+            } else {
+                body.classList.remove('night');
+                body.classList.add('day');
+                themeToggle.textContent = '🌙';
+            }
         }
 
         // مدیریت منوی همبرگری
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const navContainer = document.getElementById('nav-container');
-            const menuToggle = document.getElementById('menu-toggle');
             sidebar.classList.toggle('active');
             navContainer.classList.toggle('active');
-            menuToggle.checked = sidebar.classList.contains('active');
         }
 
         function closeMenu() {
@@ -721,7 +832,6 @@
                     content.classList.remove('active');
                     content.style.display = 'none';
                     header.classList.remove('active');
-                    // بستن تمام زیربخش‌ها
                     document.getElementById(`${id}-install-options`).style.display = 'none';
                     document.getElementById(`${id}-video-content`).style.display = 'none';
                     document.getElementById(`${id}-slider`).style.display = 'none';
