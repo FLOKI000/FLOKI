@@ -39,7 +39,6 @@
 
         body.day .nav-container {
             background-color: #b3e5e3;
-            border-color: #126965;
         }
 
         body.day .nav svg {
@@ -63,7 +62,6 @@
 
         body.day .section, body.day .os-box {
             background-color: #b3e5e3;
-            border-color: #126965;
         }
 
         body.day .os-box-header {
@@ -110,7 +108,6 @@
 
         body.night .nav-container {
             background-color: #444444;
-            border-color: #999999;
         }
 
         body.night .nav svg {
@@ -134,7 +131,6 @@
 
         body.night .section, body.night .os-box {
             background-color: #444444;
-            border-color: #999999;
         }
 
         body.night .os-box-header {
@@ -201,8 +197,8 @@
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
-            touch-action: manipulation; /* بهبود لمسی */
-            -webkit-tap-highlight-color: transparent; /* حذف هایلایت در موبایل */
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .theme-toggle:hover {
@@ -217,13 +213,12 @@
             z-index: 1002;
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid;
             width: 40px;
             height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: width 0.2s ease, height 0.2s ease, border-color 0.3s ease;
+            transition: width 0.2s ease, height 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: width, height;
             cursor: pointer;
@@ -314,7 +309,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
             color-profile: sRGB;
-            overflow-y: auto; /* جلوگیری از تداخل اسکرول */
+            overflow-y: auto;
         }
 
         .sidebar.active {
@@ -348,7 +343,7 @@
             top: 10px;
             padding: 20px;
             text-align: center;
-            z-index: 1; /* جلوگیری از تداخل z-index */
+            z-index: 1;
         }
 
         /* استایل کادر مقدمه */
@@ -357,7 +352,6 @@
             padding: 20px;
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -372,7 +366,6 @@
             padding: 20px;
             backdrop-filter: blur(4px);
             border-radius: 15px;
-            border: 2px solid;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
@@ -452,7 +445,7 @@
             position: relative;
             max-width: 100%;
             overflow: hidden;
-            touch-action: pan-y; /* بهبود اسکرول در موبایل */
+            touch-action: pan-y;
         }
 
         .slider-images {
@@ -667,9 +660,9 @@
 <body class="day">
     <div class="offline-message">شما آفلاین هستید!</div>
 
-    <div class="nav-container" id="nav-container">
+    <div class="nav-container" id="nav-container" onclick="toggleMenu()">
         <div class="nav">
-            <input type="checkbox" id="menu-toggle" onchange="toggleMenu()">
+            <input type="checkbox" id="menu-toggle">
             <svg>
                 <use xlink:href="#menu" />
                 <use xlink:href="#menu" />
@@ -840,8 +833,10 @@
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const navContainer = document.getElementById('nav-container');
+            const menuToggle = document.getElementById('menu-toggle');
             sidebar.classList.toggle('active');
             navContainer.classList.toggle('active');
+            menuToggle.checked = sidebar.classList.contains('active');
         }
 
         function closeMenu() {
@@ -987,7 +982,6 @@
             if (event.target.closest('.nav-container') || event.target.closest('.sidebar') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button')) {
                 // اجازه عملکرد به المان‌های کلیک‌شدنی
             } else {
-                // جلوگیری از تداخل
                 if (document.getElementById('sidebar').classList.contains('active')) {
                     closeMenu();
                 }
