@@ -209,7 +209,7 @@
         .nav-container {
             position: fixed;
             top: 10px;
-            right: 10px;
+            right: 13px;
             z-index: 1002;
             backdrop-filter: blur(4px);
             border-radius: 15px;
@@ -229,7 +229,6 @@
 
         .nav-container.active {
             width: 100px;
-            height: 30px;
         }
 
         .nav {
@@ -245,7 +244,7 @@
 
         .nav svg {
             fill: none;
-            stroke-width: 7px;
+            stroke-width: 15px;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -663,7 +662,14 @@
     <div class="nav-container" id="nav-container" onclick="toggleMenu()">
         <div class="nav">
             <input type="checkbox" id="menu-toggle">
-            <svg>
+<svg style="
+    height: 40px;
+    length: 40px;
+    width: 40px;
+">
+                <use xlink:href="#menu"></use>
+                <use xlink:href="#menu"></use>
+            </svg>
                 <use xlink:href="#menu" />
                 <use xlink:href="#menu" />
             </svg>
