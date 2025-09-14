@@ -10,12 +10,13 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: #fcefaf; /* رنگ اصلی ثابت */
+            background-color: #e0f7f6; /* رنگ اصلی تم روز ثابت */
             color: #000000;
             color-profile: sRGB;
             overflow-x: hidden;
             direction: rtl;
             transition: background-color 0.3s ease, color 0.3s ease;
+            touch-action: manipulation; /* بهبود عملکرد لمسی در موبایل */
         }
 
         /* غیرفعال کردن تغییر تم توسط مرورگر */
@@ -27,7 +28,7 @@
 
         /* تم روز */
         body.day {
-            background-color: #fcefaf;
+            background-color: #e0f7f6;
             color: #000000;
         }
 
@@ -37,63 +38,68 @@
         }
 
         body.day .nav-container {
-            background-color: #f7e1a1;
-            border-color: #d49b5e;
+            background-color: #b3e5e3;
+            border-color: #126965;
         }
 
         body.day .nav svg {
-            stroke: #d49b5e;
+            stroke: #126965;
         }
 
         body.day .sidebar {
-            background-color: #f7e1a1;
+            background-color: #b3e5e3;
         }
 
         body.day .sidebar a, body.day .theme-toggle {
-            background-color: #f0d394;
+            background-color: #86d3d0;
             color: #ffffff;
         }
 
-        body.day .sidebar a:hover, body.day .theme-toggle:hover {
-            background-color: #e9c586;
+        body.day .sidebar a:hover, body.day .theme-toggle:hover,
+        body.day .sidebar a:active, body.day .theme-toggle:active {
+            background-color: #59c1bd;
+            transform: scale(1.05);
         }
 
         body.day .section, body.day .os-box {
-            background-color: #f7e1a1;
-            border-color: #d49b5e;
+            background-color: #b3e5e3;
+            border-color: #126965;
         }
 
         body.day .os-box-header {
-            color: #dba96b;
+            color: #1f8c88;
         }
 
-        body.day .os-box-header:hover {
-            background-color: #e2b779;
+        body.day .os-box-header:hover, body.day .os-box-header:active {
+            background-color: #2cafab;
+            transform: scale(1.02);
         }
 
         body.day .os-box-content {
-            background-color: #fcefaf;
+            background-color: #e0f7f6;
         }
 
         body.day .os-box-content div {
-            background-color: #f7e1a1;
+            background-color: #b3e5e3;
+            color: #000000;
         }
 
-        body.day .os-box-content div:hover {
-            background-color: #e2b779;
+        body.day .os-box-content div:hover, body.day .os-box-content div:active {
+            background-color: #2cafab;
+            transform: scale(1.02);
         }
 
         body.day .slider-button {
-            background-color: #f0d394;
+            background-color: #86d3d0;
         }
 
-        body.day .slider-button:hover {
-            background-color: #e9c586;
+        body.day .slider-button:hover, body.day .slider-button:active {
+            background-color: #59c1bd;
         }
 
         /* تم شب */
         body.night {
-            background-color: #2a2a2a;
+            background-color: #333333;
             color: #ffffff;
         }
 
@@ -103,58 +109,63 @@
         }
 
         body.night .nav-container {
-            background-color: #3c3c3c;
-            border-color: #969696;
+            background-color: #444444;
+            border-color: #999999;
         }
 
         body.night .nav svg {
-            stroke: #969696;
+            stroke: #999999;
         }
 
         body.night .sidebar {
-            background-color: #3c3c3c;
+            background-color: #444444;
         }
 
         body.night .sidebar a, body.night .theme-toggle {
-            background-color: #4e4e4e;
+            background-color: #555555;
             color: #ffffff;
         }
 
-        body.night .sidebar a:hover, body.night .theme-toggle:hover {
-            background-color: #606060;
+        body.night .sidebar a:hover, body.night .theme-toggle:hover,
+        body.night .sidebar a:active, body.night .theme-toggle:active {
+            background-color: #666666;
+            transform: scale(1.05);
         }
 
         body.night .section, body.night .os-box {
-            background-color: #3c3c3c;
-            border-color: #969696;
+            background-color: #444444;
+            border-color: #999999;
         }
 
         body.night .os-box-header {
-            color: #848484;
+            color: #888888;
         }
 
-        body.night .os-box-header:hover {
-            background-color: #727272;
+        body.night .os-box-header:hover, body.night .os-box-header:active {
+            background-color: #777777;
+            transform: scale(1.02);
         }
 
         body.night .os-box-content {
-            background-color: #2a2a2a;
+            background-color: #333333;
         }
 
         body.night .os-box-content div {
-            background-color: #3c3c3c;
+            background-color: #444444;
+            color: #ffffff;
         }
 
-        body.night .os-box-content div:hover {
-            background-color: #727272;
+        body.night .os-box-content div:hover, body.night .os-box-content div:active {
+            background-color: #777777;
+            transform: scale(1.02);
         }
 
         body.night .slider-button {
-            background-color: #4e4e4e;
+            background-color: #555555;
         }
 
-        body.night .slider-button:hover {
-            background-color: #606060;
+        body.night .slider-button:hover, body.night .slider-button:active {
+            background-color: #666666;
         }
 
         /* استایل آفلاین */
@@ -190,6 +201,8 @@
             display: block;
             transform: scale(1);
             will-change: transform, background-color;
+            touch-action: manipulation; /* بهبود لمسی */
+            -webkit-tap-highlight-color: transparent; /* حذف هایلایت در موبایل */
         }
 
         .theme-toggle:hover {
@@ -204,6 +217,7 @@
             z-index: 1002;
             backdrop-filter: blur(4px);
             border-radius: 15px;
+            border: 2px solid;
             width: 40px;
             height: 40px;
             display: flex;
@@ -214,6 +228,8 @@
             will-change: width, height;
             cursor: pointer;
             color-profile: sRGB;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .nav-container.active {
@@ -298,6 +314,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: right;
             color-profile: sRGB;
+            overflow-y: auto; /* جلوگیری از تداخل اسکرول */
         }
 
         .sidebar.active {
@@ -321,6 +338,8 @@
             z-index: 2;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* استایل محتوای اصلی */
@@ -329,6 +348,7 @@
             top: 10px;
             padding: 20px;
             text-align: center;
+            z-index: 1; /* جلوگیری از تداخل z-index */
         }
 
         /* استایل کادر مقدمه */
@@ -337,11 +357,13 @@
             padding: 20px;
             backdrop-filter: blur(4px);
             border-radius: 15px;
+            border: 2px solid;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
             color-profile: sRGB;
+            touch-action: manipulation;
         }
 
         /* استایل کادرهای سیستم‌عامل */
@@ -350,11 +372,13 @@
             padding: 20px;
             backdrop-filter: blur(4px);
             border-radius: 15px;
+            border: 2px solid;
             max-width: 600px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             animation: fadeIn 0.3s ease;
             will-change: opacity, transform;
             color-profile: sRGB;
+            touch-action: manipulation;
         }
 
         .os-box-header {
@@ -370,17 +394,19 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23d49b5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23126965" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
             position: absolute;
             left: 20px;
             transition: transform 0.2s ease;
         }
 
         body.night .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23969696" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
         }
 
         .os-box-header.active::after {
@@ -410,6 +436,8 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             will-change: transform, background-color;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* استایل لینک‌های دانلود */
@@ -424,6 +452,7 @@
             position: relative;
             max-width: 100%;
             overflow: hidden;
+            touch-action: pan-y; /* بهبود اسکرول در موبایل */
         }
 
         .slider-images {
@@ -449,11 +478,11 @@
         }
 
         body.day .slider-counter {
-            color: #dba96b;
+            color: #1f8c88;
         }
 
         body.night .slider-counter {
-            color: #848484;
+            color: #888888;
         }
 
         .slider-button {
@@ -472,6 +501,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .slider-button svg {
@@ -950,6 +981,18 @@
                 closeMenu();
             }
         });
+
+        // جلوگیری از تداخل لمسی در موبایل
+        document.addEventListener('touchstart', function(event) {
+            if (event.target.closest('.nav-container') || event.target.closest('.sidebar') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button')) {
+                // اجازه عملکرد به المان‌های کلیک‌شدنی
+            } else {
+                // جلوگیری از تداخل
+                if (document.getElementById('sidebar').classList.contains('active')) {
+                    closeMenu();
+                }
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
