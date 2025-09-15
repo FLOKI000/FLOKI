@@ -3,56 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Social Buttons</title>
+  <title>FLOKI Links</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .button-container {
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    .btn-container {
+      transition: transform 0.2s ease-in-out;
     }
-    .button-container:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    .btn-container:hover {
+      transform: scale(1.05);
+    }
+    .btn-img {
+      max-width: 200px;
+      height: auto;
+    }
+    @media (max-width: 640px) {
+      .btn-img {
+        max-width: 150px;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="flex flex-col space-y-6 p-4 max-w-md mx-auto">
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-md mx-auto space-y-6">
     <!-- SITE Button with Text -->
     <div class="text-center">
-      <p class="text-gray-600 text-lg font-semibold mb-2">سایت فلوکی 👇</p>
-      <a href="https://floki000.github.io/FLOKI000/" target="_blank" class="button-container inline-block rounded-lg bg-blue-500 text-white font-medium py-3 px-6 text-center">
-        <div class="flex items-center justify-center space-x-2">
-          <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" class="h-6">
-          <span>مشاهده سایت</span>
-        </div>
+      <p class="text-gray-400 text-lg mb-2 font-semibold">سایت فلوکی 👇</p>
+      <a href="https://floki000.github.io/FLOKI000/" target="_blank" class="btn-container inline-block">
+        <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" class="btn-img">
       </a>
     </div>
 
     <!-- GitHub Button with Text -->
     <div class="text-center">
-      <p class="text-gray-600 text-lg font-semibold mb-2">گیت هاب فلوکی 👇</p>
-      <a href="https://github.com/FLOKI000/FLOKI000/tree/main/FLOKI333" target="_blank" class="button-container inline-block rounded-lg bg-gray-800 text-white font-medium py-3 px-6 text-center">
-        <div class="flex items-center justify-center space-x-2">
-          <img src="https://img.shields.io/badge/GitHub-FLOKI000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-6">
-          <span>مشاهده گیت هاب</span>
-        </div>
+      <p class="text-gray-400 text-lg mb-2 font-semibold">گیت هاب فلوکی 👇</p>
+      <a href="https://github.com/FLOKI000/FLOKI000/tree/main/FLOKI333" target="_blank" class="btn-container inline-block">
+        <img src="https://img.shields.io/badge/GitHub-FLOKI000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="btn-img">
       </a>
     </div>
 
     <!-- Telegram Button with Text -->
     <div class="text-center">
-      <p class="text-gray-600 text-lg font-semibold mb-2">تلگرام فلوکی 👇</p>
-      <a href="https://t.me/FLOKI000" target="_blank" class="button-container inline-block rounded-lg bg-blue-500 text-white font-medium py-3 px-6 text-center">
-        <div class="flex items-center justify-center space-x-2">
-          <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" class="h-6">
-          <span>مشاهده تلگرام</span>
-        </div>
+      <p class="text-gray-400 text-lg mb-2 font-semibold">تلگرام فلوکی 👇</p>
+      <a href="https://t.me/FLOKI000" target="_blank" class="btn-container inline-block">
+        <img src="https://img.shields.io/badge/Telegram-FLOKI000-1A8FCA?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" class="btn-img">
       </a>
     </div>
-  </div>
 
-  <footer class="mt-12 text-center text-gray-600 text-sm">
-    <p>© 2025 فلوکی. تمامی حقوق محفوظ است.</p>
-  </footer>
+    <footer class="text-center mt-12">
+      <p class="text-gray-500 text-sm">© 2025 FLOKI000. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
