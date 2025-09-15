@@ -2,7 +2,7 @@
 <div style="margin-top: 25px; text-align: center;">
   <p style="color: #7f8c8d; font-size: 25px;">سایت فلوکی 👇</p>
   <a href="https://floki000.github.io/WEB/" target="_blank">
-    <img src="https://img.shields.io/badge/Website-WEBSITE-1A8FCA?style=for-the-badge&logo=firefox&logoColor=white" alt="Website" style="transition: transform 0.01s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1.0)'">
+    <img src="https://img.shields.io/badge/Website-FLOKI-1A8FCA?style=for-the-badge&logo=firefox&logoColor=white" alt="Website" style="transition: transform 0.01s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1.0)'">
   </a>
 </div>
 
