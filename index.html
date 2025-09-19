@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light only">
-    <title>وب‌سایت فلوکی</title>
-    <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
+    <title>Electric Border Card</title>
     <style>
         /* Reset and base styles */
         * {
@@ -25,1780 +23,332 @@
         }
 
         body {
-            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             background-color: oklch(0.145 0 0);
             color: oklch(0.985 0 0);
             height: 100vh;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            touch-action: manipulation;
-        }
-
-        /* غیرفعال کردن تغییر تم توسط مرورگر */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                color-scheme: light only;
-            }
-        }
-
-        /* تم روز */
-        body.day {
-            background-color: #FFFFFF;
-            color: #000000;
-        }
-
-        body.day .offline-message {
-            background-color: #d32f2f;
-            color: #ffffff;
-        }
-
-        body.day .nav-bar {
-            background-color: transparent;
-        }
-
-        body.day .nav-container {
-            background-color: #FCC5C0;
-        }
-
-        body.day .support-button {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #000000;
-        }
-
-        body.day .support-button:hover, body.day .support-button:active {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            transform: scale(1.05);
-        }
-
-        body.day .nav svg {
-            stroke: #000000;
-        }
-
-        body.day .sidebar {
-            background-color: #FCC5C0;
-        }
-
-        body.day .sidebar a, body.day .theme-toggle {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #000000;
-        }
-
-        body.day .sidebar a:hover, body.day .theme-toggle:hover,
-        body.day .sidebar a:active, body.day .theme-toggle:active {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            transform: scale(1.05);
-        }
-
-        body.day .section, body.day .os-box {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-        }
-
-        body.day .os-box-header {
-            color: #000000;
-        }
-
-        body.day .os-box-header:hover, body.day .os-box-header:active {
-            background-color: #F89880;
-            transform: scale(1.02);
-        }
-
-        body.day .os-box-content {
-            background-color: #FFFFFF;
-        }
-
-        body.day .os-box-content div {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #000000;
-        }
-
-        body.day .os-box-content div:hover, body.day .os-box-content div:active {
-            background-color: #F89880;
-            transform: scale(1.02);
-        }
-
-        body.day .slider-button {
-            background-color: #FBB6AD;
-        }
-
-        body.day .slider-button:hover, body.day .slider-button:active {
-            background-color: #F9A799;
-        }
-
-        body.day .slider-counter {
-            color: #000000;
-        }
-
-        /* تم شب */
-        body.night {
-            background-color: #333333;
-            color: #ffffff;
-        }
-
-        body.night .offline-message {
-            background-color: #d32f2f;
-            color: #ffffff;
-        }
-
-        body.night .nav-bar {
-            background-color: transparent;
-        }
-
-        body.night .nav-container {
-            background-color: #444444;
-        }
-
-        body.night .support-button {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #ffffff;
-        }
-
-        body.night .support-button:hover, body.night .support-button:active {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            transform: scale(1.05);
-        }
-
-        body.night .nav svg {
-            stroke: #ffffff;
-        }
-
-        body.night .sidebar {
-            background-color: #444444;
-        }
-
-        body.night .sidebar a, body.night .theme-toggle {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #ffffff;
-        }
-
-        body.night .sidebar a:hover, body.night .theme-toggle:hover,
-        body.night .sidebar a:active, body.night .theme-toggle:active {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            transform: scale(1.05);
-        }
-
-        body.night .section, body.night .os-box {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-        }
-
-        body.night .os-box-header {
-            color: #ffffff;
-        }
-
-        body.night .os-box-header:hover, body.night .os-box-header:active {
-            background-color: #777777;
-            transform: scale(1.02);
-        }
-
-        body.night .os-box-content {
-            background-color: #333333;
-        }
-
-        body.night .os-box-content div {
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-            color: #ffffff;
-        }
-
-        body.night .os-box-content div:hover, body.night .os-box-content div:active {
-            background-color: #777777;
-            transform: scale(1.02);
-        }
-
-        body.night .slider-button {
-            background-color: #555555;
-        }
-
-        body.night .slider-button:hover, body.night .slider-button:active {
-            background-color: #666666;
-        }
-
-        body.night .slider-counter {
-            color: #ffffff;
-        }
-
-        /* استایل آفلاین */
-        .offline-message {
-            display: none;
-            position: fixed;
-            top: 60px;
-            right: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1003;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        body.offline .offline-message {
-            display: block;
-        }
-
-        /* استایل نوار ناوبری */
-        .nav-bar {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            left: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1002;
-        }
-
-        /* استایل دکمه پشتیبانی */
-        .support-button {
-            padding: 12px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-size: 16px;
-            text-align: center;
-            line-height: 1.5;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: 140px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: scale(1);
-            will-change: transform, background;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            position: relative;
-        }
-
-        .support-button svg {
-            width: 24px;
-            height: 24px;
-            margin-left: 8px;
-        }
-
-        .support-button .glow-layer-1 {
-            border: 2px solid rgba(221, 132, 72, 0.6);
-            border-radius: 14px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(1px);
-        }
-
-        .support-button .glow-layer-2 {
-            border: 2px solid var(--electric-light-color);
-            border-radius: 14px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(4px);
-        }
-
-        .support-button .overlay-1 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 14px;
-            opacity: 1;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .support-button .overlay-2 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 14px;
-            opacity: 0.5;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .support-button .background-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 14px;
-            filter: blur(32px);
-            transform: scale(1.1);
-            opacity: 0.3;
-            z-index: -1;
-            background: linear-gradient(
-                -30deg,
-                var(--electric-light-color),
-                transparent,
-                var(--electric-border-color)
-            );
-        }
-
-        .support-button .scrollbar-glass {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.04);
-            position: relative;
-            transition: background 0.3s ease;
-            border-radius: 14px;
-            width: 100%;
-            height: 100%;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .support-button .scrollbar-glass:hover {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.08);
-        }
-
-        .support-button .scrollbar-glass::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 1px;
-            background: linear-gradient(
-                150deg,
-                rgba(255, 255, 255, 0.48) 16.73%,
-                rgba(255, 255, 255, 0.08) 30.2%,
-                rgba(255, 255, 255, 0.08) 68.2%,
-                rgba(255, 255, 255, 0.6) 81.89%
-            );
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-        }
-
-        /* استایل دکمه تغییر تم */
-        .theme-toggle {
-            margin: 12px;
-            padding: 12px;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            line-height: 1.5;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: calc(100% - 24px);
-            box-sizing: border-box;
-            display: block;
-            transform: scale(1);
-            will-change: transform, background;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            position: relative;
-        }
-
-        .theme-toggle .scrollbar-glass {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.04);
-            position: relative;
-            transition: background 0.3s ease;
-            border-radius: 14px;
-            width: 100%;
-            height: 100%;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle .scrollbar-glass:hover {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.08);
-        }
-
-        .theme-toggle .scrollbar-glass::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 1px;
-            background: linear-gradient(
-                150deg,
-                rgba(255, 255, 255, 0.48) 16.73%,
-                rgba(255, 255, 255, 0.08) 30.2%,
-                rgba(255, 255, 255, 0.08) 68.2%,
-                rgba(255, 255, 255, 0.6) 81.89%
-            );
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-        }
-
-        /* استایل ظرف منوی همبرگری */
-        .nav-container {
-            border-radius: 15px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: width 0.2s ease, height 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: width, height;
-            cursor: pointer;
-            color-profile: sRGB;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .nav-container.active {
-            width: 100px;
-        }
-
-        .nav {
-            background: none;
-            width: 20px;
-            height: 20px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 5px;
-        }
-
-        .nav svg {
-            fill: none;
-            stroke-width: 15px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .nav svg use:nth-of-type(1) {
-            opacity: 1;
-            stroke-dashoffset: 221;
-            stroke-dasharray: 46 249;
-            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
-        }
-
-        .nav svg use:nth-of-type(2) {
-            animation: stroke-animation-reverse 0.8s ease-out forwards;
-        }
-
-        .nav input {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-            cursor: pointer;
-            opacity: 0;
-        }
-
-        .nav input:checked + svg use:nth-of-type(1) {
-            stroke-dashoffset: 175;
-            stroke-dasharray: 0 295;
-            opacity: 0;
-            transition: stroke-dashoffset .05s linear .05s, stroke-dasharray .05s linear .05s, opacity 0s linear .1s;
-        }
-
-        .nav input:checked + svg use:nth-of-type(2) {
-            animation: stroke-animation 0.8s ease-out forwards;
-        }
-
-        @keyframes stroke-animation {
-            0% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
-            50% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-            65% { stroke-dashoffset: 59; stroke-dasharray: 59 236; }
-            100% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-        }
-
-        @keyframes stroke-animation-reverse {
-            0% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-            50% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
-            65% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
-            100% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
-        }
-
-        /* استایل منوی کناری */
-        .sidebar {
-            height: 100%;
-            width: 140px;
-            position: fixed;
-            top: 0;
-            right: -140px;
-            backdrop-filter: blur(4px);
-            transition: right 0.2s ease;
-            z-index: 1001;
-            padding-top: 80px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: right;
-            color-profile: sRGB;
-            overflow-y: auto;
-        }
-
-        .sidebar.active {
-            right: 0;
-        }
-
-        .sidebar a {
-            margin: 12px;
-            padding: 12px;
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-            border-radius: 14px;
-            text-align: center;
-            line-height: 1.5;
-            transition: background 0.3s ease, transform 0.2s ease;
-            cursor: pointer;
-            transform: scale(1);
-            width: calc(100% - 24px);
-            box-sizing: border-box;
-            z-index: 2;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            position: relative;
-        }
-
-        .sidebar a .scrollbar-glass {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.04);
-            position: relative;
-            transition: background 0.3s ease;
-            border-radius: 14px;
-            width: 100%;
-            height: 100%;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar a .scrollbar-glass:hover {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.08);
-        }
-
-        .sidebar a .scrollbar-glass::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 1px;
-            background: linear-gradient(
-                150deg,
-                rgba(255, 255, 255, 0.48) 16.73%,
-                rgba(255, 255, 255, 0.08) 30.2%,
-                rgba(255, 255, 255, 0.08) 68.2%,
-                rgba(255, 255, 255, 0.6) 81.89%
-            );
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-        }
-
-        /* استایل محتوای اصلی */
-        .content {
-            position: relative;
-            top: 60px;
-            padding: 20px;
-            text-align: center;
-            z-index: 1;
-        }
-
-        /* استایل کادر مقدمه */
-        .section {
-            margin: 20px auto;
-            padding: 2px;
-            border-radius: 24px;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .section .border-outer {
-            border: 2px solid rgba(221, 132, 72, 0.5);
-            border-radius: 24px;
-            padding-right: 4px;
-            padding-bottom: 4px;
-        }
-
-        .section .main-card {
-            width: 100%;
-            border-radius: 24px;
-            border: 2px solid var(--electric-border-color);
-            margin-top: -4px;
-            margin-left: -4px;
-            padding: 20px;
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-        }
-
-        .section .glow-layer-1 {
-            border: 2px solid rgba(221, 132, 72, 0.6);
-            border-radius: 24px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(1px);
-        }
-
-        .section .glow-layer-2 {
-            border: 2px solid var(--electric-light-color);
-            border-radius: 24px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(4px);
-        }
-
-        .section .overlay-1 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            opacity: 1;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .section .overlay-2 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            opacity: 0.5;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .section .background-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            filter: blur(32px);
-            transform: scale(1.1);
-            opacity: 0.3;
-            z-index: -1;
-            background: linear-gradient(
-                -30deg,
-                var(--electric-light-color),
-                transparent,
-                var(--electric-border-color)
-            );
-        }
-
-        /* استایل کادرهای سیستم‌عامل */
-        .os-box {
-            margin: 20px auto;
-            padding: 2px;
-            border-radius: 24px;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .os-box .border-outer {
-            border: 2px solid rgba(221, 132, 72, 0.5);
-            border-radius: 24px;
-            padding-right: 4px;
-            padding-bottom: 4px;
-        }
-
-        .os-box .main-card {
-            width: 100%;
-            border-radius: 24px;
-            border: 2px solid var(--electric-border-color);
-            margin-top: -4px;
-            margin-left: -4px;
-            padding: 20px;
-            background: linear-gradient(
-                -30deg,
-                var(--gradient-color),
-                transparent,
-                var(--gradient-color)
-            ),
-            linear-gradient(
-                to bottom,
-                var(--color-neutral-900),
-                var(--color-neutral-900)
-            );
-        }
-
-        .os-box .glow-layer-1 {
-            border: 2px solid rgba(221, 132, 72, 0.6);
-            border-radius: 24px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(1px);
-        }
-
-        .os-box .glow-layer-2 {
-            border: 2px solid var(--electric-light-color);
-            border-radius: 24px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(4px);
-        }
-
-        .os-box .overlay-1 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            opacity: 1;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .os-box .overlay-2 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            opacity: 0.5;
-            mix-blend-mode: overlay;
-            transform: scale(1.1);
-            filter: blur(16px);
-            background: linear-gradient(
-                -30deg,
-                white,
-                transparent 30%,
-                transparent 70%,
-                white
-            );
-        }
-
-        .os-box .background-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-radius: 24px;
-            filter: blur(32px);
-            transform: scale(1.1);
-            opacity: 0.3;
-            z-index: -1;
-            background: linear-gradient(
-                -30deg,
-                var(--electric-light-color),
-                transparent,
-                var(--electric-border-color)
-            );
-        }
-
-        .os-box-header {
-            font-size: 18px;
-            text-align: center;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background-color;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
-            position: absolute;
-            left: 20px;
-            transition: transform 0.2s ease;
-        }
-
-        body.night .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
-        }
-
-        .os-box-header.active::after {
-            transform: rotate(180deg);
-        }
-
-        .os-box-content {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.3s ease;
-            will-change: opacity, transform;
-            color-profile: sRGB;
-        }
-
-        .os-box-content.active {
-            display: block;
-        }
-
-        .os-box-content div {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            position: relative;
-        }
-
-        .os-box-content div .scrollbar-glass {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.04);
-            position: relative;
-            transition: background 0.3s ease;
-            border-radius: 5px;
-            width: 100%;
-            height: 100%;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .os-box-content div .scrollbar-glass:hover {
-            background: radial-gradient(
-                47.2% 50% at 50.39% 88.37%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0) 100%
-            ),
-            rgba(255, 255, 255, 0.08);
-        }
-
-        .os-box-content div .scrollbar-glass::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 1px;
-            background: linear-gradient(
-                150deg,
-                rgba(255, 255, 255, 0.48) 16.73%,
-                rgba(255, 255, 255, 0.08) 30.2%,
-                rgba(255, 255, 255, 0.08) 68.2%,
-                rgba(255, 255, 255, 0.6) 81.89%
-            );
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            -webkit-mask-composite: xor;
-            pointer-events: none;
-        }
-
-        /* استایل لینک‌های دانلود */
-        .os-box-content a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* استایل اسلایدر تصاویر */
-        .slider {
-            position: relative;
-            max-width: 100%;
             overflow: hidden;
-            touch-action: pan-y;
         }
 
-        .slider-images {
+        /* Main container */
+        .main-container {
             display: flex;
-            transition: transform 0.3s ease;
-            will-change: transform;
-        }
-
-        .slider-image {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .slider-counter {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 16px;
-            font-family: 'Vazirmatn', Arial, sans-serif;
-        }
-
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            z-index: 10;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.2s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
+            justify-content: center;
+            height: 100vh;
         }
 
-        .slider-button svg {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: #000000;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        /* SVG positioning */
+        .svg-container {
+            position: absolute;
         }
 
-        body.night .slider-button svg {
-            stroke: #ffffff;
+        /* Card container */
+        .card-container {
+            padding: 2px;
+            border-radius: 24px;
+            position: relative;
+            background: linear-gradient(
+                -30deg,
+                var(--gradient-color),
+                transparent,
+                var(--gradient-color)
+            ),
+            linear-gradient(
+                to bottom,
+                var(--color-neutral-900),
+                var(--color-neutral-900)
+            );
         }
 
-        .slider-button.prev {
-            left: 10px;
+        /* Inner container */
+        .inner-container {
+            position: relative;
         }
 
-        .slider-button.next {
-            right: 10px;
+        /* Border layers */
+        .border-outer {
+            border: 2px solid rgba(221, 132, 72, 0.5);
+            border-radius: 24px;
+            padding-right: 4px;
+            padding-bottom: 4px;
         }
 
-        /* استایل برای دستگاه‌های مختلف */
-        @media (max-width: 600px) {
-            .nav-bar {
-                top: 8px;
-                right: 8px;
-                left: 8px;
-            }
-
-            .support-button {
-                width: 120px;
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .sidebar {
-                width: 110px;
-                right: -110px;
-                padding-top: 70px;
-            }
-
-            .sidebar.active {
-                right: 0;
-            }
-
-            .sidebar a, .theme-toggle {
-                margin: 8px;
-                padding: 8px;
-                font-size: 14px;
-                width: calc(100% - 16px);
-                line-height: 1.5;
-            }
-
-            .nav-container {
-                width: 40px;
-                height: 40px;
-            }
-
-            .nav-container.active {
-                width: 85px;
-                height: 40px;
-                border-radius: 12px;
-            }
-
-            .nav {
-                width: 20px;
-                height: 20px;
-                margin: 0 5px;
-            }
-
-            .section, .os-box {
-                max-width: 90%;
-                margin: 12px auto;
-            }
-
-            .os-box-header::after {
-                left: 15px;
-            }
-
-            .slider-image {
-                height: 200px;
-            }
-
-            .slider-button {
-                padding: 8px;
-                width: 32px;
-                height: 32px;
-            }
-
-            .slider-button svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            .slider-counter {
-                font-size: 14px;
-                margin-top: 8px;
-            }
+        .main-card {
+            width: 350px;
+            height: 500px;
+            border-radius: 24px;
+            border: 2px solid var(--electric-border-color);
+            margin-top: -4px;
+            margin-left: -4px;
+            filter: url(#turbulent-displace);
         }
 
-        @media (min-width: 601px) and (max-width: 1024px) {
-            .nav-bar {
-                top: 9px;
-                right: 9px;
-                left: 9px;
-            }
-
-            .support-button {
-                width: 130px;
-                font-size: 15px;
-                padding: 10px;
-            }
-
-            .sidebar {
-                width: 120px;
-                right: -120px;
-                padding-top: 75px;
-            }
-
-            .sidebar.active {
-                right: 0;
-            }
-
-            .sidebar a, .theme-toggle {
-                margin: 10px;
-                padding: 10px;
-                font-size: 15px;
-                width: calc(100% - 20px);
-                line-height: 1.5;
-            }
-
-            .section, .os-box {
-                max-width: 80%;
-                margin: 15px auto;
-            }
-
-            .slider-image {
-                height: 250px;
-            }
-
-            .slider-button {
-                padding: 9px;
-                width: 36px;
-                height: 36px;
-            }
-
-            .slider-button svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .slider-counter {
-                font-size: 15px;
-                margin-top: 9px;
-            }
+        /* Glow effects */
+        .glow-layer-1 {
+            border: 2px solid rgba(221, 132, 72, 0.6);
+            border-radius: 24px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: blur(1px);
         }
 
-        @media (min-width: 1025px) {
-            .nav-bar {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-            }
-
-            .section, .os-box {
-                max-width: 600px;
-                margin: 20px auto;
-            }
-
-            .slider-button {
-                padding: 10px;
-                width: 40px;
-                height: 40px;
-            }
-
-            .slider-button svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .slider-counter {
-                font-size: 16px;
-                margin-top: 10px;
-            }
+        .glow-layer-2 {
+            border: 2px solid var(--electric-light-color);
+            border-radius: 24px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: blur(4px);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Overlay effects */
+        .overlay-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+            opacity: 1;
+            mix-blend-mode: overlay;
+            transform: scale(1.1);
+            filter: blur(16px);
+            background: linear-gradient(
+                -30deg,
+                white,
+                transparent 30%,
+                transparent 70%,
+                white
+            );
+        }
+
+        .overlay-2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+            opacity: 0.5;
+            mix-blend-mode: overlay;
+            transform: scale(1.1);
+            filter: blur(16px);
+            background: linear-gradient(
+                -30deg,
+                white,
+                transparent 30%,
+                transparent 70%,
+                white
+            );
+        }
+
+        /* Background glow */
+        .background-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+            filter: blur(32px);
+            transform: scale(1.1);
+            opacity: 0.3;
+            z-index: -1;
+            background: linear-gradient(
+                -30deg,
+                var(--electric-light-color),
+                transparent,
+                var(--electric-border-color)
+            );
+        }
+
+        /* Content container */
+        .content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Content sections */
+        .content-top {
+            display: flex;
+            flex-direction: column;
+            padding: 48px;
+            padding-bottom: 16px;
+            height: 100%;
+        }
+
+        .content-bottom {
+            display: flex;
+            flex-direction: column;
+            padding: 48px;
+            padding-top: 16px;
+        }
+
+        /* Scrollbar glass component */
+        .scrollbar-glass {
+            background: radial-gradient(
+                47.2% 50% at 50.39% 88.37%,
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0) 100%
+            ),
+            rgba(255, 255, 255, 0.04);
+            position: relative;
+            transition: background 0.3s ease;
+            border-radius: 14px;
+            width: fit-content;
+            height: fit-content;
+            padding: 8px 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .scrollbar-glass:hover {
+            background: radial-gradient(
+                47.2% 50% at 50.39% 88.37%,
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0) 100%
+            ),
+            rgba(255, 255, 255, 0.08);
+        }
+
+        .scrollbar-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 1px;
+            background: linear-gradient(
+                150deg,
+                rgba(255, 255, 255, 0.48) 16.73%,
+                rgba(255, 255, 255, 0.08) 30.2%,
+                rgba(255, 255, 255, 0.08) 68.2%,
+                rgba(255, 255, 255, 0.6) 81.89%
+            );
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+            pointer-events: none;
+        }
+
+        /* Typography */
+        .title {
+            font-size: 36px;
+            font-weight: 500;
+            margin-top: auto;
+        }
+
+        .description {
+            opacity: 0.5;
+        }
+
+        /* Divider */
+        .divider {
+            margin-top: auto;
+            border: none;
+            height: 1px;
+            background-color: currentColor;
+            opacity: 0.1;
+            mask-image: linear-gradient(to right, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent,
+                black,
+                transparent
+            );
         }
     </style>
 </head>
-<body class="day">
-    <div class="offline-message">شما آفلاین هستید!</div>
+<body>
+    <main class="main-container">
+        <svg class="svg-container">
+            <defs>
+                <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                    </feOffset>
 
-    <div class="nav-bar">
-        <div class="nav-container" id="nav-container" onclick="toggleMenu()">
-            <div class="nav">
-                <input type="checkbox" id="menu-toggle">
-                <svg style="height: 40px; width: 40px;">
-                    <use xlink:href="#menu"></use>
-                    <use xlink:href="#menu"></use>
-                </svg>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                    </feOffset>
+
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                    </feOffset>
+
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+                    </feOffset>
+
+                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+
+                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
+                </filter>
+            </defs>
+        </svg>
+
+        <div class="card-container">
+            <div class="inner-container">
+                <div class="border-outer">
+                    <div class="main-card"></div>
+                </div>
+                <div class="glow-layer-1"></div>
+                <div class="glow-layer-2"></div>
             </div>
-        </div>
-        <a href="https://t.me/FLOKI333" target="_blank" class="support-button">
-            <div class="scrollbar-glass">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="7" r="4"/>
-                    <path d="M4 20v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/>
-                    <path d="M8 14a6 6 0 0 0 8 0"/>
-                    <path d="M3 8h2"/>
-                    <path d="M19 8h2"/>
-                </svg>
-                ارتباط با پشتیبانی
-            </div>
-            <div class="glow-layer-1"></div>
-            <div class="glow-layer-2"></div>
+
             <div class="overlay-1"></div>
             <div class="overlay-2"></div>
             <div class="background-glow"></div>
-        </a>
-    </div>
 
-    <div class="sidebar" id="sidebar">
-        <button class="theme-toggle">
-            <div class="scrollbar-glass">🌞</div>
-        </button>
-        <a href="#android" onclick="closeMenu(); toggleOsBox('android')">
-            <div class="scrollbar-glass">اندروید</div>
-        </a>
-        <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">
-            <div class="scrollbar-glass">آیفون</div>
-        </a>
-        <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">
-            <div class="scrollbar-glass">ویندوز</div>
-        </a>
-        <a href="https://t.me/FLOKI333" target="_blank" onclick="closeMenu()">
-            <div class="scrollbar-glass">تلگرام</div>
-        </a>
-        <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">
-            <div class="scrollbar-glass">گیت‌هاب</div>
-        </a>
-    </div>
-
-    <div class="content">
-        <div class="section" id="intro">
-            <div class="border-outer">
-                <div class="main-card">
-                    <h2>مقدمه</h2>
-                    <p>این وب‌سایت آموزش‌هایی برای اتصال به نرم‌افزارها در سیستم‌عامل‌های مختلف ارائه می‌دهد.</p>
-                </div>
-                <div class="glow-layer-1"></div>
-                <div class="glow-layer-2"></div>
-                <div class="overlay-1"></div>
-                <div class="overlay-2"></div>
-                <div class="background-glow"></div>
-            </div>
-        </div>
-
-        <div class="os-box android" id="android">
-            <div class="border-outer">
-                <div class="main-card">
-                    <div class="os-box-header" onclick="toggleOsBox('android')">اندروید</div>
-                    <div class="os-box-content" id="android-content">
-                        <div class="install-app" onclick="toggleInstallOptions('android')">
-                            <div class="scrollbar-glass">نصب اپ</div>
-                        </div>
-                        <div class="install-options" id="android-install-options" style="display: none;">
-                            <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">
-                                <div class="scrollbar-glass">v2rayNG</div>
-                            </a>
-                        </div>
-                        <div class="video-tutorial" onclick="toggleVideo('android')">
-                            <div class="scrollbar-glass">آموزش ویدیویی</div>
-                        </div>
-                        <div class="video-content" id="android-video-content" style="display: none;">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_specific_video" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="image-tutorial" onclick="toggleSlider('android')">
-                            <div class="scrollbar-glass">آموزش با تصاویر</div>
-                        </div>
-                        <div class="slider" id="android-slider" style="display: none;">
-                            <div class="slider-images" id="android-slider-images">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+1" alt="تصویر اندروید 1">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+2" alt="تصویر اندروید 2">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+3" alt="تصویر اندروید 3">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+4" alt="تصویر اندروید 4">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+5" alt="تصویر اندروید 5">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+6" alt="تصویر اندروید 6">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+7" alt="تصویر اندروید 7">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+8" alt="تصویر اندروید 8">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+9" alt="تصویر اندروید 9">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+10" alt="تصویر اندروید 10">
-                            </div>
-                            <button class="slider-button prev" onclick="moveSlider('android', -1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                            <button class="slider-button next" onclick="moveSlider('android', 1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M9 18l6-6-6-6"/>
-                                </svg>
-                            </button>
-                            <div class="slider-counter" id="android-slider-counter">تصویر 1/10</div>
-                        </div>
+            <div class="content-container">
+                <div class="content-top">
+                    <div class="scrollbar-glass">
+                        Dramatic
                     </div>
+                    <p class="title">Electric Border</p>
                 </div>
-                <div class="glow-layer-1"></div>
-                <div class="glow-layer-2"></div>
-                <div class="overlay-1"></div>
-                <div class="overlay-2"></div>
-                <div class="background-glow"></div>
+
+                <hr class="divider" />
+
+                <div class="content-bottom">
+                    <p class="description">In case you'd like to emphasize something very dramatically.</p>
+                </div>
             </div>
         </div>
-
-        <div class="os-box iphone" id="iphone">
-            <div class="border-outer">
-                <div class="main-card">
-                    <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
-                    <div class="os-box-content" id="iphone-content">
-                        <div class="install-app" onclick="toggleInstallOptions('iphone')">
-                            <div class="scrollbar-glass">نصب اپ</div>
-                        </div>
-                        <div class="install-options" id="iphone-install-options" style="display: none;">
-                            <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank">
-                                <div class="scrollbar-glass">Streisand</div>
-                            </a>
-                        </div>
-                        <div class="video-tutorial" onclick="toggleVideo('iphone')">
-                            <div class="scrollbar-glass">آموزش ویدیویی</div>
-                        </div>
-                        <div class="video-content" id="iphone-video-content" style="display: none;">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_specific_video" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="image-tutorial" onclick="toggleSlider('iphone')">
-                            <div class="scrollbar-glass">آموزش با تصاویر</div>
-                        </div>
-                        <div class="slider" id="iphone-slider" style="display: none;">
-                            <div class="slider-images" id="iphone-slider-images">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+1" alt="تصویر آیفون 1">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+2" alt="تصویر آیفون 2">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+3" alt="تصویر آیفون 3">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+4" alt="تصویر آیفون 4">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+5" alt="تصویر آیفون 5">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+6" alt="تصویر آیفون 6">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+7" alt="تصویر آیفون 7">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+8" alt="تصویر آیفون 8">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+9" alt="تصویر آیفون 9">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+10" alt="تصویر آیفون 10">
-                            </div>
-                            <button class="slider-button prev" onclick="moveSlider('iphone', -1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                            <button class="slider-button next" onclick="moveSlider('iphone', 1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M9 18l6-6-6-6"/>
-                                </svg>
-                            </button>
-                            <div class="slider-counter" id="iphone-slider-counter">تصویر 1/10</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glow-layer-1"></div>
-                <div class="glow-layer-2"></div>
-                <div class="overlay-1"></div>
-                <div class="overlay-2"></div>
-                <div class="background-glow"></div>
-            </div>
-        </div>
-
-        <div class="os-box windows" id="windows">
-            <div class="border-outer">
-                <div class="main-card">
-                    <div class="os-box-header" onclick="toggleOsBox('windows')">ویندوز</div>
-                    <div class="os-box-content" id="windows-content">
-                        <div class="install-app" onclick="toggleInstallOptions('windows')">
-                            <div class="scrollbar-glass">نصب اپ</div>
-                        </div>
-                        <div class="install-options" id="windows-install-options" style="display: none;">
-                            <a href="https://github.com/2dust/v2rayN/releases" target="_blank">
-                                <div class="scrollbar-glass">v2rayN</div>
-                            </a>
-                        </div>
-                        <div class="video-tutorial" onclick="toggleVideo('windows')">
-                            <div class="scrollbar-glass">آموزش ویدیویی</div>
-                        </div>
-                        <div class="video-content" id="windows-video-content" style="display: none;">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_specific_video" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="image-tutorial" onclick="toggleSlider('windows')">
-                            <div class="scrollbar-glass">آموزش با تصاویر</div>
-                        </div>
-                        <div class="slider" id="windows-slider" style="display: none;">
-                            <div class="slider-images" id="windows-slider-images">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+1" alt="تصویر ویندوز 1">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+2" alt="تصویر ویندوز 2">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+3" alt="تصویر ویندوز 3">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+4" alt="تصویر ویندوز 4">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+5" alt="تصویر ویندوز 5">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+6" alt="تصویر ویندوز 6">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+7" alt="تصویر ویندوز 7">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+8" alt="تصویر ویندوز 8">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+9" alt="تصویر ویندوز 9">
-                                <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+10" alt="تصویر ویندوز 10">
-                            </div>
-                            <button class="slider-button prev" onclick="moveSlider('windows', -1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                            <button class="slider-button next" onclick="moveSlider('windows', 1)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M9 18l6-6-6-6"/>
-                                </svg>
-                            </button>
-                            <div class="slider-counter" id="windows-slider-counter">تصویر 1/10</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glow-layer-1"></div>
-                <div class="glow-layer-2"></div>
-                <div class="overlay-1"></div>
-                <div class="overlay-2"></div>
-                <div class="background-glow"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SVG برای انیمیشن منوی همبرگری -->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
-            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
-        </symbol>
-    </svg>
-
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.querySelector('.theme-toggle .scrollbar-glass');
-            if (body.classList.contains('day')) {
-                body.classList.remove('day');
-                body.classList.add('night');
-                themeToggle.textContent = '🌞';
-            } else {
-                body.classList.remove('night');
-                body.classList.add('day');
-                themeToggle.textContent = '🌙';
-            }
-        }
-
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const navContainer = document.getElementById('nav-container');
-            const menuToggle = document.getElementById('menu-toggle');
-            sidebar.classList.toggle('active');
-            navContainer.classList.toggle('active');
-            menuToggle.checked = sidebar.classList.contains('active');
-        }
-
-        function closeMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const navContainer = document.getElementById('nav-container');
-            const menuToggle = document.getElementById('menu-toggle');
-            sidebar.classList.remove('active');
-            navContainer.classList.remove('active');
-            menuToggle.checked = false;
-        }
-
-        function toggleOsBox(boxId) {
-            const boxes = ['android', 'iphone', 'windows'];
-            boxes.forEach(id => {
-                if (id !== boxId) {
-                    const content = document.getElementById(`${id}-content`);
-                    const header = document.querySelector(`#${id} .os-box-header`);
-                    content.classList.remove('active');
-                    content.style.display = 'none';
-                    header.classList.remove('active');
-                    document.getElementById(`${id}-install-options`).style.display = 'none';
-                    document.getElementById(`${id}-video-content`).style.display = 'none';
-                    document.getElementById(`${id}-slider`).style.display = 'none';
-                }
-            });
-            const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
-            content.classList.toggle('active');
-            header.classList.toggle('active');
-            content.style.display = content.classList.contains('active') ? 'block' : 'none';
-        }
-
-        function toggleInstallOptions(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            options.style.display = options.style.display === 'block' ? 'none' : 'block';
-            video.style.display = 'none';
-            slider.style.display = 'none';
-        }
-
-        function toggleVideo(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            video.style.display = video.style.display === 'block' ? 'none' : 'block';
-            options.style.display = 'none';
-            slider.style.display = 'none';
-        }
-
-        function toggleSlider(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            slider.style.display = slider.style.display === 'block' ? 'none' : 'block';
-            options.style.display = 'none';
-            video.style.display = 'none';
-        }
-
-        let currentSlides = { android: 0, iphone: 0, windows: 0 };
-
-        function moveSlider(boxId, direction) {
-            const sliderImages = document.getElementById(`${boxId}-slider-images`);
-            const images = sliderImages.querySelectorAll('.slider-image');
-            const counter = document.getElementById(`${boxId}-slider-counter`);
-            currentSlides[boxId] = (currentSlides[boxId] + direction + images.length) % images.length;
-            sliderImages.style.transform = `translateX(-${currentSlides[boxId] * 100}%)`;
-            counter.textContent = `تصویر ${currentSlides[boxId] + 1}/10`;
-        }
-
-        document.querySelectorAll('.slider-images').forEach(slider => {
-            let isDragging = false, startX, scrollLeft;
-
-            slider.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('mouseleave', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                slider.scrollLeft = scrollLeft - walk;
-            });
-
-            slider.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                startX = e.touches[0].pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('touchend', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                slider.scrollLeft = scrollLeft - walk;
-            });
-        });
-
-        window.addEventListener('online', () => {
-            document.body.classList.remove('offline');
-        });
-
-        window.addEventListener('offline', () => {
-            document.body.classList.add('offline');
-        });
-
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const navContainer = document.getElementById('nav-container');
-            const supportButton = document.querySelector('.support-button');
-            const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickInsideNav = navContainer.contains(event.target);
-            const isClickInsideSupport = supportButton.contains(event.target);
-
-            if (!isClickInsideSidebar && !isClickInsideNav && !isClickInsideSupport && sidebar.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        document.addEventListener('touchstart', function(event) {
-            if (event.target.closest('.nav-container') || event.target.closest('.sidebar') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button')) {
-                // اجازه عملکرد به المان‌های کلیک‌شدنی
-            } else {
-                if (document.getElementById('sidebar').classList.contains('active')) {
-                    closeMenu();
-                }
-            }
-        }, { passive: true });
-    </script>
+    </main>
 </body>
 </html>
