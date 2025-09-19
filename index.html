@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light only">
+    <meta name="description" content="آموزش‌های ساده برای نصب و استفاده از نرم‌افزارها در اندروید، آیفون و ویندوز">
+    <meta name="keywords" content="آموزش نرم‌افزار، اندروید، آیفون، ویندوز، فلوکی">
     <title>وب‌سایت فلوکی</title>
-    <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -15,11 +17,10 @@
             color-profile: sRGB;
             overflow-x: hidden;
             direction: rtl;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
             touch-action: manipulation;
         }
 
-        /* غیرفعال کردن تغییر تم توسط مرورگر */
         @media (prefers-color-scheme: dark) {
             :root {
                 color-scheme: light only;
@@ -32,25 +33,25 @@
             color: #000000;
         }
 
-        body.day .offline-message {
+        body.day .offline-message, body.day .toast-message {
             background-color: #d32f2f;
             color: #ffffff;
         }
 
-        body.day .nav-bar {
-            background-color: transparent;
+        body.day .header {
+            background-color: #FCC5C0;
         }
 
         body.day .nav-container {
-            background-color: #FCC5C0;
+            background-color: #FBB6AD;
         }
 
         body.day .support-button {
-            background-color: #FCC5C0;
+            background-color: #FBB6AD;
             color: #000000;
         }
 
-        body.day .support-button:hover, body.day .support-button:active {
+        body.day .support-button:hover, body.day .support-button:active, body.day .support-button:focus {
             background-color: #F9A799;
             transform: scale(1.05);
         }
@@ -69,7 +70,8 @@
         }
 
         body.day .sidebar a:hover, body.day .theme-toggle:hover,
-        body.day .sidebar a:active, body.day .theme-toggle:active {
+        body.day .sidebar a:active, body.day .theme-toggle:active,
+        body.day .sidebar a:focus, body.day .theme-toggle:focus {
             background-color: #F9A799;
             transform: scale(1.05);
         }
@@ -82,7 +84,7 @@
             color: #000000;
         }
 
-        body.day .os-box-header:hover, body.day .os-box-header:active {
+        body.day .os-box-header:hover, body.day .os-box-header:active, body.day .os-box-header:focus {
             background-color: #F89880;
             transform: scale(1.02);
         }
@@ -96,7 +98,7 @@
             color: #000000;
         }
 
-        body.day .os-box-content div:hover, body.day .os-box-content div:active {
+        body.day .os-box-content div:hover, body.day .os-box-content div:active, body.day .os-box-content div:focus {
             background-color: #F89880;
             transform: scale(1.02);
         }
@@ -105,12 +107,21 @@
             background-color: #FBB6AD;
         }
 
-        body.day .slider-button:hover, body.day .slider-button:active {
+        body.day .slider-button:hover, body.day .slider-button:active, body.day .slider-button:focus {
             background-color: #F9A799;
         }
 
-        body.day .slider-counter {
+        body.day .slider-counter, body.day .slider-dot {
             color: #000000;
+        }
+
+        body.day .slider-dot.active {
+            background-color: #F89880;
+        }
+
+        body.day .modal-content {
+            background-color: #FFFFFF;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         }
 
         /* تم شب */
@@ -119,25 +130,25 @@
             color: #ffffff;
         }
 
-        body.night .offline-message {
+        body.night .offline-message, body.night .toast-message {
             background-color: #d32f2f;
             color: #ffffff;
         }
 
-        body.night .nav-bar {
-            background-color: transparent;
+        body.night .header {
+            background-color: #444444;
         }
 
         body.night .nav-container {
-            background-color: #444444;
+            background-color: #555555;
         }
 
         body.night .support-button {
-            background-color: #444444;
+            background-color: #555555;
             color: #ffffff;
         }
 
-        body.night .support-button:hover, body.night .support-button:active {
+        body.night .support-button:hover, body.night .support-button:active, body.night .support-button:focus {
             background-color: #666666;
             transform: scale(1.05);
         }
@@ -156,7 +167,8 @@
         }
 
         body.night .sidebar a:hover, body.night .theme-toggle:hover,
-        body.night .sidebar a:active, body.night .theme-toggle:active {
+        body.night .sidebar a:active, body.night .theme-toggle:active,
+        body.night .sidebar a:focus, body.night .theme-toggle:focus {
             background-color: #666666;
             transform: scale(1.05);
         }
@@ -169,7 +181,7 @@
             color: #ffffff;
         }
 
-        body.night .os-box-header:hover, body.night .os-box-header:active {
+        body.night .os-box-header:hover, body.night .os-box-header:active, body.night .os-box-header:focus {
             background-color: #777777;
             transform: scale(1.02);
         }
@@ -183,7 +195,7 @@
             color: #ffffff;
         }
 
-        body.night .os-box-content div:hover, body.night .os-box-content div:active {
+        body.night .os-box-content div:hover, body.night .os-box-content div:active, body.night .os-box-content div:focus {
             background-color: #777777;
             transform: scale(1.02);
         }
@@ -192,40 +204,76 @@
             background-color: #555555;
         }
 
-        body.night .slider-button:hover, body.night .slider-button:active {
+        body.night .slider-button:hover, body.night .slider-button:active, body.night .slider-button:focus {
             background-color: #666666;
         }
 
-        body.night .slider-counter {
+        body.night .slider-counter, body.night .slider-dot {
             color: #ffffff;
         }
 
-        /* استایل آفلاین */
-        .offline-message {
+        body.night .slider-dot.active {
+            background-color: #777777;
+        }
+
+        body.night .modal-content {
+            background-color: #333333;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* استایل هدر */
+        .header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1002;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-brand h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-brand p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* استایل پیام‌ها */
+        .offline-message, .toast-message {
             display: none;
             position: fixed;
-            top: 60px;
+            top: 80px;
             right: 10px;
-            padding: 10px;
+            padding: 10px 20px;
             border-radius: 5px;
             z-index: 1003;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease;
         }
 
         body.offline .offline-message {
             display: block;
         }
 
-        /* استایل نوار ناوبری */
-        .nav-bar {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            left: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1002;
+        .toast-message.active {
+            display: block;
+            animation: fadeIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
         }
 
         /* استایل دکمه پشتیبانی */
@@ -240,11 +288,15 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             width: 140px;
             box-sizing: border-box;
-            display: block;
             transform: scale(1);
             will-change: transform, background-color;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .support-button:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
         }
 
         /* استایل دکمه تغییر تم */
@@ -261,15 +313,19 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             width: calc(100% - 24px);
             box-sizing: border-box;
-            display: block;
             transform: scale(1);
             will-change: transform, background-color;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .theme-toggle:hover {
+        .theme-toggle:hover, .theme-toggle:focus {
             transform: scale(1.05);
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
         }
 
         /* استایل ظرف منوی همبرگری */
@@ -291,6 +347,11 @@
 
         .nav-container.active {
             width: 100px;
+        }
+
+        .nav-container:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
         }
 
         .nav {
@@ -398,10 +459,15 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        .sidebar a:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
+        }
+
         /* استایل محتوای اصلی */
         .content {
             position: relative;
-            top: 60px;
+            top: 80px;
             padding: 20px;
             text-align: center;
             z-index: 1;
@@ -435,6 +501,10 @@
             touch-action: manipulation;
         }
 
+        .os-box:nth-child(1) { animation-delay: 0.1s; }
+        .os-box:nth-child(2) { animation-delay: 0.2s; }
+        .os-box:nth-child(3) { animation-delay: 0.3s; }
+
         .os-box-header {
             font-size: 18px;
             text-align: center;
@@ -450,6 +520,11 @@
             will-change: transform, background-color;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .os-box-header:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
         }
 
         .os-box-header::after {
@@ -494,6 +569,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        .os-box-content div:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
+        }
+
         /* استایل لینک‌های دانلود */
         .os-box-content a {
             display: block;
@@ -522,6 +602,31 @@
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .slider-dot.active {
+            background-color: #F89880;
+        }
+
+        body.night .slider-dot.active {
+            background-color: #777777;
         }
 
         .slider-counter {
@@ -551,6 +656,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        .slider-button:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
+        }
+
         .slider-button svg {
             width: 28px;
             height: 28px;
@@ -573,12 +683,72 @@
             right: 10px;
         }
 
+        /* استایل مودال برای زوم تصاویر */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1004;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close:hover, .modal-close:focus {
+            transform: scale(1.2);
+        }
+
+        .modal-close:focus {
+            outline: 2px solid #F89880;
+            outline-offset: 2px;
+        }
+
+        /* انیمیشن پالس */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 0.2s ease;
+        }
+
         /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
-            .nav-bar {
-                top: 8px;
-                right: 8px;
-                left: 8px;
+            .header {
+                padding: 8px 16px;
+            }
+
+            .header-brand h1 {
+                font-size: 20px;
+            }
+
+            .header-brand p {
+                font-size: 12px;
             }
 
             .support-button {
@@ -653,10 +823,16 @@
         }
 
         @media (min-width: 601px) and (max-width: 1024px) {
-            .nav-bar {
-                top: 9px;
-                right: 9px;
-                left: 9px;
+            .header {
+                padding: 9px 18px;
+            }
+
+            .header-brand h1 {
+                font-size: 22px;
+            }
+
+            .header-brand p {
+                font-size: 13px;
             }
 
             .support-button {
@@ -710,10 +886,8 @@
         }
 
         @media (min-width: 1025px) {
-            .nav-bar {
-                top: 10px;
-                right: 10px;
-                left: 10px;
+            .header {
+                padding: 10px 20px;
             }
 
             .section, .os-box {
@@ -742,158 +916,179 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
     </style>
 </head>
 <body class="day">
-    <div class="offline-message">شما آفلاین هستید!</div>
+    <div class="offline-message">شما آفلاین هستید! محتوای کش‌شده نمایش داده می‌شود.</div>
+    <div class="toast-message" id="toast-message">در حال انتقال...</div>
 
-    <div class="nav-bar">
-        <div class="nav-container" id="nav-container" onclick="toggleMenu()">
-            <div class="nav">
-                <input type="checkbox" id="menu-toggle">
-                <svg style="height: 40px; width: 40px;">
-                    <use xlink:href="#menu"></use>
-                    <use xlink:href="#menu"></use>
-                </svg>
-            </div>
+    <header class="header">
+        <div class="header-brand">
+            <h1>فلوکی</h1>
+            <p>آموزش‌های ساده برای همه</p>
         </div>
-        <a href="https://t.me/FLOKI333" target="_blank" class="support-button">📞 ارتباط با پشتیبانی</a>
-    </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="nav-container" id="nav-container" onclick="toggleMenu()" tabindex="0" aria-label="باز کردن منوی ناوبری">
+                <div class="nav">
+                    <input type="checkbox" id="menu-toggle">
+                    <svg style="height: 40px; width: 40px;">
+                        <use xlink:href="#menu"></use>
+                        <use xlink:href="#menu"></use>
+                    </svg>
+                </div>
+            </div>
+            <a href="https://t.me/FLOKI333" target="_blank" class="support-button" tabindex="0" aria-label="ارتباط با پشتیبانی از طریق تلگرام">🛠️ پشتیبانی</a>
+        </div>
+    </header>
 
     <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
-        <a href="#android" onclick="closeMenu(); toggleOsBox('android')">اندروید</a>
-        <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">آیفون</a>
-        <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">ویندوز</a>
-        <a href="https://t.me/FLOKI333" target="_blank" onclick="closeMenu()">تلگرام</a>
-        <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">گیت‌هاب</a>
+        <button class="theme-toggle" onclick="toggleTheme()" tabindex="0" aria-label="تغییر تم به حالت شب یا روز">🌞</button>
+        <a href="#android" onclick="closeMenu(); toggleOsBox('android')" tabindex="0" aria-label="آموزش‌های اندروید">اندروید</a>
+        <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')" tabindex="0" aria-label="آموزش‌های آیفون">آیفون</a>
+        <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')" tabindex="0" aria-label="آموزش‌های ویندوز">ویندوز</a>
+        <a href="https://t.me/FLOKI333" target="_blank" onclick="closeMenu()" tabindex="0" aria-label="کانال تلگرام فلوکی">تلگرام</a>
+        <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()" tabindex="0" aria-label="صفحه گیت‌هاب فلوکی">گیت‌هاب</a>
     </div>
 
     <div class="content">
         <div class="section" id="intro">
-            <h2>مقدمه</h2>
+            <h1>مقدمه</h1>
             <p>این وب‌سایت آموزش‌هایی برای اتصال به نرم‌افزارها در سیستم‌عامل‌های مختلف ارائه می‌دهد.</p>
         </div>
 
         <div class="os-box android" id="android">
-            <div class="os-box-header" onclick="toggleOsBox('android')">اندروید</div>
+            <div class="os-box-header" onclick="toggleOsBox('android')" tabindex="0" aria-label="باز کردن آموزش‌های اندروید">اندروید</div>
             <div class="os-box-content" id="android-content">
-                <div class="install-app" onclick="toggleInstallOptions('android')">نصب اپ</div>
+                <div class="install-app" onclick="toggleInstallOptions('android'); showToast()" tabindex="0" aria-label="نمایش گزینه‌های نصب اپلیکیشن برای اندروید">نصب اپ</div>
                 <div class="install-options" id="android-install-options" style="display: none;">
-                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><div>v2rayNG</div></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank" onclick="showToast()" aria-label="دانلود v2rayNG از گوگل پلی"><div>v2rayNG</div></a>
                 </div>
-                <div class="video-tutorial" onclick="toggleVideo('android')">آموزش ویدیویی</div>
+                <div class="video-tutorial" onclick="toggleVideo('android')" tabindex="0" aria-label="نمایش آموزش ویدیویی برای اندروید">آموزش ویدیویی</div>
                 <div class="video-content" id="android-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_specific_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_specific_video" frameborder="0" allowfullscreen title="آموزش ویدیویی نصب نرم‌افزار در اندروید"></iframe>
                 </div>
-                <div class="image-tutorial" onclick="toggleSlider('android')">آموزش با تصاویر</div>
+                <div class="image-tutorial" onclick="toggleSlider('android')" tabindex="0" aria-label="نمایش آموزش تصویری برای اندروید">آموزش با تصاویر</div>
                 <div class="slider" id="android-slider" style="display: none;">
                     <div class="slider-images" id="android-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+1" alt="تصویر اندروید 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+2" alt="تصویر اندروید 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+3" alt="تصویر اندروید 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+4" alt="تصویر اندروید 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+5" alt="تصویر اندروید 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+6" alt="تصویر اندروید 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+7" alt="تصویر اندروید 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+8" alt="تصویر اندروید 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+9" alt="تصویر اندروید 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+10" alt="تصویر اندروید 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+1" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+1 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+1 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 1" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 1')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+2" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+2 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+2 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 2" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 2')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+3" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+3 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+3 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 3" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 3')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+4" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+4 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+4 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 4" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 4')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+5" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+5 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+5 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 5" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 5')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+6" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+6 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+6 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 6" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 6')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+7" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+7 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+7 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 7" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 7')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+8" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+8 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+8 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 8" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 8')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+9" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+9 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+9 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 9" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 9')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+10" srcset="https://via.placeholder.com/300x150?text=تصویر+اندروید+10 300w, https://via.placeholder.com/600x300?text=تصویر+اندروید+10 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayNG در اندروید، مرحله 10" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayNG در اندروید، مرحله 10')">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('android', -1)">
+                    <button class="slider-button prev" onclick="moveSlider('android', -1)" tabindex="0" aria-label="نمایش تصویر قبلی در اسلایدر اندروید">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
-                    <button class="slider-button next" onclick="moveSlider('android', 1)">
+                    <button class="slider-button next" onclick="moveSlider('android', 1)" tabindex="0" aria-label="نمایش تصویر بعدی در اسلایدر اندروید">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
                     </button>
+                    <div class="slider-dots" id="android-slider-dots"></div>
                     <div class="slider-counter" id="android-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
 
         <div class="os-box iphone" id="iphone">
-            <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
+            <div class="os-box-header" onclick="toggleOsBox('iphone')" tabindex="0" aria-label="باز کردن آموزش‌های آیفون">آیفون</div>
             <div class="os-box-content" id="iphone-content">
-                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصبت اپ</div>
+                <div class="install-app" onclick="toggleInstallOptions('iphone'); showToast()" tabindex="0" aria-label="نمایش گزینه‌های نصب اپلیکیشن برای آیفون">نصب اپ</div>
                 <div class="install-options" id="iphone-install-options" style="display: none;">
-                    <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank"><div>Streisand</div></a>
+                    <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank" onclick="showToast()" aria-label="دانلود Streisand از اپ استور"><div>Streisand</div></a>
                 </div>
-                <div class="video-tutorial" onclick="toggleVideo('iphone')">آموزش ویدیویی</div>
+                <div class="video-tutorial" onclick="toggleVideo('iphone')" tabindex="0" aria-label="نمایش آموزش ویدیویی برای آیفون">آموزش ویدیویی</div>
                 <div class="video-content" id="iphone-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_specific_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_specific_video" frameborder="0" allowfullscreen title="آموزش ویدیویی نصب نرم‌افزار در آیفون"></iframe>
                 </div>
-                <div class="image-tutorial" onclick="toggleSlider('iphone')">آموزش با تصاویر</div>
+                <div class="image-tutorial" onclick="toggleSlider('iphone')" tabindex="0" aria-label="نمایش آموزش تصویری برای آیفون">آموزش با تصاویر</div>
                 <div class="slider" id="iphone-slider" style="display: none;">
                     <div class="slider-images" id="iphone-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+1" alt="تصویر آیفون 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+2" alt="تصویر آیفون 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+3" alt="تصویر آیفون 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+4" alt="تصویر آیفون 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+5" alt="تصویر آیفون 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+6" alt="تصویر آیفون 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+7" alt="تصویر آیفون 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+8" alt="تصویر آیفون 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+9" alt="تصویر آیفون 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+10" alt="تصویر آیفون 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+1" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+1 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+1 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 1" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 1')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+2" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+2 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+2 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 2" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 2')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+3" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+3 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+3 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 3" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 3')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+4" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+4 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+4 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 4" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 4')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+5" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+5 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+5 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 5" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 5')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+6" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+6 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+6 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 6" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 6')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+7" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+7 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+7 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 7" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 7')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+8" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+8 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+8 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 8" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 8')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+9" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+9 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+9 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 9" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 9')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+10" srcset="https://via.placeholder.com/300x150?text=تصویر+آیفون+10 300w, https://via.placeholder.com/600x300?text=تصویر+آیفون+10 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب Streisand در آیفون، مرحله 10" loading="lazy" onclick="openModal(this.src, 'آموزش نصب Streisand در آیفون، مرحله 10')">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)">
+                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)" tabindex="0" aria-label="نمایش تصویر قبلی در اسلایدر آیفون">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
-                    <button class="slider-button next" onclick="moveSlider('iphone', 1)">
+                    <button class="slider-button next" onclick="moveSlider('iphone', 1)" tabindex="0" aria-label="نمایش تصویر بعدی در اسلایدر آیفون">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
                     </button>
+                    <div class="slider-dots" id="iphone-slider-dots"></div>
                     <div class="slider-counter" id="iphone-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
 
         <div class="os-box windows" id="windows">
-            <div class="os-box-header" onclick="toggleOsBox('windows')">ویندوز</div>
+            <div class="os-box-header" onclick="toggleOsBox('windows')" tabindex="0" aria-label="باز کردن آموزش‌های ویندوز">ویندوز</div>
             <div class="os-box-content" id="windows-content">
-                <div class="install-app" onclick="toggleInstallOptions('windows')">نصب اپ</div>
+                <div class="install-app" onclick="toggleInstallOptions('windows'); showToast()" tabindex="0" aria-label="نمایش گزینه‌های نصب اپلیکیشن برای ویندوز">نصب اپ</div>
                 <div class="install-options" id="windows-install-options" style="display: none;">
-                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank"><div>v2rayN</div></a>
+                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank" onclick="showToast()" aria-label="دانلود v2rayN از گیت‌هاب"><div>v2rayN</div></a>
                 </div>
-                <div class="video-tutorial" onclick="toggleVideo('windows')">آموزش ویدیویی</div>
+                <div class="video-tutorial" onclick="toggleVideo('windows')" tabindex="0" aria-label="نمایش آموزش ویدیویی برای ویندوز">آموزش ویدیویی</div>
                 <div class="video-content" id="windows-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_specific_video" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_specific_video" frameborder="0" allowfullscreen title="آموزش ویدیویی نصب نرم‌افزار در ویندوز"></iframe>
                 </div>
-                <div class="image-tutorial" onclick="toggleSlider('windows')">آموزش با تصاویر</div>
+                <div class="image-tutorial" onclick="toggleSlider('windows')" tabindex="0" aria-label="نمایش آموزش تصویری برای ویندوز">آموزش با تصاویر</div>
                 <div class="slider" id="windows-slider" style="display: none;">
                     <div class="slider-images" id="windows-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+1" alt="تصویر ویندوز 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+2" alt="تصویر ویندوز 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+3" alt="تصویر ویندوز 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+4" alt="تصویر ویندوز 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+5" alt="تصویر ویندوز 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+6" alt="تصویر ویندوز 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+7" alt="تصویر ویندوز 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+8" alt="تصویر ویندوز 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+9" alt="تصویر ویندوز 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+10" alt="تصویر ویندوز 10">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+1" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+1 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+1 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 1" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 1')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+2" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+2 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+2 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 2" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 2')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+3" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+3 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+3 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 3" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 3')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+4" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+4 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+4 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 4" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 4')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+5" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+5 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+5 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 5" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 5')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+6" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+6 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+6 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 6" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 6')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+7" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+7 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+7 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 7" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 7')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+8" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+8 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+8 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 8" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 8')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+9" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+9 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+9 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 9" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 9')">
+                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+10" srcset="https://via.placeholder.com/300x150?text=تصویر+ویندوز+10 300w, https://via.placeholder.com/600x300?text=تصویر+ویندوز+10 600w" sizes="(max-width: 600px) 300px, 600px" alt="آموزش نصب v2rayN در ویندوز، مرحله 10" loading="lazy" onclick="openModal(this.src, 'آموزش نصب v2rayN در ویندوز، مرحله 10')">
                     </div>
-                    <button class="slider-button prev" onclick="moveSlider('windows', -1)">
+                    <button class="slider-button prev" onclick="moveSlider('windows', -1)" tabindex="0" aria-label="نمایش تصویر قبلی در اسلایدر ویندوز">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
-                    <button class="slider-button next" onclick="moveSlider('windows', 1)">
+                    <button class="slider-button next" onclick="moveSlider('windows', 1)" tabindex="0" aria-label="نمایش تصویر بعدی در اسلایدر ویندوز">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
                     </button>
+                    <div class="slider-dots" id="windows-slider-dots"></div>
                     <div class="slider-counter" id="windows-slider-counter">تصویر 1/10</div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- مودال برای زوم تصاویر -->
+    <div class="modal" id="modal">
+        <button class="modal-close" onclick="closeModal()" tabindex="0" aria-label="بستن تصویر زوم‌شده">✖</button>
+        <img class="modal-content" id="modal-image" alt="">
     </div>
 
     <!-- SVG برای انیمیشن منوی همبرگری -->
@@ -911,10 +1106,12 @@
                 body.classList.remove('day');
                 body.classList.add('night');
                 themeToggle.textContent = '🌞';
+                themeToggle.setAttribute('aria-label', 'تغییر به تم روز');
             } else {
                 body.classList.remove('night');
                 body.classList.add('day');
                 themeToggle.textContent = '🌙';
+                themeToggle.setAttribute('aria-label', 'تغییر به تم شب');
             }
         }
 
@@ -925,6 +1122,8 @@
             sidebar.classList.toggle('active');
             navContainer.classList.toggle('active');
             menuToggle.checked = sidebar.classList.contains('active');
+            navContainer.classList.add('pulse');
+            setTimeout(() => navContainer.classList.remove('pulse'), 200);
         }
 
         function closeMenu() {
@@ -955,6 +1154,8 @@
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
+            header.classList.add('pulse');
+            setTimeout(() => header.classList.remove('pulse'), 200);
         }
 
         function toggleInstallOptions(boxId) {
@@ -964,6 +1165,8 @@
             options.style.display = options.style.display === 'block' ? 'none' : 'block';
             video.style.display = 'none';
             slider.style.display = 'none';
+            options.classList.add('pulse');
+            setTimeout(() => options.classList.remove('pulse'), 200);
         }
 
         function toggleVideo(boxId) {
@@ -973,6 +1176,8 @@
             video.style.display = video.style.display === 'block' ? 'none' : 'block';
             options.style.display = 'none';
             slider.style.display = 'none';
+            video.classList.add('pulse');
+            setTimeout(() => video.classList.remove('pulse'), 200);
         }
 
         function toggleSlider(boxId) {
@@ -982,6 +1187,9 @@
             slider.style.display = slider.style.display === 'block' ? 'none' : 'block';
             options.style.display = 'none';
             video.style.display = 'none';
+            slider.classList.add('pulse');
+            setTimeout(() => slider.classList.remove('pulse'), 200);
+            updateSliderDots(boxId, currentSlides[boxId]);
         }
 
         let currentSlides = { android: 0, iphone: 0, windows: 0 };
@@ -993,6 +1201,44 @@
             currentSlides[boxId] = (currentSlides[boxId] + direction + images.length) % images.length;
             sliderImages.style.transform = `translateX(-${currentSlides[boxId] * 100}%)`;
             counter.textContent = `تصویر ${currentSlides[boxId] + 1}/10`;
+            updateSliderDots(boxId, currentSlides[boxId]);
+        }
+
+        function updateSliderDots(boxId, currentSlide) {
+            const dotsContainer = document.getElementById(`${boxId}-slider-dots`);
+            const images = document.getElementById(`${boxId}-slider-images`).querySelectorAll('.slider-image');
+            dotsContainer.innerHTML = '';
+            images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (index === currentSlide) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentSlides[boxId] = index;
+                    document.getElementById(`${boxId}-slider-images`).style.transform = `translateX(-${index * 100}%)`;
+                    document.getElementById(`${boxId}-slider-counter`).textContent = `تصویر ${index + 1}/10`;
+                    updateSliderDots(boxId, index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function openModal(src, alt) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = src;
+            modalImage.alt = alt;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast-message');
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 2500);
         }
 
         document.querySelectorAll('.slider-images').forEach(slider => {
@@ -1002,6 +1248,8 @@
                 isDragging = true;
                 startX = e.pageX - slider.offsetLeft;
                 scrollLeft = slider.scrollLeft;
+                slider.classList.add('pulse');
+                setTimeout(() => slider.classList.remove('pulse'), 200);
             });
 
             slider.addEventListener('mouseleave', () => {
@@ -1024,6 +1272,8 @@
                 isDragging = true;
                 startX = e.touches[0].pageX - slider.offsetLeft;
                 scrollLeft = slider.scrollLeft;
+                slider.classList.add('pulse');
+                setTimeout(() => slider.classList.remove('pulse'), 200);
             });
 
             slider.addEventListener('touchend', () => {
@@ -1051,24 +1301,47 @@
             const sidebar = document.getElementById('sidebar');
             const navContainer = document.getElementById('nav-container');
             const supportButton = document.querySelector('.support-button');
+            const modal = document.getElementById('modal');
             const isClickInsideSidebar = sidebar.contains(event.target);
             const isClickInsideNav = navContainer.contains(event.target);
             const isClickInsideSupport = supportButton.contains(event.target);
+            const isClickInsideModal = modal.contains(event.target) && modal.style.display === 'flex';
 
-            if (!isClickInsideSidebar && !isClickInsideNav && !isClickInsideSupport && sidebar.classList.contains('active')) {
+            if (!isClickInsideSidebar && !isClickInsideNav && !isClickInsideSupport && !isClickInsideModal && sidebar.classList.contains('active')) {
                 closeMenu();
             }
         });
 
         document.addEventListener('touchstart', function(event) {
-            if (event.target.closest('.nav-container') || event.target.closest('.sidebar') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button')) {
+            if (event.target.closest('.nav-container') || event.target.closest('.sidebar') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button') || event.target.closest('.modal-content') || event.target.closest('.modal-close')) {
                 // اجازه عملکرد به المان‌های کلیک‌شدنی
             } else {
                 if (document.getElementById('sidebar').classList.contains('active')) {
                     closeMenu();
                 }
+                if (document.getElementById('modal').style.display === 'flex') {
+                    closeModal();
+                }
             }
         }, { passive: true });
-    </script>
-</body>
-</html>
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+                closeModal();
+            }
+        });
+
+        // Service Worker برای حالت آفلاین
+        const swCode = `
+            const CACHE_NAME = 'floki-cache-v1';
+            const urlsToCache = [
+                '/',
+                'https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+1',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+2',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+3',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+4',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+5',
+                'https://via.placeholder.com/600x300?text=تصویر+اندروید+6',
+                'https://via.placeholder.com/600x300?text=تصویر+اند
