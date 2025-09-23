@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="light only">
     <title>وب‌سایت فلوکی</title>
     <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -20,14 +19,12 @@
             touch-action: manipulation;
         }
 
-        /* غیرفعال کردن تغییر تم توسط مرورگر */
         @media (prefers-color-scheme: dark) {
             :root {
                 color-scheme: light only;
             }
         }
 
-        /* تم روز */
         body.day {
             background-color: #FFECC0;
             color: #000000;
@@ -60,13 +57,13 @@
             stroke: #000000;
         }
 
-        body.day .menu-item, body.day .menu-open-button {
+        body.day .menu-buttons a, body.day .menu-buttons button {
             background-color: #FFC29B;
             color: #000000;
         }
 
-        body.day .menu-item:hover, body.day .menu-open-button:hover,
-        body.day .menu-item:active, body.day .menu-open-button:active {
+        body.day .menu-buttons a:hover, body.day .menu-buttons button:hover,
+        body.day .menu-buttons a:active, body.day .menu-buttons button:active {
             background-color: #F39F9F;
             transform: scale(1.05);
         }
@@ -110,7 +107,6 @@
             color: #000000;
         }
 
-        /* تم شب */
         body.night {
             background-color: #333333;
             color: #ffffff;
@@ -143,13 +139,13 @@
             stroke: #ffffff;
         }
 
-        body.night .menu-item, body.night .menu-open-button {
-            background-color: #444444;
+        body.night .menu-buttons a, body.night .menu-buttons button {
+            background-color: #555555;
             color: #ffffff;
         }
 
-        body.night .menu-item:hover, body.night .menu-open-button:hover,
-        body.night .menu-item:active, body.night .menu-open-button:active {
+        body.night .menu-buttons a:hover, body.night .menu-buttons button:hover,
+        body.night .menu-buttons a:active, body.night .menu-buttons button:active {
             background-color: #666666;
             transform: scale(1.05);
         }
@@ -193,7 +189,6 @@
             color: #ffffff;
         }
 
-        /* استایل آفلاین */
         .offline-message {
             display: none;
             position: fixed;
@@ -209,7 +204,6 @@
             display: block;
         }
 
-        /* استایل نوار ناوبری */
         .nav-bar {
             position: fixed;
             top: 10px;
@@ -221,7 +215,6 @@
             z-index: 1002;
         }
 
-        /* استایل دکمه پشتیبانی */
         .support-button {
             padding: 12px;
             border-radius: 10px;
@@ -240,121 +233,124 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* استایل منوی همبرگری جدید */
-        .menu {
-            position: fixed;
-            top: 10px;
-            right: 10px;
+        .nav-container {
+            border-radius: 15px;
             width: 40px;
             height: 40px;
-            text-align: center;
-            box-sizing: border-box;
-            z-index: 1002;
-        }
-
-        .menu-item,
-        .menu-open-button {
-            width: 40px;
-            height: 40px;
-            margin-right: 0;
-            position: absolute;
-            text-align: center;
-            line-height: 40px;
-            transform: translate3d(0, 0, 0);
-            transition: transform ease-out 200ms;
-            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: width 0.2s ease, height 0.2s ease;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            will-change: width, height;
             cursor: pointer;
-            font-size: 20px;
+            color-profile: sRGB;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .menu-open-button {
-            z-index: 2;
-            transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transition-duration: 400ms;
-            transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+        .nav-container.active {
+            width: 240px;
+            height: 40px;
+            border-radius: 12px;
         }
 
-        .menu-open-button:hover {
-            transform: scale(1.2, 1.2) translate3d(0, 0, 0);
-        }
-
-        .menu-open {
-            display: none;
-        }
-
-        .lines {
+        .nav {
+            background: none;
             width: 20px;
-            height: 2px;
-            background: #000000;
-            display: block;
+            height: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+        }
+
+        .nav svg {
+            fill: none;
+            stroke-width: 15px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .nav svg use:nth-of-type(1) {
+            opacity: 1;
+            stroke-dashoffset: 221;
+            stroke-dasharray: 46 249;
+            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
+        }
+
+        .nav svg use:nth-of-type(2) {
+            animation: stroke-animation-reverse 0.8s ease-out forwards;
+        }
+
+        .nav input {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -10px;
-            margin-top: -1px;
-            transition: transform 200ms;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+            cursor: pointer;
+            opacity: 0;
         }
 
-        body.night .lines {
-            background: #ffffff;
+        .nav input:checked + svg use:nth-of-type(1) {
+            stroke-dashoffset: 175;
+            stroke-dasharray: 0 295;
+            opacity: 0;
+            transition: stroke-dashoffset .05s linear .05s, stroke-dasharray .05s linear .05s, opacity 0s linear .1s;
         }
 
-        .line-1 {
-            transform: translate3d(0, -6px, 0);
+        .nav input:checked + svg use:nth-of-type(2) {
+            animation: stroke-animation 0.8s ease-out forwards;
         }
 
-        .line-2 {
-            transform: translate3d(0, 0, 0);
+        @keyframes stroke-animation {
+            0% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
+            50% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
+            65% { stroke-dashoffset: 59; stroke-dasharray: 59 236; }
+            100% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
         }
 
-        .line-3 {
-            transform: translate3d(0, 6px, 0);
+        @keyframes stroke-animation-reverse {
+            0% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
+            50% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
+            65% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
+            100% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
         }
 
-        .menu-open:checked + .menu-open-button .line-1 {
-            transform: translate3d(0, 0, 0) rotate(45deg);
+        .menu-buttons {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 200px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .menu-open:checked + .menu-open-button .line-2 {
-            transform: translate3d(0, 0, 0) scale(0.1, 1);
+        .menu-buttons.active {
+            display: flex;
         }
 
-        .menu-open:checked + .menu-open-button .line-3 {
-            transform: translate3d(0, 0, 0) rotate(-45deg);
+        .menu-buttons a, .menu-buttons button {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            transform: scale(1);
+            will-change: transform, background-color;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .menu-open:checked + .menu-open-button {
-            transition-timing-function: linear;
-            transition-duration: 200ms;
-            transform: scale(0.8, 0.8) translate3d(0, 0, 0);
-        }
-
-        .menu-open:checked ~ .menu-item {
-            transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
-        }
-
-        .menu-open:checked ~ .menu-item:nth-child(3) {
-            transform: translate3d(-50px, 0, 0);
-        }
-
-        .menu-open:checked ~ .menu-item:nth-child(4) {
-            transform: translate3d(-100px, 0, 0);
-        }
-
-        .menu-open:checked ~ .menu-item:nth-child(5) {
-            transform: translate3d(-150px, 0, 0);
-        }
-
-        .menu-open:checked ~ .menu-item:nth-child(6) {
-            transform: translate3d(-200px, 0, 0);
-        }
-
-        .menu-open:checked ~ .menu-item:nth-child(7) {
-            transform: translate3d(-250px, 0, 0);
-        }
-
-        /* استایل محتوای اصلی */
         .content {
             position: relative;
             top: 60px;
@@ -363,7 +359,6 @@
             z-index: 1;
         }
 
-        /* استایل کادر مقدمه */
         .section {
             margin: 20px auto;
             padding: 20px;
@@ -377,7 +372,6 @@
             touch-action: manipulation;
         }
 
-        /* استایل کادرهای سیستم‌عامل */
         .os-box {
             margin: 20px auto;
             padding: 20px;
@@ -450,14 +444,12 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* استایل لینک‌های دانلود */
         .os-box-content a {
             display: block;
             text-decoration: none;
             color: inherit;
         }
 
-        /* استایل اسلایدر تصاویر */
         .slider {
             position: relative;
             max-width: 100%;
@@ -529,7 +521,6 @@
             right: 10px;
         }
 
-        /* استایل برای دستگاه‌های مختلف */
         @media (max-width: 600px) {
             .nav-bar {
                 top: 8px;
@@ -544,9 +535,21 @@
                 line-height: 1;
             }
 
-            .menu {
-                top: 8px;
-                right: 8px;
+            .nav-container {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-container.active {
+                width: 200px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            .menu-buttons a, .menu-buttons button {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
             }
 
             .section, .os-box {
@@ -592,9 +595,15 @@
                 padding: 10px;
             }
 
-            .menu {
-                top: 9px;
-                right: 9px;
+            .nav-container {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-container.active {
+                width: 220px;
+                height: 40px;
+                border-radius: 12px;
             }
 
             .section, .os-box {
@@ -656,58 +665,29 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* استایل‌های اضافی برای مدیریت متن دکمه پشتیبانی */
-        .support-text-desktop {
-            display: none;
-        }
-
-        .support-text-mobile {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .support-text-mobile {
-                display: inline;
-            }
-            .support-button {
-                width: 40px;
-                font-size: 20px;
-                padding: 8px;
-                line-height: 1;
-            }
-        }
-
-        @media (min-width: 601px) {
-            .support-text-desktop {
-                display: inline;
-            }
-            .support-button {
-                width: 140px;
-                font-size: 15px;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 <body class="day">
     <div class="offline-message">شما آفلاین هستید!</div>
 
     <div class="nav-bar">
-        <nav class="menu">
-            <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-            <label class="menu-open-button" for="menu-open">
-                <span class="lines line-1"></span>
-                <span class="lines line-2"></span>
-                <span class="lines line-3"></span>
-            </label>
-            <a href="#" class="menu-item" onclick="toggleTheme()"> <i class="fas fa-sun"></i> </a>
-            <a href="#android" class="menu-item" onclick="toggleOsBox('android')"> <i class="fab fa-android"></i> </a>
-            <a href="#iphone" class="menu-item" onclick="toggleOsBox('iphone')"> <i class="fab fa-apple"></i> </a>
-            <a href="#windows" class="menu-item" onclick="toggleOsBox('windows')"> <i class="fab fa-windows"></i> </a>
-            <a href="https://t.me/FLOKI333" target="_blank" class="menu-item"> <i class="fab fa-telegram"></i> </a>
-            <a href="https://github.com/your_username" target="_blank" class="menu-item"> <i class="fab fa-github"></i> </a>
-        </nav>
+        <div class="nav-container" id="nav-container" onclick="toggleMenu()">
+            <div class="nav">
+                <input type="checkbox" id="menu-toggle">
+                <svg style="height: 40px; width: 40px;">
+                    <use xlink:href="#menu"></use>
+                    <use xlink:href="#menu"></use>
+                </svg>
+            </div>
+            <div class="menu-buttons" id="menu-buttons">
+                <button onclick="toggleTheme()">🌞</button>
+                <a href="#android" onclick="closeMenu(); toggleOsBox('android')">🤖</a>
+                <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">🍎</a>
+                <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">🖥️</a>
+                <a href="https://t.me/FLOKI333" target="_blank" onclick="closeMenu()">📩</a>
+                <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">🐙</a>
+            </div>
+        </div>
         <a href="https://t.me/FLOKI333" target="_blank" class="support-button">
             <span class="support-text-desktop">ارتباط با پشتیبانی 👨🏻‍💻</span>
             <span class="support-text-mobile">👨🏻‍💻</span>
@@ -841,21 +821,76 @@
         </div>
     </div>
 
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
+            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
+        </symbol>
+    </svg>
+
+    <style>
+        .support-text-desktop {
+            display: none;
+        }
+
+        .support-text-mobile {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .support-text-mobile {
+                display: inline;
+            }
+            .support-button {
+                width: 40px;
+                font-size: 20px;
+                padding: 8px;
+                line-height: 1;
+            }
+        }
+
+        @media (min-width: 601px) {
+            .support-text-desktop {
+                display: inline;
+            }
+            .support-button {
+                width: 140px;
+                font-size: 15px;
+                padding: 10px;
+            }
+        }
+    </style>
+
     <script>
         function toggleTheme() {
             const body = document.body;
-            const themeIcon = document.querySelector('.menu-item i.fas');
+            const themeToggle = document.querySelector('.menu-buttons button');
             if (body.classList.contains('day')) {
                 body.classList.remove('day');
                 body.classList.add('night');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+                themeToggle.textContent = '🌞';
             } else {
                 body.classList.remove('night');
                 body.classList.add('day');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                themeToggle.textContent = '🌙';
             }
+        }
+
+        function toggleMenu() {
+            const menuButtons = document.getElementById('menu-buttons');
+            const navContainer = document.getElementById('nav-container');
+            const menuToggle = document.getElementById('menu-toggle');
+            menuButtons.classList.toggle('active');
+            navContainer.classList.toggle('active');
+            menuToggle.checked = menuButtons.classList.contains('active');
+        }
+
+        function closeMenu() {
+            const menuButtons = document.getElementById('menu-buttons');
+            const navContainer = document.getElementById('nav-container');
+            const menuToggle = document.getElementById('menu-toggle');
+            menuButtons.classList.remove('active');
+            navContainer.classList.remove('active');
+            menuToggle.checked = false;
         }
 
         function toggleOsBox(boxId) {
@@ -873,11 +908,10 @@
                 }
             });
             const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${id} .os-box-header`);
+            const header = document.querySelector(`#${boxId} .os-box-header`);
             content.classList.toggle('active');
             header.classList.toggle('active');
             content.style.display = content.classList.contains('active') ? 'block' : 'none';
-            document.getElementById('menu-open').checked = false;
         }
 
         function toggleInstallOptions(boxId) {
@@ -971,22 +1005,24 @@
         });
 
         document.addEventListener('click', function(event) {
-            const menu = document.querySelector('.menu');
+            const menuButtons = document.getElementById('menu-buttons');
+            const navContainer = document.getElementById('nav-container');
             const supportButton = document.querySelector('.support-button');
-            const isClickInsideMenu = menu.contains(event.target);
+            const isClickInsideMenu = menuButtons.contains(event.target);
+            const isClickInsideNav = navContainer.contains(event.target);
             const isClickInsideSupport = supportButton.contains(event.target);
 
-            if (!isClickInsideMenu && !isClickInsideSupport && document.getElementById('menu-open').checked) {
-                document.getElementById('menu-open').checked = false;
+            if (!isClickInsideMenu && !isClickInsideNav && !isClickInsideSupport && menuButtons.classList.contains('active')) {
+                closeMenu();
             }
         });
 
         document.addEventListener('touchstart', function(event) {
-            if (event.target.closest('.menu') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button')) {
+            if (event.target.closest('.nav-container') || event.target.closest('.menu-buttons') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button')) {
                 // اجازه عملکرد به المان‌های کلیک‌شدنی
             } else {
-                if (document.getElementById('menu-open').checked) {
-                    document.getElementById('menu-open').checked = false;
+                if (document.getElementById('menu-buttons').classList.contains('active')) {
+                    closeMenu();
                 }
             }
         }, { passive: true });
