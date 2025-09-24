@@ -3,267 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light only">
-    <title>وب‌سایت فلوکی</title>
+    <meta name="color-scheme" content="light dark">
+    <title>وب‌سایت آموزشی فلوکی</title>
     <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
     <style>
         :root {
-            --day-bg: #FFECC0;
-            --day-primary: #FFC29B;
-            --day-secondary: #F39F9F;
-            --day-accent: #B95E82;
-            --day-text: #000000;
+            /* Day Theme Colors */
+            --day-bg: #FFF5E1;
+            --day-surface: rgba(255, 194, 155, 0.4);
+            --day-surface-solid: #FFC29B;
+            --day-primary: #B95E82;
+            --day-primary-hover: #F39F9F;
+            --day-text: #3a2e2e;
+            --day-text-muted: #5c4b4b;
 
-            --night-bg: #212121;
-            --night-primary: #333333;
-            --night-secondary: #555555;
-            --night-accent: #444444;
-            --night-text: #ffffff;
+            /* Night Theme Colors */
+            --night-bg: #1A1A2E;
+            --night-surface: rgba(22, 22, 40, 0.6);
+            --night-surface-solid: #161625;
+            --night-primary: #E94560;
+            --night-primary-hover: #ff6681;
+            --night-text: #e0e0e0;
+            --night-text-muted: #a0a0c0;
+
+            /* General Variables */
+            --border-radius: 18px;
+            --transition-speed: 0.3s;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Base Body Styles */
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
             overflow-x: hidden;
-            direction: rtl;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
             touch-action: manipulation;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* تم روز */
+        /* Theme Styles */
         body.day {
             background-color: var(--day-bg);
             color: var(--day-text);
         }
-
-        body.day .offline-message { background-color: #d32f2f; color: #ffffff; }
-        body.day .nav-container { background-color: var(--day-primary); }
-        body.day .support-button { background-color: var(--day-primary); color: var(--day-text); }
-        body.day .support-button:hover, body.day .support-button:active { background-color: var(--day-secondary); transform: scale(1.05); }
-        body.day .nav svg { stroke: var(--day-text); }
-        body.day .sidebar { background-color: var(--day-accent); }
-        body.day .sidebar a, body.day .theme-toggle { background-color: var(--day-primary); color: var(--day-text); }
-        body.day .sidebar a:hover, body.day .theme-toggle:hover, body.day .sidebar a:active, body.day .theme-toggle:active { background-color: var(--day-secondary); transform: scale(1.05); }
-        body.day .section, body.day .os-box { background-color: var(--day-primary); }
-        body.day .os-box-header { color: var(--day-text); }
-        body.day .os-box-header:hover, body.day .os-box-header:active { background-color: var(--day-secondary); transform: scale(1.02); }
-        body.day .os-box-content { background-color: var(--day-bg); }
-        body.day .os-box-content div { background-color: var(--day-primary); color: var(--day-text); }
-        body.day .os-box-content div:hover, body.day .os-box-content div:active { background-color: var(--day-secondary); transform: scale(1.02); }
-        body.day .slider-button { background-color: var(--day-primary); }
-        body.day .slider-button:hover, body.day .slider-button:active { background-color: var(--day-secondary); }
-        body.day .slider-counter { color: var(--day-text); }
-        body.day .os-box-header::after { content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'); }
-
-
-        /* تم شب */
         body.night {
             background-color: var(--night-bg);
             color: var(--night-text);
         }
 
-        body.night .offline-message { background-color: #d32f2f; color: #ffffff; }
-        body.night .nav-container { background-color: var(--night-primary); }
-        body.night .support-button { background-color: var(--night-primary); color: var(--night-text); }
-        body.night .support-button:hover, body.night .support-button:active { background-color: var(--night-secondary); transform: scale(1.05); }
-        body.night .nav svg { stroke: var(--night-text); }
-        body.night .sidebar { background-color: var(--night-accent); }
-        body.night .sidebar a, body.night .theme-toggle { background-color: var(--night-primary); color: var(--night-text); }
-        body.night .sidebar a:hover, body.night .theme-toggle:hover, body.night .sidebar a:active, body.night .theme-toggle:active { background-color: var(--night-secondary); transform: scale(1.05); }
-        body.night .section, body.night .os-box { background-color: var(--night-primary); }
-        body.night .os-box-header { color: var(--night-text); }
-        body.night .os-box-header:hover, body.night .os-box-header:active { background-color: var(--night-secondary); transform: scale(1.02); }
-        body.night .os-box-content { background-color: var(--night-bg); }
-        body.night .os-box-content div { background-color: var(--night-primary); color: var(--night-text); }
-        body.night .os-box-content div:hover, body.night .os-box-content div:active { background-color: var(--night-secondary); transform: scale(1.02); }
-        body.night .slider-button { background-color: var(--night-primary); }
-        body.night .slider-button:hover, body.night .slider-button:active { background-color: var(--night-secondary); }
-        body.night .slider-counter { color: var(--night-text); }
-        body.night .os-box-header::after { content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'); }
-        body.night .slider-button svg { stroke: var(--night-text); }
+        /* --- Components --- */
 
-        /* استایل‌های عمومی */
-        .offline-message { display: none; position: fixed; top: 70px; right: 10px; padding: 10px; border-radius: 5px; z-index: 1003; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); }
-        body.offline .offline-message { display: block; }
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+        #preloader.day { background-color: var(--day-bg); }
+        #preloader.night { background-color: var(--night-bg); }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+        #preloader.day .spinner { border-color: var(--day-primary); border-top-color: transparent;}
+        #preloader.night .spinner { border-color: var(--night-primary); border-top-color: transparent;}
 
-        .nav-bar { position: fixed; top: 10px; right: 10px; left: 10px; display: flex; justify-content: space-between; align-items: center; z-index: 1002; }
-        .support-button { padding: 12px; border-radius: 10px; text-decoration: none; font-size: 16px; text-align: center; line-height: 1.5; transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); width: 140px; box-sizing: border-box; display: block; transform: scale(1); will-change: transform, background-color; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Offline Message */
+        .offline-message {
+            display: none;
+            position: fixed;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 1003;
+            background-color: #d32f2f;
+            color: #ffffff;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        body.offline .offline-message {
+            display: block;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            left: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .glass-surface {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        body.day .glass-surface { background-color: var(--day-surface); }
+        body.night .glass-surface { background-color: var(--night-surface); }
+
+        /* Support Button */
+        .support-button {
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            transition: transform 0.2s ease, background-color var(--transition-speed) ease;
+            transform-origin: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body.day .support-button { background-color: var(--day-surface-solid); color: var(--day-text); }
+        body.night .support-button { background-color: var(--night-surface-solid); color: var(--night-text); }
+        body.day .support-button:hover { background-color: var(--day-primary-hover); }
+        body.night .support-button:hover { background-color: var(--night-primary-hover); }
+        .support-button:active { transform: scale(0.95); }
+
+        .support-text-desktop { display: inline; }
         .support-text-mobile { display: none; }
-        
-        .theme-toggle { margin: 12px; padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; text-align: center; line-height: 1.5; transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); width: calc(100% - 24px); box-sizing: border-box; display: block; transform: scale(1); will-change: transform, background-color; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-        
-        .nav-container { border-radius: 15px; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; transition: width 0.2s ease; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); will-change: width; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-        .nav { background: none; width: 25px; height: 25px; position: relative; }
-        .nav svg { width: 100%; height: 100%; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-        .nav-icon-menu, .nav-icon-close { transition: all 0.3s ease-in-out; }
-        .nav-icon-close { opacity: 0; transform: scale(0.5) rotate(-90deg); }
-        .nav-container.active .nav-icon-menu { opacity: 0; transform: scale(0.5) rotate(90deg); }
-        .nav-container.active .nav-icon-close { opacity: 1; transform: scale(1) rotate(0); }
 
-        .sidebar { height: 100%; width: 140px; position: fixed; top: 0; right: -140px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 1001; padding-top: 80px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); will-change: right; overflow-y: auto; }
+        /* Hamburger Menu */
+        .nav-container {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.2s ease;
+        }
+        .nav-container:active { transform: scale(0.9); }
+        .nav {
+            width: 24px;
+            height: 24px;
+        }
+        .nav svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            transition: stroke var(--transition-speed) ease;
+        }
+        body.day .nav svg { stroke: var(--day-text); }
+        body.night .nav svg { stroke: var(--night-text); }
+
+        .line { transition: transform 0.3s ease-in-out, opacity 0.2s ease; transform-origin: center; }
+        .menu-toggle:checked ~ svg .top-line { transform: rotate(45deg) translate(5px, -13px) scaleX(1.2); }
+        .menu-toggle:checked ~ svg .middle-line { opacity: 0; transform: scaleX(0); }
+        .menu-toggle:checked ~ svg .bottom-line { transform: rotate(-45deg) translate(5px, 13px) scaleX(1.2); }
+        .menu-toggle { display: none; }
+
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            right: -220px;
+            z-index: 1001;
+            padding-top: 90px;
+            transition: right var(--transition-speed) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow-y: auto;
+        }
         .sidebar.active { right: 0; }
-        .sidebar a { margin: 12px; padding: 12px; text-decoration: none; font-size: 16px; display: block; border-radius: 10px; text-align: center; line-height: 1.5; transition: background-color 0.2s ease, transform 0.2s ease; cursor: pointer; transform: scale(1); width: calc(100% - 24px); box-sizing: border-box; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); will-change: transform, background-color; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        .sidebar a, .sidebar button {
+            display: block;
+            margin: 15px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            transition: transform 0.2s ease, background-color var(--transition-speed) ease;
+            cursor: pointer;
+            border: none;
+            width: calc(100% - 30px);
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body.day .sidebar a, body.day .sidebar button { background-color: var(--day-surface-solid); color: var(--day-text); }
+        body.night .sidebar a, body.night .sidebar button { background-color: var(--night-surface-solid); color: var(--night-text); }
+        body.day .sidebar a:hover, body.day .sidebar button:hover { background-color: var(--day-primary-hover); }
+        body.night .sidebar a:hover, body.night .sidebar button:hover { background-color: var(--night-primary-hover); }
+        .sidebar a:active, .sidebar button:active { transform: scale(0.95); }
 
-        .content { position: relative; top: 80px; padding: 20px; text-align: center; z-index: 1; }
-        .section, .os-box { margin: 20px auto; padding: 20px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 15px; max-width: 600px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); animation: fadeIn 0.5s ease-out; will-change: opacity, transform; }
+        /* Main Content */
+        .content {
+            padding: 90px 20px 20px;
+            z-index: 1;
+        }
 
-        .os-box-header { font-size: 18px; text-align: center; cursor: pointer; display: flex; justify-content: center; align-items: center; position: relative; padding: 10px; border-radius: 10px; transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); will-change: transform, background-color; -webkit-tap-highlight-color: transparent; }
-        .os-box-header::after { position: absolute; left: 20px; transition: transform 0.3s ease; }
-        .os-box-header.active::after { transform: rotate(180deg); }
-        .os-box-content { display: none; margin-top: 15px; padding: 15px; border-radius: 10px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
-        .os-box-content div, .os-box-content a { display: block; text-decoration: none; color: inherit; margin: 10px 0; padding: 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); will-change: transform, background-color; -webkit-tap-highlight-color: transparent; }
+        .section, .os-box {
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-        .slider { position: relative; max-width: 100%; overflow: hidden; touch-action: pan-y; border-radius: 10px; }
-        .slider-images { display: flex; transition: transform 0.3s ease-in-out; will-change: transform; cursor: grab; }
-        .slider-images:active { cursor: grabbing; }
-        .slider-image { flex: 0 0 100%; width: 100%; height: 300px; object-fit: cover; user-select: none; }
-        .slider-counter { text-align: center; margin-top: 10px; font-size: 16px; }
-        .slider-button { position: absolute; top: 50%; transform: translateY(-50%); border: none; padding: 10px; cursor: pointer; border-radius: 50%; z-index: 10; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15); transition: background-color 0.2s ease, transform 0.2s ease; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; -webkit-tap-highlight-color: transparent; }
-        .slider-button:active { transform: translateY(-50%) scale(0.95); }
-        .slider-button svg { width: 24px; height: 24px; fill: none; stroke: var(--day-text); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .section { animation-delay: 0.2s; }
+        .os-box.android { animation-delay: 0.4s; }
+        .os-box.iphone { animation-delay: 0.6s; }
+        .os-box.windows { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Accordion (OS Box) */
+        .os-box-header {
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 12px;
+            transition: background-color var(--transition-speed) ease;
+            user-select: none;
+        }
+        .os-box-header .arrow {
+            transition: transform var(--transition-speed) ease;
+        }
+        .os-box-header.active .arrow { transform: rotate(180deg); }
+
+        .os-box-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows var(--transition-speed) ease-in-out;
+        }
+        .os-box-content > div { overflow: hidden; }
+        .os-box-content.active { grid-template-rows: 1fr; }
+        .os-box-content-inner {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        body.day .os-box-content-inner { background-color: var(--day-bg); }
+        body.night .os-box-content-inner { background-color: var(--night-bg); }
+
+        .os-box-content-inner > div, .os-box-content-inner > a {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color var(--transition-speed) ease;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+        body.day .os-box-content-inner > div, body.day .os-box-content-inner > a { background-color: var(--day-surface-solid); }
+        body.night .os-box-content-inner > div, body.night .os-box-content-inner > a { background-color: var(--night-surface-solid); }
+
+        .os-box-content-inner > div:hover, .os-box-content-inner > a:hover {
+            transform: scale(1.02);
+        }
+        body.day .os-box-content-inner > div:hover, body.day .os-box-content-inner > a:hover { background-color: var(--day-primary-hover); }
+        body.night .os-box-content-inner > div:hover, body.night .os-box-content-inner > a:hover { background-color: var(--night-primary-hover); }
+
+
+        .sub-content { display: none; margin-top: 10px; }
+        .sub-content.active { display: block; }
+        .install-options a { color: inherit; text-decoration: none; }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        /* Image Slider */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .slider-images {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            user-select: none;
+            pointer-events: none;
+        }
+        .slider-image.active {
+            opacity: 1;
+            z-index: 1;
+            pointer-events: auto;
+        }
+        .slider-counter {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+        }
+        .slider-button:active { transform: translateY(-50%) scale(0.9); }
+        body.day .slider-button { background-color: var(--day-surface-solid); }
+        body.night .slider-button { background-color: var(--night-surface-solid); }
+        body.day .slider-button:hover { background-color: var(--day-primary-hover); }
+        body.night .slider-button:hover { background-color: var(--night-primary-hover); }
+        .slider-button svg {
+            width: 24px;
+            height: 24px;
+        }
+        body.day .slider-button svg { stroke: var(--day-text); }
+        body.night .slider-button svg { stroke: var(--night-text); }
         .slider-button.prev { left: 10px; }
         .slider-button.next { right: 10px; }
 
+        /* Responsive Design */
         @media (max-width: 600px) {
-            .support-button { width: auto; padding: 12px; }
             .support-text-desktop { display: none; }
-            .support-text-mobile { display: inline; font-size: 20px; line-height: 1; }
-            .sidebar { width: 120px; right: -120px; }
-            .content { top: 70px; }
-            .section, .os-box { max-width: 95%; }
-            .slider-image { height: 200px; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            .support-text-mobile { display: inline; font-size: 24px; }
+            .support-button { width: 50px; height: 50px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%;}
+            .sidebar { width: 160px; right: -180px;}
+            .content { padding-top: 80px; }
+            .slider-images { height: 200px; }
         }
     </style>
 </head>
 <body class="day">
-    <svg width="0" height="0" style="position:absolute">
-        <defs>
-            <symbol viewBox="0 0 24 24" id="icon-menu"><path d="M3 12h18M3 6h18M3 18h18"/></symbol>
-            <symbol viewBox="0 0 24 24" id="icon-close"><path d="M18 6L6 18M6 6l12 12"/></symbol>
-            <symbol viewBox="0 0 24 24" id="icon-prev"><path d="M15 18l-6-6 6-6"/></symbol>
-            <symbol viewBox="0 0 24 24" id="icon-next"><path d="M9 18l6-6-6-6"/></symbol>
-        </defs>
-    </svg>
-
-    <div class="offline-message">شما آفلاین هستید! اتصال خود را بررسی کنید.</div>
-
-    <div class="nav-bar">
-        <div class="nav-container" id="nav-container">
-            <div class="nav">
-                <svg>
-                    <use class="nav-icon-menu" xlink:href="#icon-menu"></use>
-                    <use class="nav-icon-close" xlink:href="#icon-close"></use>
-                </svg>
-            </div>
-        </div>
-        <a href="https://t.me/FLOKI333" target="_blank" class="support-button">
-            <span class="support-text-desktop">ارتباط با پشتیبانی 👨🏻‍💻</span>
-            <span class="support-text-mobile">👨🏻‍💻</span>
-        </a>
+    <!-- Preloader -->
+    <div id="preloader" class="day">
+        <div class="spinner"></div>
     </div>
 
-    <div class="sidebar" id="sidebar">
-        <button class="theme-toggle" id="theme-toggle">تغییر تم</button>
+    <!-- Offline Message -->
+    <div class="offline-message">شما آفلاین هستید!</div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <a href="https://t.me/FLOKI333" target="_blank" class="support-button glass-surface">
+            <span class="support-text-desktop">ارتباط با پشتیبانی</span>
+            <span class="support-text-mobile">👨🏻‍💻</span>
+        </a>
+        <div class="nav-container glass-surface" id="nav-container">
+            <label class="nav">
+                <input type="checkbox" class="menu-toggle" id="menu-toggle">
+                <svg viewBox="0 0 100 100">
+                    <line class="line top-line" x1="25" y1="35" x2="75" y2="35" />
+                    <line class="line middle-line" x1="25" y1="50" x2="75" y2="50" />
+                    <line class="line bottom-line" x1="25" y1="65" x2="75" y2="65" />
+                </svg>
+            </label>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar glass-surface" id="sidebar">
+        <button class="theme-toggle" id="theme-toggle">تغییر تم 🌞/🌚</button>
         <a href="#android" class="sidebar-link">اندروید</a>
         <a href="#iphone" class="sidebar-link">آیفون</a>
         <a href="#windows" class="sidebar-link">ویندوز</a>
-        <a href="https://t.me/FLOKI333" target="_blank" class="sidebar-link">تلگرام</a>
-        <a href="https://github.com/your_username" target="_blank" class="sidebar-link">گیت‌هاب</a>
+        <a href="https://t.me/FLOKI333" target="_blank">تلگرام</a>
+        <a href="https://github.com/your_username" target="_blank">گیت‌هاب</a>
     </div>
 
+    <!-- Main Content -->
     <div class="content">
-        <div class="section" id="intro">
+        <div class="section glass-surface" id="intro">
             <h2>به وب‌سایت فلوکی خوش آمدید!</h2>
-            <p>در اینجا می‌توانید آموزش‌های لازم برای اتصال به نرم‌افزارهای مختلف در سیستم‌عامل‌های گوناگون را پیدا کنید.</p>
+            <p>در اینجا می‌توانید آموزش‌های کامل برای اتصال به نرم‌افزارهای مختلف در سیستم‌عامل‌های گوناگون را پیدا کنید. برای شروع، سیستم‌عامل خود را انتخاب کنید.</p>
         </div>
 
-        <div class="os-box" id="android">
-            <div class="os-box-header" data-os="android">اندروید</div>
-            <div class="os-box-content">
-                <div class="collapsible-header" data-type="install">نصب اپ</div>
-                <div class="collapsible-content">
-                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><div>v2rayNG (گوگل پلی)</div></a>
-                    <a href="https://github.com/2dust/v2rayNG/releases" target="_blank"><div>دانلود مستقیم از گیت‌هاب</div></a>
-                </div>
-                <div class="collapsible-header" data-type="video">آموزش ویدیویی</div>
-                <div class="collapsible-content">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your_android_video_id" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe>
-                </div>
-                <div class="collapsible-header" data-type="slider">آموزش تصویری</div>
-                <div class="collapsible-content">
-                    <div class="slider" data-os="android">
-                        <div class="slider-images">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/FFC29B/000000?text=تصویر+آموزش+اندروید+۱" alt="تصویر اندروید ۱">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/F39F9F/000000?text=تصویر+آموزش+اندروید+۲" alt="تصویر اندروید ۲">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/B95E82/FFFFFF?text=تصویر+آموزش+اندروید+۳" alt="تصویر اندروید ۳">
+        <!-- Android Section -->
+        <div class="os-box android glass-surface" id="android">
+            <div class="os-box-header" data-os="android">
+                <span>اندروید</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="os-box-content" id="android-content">
+                <div class="os-box-content-inner">
+                    <div class="sub-header" data-target="android-install-options">نصب اپلیکیشن</div>
+                    <div class="sub-content" id="android-install-options">
+                        <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">v2rayNG (Google Play)</a>
+                    </div>
+
+                    <div class="sub-header" data-target="android-video-content">آموزش ویدیویی</div>
+                    <div class="sub-content" id="android-video-content">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/your_android_video_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <button class="slider-button prev"><svg><use xlink:href="#icon-prev"></use></svg></button>
-                        <button class="slider-button next"><svg><use xlink:href="#icon-next"></use></svg></button>
-                        <div class="slider-counter">تصویر ۱ / ۳</div>
+                    </div>
+
+                    <div class="sub-header" data-target="android-slider">آموزش تصویری</div>
+                    <div class="sub-content" id="android-slider">
+                        <div class="slider" data-os="android">
+                            <div class="slider-images">
+                                <img class="slider-image active" src="https://placehold.co/600x300/FFECC0/3a2e2e?text=Android+Step+1" alt="تصویر اندروید 1">
+                                <img class="slider-image" src="https://placehold.co/600x300/FFC29B/3a2e2e?text=Android+Step+2" alt="تصویر اندروید 2">
+                                <img class="slider-image" src="https://placehold.co/600x300/F39F9F/3a2e2e?text=Android+Step+3" alt="تصویر اندروید 3">
+                            </div>
+                            <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>
+                            <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>
+                        </div>
+                        <div class="slider-counter" id="android-slider-counter">1 / 3</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="os-box" id="iphone">
-            <div class="os-box-header" data-os="iphone">آیفون</div>
-            <div class="os-box-content">
-                <div class="collapsible-header" data-type="install">نصب اپ</div>
-                <div class="collapsible-content">
-                     <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank"><div>Streisand (اپ استور)</div></a>
-                     <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" target="_blank"><div>V2Box (اپ استور)</div></a>
-                </div>
-                <div class="collapsible-header" data-type="video">آموزش ویدیویی</div>
-                <div class="collapsible-content">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your_iphone_video_id" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe>
-                </div>
-                <div class="collapsible-header" data-type="slider">آموزش تصویری</div>
-                <div class="collapsible-content">
-                    <div class="slider" data-os="iphone">
-                        <div class="slider-images">
-                             <img class="slider-image" src="https://via.placeholder.com/600x300/FFC29B/000000?text=تصویر+آموزش+آیفون+۱" alt="تصویر آیفون ۱">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/F39F9F/000000?text=تصویر+آموزش+آیفون+۲" alt="تصویر آیفون ۲">
+        <!-- iPhone Section -->
+        <div class="os-box iphone glass-surface" id="iphone">
+            <div class="os-box-header" data-os="iphone">
+                <span>آیفون</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="os-box-content" id="iphone-content">
+                 <div class="os-box-content-inner">
+                    <div class="sub-header" data-target="iphone-install-options">نصب اپلیکیشن</div>
+                    <div class="sub-content" id="iphone-install-options">
+                        <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank">Streisand (App Store)</a>
+                    </div>
+
+                    <div class="sub-header" data-target="iphone-video-content">آموزش ویدیویی</div>
+                    <div class="sub-content" id="iphone-video-content">
+                        <div class="video-container">
+                           <iframe src="https://www.youtube.com/embed/your_iphone_video_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <button class="slider-button prev"><svg><use xlink:href="#icon-prev"></use></svg></button>
-                        <button class="slider-button next"><svg><use xlink:href="#icon-next"></use></svg></button>
-                        <div class="slider-counter">تصویر ۱ / ۲</div>
+                    </div>
+
+                    <div class="sub-header" data-target="iphone-slider">آموزش تصویری</div>
+                    <div class="sub-content" id="iphone-slider">
+                        <div class="slider" data-os="iphone">
+                            <div class="slider-images">
+                                <img class="slider-image active" src="https://placehold.co/600x300/e0e0e0/1a1a2e?text=iPhone+Step+1" alt="تصویر آیفون 1">
+                                <img class="slider-image" src="https://placehold.co/600x300/a0a0c0/1a1a2e?text=iPhone+Step+2" alt="تصویر آیفون 2">
+                                <img class="slider-image" src="https://placehold.co/600x300/E94560/1a1a2e?text=iPhone+Step+3" alt="تصویر آیفون 3">
+                            </div>
+                            <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>
+                            <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>
+                        </div>
+                        <div class="slider-counter" id="iphone-slider-counter">1 / 3</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="os-box" id="windows">
-            <div class="os-box-header" data-os="windows">ویندوز</div>
-            <div class="os-box-content">
-                 <div class="collapsible-header" data-type="install">نصب اپ</div>
-                <div class="collapsible-content">
-                    <a href="https://github.com/2dust/v2rayN/releases/latest" target="_blank"><div>v2rayN (دانلود از گیت‌هاب)</div></a>
-                </div>
-                <div class="collapsible-header" data-type="video">آموزش ویدیویی</div>
-                <div class="collapsible-content">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your_windows_video_id" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe>
-                </div>
-                <div class="collapsible-header" data-type="slider">آموزش تصویری</div>
-                <div class="collapsible-content">
-                    <div class="slider" data-os="windows">
-                        <div class="slider-images">
-                             <img class="slider-image" src="https://via.placeholder.com/600x300/FFC29B/000000?text=تصویر+آموزش+ویندوز+۱" alt="تصویر ویندوز ۱">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/F39F9F/000000?text=تصویر+آموزش+ویندوز+۲" alt="تصویر ویندوز ۲">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/B95E82/FFFFFF?text=تصویر+آموزش+ویندوز+۳" alt="تصویر ویندوز ۳">
-                            <img class="slider-image" src="https://via.placeholder.com/600x300/FFECC0/000000?text=تصویر+آموزش+ویندوز+۴" alt="تصویر ویندوز ۴">
+        <!-- Windows Section -->
+        <div class="os-box windows glass-surface" id="windows">
+            <div class="os-box-header" data-os="windows">
+                <span>ویندوز</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="os-box-content" id="windows-content">
+                 <div class="os-box-content-inner">
+                    <div class="sub-header" data-target="windows-install-options">نصب نرم‌افزار</div>
+                    <div class="sub-content" id="windows-install-options">
+                        <a href="https://github.com/2dust/v2rayN/releases/latest" target="_blank">v2rayN (GitHub)</a>
+                    </div>
+
+                    <div class="sub-header" data-target="windows-video-content">آموزش ویدیویی</div>
+                    <div class="sub-content" id="windows-video-content">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/your_windows_video_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <button class="slider-button prev"><svg><use xlink:href="#icon-prev"></use></svg></button>
-                        <button class="slider-button next"><svg><use xlink:href="#icon-next"></use></svg></button>
-                        <div class="slider-counter">تصویر ۱ / ۴</div>
+                    </div>
+
+                    <div class="sub-header" data-target="windows-slider">آموزش تصویری</div>
+                    <div class="sub-content" id="windows-slider">
+                        <div class="slider" data-os="windows">
+                            <div class="slider-images">
+                                <img class="slider-image active" src="https://placehold.co/600x300/b8c0ff/1a1a2e?text=Windows+Step+1" alt="تصویر ویندوز 1">
+                                <img class="slider-image" src="https://placehold.co/600x300/7a8dff/1a1a2e?text=Windows+Step+2" alt="تصویر ویندوز 2">
+                                <img class="slider-image" src="https://placehold.co/600x300/ff7e67/1a1a2e?text=Windows+Step+3" alt="تصویر ویندوز 3">
+                            </div>
+                            <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>
+                            <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>
+                        </div>
+                        <div class="slider-counter" id="windows-slider-counter">1 / 3</div>
                     </div>
                 </div>
             </div>
@@ -273,181 +544,160 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-            const navContainer = document.getElementById('nav-container');
-            const sidebar = document.getElementById('sidebar');
+
+            // --- Theme Management ---
             const themeToggle = document.getElementById('theme-toggle');
-            
-            // --- Menu Toggle ---
+            const body = document.body;
+            const preloader = document.getElementById('preloader');
+
+            const applyTheme = (theme) => {
+                body.className = theme;
+                preloader.className = theme;
+                localStorage.setItem('theme', theme);
+            };
+
+            themeToggle.addEventListener('click', () => {
+                const newTheme = body.classList.contains('day') ? 'night' : 'day';
+                applyTheme(newTheme);
+            });
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || 'day';
+            applyTheme(savedTheme);
+
+
+            // --- Preloader ---
+            window.addEventListener('load', () => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            });
+
+
+            // --- Menu & Sidebar ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const navContainer = document.getElementById('nav-container');
+
             navContainer.addEventListener('click', () => {
-                navContainer.classList.toggle('active');
+                menuToggle.checked = !menuToggle.checked;
                 sidebar.classList.toggle('active');
             });
 
             document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navContainer.classList.remove('active');
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    menuToggle.checked = false;
                     sidebar.classList.remove('active');
                 });
             });
 
-            // --- Theme Management ---
-            const currentTheme = localStorage.getItem('theme') || 'day';
-            body.classList.add(currentTheme);
-            themeToggle.textContent = currentTheme === 'day' ? 'حالت شب 🌚' : 'حالت روز 🌞';
 
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('night');
-                body.classList.toggle('day');
-                const newTheme = body.classList.contains('night') ? 'night' : 'day';
-                localStorage.setItem('theme', newTheme);
-                themeToggle.textContent = newTheme === 'day' ? 'حالت شب 🌚' : 'حالت روز 🌞';
-            });
+            // --- Accordion (OS Boxes & Sub-headers) ---
+            const toggleAccordion = (element, content) => {
+                const isActive = element.classList.toggle('active');
+                content.classList.toggle('active');
+            };
 
-            // --- Accordion for OS Boxes ---
             document.querySelectorAll('.os-box-header').forEach(header => {
                 header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    const isActive = header.classList.contains('active');
-
-                    // Close all other boxes
-                    document.querySelectorAll('.os-box-header.active').forEach(activeHeader => {
-                        if (activeHeader !== header) {
-                            activeHeader.classList.remove('active');
-                            activeHeader.nextElementSibling.style.display = 'none';
-                        }
-                    });
-
-                    // Toggle current box
-                    header.classList.toggle('active', !isActive);
-                    content.style.display = isActive ? 'none' : 'block';
+                    const os = header.dataset.os;
+                    const content = document.getElementById(`${os}-content`);
+                    toggleAccordion(header, content);
                 });
             });
-            
-            // --- Inner Collapsibles (Install, Video, etc.) ---
-            document.querySelectorAll('.collapsible-header').forEach(header => {
+
+            document.querySelectorAll('.sub-header').forEach(header => {
                 header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                    const targetId = header.dataset.target;
+                    const content = document.getElementById(targetId);
+                    toggleAccordion(header, content);
                 });
             });
 
 
-            // --- Advanced Image Slider ---
+            // --- Image Slider ---
             const sliders = {};
-            document.querySelectorAll('.slider').forEach(sliderElem => {
-                const os = sliderElem.dataset.os;
-                const imagesContainer = sliderElem.querySelector('.slider-images');
-                const images = sliderElem.querySelectorAll('.slider-image');
-                const prevBtn = sliderElem.querySelector('.prev');
-                const nextBtn = sliderElem.querySelector('.next');
-                const counter = sliderElem.querySelector('.slider-counter');
-                
+            document.querySelectorAll('.slider').forEach(sliderElement => {
+                const os = sliderElement.dataset.os;
                 sliders[os] = {
                     currentIndex: 0,
-                    totalImages: images.length,
-                    container: imagesContainer,
-                    counter: counter,
-                    isDragging: false,
-                    startX: 0,
-                    currentTranslate: 0,
-                    prevTranslate: 0,
-                    animationID: 0
+                    images: sliderElement.querySelectorAll('.slider-image'),
+                    counter: document.getElementById(`${os}-slider-counter`),
                 };
-                
-                const updateSlider = () => {
-                    const s = sliders[os];
-                    s.container.style.transform = `translateX(-${s.currentIndex * 100}%)`;
-                    s.counter.textContent = `تصویر ${s.currentIndex + 1} / ${s.totalImages}`;
-                };
-
-                prevBtn.addEventListener('click', () => {
-                    const s = sliders[os];
-                    s.currentIndex = (s.currentIndex - 1 + s.totalImages) % s.totalImages;
-                    updateSlider();
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    const s = sliders[os];
-                    s.currentIndex = (s.currentIndex + 1) % s.totalImages;
-                    updateSlider();
-                });
-                
-                // Touch Events
-                imagesContainer.addEventListener('touchstart', touchStart(os), { passive: true });
-                imagesContainer.addEventListener('touchend', touchEnd(os));
-                imagesContainer.addEventListener('touchmove', touchMove(os), { passive: true });
-                
-                // Mouse Events for dragging
-                imagesContainer.addEventListener('mousedown', touchStart(os));
-                imagesContainer.addEventListener('mouseup', touchEnd(os));
-                imagesContainer.addEventListener('mouseleave', touchEnd(os));
-                imagesContainer.addEventListener('mousemove', touchMove(os));
-
-                updateSlider();
+                sliders[os].totalImages = sliders[os].images.length;
             });
             
-            function getPositionX(event) {
-                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-            }
-            
-            function touchStart(os) {
-                return function(event) {
-                    const s = sliders[os];
-                    s.isDragging = true;
-                    s.startX = getPositionX(event);
-                    s.animationID = requestAnimationFrame(animation(os));
-                    s.container.style.transition = 'none';
-                }
+            function updateSlider(os) {
+                const s = sliders[os];
+                s.images.forEach((img, index) => {
+                    img.classList.toggle('active', index === s.currentIndex);
+                });
+                s.counter.textContent = `${s.currentIndex + 1} / ${s.totalImages}`;
             }
 
-            function touchEnd(os) {
-                 return function(event) {
+            document.querySelectorAll('.slider-button.next').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const os = btn.closest('.slider').dataset.os;
                     const s = sliders[os];
-                    if (!s.isDragging) return;
-                    s.isDragging = false;
-                    cancelAnimationFrame(s.animationID);
-                    
-                    const movedBy = s.currentTranslate - s.prevTranslate;
-                    
-                    if (movedBy < -100 && s.currentIndex < s.totalImages - 1) s.currentIndex += 1;
-                    if (movedBy > 100 && s.currentIndex > 0) s.currentIndex -= 1;
-                    
-                    s.container.style.transition = 'transform 0.3s ease-in-out';
-                    s.container.style.transform = `translateX(-${s.currentIndex * 100}%)`;
-                    s.counter.textContent = `تصویر ${s.currentIndex + 1} / ${s.totalImages}`;
-                 }
-            }
-
-            function touchMove(os) {
-                return function(event) {
-                    const s = sliders[os];
-                    if (s.isDragging) {
-                        const currentPosition = getPositionX(event);
-                        s.currentTranslate = s.prevTranslate + currentPosition - s.startX;
-                    }
-                }
-            }
+                    s.currentIndex = (s.currentIndex + 1) % s.totalImages;
+                    updateSlider(os);
+                });
+            });
             
-            function animation(os) {
-                return function() {
+            document.querySelectorAll('.slider-button.prev').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const os = btn.closest('.slider').dataset.os;
                     const s = sliders[os];
-                    if (s.isDragging) {
-                        const baseTranslate = -s.currentIndex * s.container.offsetWidth;
-                        s.container.style.transform = `translateX(${baseTranslate + s.currentTranslate}px)`;
-                        requestAnimationFrame(animation(os));
+                    s.currentIndex = (s.currentIndex - 1 + s.totalImages) % s.totalImages;
+                    updateSlider(os);
+                });
+            });
+            
+            // Swipe functionality for sliders
+            document.querySelectorAll('.slider-images').forEach(sliderImagesContainer => {
+                let touchStartX = 0;
+                let touchEndX = 0;
+                const os = sliderImagesContainer.closest('.slider').dataset.os;
+
+                sliderImagesContainer.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                sliderImagesContainer.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+
+                function handleSwipe() {
+                    if (touchEndX < touchStartX - 50) { // Swiped left
+                        const s = sliders[os];
+                        s.currentIndex = (s.currentIndex + 1) % s.totalImages;
+                        updateSlider(os);
+                    }
+                    if (touchEndX > touchStartX + 50) { // Swiped right
+                        const s = sliders[os];
+                        s.currentIndex = (s.currentIndex - 1 + s.totalImages) % s.totalImages;
+                        updateSlider(os);
                     }
                 }
-            }
+            });
+
 
             // --- Offline Detection ---
-            const updateOnlineStatus = () => {
+            function updateOnlineStatus() {
                 if (navigator.onLine) {
                     body.classList.remove('offline');
                 } else {
                     body.classList.add('offline');
                 }
-            };
+            }
             window.addEventListener('online', updateOnlineStatus);
             window.addEventListener('offline', updateOnlineStatus);
             updateOnlineStatus();
