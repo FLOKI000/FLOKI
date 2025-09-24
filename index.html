@@ -3,315 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آموزش اتصال به VPN و دانلود نرم‌افزارهای امن. راهنمای کامل برای مبتدیان و حرفه‌ای‌ها.">
-    <meta name="keywords" content="VPN, دانلود VPN, اتصال VPN, آموزش VPN, نرم‌افزار VPN">
-    <title>آموزش VPN | اتصال امن و دانلود نرم‌افزار</title>
+    <title>VPN Land | آموزش و دانلود سریع و امن VPN</title>
+    <meta name="description" content="مرجع تخصصی آموزش‌های اتصال به VPN و دانلود نرم‌افزارهای امن برای ویندوز، مک، اندروید و iOS.">
+    <meta name="keywords" content="VPN, دانلود VPN, آموزش VPN, فیلترشکن, امنیت آنلاین">
+
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --text-color: #1f2937;
-            --bg-color: #f9fafb;
-            --white: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --primary-color: #007bff;
+            --secondary-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --text-color: #555;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        [data-theme="dark"] {
-            --text-color: #f9fafb;
-            --bg-color: #1f2937;
-        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
+
         body {
             font-family: 'Vazirmatn', sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
+            background-color: var(--light-color);
             color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
         }
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .main-header {
+            background: #fff;
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
-        nav {
+
+        .main-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 2rem;
-        }
-        nav ul li a {
-            color: var(--white);
+
+        .main-header .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s;
         }
-        nav ul li a:hover {
-            color: #fbbf24;
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
         }
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
+
+        .main-nav ul li {
+            margin-right: 25px;
         }
+
+        .main-nav ul li a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 400;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav ul li a:hover, .main-nav ul li a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        /* Hero Section */
         .hero {
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232563eb" width="1200" height="600"/><text x="600" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dy=".3em">تصویر پس‌زمینه VPN</text></svg>') no-repeat center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1614064548237-02f4f835368c?q=80&w=2070&auto=format&fit=crop') center center/cover;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: #fff;
         }
-        .hero h1 {
-            font-size: 3rem;
-            animation: fadeIn 1s ease-in;
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        section {
-            margin-bottom: 3rem;
-            animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .step {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-        .step:hover {
-            transform: translateY(-5px);
-        }
-        .downloads {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .download-btn {
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
             background: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 2rem;
+            color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
-        .download-btn:hover {
-            background: var(--secondary-color);
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 0.5rem;
-            text-align: right;
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
         }
-        th {
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Download Section */
+        .download-section {
+            background: var(--dark-color);
+            color: #fff;
+        }
+
+        .download-platforms {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .platform-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .platform-btn:hover {
             background: var(--primary-color);
-            color: var(--white);
         }
-        form {
+
+        .platform-btn i {
+            font-size: 2rem;
+        }
+
+        /* Tutorials Section */
+        .tutorial-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            max-width: 500px;
+            margin-bottom: 20px;
         }
-        input, textarea {
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        
+        .tutorial-card .card-content {
+            padding: 25px;
         }
-        button {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
+        
+        .tutorial-card h3 {
+            margin-bottom: 15px;
         }
-        button:hover {
+
+        .tutorial-card a.read-more {
+            margin-top: auto;
+            align-self: flex-start;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        .main-footer {
             background: var(--secondary-color);
-        }
-        footer {
-            background: var(--text-color);
-            color: var(--white);
+            color: #ccc;
+            padding: 40px 0;
             text-align: center;
-            padding: 1rem;
         }
-        .search-box {
-            width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .main-footer p {
+            margin: 0;
         }
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
+
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div>آموزش VPN</div>
-            <ul>
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#tutorial">آموزش</a></li>
-                <li><a href="#downloads">دانلود</a></li>
-                <li><a href="#comparison">مقایسه</a></li>
-                <li><a href="#contact">تماس</a></li>
-            </ul>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-        </nav>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">VPN Land</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">صفحه اصلی</a></li>
+                    <li><a href="#features">ویژگی‌ها</a></li>
+                    <li><a href="#tutorials">آموزش‌ها</a></li>
+                    <li><a href="#download">دانلود</a></li>
+                    <li><a href="#">وبلاگ</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <h1>به وب‌سایت آموزش اتصال به VPN خوش آمدید!</h1>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>آزادی و امنیت در دنیای دیجیتال</h1>
+            <p>با سرویس‌های امن و پرسرعت ما، بدون محدودیت و با خیالی آسوده در اینترنت گشت‌وگذار کنید.</p>
+            <a href="#download" class="btn">شروع استفاده رایگان</a>
+        </div>
     </section>
 
-    <div class="container">
-        <section id="tutorial">
-            <h2>آموزش گام‌به‌گام اتصال به VPN</h2>
-            <input type="text" class="search-box" placeholder="جستجو در آموزش‌ها..." onkeyup="searchContent(this.value)">
-            <div class="steps">
-                <div class="step">
-                    <h3>گام ۱: انتخاب VPN</h3>
-                    <p>VPNهایی مثل NordVPN یا ProtonVPN انتخاب کنید. رایگان یا پولی؟</p>
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>چرا ما را انتخاب کنید؟</h2>
+                <p>ما بهترین راهکارها را برای امنیت و سرعت شما فراهم کرده‌ایم.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>سرعت فوق‌العاده</h3>
+                    <p>اتصال به سرورهای پرسرعت در سراسر جهان بدون افت کیفیت.</p>
                 </div>
-                <div class="step">
-                    <h3>گام ۲: دانلود و نصب</h3>
-                    <p>از سایت رسمی دانلود کنید. مثلاً برای ویندوز: <a href="#downloads">اینجا کلیک کنید</a>.</p>
+                <div class="feature-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>امنیت بی‌نظیر</h3>
+                    <p>رمزنگاری پیشرفته نظامی برای حفاظت کامل از حریم خصوصی شما.</p>
                 </div>
-                <div class="step">
-                    <h3>گام ۳: اتصال</h3>
-                    <p>اپ را باز کنید، سرور انتخاب کنید و Connect بزنید. مثال کد Python برای تست:</p>
-                    <pre><code>import subprocess
-subprocess.run(["openvpn", "--config", "client.ovpn"])</code></pre>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>پشتیبانی ۲۴ ساعته</h3>
+                    <p>تیم پشتیبانی ما در ۷ روز هفته آماده پاسخگویی به شماست.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="downloads">
-            <h2>دانلود نرم‌افزارهای VPN</h2>
-            <div class="downloads">
-                <a href="https://nordvpn.com/download/windows/" class="download-btn" target="_blank">دانلود NordVPN (ویندوز)</a>
-                <a href="https://protonvpn.com/download" class="download-btn" target="_blank">دانلود ProtonVPN (رایگان)</a>
-                <a href="https://www.expressvpn.com/vpn-download/vpn-windows" class="download-btn" target="_blank">دانلود ExpressVPN</a>
-                <a href="https://www.surfshark.com/download" class="download-btn" target="_blank">دانلود Surfshark</a>
+    <section id="tutorials" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>آخرین آموزش‌ها</h2>
+                <p>راهنماهای قدم به قدم برای اتصال در تمامی دستگاه‌ها.</p>
             </div>
-            <p><strong>هشدار:</strong> فقط از لینک‌های رسمی دانلود کنید تا امنیت حفظ شود.</p>
-        </section>
-
-        <section id="comparison">
-            <h2>مقایسه VPNها</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>VPN</th>
-                        <th>سرعت</th>
-                        <th>قیمت</th>
-                        <th>ویژگی‌ها</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>NordVPN</td>
-                        <td>بالا</td>
-                        <td>پولی</td>
-                        <td>Obfuscation, Kill Switch</td>
-                    </tr>
-                    <tr>
-                        <td>ProtonVPN</td>
-                        <td>متوسط</td>
-                        <td>رایگان/پولی</td>
-                        <td>Unlimited Data, No Logs</td>
-                    </tr>
-                    <tr>
-                        <td>ExpressVPN</td>
-                        <td>خیلی بالا</td>
-                        <td>پولی</td>
-                        <td>Lightway Protocol</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="contact">
-            <h2>تماس با ما</h2>
-            <form onsubmit="alert('پیام ارسال شد!'); return false;">
-                <input type="text" placeholder="نام شما" required>
-                <input type="email" placeholder="ایمیل" required>
-                <textarea placeholder="سؤال یا پیام" rows="5" required></textarea>
-                <button type="submit">ارسال</button>
-            </form>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; ۲۰۲۵ آموزش VPN. همه حقوق محفوظ است. | <a href="#">حریم خصوصی</a></p>
+            <div class="features-grid">
+                 <div class="tutorial-card">
+                    <div class="card-content">
+                         <h3>آموزش اتصال در ویندوز ۱۱</h3>
+                         <p>راهنمای کامل تصویری برای راه‌اندازی پروتکل OpenVPN در ویندوز.</p>
+                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                 <div class="tutorial-card">
+                    <div class="card-content">
+                         <h3>تنظیمات VPN برای اندروید</h3>
+                         <p>چگونه پروفایل‌های شخصی را در اپلیکیشن رسمی V2RayNG وارد کنیم.</p>
+                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                 <div class="tutorial-card">
+                    <div class="card-content">
+                         <h3>راهنمای اتصال در آیفون (iOS)</h3>
+                         <p>ساده‌ترین روش برای استفاده از پروتکل‌های جدید در دستگاه‌های اپل.</p>
+                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="download" class="section download-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: #fff;">دانلود نرم‌افزار</h2>
+                <p style="color: #ccc;">نرم‌افزار مناسب دستگاه خود را با یک کلیک دریافت کنید.</p>
+            </div>
+            <div class="download-platforms">
+                <a href="#" class="platform-btn">
+                    <i class="fab fa-windows"></i>
+                    <span>ویندوز</span>
+                </a>
+                <a href="#" class="platform-btn">
+                    <i class="fab fa-android"></i>
+                    <span>اندروید</span>
+                </a>
+                <a href="#" class="platform-btn">
+                    <i class="fab fa-apple"></i>
+                    <span>iOS</span>
+                </a>
+                <a href="#" class="platform-btn">
+                    <i class="fab fa-apple"></i>
+                    <span>macOS</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>تمامی حقوق این وب‌سایت محفوظ است. © 2025</p>
+        </div>
     </footer>
 
-    <script>
-        function toggleTheme() {
-            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-            document.body.style.backgroundColor = document.body.dataset.theme === 'dark' ? '#1f2937' : '#f9fafb';
-            document.querySelector('.theme-toggle').textContent = document.body.dataset.theme === 'dark' ? '☀️' : '🌙';
-        }
-        function searchContent(query) {
-            // جستجوی ساده در محتوا (گسترش‌پذیر)
-            console.log('جستجو برای: ' + query);
-            // اینجا می‌تونی JS بیشتری اضافه کنی برای فیلتر محتوا
-        }
-        // Smooth scroll برای لینک‌ها
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
 </body>
 </html>
