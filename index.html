@@ -60,7 +60,7 @@
         .offline-message {
             display: none;
             position: fixed;
-            top: 75px;
+            top: 60px;
             left: 50%;
             transform: translateX(-50%);
             padding: 12px 20px;
@@ -86,7 +86,7 @@
             margin: 0 auto;
             max-width: 1200px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             background-color: var(--surface-color);
             border-radius: 20px;
@@ -96,24 +96,23 @@
         }
 
         .nav-bar a, .nav-bar button {
-            padding: 10px 16px;
-            margin: 0 5px;
+            flex: 1;
+            padding: 10px;
+            margin: 0 3px;
             text-decoration: none;
             font-size: 14px;
             color: var(--text-color);
             background-color: var(--bg-color);
             border-radius: 12px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
             display: flex;
+            justify-content: center;
             align-items: center;
             gap: 8px;
             cursor: pointer;
             border: none;
-        }
-
-        .nav-bar a:hover, .nav-bar button:hover {
-            background-color: var(--accent-color);
-            transform: scale(1.05);
+            transition: background-color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .nav-bar svg {
@@ -130,7 +129,7 @@
 
         /* Main Content */
         .content {
-            padding: 80px 20px 40px;
+            padding: 60px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
@@ -138,12 +137,11 @@
 
         /* Install Software Section */
         .install-section, .tutorial-section {
-            margin: 25px 0;
+            margin: 15px 0;
             padding: 20px;
             background: var(--surface-color);
             border-radius: 20px;
             box-shadow: var(--shadow);
-            animation: fadeIn 0.5s ease forwards;
         }
 
         .install-section h2, .tutorial-section h2 {
@@ -165,7 +163,7 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            transition: transform 0.2s ease, height 0.3s ease;
+            transition: height 0.3s ease;
             cursor: pointer;
             overflow: hidden;
             height: 80px; /* Default collapsed height */
@@ -173,10 +171,6 @@
 
         .os-box.active {
             height: auto;
-        }
-
-        .os-box:hover {
-            transform: scale(1.02);
         }
 
         .os-box .os-title {
@@ -205,7 +199,7 @@
             color: var(--text-color);
             border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.2s;
+            transition: background-color 0.2s;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 18px;
             font-weight: 500;
@@ -215,11 +209,6 @@
 
         .os-box.active .app-button {
             display: block;
-        }
-
-        .app-button:hover {
-            background-color: var(--primary-color);
-            transform: scale(1.05);
         }
 
         /* Image Slider */
@@ -275,12 +264,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background-color 0.2s, transform 0.2s;
+            transition: background-color 0.2s;
         }
 
-        .slider-button:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-50%) scale(1.1);
+        .slider-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
         }
 
         .slider-button.prev {
@@ -289,12 +279,6 @@
 
         .slider-button.next {
             right: 10px;
-        }
-
-        .slider-button svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--text-color);
         }
 
         .slider-counter {
@@ -307,21 +291,26 @@
         /* Responsive design */
         @media (max-width: 600px) {
             .nav-bar {
-                flex-wrap: wrap;
-                gap: 8px;
-                padding: 8px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 2px;
+                padding: 6px;
+                overflow-x: auto;
+                white-space: nowrap;
             }
             .nav-bar a, .nav-bar button {
-                padding: 8px 12px;
-                font-size: 12px;
-                margin: 3px;
+                flex: 1;
+                padding: 4px 6px;
+                font-size: 10px;
+                margin: 0 2px;
+                gap: 4px;
             }
             .nav-bar svg {
-                width: 18px;
-                height: 18px;
+                width: 14px;
+                height: 14px;
             }
             .content {
-                padding-top: 120px;
+                padding-top: 90px;
             }
             .os-container {
                 flex-direction: column;
@@ -337,10 +326,6 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body class="day">
@@ -358,7 +343,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-3"></path><path d="M12 7v10"></path><path d="M8 12h8"></path></svg>
         </a>
         <a href="#slider" data-type="slider">آموزش تصویری
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><circle cx="8" cy="10" r="2"></circle><path d="M14 8l4 3-4 3V8z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 距離2" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><circle cx="8" cy="10" r="2"></circle><path d="M14 8l4 3-4 3V8z"></path></svg>
         </a>
         <a href="https://t.me/FLOKI333" target="_blank">کانال تلگرام ما
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
