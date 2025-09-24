@@ -1,240 +1,317 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>آموزش اتصال VPN و دانلود نرم‌افزار</title>
-  <style>
-    /* تنظیمات پایه */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      color: #333;
-      direction: rtl;
-    }
-
-    header {
-      background: #005f73;
-      color: white;
-      padding: 20px 30px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1.2px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    nav {
-      background: #0a9396;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #94d2bd;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
-
-    section {
-      background: white;
-      padding: 25px 30px;
-      margin-bottom: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
-    }
-
-    h2 {
-      color: #005f73;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #0a9396;
-      padding-bottom: 8px;
-    }
-
-    /* دکمه‌های دانلود */
-    .btn-download {
-      background: #0a9396;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-    }
-
-    .btn-download:hover {
-      background: #005f73;
-    }
-
-    /* بخش آموزش */
-    .steps {
-      list-style: none;
-      padding: 0;
-    }
-
-    .steps li {
-      margin-bottom: 15px;
-      background: #e0fbfc;
-      border-radius: 5px;
-      padding: 12px 18px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      font-size: 16px;
-    }
-
-    /* سوالات متداول */
-    .faq-item {
-      margin-bottom: 15px;
-    }
-
-    .faq-question {
-      font-weight: 700;
-      cursor: pointer;
-      padding: 12px;
-      background: #94d2bd;
-      border-radius: 5px;
-      color: #0a9396;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-
-    .faq-question:hover {
-      background: #79c99b;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background: #d9f0ec;
-      padding: 0 12px;
-      border-radius: 0 0 5px 5px;
-    }
-
-    .faq-answer.open {
-      max-height: 200px;
-      padding: 12px;
-    }
-
-    /* فوتر */
-    footer {
-      background: #005f73;
-      color: white;
-      text-align: center;
-      padding: 20px 15px;
-      margin-top: 40px;
-      font-size: 14px;
-    }
-
-    /* ریسپانسیو */
-    @media (max-width: 600px) {
-      header {
-        font-size: 20px;
-        padding: 15px 10px;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      main {
-        margin: 20px 10px;
-        padding: 0 10px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آموزش اتصال به VPN و دانلود نرم‌افزارهای امن. راهنمای کامل برای مبتدیان و حرفه‌ای‌ها.">
+    <meta name="keywords" content="VPN, دانلود VPN, اتصال VPN, آموزش VPN, نرم‌افزار VPN">
+    <title>آموزش VPN | اتصال امن و دانلود نرم‌افزار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --bg-color: #f9fafb;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] {
+            --text-color: #f9fafb;
+            --bg-color: #1f2937;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #fbbf24;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .hero {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232563eb" width="1200" height="600"/><text x="600" y="300" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dy=".3em">تصویر پس‌زمینه VPN</text></svg>') no-repeat center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .step {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        .downloads {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .download-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: var(--secondary-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: right;
+        }
+        th {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+        }
+        input, textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--secondary-color);
+        }
+        footer {
+            background: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+        }
+        .search-box {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div>آموزش VPN</div>
+            <ul>
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#tutorial">آموزش</a></li>
+                <li><a href="#downloads">دانلود</a></li>
+                <li><a href="#comparison">مقایسه</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </nav>
+    </header>
 
-<header>
-  آموزش اتصال VPN و دانلود نرم‌افزار
-</header>
+    <section id="home" class="hero">
+        <h1>به وب‌سایت آموزش اتصال به VPN خوش آمدید!</h1>
+    </section>
 
-<nav>
-  <a href="#intro">معرفی</a>
-  <a href="#tutorial">آموزش اتصال</a>
-  <a href="#download">دانلود نرم‌افزار</a>
-  <a href="#faq">سوالات متداول</a>
-</nav>
+    <div class="container">
+        <section id="tutorial">
+            <h2>آموزش گام‌به‌گام اتصال به VPN</h2>
+            <input type="text" class="search-box" placeholder="جستجو در آموزش‌ها..." onkeyup="searchContent(this.value)">
+            <div class="steps">
+                <div class="step">
+                    <h3>گام ۱: انتخاب VPN</h3>
+                    <p>VPNهایی مثل NordVPN یا ProtonVPN انتخاب کنید. رایگان یا پولی؟</p>
+                </div>
+                <div class="step">
+                    <h3>گام ۲: دانلود و نصب</h3>
+                    <p>از سایت رسمی دانلود کنید. مثلاً برای ویندوز: <a href="#downloads">اینجا کلیک کنید</a>.</p>
+                </div>
+                <div class="step">
+                    <h3>گام ۳: اتصال</h3>
+                    <p>اپ را باز کنید، سرور انتخاب کنید و Connect بزنید. مثال کد Python برای تست:</p>
+                    <pre><code>import subprocess
+subprocess.run(["openvpn", "--config", "client.ovpn"])</code></pre>
+                </div>
+            </div>
+        </section>
 
-<main>
-  <section id="intro">
-    <h2>معرفی VPN</h2>
-    <p>
-      VPN یا شبکه خصوصی مجازی ابزاری است که به شما اجازه می‌دهد با امنیت و حریم خصوصی بالا به اینترنت متصل شوید. 
-      در این سایت، آموزش‌های کامل برای اتصال به VPN و همچنین دانلود نرم‌افزارهای معتبر ارائه می‌شود.
-    </p>
-  </section>
+        <section id="downloads">
+            <h2>دانلود نرم‌افزارهای VPN</h2>
+            <div class="downloads">
+                <a href="https://nordvpn.com/download/windows/" class="download-btn" target="_blank">دانلود NordVPN (ویندوز)</a>
+                <a href="https://protonvpn.com/download" class="download-btn" target="_blank">دانلود ProtonVPN (رایگان)</a>
+                <a href="https://www.expressvpn.com/vpn-download/vpn-windows" class="download-btn" target="_blank">دانلود ExpressVPN</a>
+                <a href="https://www.surfshark.com/download" class="download-btn" target="_blank">دانلود Surfshark</a>
+            </div>
+            <p><strong>هشدار:</strong> فقط از لینک‌های رسمی دانلود کنید تا امنیت حفظ شود.</p>
+        </section>
 
-  <section id="tutorial">
-    <h2>آموزش اتصال به VPN</h2>
-    <ul class="steps">
-      <li>گام ۱: دانلود و نصب نرم‌افزار VPN مورد نظر از بخش دانلود.</li>
-      <li>گام ۲: اجرای نرم‌افزار و وارد کردن نام کاربری و رمز عبور (در صورت نیاز).</li>
-      <li>گام ۳: انتخاب سرور مناسب و اتصال به VPN.</li>
-      <li>گام ۴: بررسی اتصال با باز کردن سایت‌های مختلف و اطمینان از تغییر IP.</li>
-      <li>گام ۵: قطع اتصال پس از پایان استفاده.</li>
-    </ul>
-  </section>
+        <section id="comparison">
+            <h2>مقایسه VPNها</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>VPN</th>
+                        <th>سرعت</th>
+                        <th>قیمت</th>
+                        <th>ویژگی‌ها</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NordVPN</td>
+                        <td>بالا</td>
+                        <td>پولی</td>
+                        <td>Obfuscation, Kill Switch</td>
+                    </tr>
+                    <tr>
+                        <td>ProtonVPN</td>
+                        <td>متوسط</td>
+                        <td>رایگان/پولی</td>
+                        <td>Unlimited Data, No Logs</td>
+                    </tr>
+                    <tr>
+                        <td>ExpressVPN</td>
+                        <td>خیلی بالا</td>
+                        <td>پولی</td>
+                        <td>Lightway Protocol</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-  <section id="download">
-    <h2>دانلود نرم‌افزارهای VPN</h2>
-    <p>لینک‌های زیر را برای دانلود نسخه‌های معتبر نرم‌افزارهای VPN استفاده کنید:</p>
-    <a href="https://example.com/vpn-windows.exe" class="btn-download" download>دانلود نسخه ویندوز</a><br/>
-    <a href="https://example.com/vpn-macos.dmg" class="btn-download" download>دانلود نسخه مک</a><br/>
-    <a href="https://example.com/vpn-android.apk" class="btn-download" download>دانلود نسخه اندروید</a><br/>
-    <a href="https://example.com/vpn-ios.ipa" class="btn-download" download>دانلود نسخه آیفون</a>
-  </section>
-
-  <section id="faq">
-    <h2>سوالات متداول</h2>
-    <div class="faq-item">
-      <div class="faq-question">VPN چیست و چرا باید استفاده کنم؟</div>
-      <div class="faq-answer">VPN یک ابزار برای افزایش امنیت و حفظ حریم خصوصی آنلاین است که ارتباط شما را رمزنگاری می‌کند.</div>
+        <section id="contact">
+            <h2>تماس با ما</h2>
+            <form onsubmit="alert('پیام ارسال شد!'); return false;">
+                <input type="text" placeholder="نام شما" required>
+                <input type="email" placeholder="ایمیل" required>
+                <textarea placeholder="سؤال یا پیام" rows="5" required></textarea>
+                <button type="submit">ارسال</button>
+            </form>
+        </section>
     </div>
-    <div class="faq-item">
-      <div class="faq-question">آیا استفاده از VPN قانونی است؟</div>
-      <div class="faq-answer">در بیشتر کشورها بله، ولی برخی کشورها استفاده از VPN محدود شده است.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">چطور مطمئن شوم که VPN به درستی کار می‌کند؟</div>
-      <div class="faq-answer">با بررسی آی‌پی آدرس خود در سایت‌هایی مثل whatismyip.com می‌توانید وضعیت اتصال را مشاهده کنید.</div>
-    </div>
-  </section>
-</main>
 
-<footer>
-  &copy; 2025 تمام حقوق برای سایت آموزش VPN محفوظ است.
-</footer>
+    <footer>
+        <p>&copy; ۲۰۲۵ آموزش VPN. همه حقوق محفوظ است. | <a href="#">حریم خصوصی</a></p>
+    </footer>
 
-<script>
-  // اسکریپت باز و بسته کردن سوالات متداول
-  const faqs = document.querySelectorAll('.faq-question');
-  faqs.forEach(item => {
-    item.addEventListener('click', () => {
-      const answer = item.nextElementSibling;
-      answer.classList.toggle('open');
-    });
-  });
-</script>
-
+    <script>
+        function toggleTheme() {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.body.style.backgroundColor = document.body.dataset.theme === 'dark' ? '#1f2937' : '#f9fafb';
+            document.querySelector('.theme-toggle').textContent = document.body.dataset.theme === 'dark' ? '☀️' : '🌙';
+        }
+        function searchContent(query) {
+            // جستجوی ساده در محتوا (گسترش‌پذیر)
+            console.log('جستجو برای: ' + query);
+            // اینجا می‌تونی JS بیشتری اضافه کنی برای فیلتر محتوا
+        }
+        // Smooth scroll برای لینک‌ها
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
