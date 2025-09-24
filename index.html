@@ -3,371 +3,825 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Land | آموزش و دانلود سریع و امن VPN</title>
-    <meta name="description" content="مرجع تخصصی آموزش‌های اتصال به VPN و دانلود نرم‌افزارهای امن برای ویندوز، مک، اندروید و iOS.">
-    <meta name="keywords" content="VPN, دانلود VPN, آموزش VPN, فیلترشکن, امنیت آنلاین">
-
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <meta name="description" content="وب‌سایت آموزشی فلوکی برای اتصال به سرویس‌ها در سیستم‌عامل‌های مختلف">
+    <meta name="theme-color" content="#FFC29B">
+    <title>وب‌سایت فلوکی</title>
+    <link rel="stylesheet" href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css">
+    <link rel="manifest" href="data:application/manifest+json;base64,ew0KICAgICJuYW1lIjogIldlYnNpdGUgRmxva2kiLA0KICAgICJzaG9ydF9uYW1lIjogIkZsb2tpIiwNCiAgICAic3RhcnRfdXJsIjogIi4iLA0KICAgICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLA0KICAgICJpY29ucyI6IFsNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMejQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfSwNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMejQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjUxMng1MTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfQ0KICAgIF0sDQogICAgImJhY2tncm91bmRfY29sb3IiOiAiI0ZGRUNDMCIsDQogICAgInRoZW1lX2NvbG9yIjogIiNGRkMyOUIiDQp9DQo=">
+    
     <style>
+        /* CSS Variables for theming */
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #333;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --text-color: #555;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --bg-color: #FFECC0;
+            --surface-color: #FFC29B;
+            --primary-color: #B95E82;
+            --accent-color: #F39F9F;
+            --text-color: #212121;
+            --text-muted-color: #555555;
+            --border-radius: 16px;
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
         }
 
+        body.night {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-color: #4A4A4A;
+            --accent-color: #666666;
+            --text-color: #E0E0E0;
+            --text-muted-color: #9E9E9E;
+        }
+
+        /* Base styles */
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            line-height: 1.8;
-            background-color: var(--light-color);
-            color: var(--text-color);
+        html {
             scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
+        body {
+            margin: 0;
+            font-family: 'Vazirmatn', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            touch-action: manipulation;
         }
 
-        /* Header */
-        .main-header {
-            background: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+        /* Offline Message */
+        .offline-message {
+            display: none;
+            position: fixed;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            border-radius: 10px;
+            background-color: #d32f2f;
+            color: #ffffff;
+            z-index: 1005;
+            box-shadow: var(--shadow);
+            font-size: 14px;
         }
 
-        .main-header .container {
+        body.offline .offline-message {
+            display: block;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            left: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .main-header .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .main-nav ul li {
-            margin-right: 25px;
-        }
-
-        .main-nav ul li a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: 400;
-            padding: 5px 0;
-            transition: color 0.3s ease;
-        }
-
-        .main-nav ul li a:hover, .main-nav ul li a.active {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
+            z-index: 1002;
+            pointer-events: none;
         }
         
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1614064548237-02f4f835368c?q=80&w=2070&auto=format&fit=crop') center center/cover;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark-color);
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: #777;
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .nav-bar > * {
+            pointer-events: auto;
         }
         
-        .feature-card {
-            background: #fff;
-            padding: 30px;
-            text-align: center;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        /* Download Section */
-        .download-section {
-            background: var(--dark-color);
-            color: #fff;
-        }
-
-        .download-platforms {
+        /* Hamburger Menu Button */
+        .menu-button {
+            background-color: var(--surface-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .platform-btn {
-            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.1);
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--text-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2) { top: 7px; }
+        .hamburger span:nth-child(3) { top: 14px; }
+        
+        .menu-button.active .hamburger span:nth-child(1) {
+            top: 7px;
+            transform: rotate(135deg);
+        }
+        .menu-button.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+        .menu-button.active .hamburger span:nth-child(3) {
+            top: 7px;
+            transform: rotate(-135deg);
+        }
+        
+        /* Support Button */
+        .support-button {
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
             text-decoration: none;
-            border-radius: var(--border-radius);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .support-button:hover {
+             transform: scale(1.05);
+             background-color: var(--accent-color);
+        }
+        .support-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
         }
 
-        .platform-btn:hover {
-            background: var(--primary-color);
-        }
-
-        .platform-btn i {
-            font-size: 2rem;
-        }
-
-        /* Tutorials Section */
-        .tutorial-card {
-            background: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            right: -220px;
+            background: rgba(var(--surface-color-rgb, 255, 194, 155), 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            padding-top: 90px;
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
-        }
-        
-        .tutorial-card .card-content {
-            padding: 25px;
-        }
-        
-        .tutorial-card h3 {
-            margin-bottom: 15px;
+            align-items: center;
+            gap: 15px;
         }
 
-        .tutorial-card a.read-more {
-            margin-top: auto;
-            align-self: flex-start;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 700;
+        .sidebar.active {
+            right: 0;
         }
         
-        /* Footer */
-        .main-footer {
-            background: var(--secondary-color);
-            color: #ccc;
-            padding: 40px 0;
+        .sidebar a {
+            padding: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            color: var(--text-color);
+            display: block;
+            border-radius: 12px;
+            text-align: center;
+            width: 85%;
+            background-color: var(--surface-color);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .sidebar a:hover, .sidebar a.active-link {
+            background-color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            bottom: 20px;
+            width: 85%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .theme-toggle:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
+        }
+        .theme-toggle .moon-icon { display: none; }
+        body.night .theme-toggle .sun-icon { display: none; }
+        body.night .theme-toggle .moon-icon { display: block; }
+
+        /* Main Content */
+        .content {
+            padding: 90px 20px 40px;
+            max-width: 700px;
+            margin: 0 auto;
             text-align: center;
         }
-        .main-footer p {
-            margin: 0;
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
         }
 
+        #search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid transparent;
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            font-size: 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.3s;
+        }
+        #search-input:focus {
+            outline: none;
+            background-color: var(--accent-color);
+        }
+        
+        /* OS Box styles */
+        .os-box {
+            margin: 25px 0;
+            padding: 20px;
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .os-box-header {
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 12px;
+            transition: background-color 0.2s ease;
+        }
+        .os-box-header:hover {
+            background-color: var(--accent-color);
+        }
+
+        .os-box-header .os-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .os-box-header svg {
+            width: 28px; height: 28px;
+            fill: var(--text-color);
+        }
+
+        .os-box-header .chevron-icon {
+            transition: transform 0.3s ease;
+            stroke: var(--text-color);
+            fill: none;
+        }
+        .os-box-header.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .os-box-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--accent-color);
+        }
+        
+        .tutorial-option {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: var(--bg-color);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            text-align: right;
+        }
+        .tutorial-option:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+        
+        .install-options, .video-content, .slider {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .install-options a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 12px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            margin: 5px 0;
+            transition: background-color 0.2s;
+        }
+        .install-options a:hover {
+            background-color: var(--accent-color);
+        }
+
+        .video-content iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 12px;
+        }
+        
+        /* Copy Link Section */
+        .copy-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            padding: 8px 8px 8px 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .copy-section input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+            direction: ltr;
+            text-align: left;
+        }
+        .copy-section input:focus {
+            outline: none;
+        }
+        .copy-button {
+            padding: 8px 15px;
+            border: none;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .copy-button:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Image Slider */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            touch-action: pan-y;
+        }
+        .slider-images {
+            display: flex;
+            transition: transform 0.4s ease;
+            cursor: grab;
+        }
+        .slider-images:active { cursor: grabbing; }
+
+        .slider-image {
+            flex: 0 0 100%;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background-color: rgba(var(--surface-color-rgb, 255, 194, 155), 0.7);
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        .slider-button:hover { background-color: var(--accent-color); }
+        .slider-button.prev { left: 10px; }
+        .slider-button.next { right: 10px; }
+
+        .slider-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
+        }
+
+        .slider-counter {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            color: var(--text-muted-color);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .support-button span {
+                display: none;
+            }
+            .nav-bar {
+                top: 10px; right: 10px; left: 10px;
+            }
+            .sidebar { width: 180px; }
+            .content { padding-top: 80px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body>
+<body class="day">
+    <!-- پیام آفلاین بودن -->
+    <div class="offline-message">شما آفلاین هستید! اتصال خود را بررسی کنید.</div>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo">VPN Land</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#" class="active">صفحه اصلی</a></li>
-                    <li><a href="#features">ویژگی‌ها</a></li>
-                    <li><a href="#tutorials">آموزش‌ها</a></li>
-                    <li><a href="#download">دانلود</a></li>
-                    <li><a href="#">وبلاگ</a></li>
-                    <li><a href="#">تماس با ما</a></li>
-                </ul>
-            </nav>
+    <!-- نوار ناوبری -->
+    <header class="nav-bar">
+        <a href="https://t.me/FLOKI333" target="_blank" class="support-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10A10 10 0 0 0 12 2z"></path><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            <span>پشتیبانی</span>
+        </a>
+        <div class="menu-button" id="menu-button">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>آزادی و امنیت در دنیای دیجیتال</h1>
-            <p>با سرویس‌های امن و پرسرعت ما، بدون محدودیت و با خیالی آسوده در اینترنت گشت‌وگذار کنید.</p>
-            <a href="#download" class="btn">شروع استفاده رایگان</a>
-        </div>
-    </section>
+    <!-- منوی کناری -->
+    <aside class="sidebar" id="sidebar">
+        <a href="#android" data-target="android">اندروید</a>
+        <a href="#iphone" data-target="iphone">آیفون</a>
+        <a href="#windows" data-target="windows">ویندوز</a>
+        <a href="https://t.me/FLOKI333" target="_blank">تلگرام</a>
+        <a href="https://github.com/your_username" target="_blank">گیت‌هاب</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+    </aside>
 
-    <section id="features" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>چرا ما را انتخاب کنید؟</h2>
-                <p>ما بهترین راهکارها را برای امنیت و سرعت شما فراهم کرده‌ایم.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>سرعت فوق‌العاده</h3>
-                    <p>اتصال به سرورهای پرسرعت در سراسر جهان بدون افت کیفیت.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-halved"></i>
-                    <h3>امنیت بی‌نظیر</h3>
-                    <p>رمزنگاری پیشرفته نظامی برای حفاظت کامل از حریم خصوصی شما.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-headset"></i>
-                    <h3>پشتیبانی ۲۴ ساعته</h3>
-                    <p>تیم پشتیبانی ما در ۷ روز هفته آماده پاسخگویی به شماست.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- محتوای اصلی -->
+    <main class="content">
+        <section class="os-box" id="intro">
+            <h2>خوش آمدید!</h2>
+            <p>در این وب‌سایت می‌توانید آموزش‌های اتصال به سرویس‌ها را برای سیستم‌عامل‌های مختلف مشاهده کنید.</p>
+        </section>
 
-    <section id="tutorials" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>آخرین آموزش‌ها</h2>
-                <p>راهنماهای قدم به قدم برای اتصال در تمامی دستگاه‌ها.</p>
-            </div>
-            <div class="features-grid">
-                 <div class="tutorial-card">
-                    <div class="card-content">
-                         <h3>آموزش اتصال در ویندوز ۱۱</h3>
-                         <p>راهنمای کامل تصویری برای راه‌اندازی پروتکل OpenVPN در ویندوز.</p>
-                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-                 <div class="tutorial-card">
-                    <div class="card-content">
-                         <h3>تنظیمات VPN برای اندروید</h3>
-                         <p>چگونه پروفایل‌های شخصی را در اپلیکیشن رسمی V2RayNG وارد کنیم.</p>
-                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-                 <div class="tutorial-card">
-                    <div class="card-content">
-                         <h3>راهنمای اتصال در آیفون (iOS)</h3>
-                         <p>ساده‌ترین روش برای استفاده از پروتکل‌های جدید در دستگاه‌های اپل.</p>
-                         <a href="#" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="جستجوی سیستم‌عامل...">
         </div>
-    </section>
-    
-    <section id="download" class="section download-section">
-        <div class="container">
-            <div class="section-title">
-                <h2 style="color: #fff;">دانلود نرم‌افزار</h2>
-                <p style="color: #ccc;">نرم‌افزار مناسب دستگاه خود را با یک کلیک دریافت کنید.</p>
-            </div>
-            <div class="download-platforms">
-                <a href="#" class="platform-btn">
-                    <i class="fab fa-windows"></i>
-                    <span>ویندوز</span>
-                </a>
-                <a href="#" class="platform-btn">
-                    <i class="fab fa-android"></i>
+
+        <!-- Android Section -->
+        <section class="os-box" id="android">
+            <header class="os-box-header" data-os="android">
+                <div class="os-title">
+                    <svg viewBox="0 0 24 24"><path d="M18.7,14.6c-0.2-0.5-0.5-0.9-0.8-1.3c-0.2-0.3-0.3-0.5-0.3-0.8c0-0.3,0.1-0.6,0.3-0.8c0.5-0.5,0.8-1.1,0.8-1.8 c0-0.9-0.4-1.7-1.1-2.2c-0.7-0.5-1.6-0.7-2.5-0.5c-1.2,0.3-2.3,1.1-2.9,2.2c-0.4,0.7-0.6,1.4-0.6,2.2c0,0.3,0.1,0.6,0.2,0.9 c0.2,0.4,0.1,0.9-0.2,1.2c-0.5,0.7-0.8,1.5-0.8,2.3c0,1.5,1.2,2.8,2.8,2.8c1.3,0,2.4-0.9,2.7-2.1C18.8,15,18.8,14.8,18.7,14.6z M15.1,5.2c0.2,0,0.3,0.1,0.3,0.3c0,0.2-0.1,0.3-0.3,0.3c-0.2,0-0.3-0.1-0.3-0.3C14.8,5.3,14.9,5.2,15.1,5.2z M8.9,5.2 C9.1,5.2,9.2,5.3,9.2,5.5c0,0.2-0.1,0.3-0.3,0.3c-0.2,0-0.3-0.1-0.3-0.3C8.6,5.3,8.7,5.2,8.9,5.2z"/></svg>
                     <span>اندروید</span>
-                </a>
-                <a href="#" class="platform-btn">
-                    <i class="fab fa-apple"></i>
-                    <span>iOS</span>
-                </a>
-                <a href="#" class="platform-btn">
-                    <i class="fab fa-apple"></i>
-                    <span>macOS</span>
-                </a>
+                </div>
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </header>
+            <div class="os-box-content">
+                <div class="copy-section">
+                     <input type="text" value="vmess://your-android-config-link-here" readonly>
+                     <button class="copy-button" data-os="android">کپی</button>
+                </div>
+                <div class="tutorial-option" data-type="install">نصب اپلیکیشن</div>
+                <div class="install-options"><a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank">دانلود v2rayNG از پلی استور</a></div>
+                <div class="tutorial-option" data-type="video">آموزش ویدیویی</div>
+                <div class="video-content"><iframe src="https://www.youtube.com/embed/android_specific_video" allowfullscreen></iframe></div>
+                <div class="tutorial-option" data-type="slider">آموزش تصویری</div>
+                <div class="slider">
+                    <div class="slider-images">
+                        <img class="slider-image" src="https://placehold.co/600x300/F39F9F/212121?text=Android+Step+1" alt="تصویر اندروید ۱">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFC29B/212121?text=Android+Step+2" alt="تصویر اندروید ۲">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFECC0/212121?text=Android+Step+3" alt="تصویر اندروید ۳">
+                    </div>
+                    <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                    <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    <div class="slider-counter">تصویر ۱ / ۳</div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- iPhone Section -->
+        <section class="os-box" id="iphone">
+             <header class="os-box-header" data-os="iphone">
+                <div class="os-title">
+                    <svg viewBox="0 0 24 24"><path d="M17.2,2.8C15.6,2.7,14,3.6,13.2,4.8c-0.8-1.2-2.4-2-4-2C7,2.8,5.4,3.9,4.8,5.4c-1.8,4.2,0.2,8.6,2.7,11.2 c1.2,1.2,2.6,2.3,4.2,2.3c1.6,0,2.6-1.1,4.2-2.3c0.8-0.8,1.3-1.6,1.8-2.5c0.1-0.2,0.2-0.4,0.4-0.4c0.2,0,0.3,0.1,0.4,0.3 c0.5,1,1.2,1.9,2.1,2.6c0.5,0.4,1,0.6,1.6,0.6c0.1,0,0.2,0,0.3,0c1.1-0.2,1.9-1.2,1.7-2.3c-0.2-1.3-1.3-2.2-2.5-2.2 c-0.8,0-1.5,0.4-2,1c-0.3-1.4-0.9-2.7-1.8-3.8C19.1,8.1,17.4,5,17.2,2.8z M12,20.4c-1.3,0-2.2-0.9-3.3-1.9 C6.5,16.4,4.7,12.5,6.2,8.9C6.6,7.8,7.6,7,8.7,7c1.2,0,2.2,0.9,2.8,2.1c0.7,1.4,2,2.3,3.5,2.3c0.5,0,1-0.1,1.4-0.2 C15.8,14.6,14.1,18.4,12,20.4z"/></svg>
+                    <span>آیفون</span>
+                </div>
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </header>
+            <div class="os-box-content">
+                <div class="copy-section">
+                     <input type="text" value="vmess://your-iphone-config-link-here" readonly>
+                     <button class="copy-button" data-os="iphone">کپی</button>
+                </div>
+                <div class="tutorial-option" data-type="install">نصب اپلیکیشن</div>
+                <div class="install-options"><a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank">دانلود Streisand از اپ استور</a></div>
+                <div class="tutorial-option" data-type="video">آموزش ویدیویی</div>
+                <div class="video-content"><iframe src="https://www.youtube.com/embed/iphone_specific_video" allowfullscreen></iframe></div>
+                <div class="tutorial-option" data-type="slider">آموزش تصویری</div>
+                <div class="slider">
+                     <div class="slider-images">
+                        <img class="slider-image" src="https://placehold.co/600x300/F39F9F/212121?text=iPhone+Step+1" alt="تصویر آیفون ۱">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFC29B/212121?text=iPhone+Step+2" alt="تصویر آیفون ۲">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFECC0/212121?text=iPhone+Step+3" alt="تصویر آیفون ۳">
+                    </div>
+                    <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                    <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    <div class="slider-counter">تصویر ۱ / ۳</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Windows Section -->
+        <section class="os-box" id="windows">
+             <header class="os-box-header" data-os="windows">
+                <div class="os-title">
+                    <svg viewBox="0 0 24 24"><path d="M2,22H22V2H2V22z M10.9,11.4l-8-1.1V4h8V11.4z M10.9,12.6V20h-8l8-1.1V12.6z M12.1,11.4V4h8v6.3L12.1,11.4z M12.1,12.6l8,1.1V20h-8V12.6z"/></svg>
+                    <span>ویندوز</span>
+                </div>
+                <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </header>
+            <div class="os-box-content">
+                <div class="copy-section">
+                     <input type="text" value="vmess://your-windows-config-link-here" readonly>
+                     <button class="copy-button" data-os="windows">کپی</button>
+                </div>
+                <div class="tutorial-option" data-type="install">نصب اپلیکیشن</div>
+                <div class="install-options"><a href="https://github.com/2dust/v2rayN/releases" target="_blank">دانلود v2rayN از گیت‌هاب</a></div>
+                <div class="tutorial-option" data-type="video">آموزش ویدیویی</div>
+                <div class="video-content"><iframe src="https://www.youtube.com/embed/windows_specific_video" allowfullscreen></iframe></div>
+                <div class="tutorial-option" data-type="slider">آموزش تصویری</div>
+                <div class="slider">
+                     <div class="slider-images">
+                        <img class="slider-image" src="https://placehold.co/600x300/F39F9F/212121?text=Windows+Step+1" alt="تصویر ویندوز ۱">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFC29B/212121?text=Windows+Step+2" alt="تصویر ویندوز ۲">
+                        <img class="slider-image" src="https://placehold.co/600x300/FFECC0/212121?text=Windows+Step+3" alt="تصویر ویندوز ۳">
+                    </div>
+                    <button class="slider-button prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                    <button class="slider-button next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    <div class="slider-counter">تصویر ۱ / ۳</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- DOM Elements ---
+    const body = document.body;
+    const menuButton = document.getElementById('menu-button');
+    const sidebar = document.getElementById('sidebar');
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const searchInput = document.getElementById('search-input');
+    const osBoxes = document.querySelectorAll('.os-box');
+    const sidebarLinks = document.querySelectorAll('.sidebar a[data-target]');
     
-    <footer class="main-footer">
-        <div class="container">
-            <p>تمامی حقوق این وب‌سایت محفوظ است. © 2025</p>
-        </div>
-    </footer>
+    // --- Theme Management ---
+    const applyTheme = (theme) => {
+        body.className = theme;
+        // Update RGB values for glassmorphism effect
+        if (theme === 'night') {
+            document.documentElement.style.setProperty('--surface-color-rgb', '30, 30, 30');
+        } else {
+            document.documentElement.style.setProperty('--surface-color-rgb', '255, 194, 155');
+        }
+    };
+
+    const currentTheme = localStorage.getItem('theme') || 'day';
+    applyTheme(currentTheme);
+
+    themeToggleButton.addEventListener('click', () => {
+        const newTheme = body.classList.contains('day') ? 'night' : 'day';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // --- Sidebar Menu ---
+    menuButton.addEventListener('click', () => {
+        menuButton.classList.toggle('active');
+        sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when a link is clicked
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuButton.classList.remove('active');
+            sidebar.classList.remove('active');
+        });
+    });
+
+    // --- Accordion (OS Boxes) & Tutorial Options ---
+    document.querySelectorAll('.os-box-header').forEach(header => {
+        header.addEventListener('click', () => {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
+    document.querySelectorAll('.tutorial-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const type = option.dataset.type;
+            const content = option.parentElement.querySelector(`.${type}-options, .${type}-content, .${type}.slider`);
+            if (content) {
+                // Hide all other options in the same box
+                 option.parentElement.querySelectorAll('.install-options, .video-content, .slider').forEach(el => {
+                    if (el !== content) el.style.display = 'none';
+                 });
+                // Toggle the clicked one
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+    });
+    
+    // --- Copy to Clipboard ---
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const input = button.previousElementSibling;
+            input.select();
+            // Use execCommand for better compatibility inside iframes
+            try {
+                document.execCommand('copy');
+                const originalText = button.textContent;
+                button.textContent = 'کپی شد!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                alert('خطا در کپی کردن متن');
+            }
+            window.getSelection().removeAllRanges();
+        });
+    });
+
+    // --- Image Slider with Touch Support ---
+    document.querySelectorAll('.slider').forEach(slider => {
+        const sliderImages = slider.querySelector('.slider-images');
+        const images = slider.querySelectorAll('.slider-image');
+        const prevButton = slider.querySelector('.slider-button.prev');
+        const nextButton = slider.querySelector('.slider-button.next');
+        const counter = slider.querySelector('.slider-counter');
+        let currentIndex = 0;
+        const totalImages = images.length;
+        
+        const updateSlider = () => {
+            sliderImages.style.transform = `translateX(${-currentIndex * 100}%)`;
+            counter.textContent = `تصویر ${currentIndex + 1} / ${totalImages}`;
+        };
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalImages - 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        // Touch functionality
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderImages.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        sliderImages.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        const handleSwipe = () => {
+            if (touchEndX < touchStartX - 50) nextButton.click(); // Swiped left
+            if (touchEndX > touchStartX + 50) prevButton.click(); // Swiped right
+        };
+
+        updateSlider();
+    });
+
+    // --- Search Functionality ---
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        osBoxes.forEach(box => {
+            // Ignore intro box
+            if (box.id === 'intro') return;
+
+            const title = box.querySelector('.os-title span').textContent.toLowerCase();
+            if (title.includes(searchTerm)) {
+                box.style.display = 'block';
+            } else {
+                box.style.display = 'none';
+            }
+        });
+    });
+
+    // --- Active Link Highlighting on Scroll ---
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            const link = document.querySelector(`.sidebar a[data-target="${id}"]`);
+            if (entry.isIntersecting) {
+                sidebarLinks.forEach(l => l.classList.remove('active-link'));
+                if(link) link.classList.add('active-link');
+            }
+        });
+    }, { rootMargin: "-30% 0px -70% 0px" });
+
+    osBoxes.forEach(box => observer.observe(box));
+
+    // --- PWA Service Worker Registration ---
+    if ('serviceWorker' in navigator) {
+        const swContent = `
+            const CACHE_NAME = 'floki-cache-v1';
+            const urlsToCache = [
+                '/',
+                'https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css'
+            ];
+            self.addEventListener('install', event => {
+                event.waitUntil(
+                    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+                );
+            });
+            self.addEventListener('fetch', event => {
+                event.respondWith(
+                    caches.match(event.request).then(response => {
+                        return response || fetch(event.request);
+                    })
+                );
+            });
+        `;
+        const blob = new Blob([swContent], { type: 'application/javascript' });
+        const swUrl = URL.createObjectURL(blob);
+        navigator.serviceWorker.register(swUrl).then(reg => {
+            console.log('Service Worker registered successfully.');
+        }).catch(err => {
+            console.error('Service Worker registration failed:', err);
+        });
+    }
+
+    // --- Offline/Online Status ---
+    const handleConnectionChange = () => {
+        if (navigator.onLine) {
+            body.classList.remove('offline');
+        } else {
+            body.classList.add('offline');
+        }
+    };
+    window.addEventListener('online', handleConnectionChange);
+    window.addEventListener('offline', handleConnectionChange);
+    handleConnectionChange();
+
+});
+</script>
 
 </body>
 </html>
