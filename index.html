@@ -1,1031 +1,240 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light only">
-    <title>وب‌سایت فلوکی</title>
-    <link href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: #FFECC0;
-            color: #000000;
-            color-profile: sRGB;
-            overflow-x: hidden;
-            direction: rtl;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            touch-action: manipulation;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                color-scheme: light only;
-            }
-        }
-
-        body.day {
-            background-color: #FFECC0;
-            color: #000000;
-        }
-
-        body.day .offline-message {
-            background-color: #d32f2f;
-            color: #ffffff;
-        }
-
-        body.day .nav-bar {
-            background-color: transparent;
-        }
-
-        body.day .nav-container {
-            background-color: #FFC29B;
-        }
-
-        body.day .support-button {
-            background-color: #FFC29B;
-            color: #000000;
-        }
-
-        body.day .support-button:hover, body.day .support-button:active {
-            background-color: #F39F9F;
-            transform: scale(1.05);
-        }
-
-        body.day .nav svg {
-            stroke: #000000;
-        }
-
-        body.day .menu-buttons a, body.day .menu-buttons button {
-            background-color: #FFC29B;
-            color: #000000;
-        }
-
-        body.day .menu-buttons a:hover, body.day .menu-buttons button:hover,
-        body.day .menu-buttons a:active, body.day .menu-buttons button:active {
-            background-color: #F39F9F;
-            transform: scale(1.05);
-        }
-
-        body.day .section, body.day .os-box {
-            background-color: #FFC29B;
-        }
-
-        body.day .os-box-header {
-            color: #000000;
-        }
-
-        body.day .os-box-header:hover, body.day .os-box-header:active {
-            background-color: #F39F9F;
-            transform: scale(1.02);
-        }
-
-        body.day .os-box-content {
-            background-color: #FFECC0;
-        }
-
-        body.day .os-box-content div {
-            background-color: #FFC29B;
-            color: #000000;
-        }
-
-        body.day .os-box-content div:hover, body.day .os-box-content div:active {
-            background-color: #F39F9F;
-            transform: scale(1.02);
-        }
-
-        body.day .slider-button {
-            background-color: #FFC29B;
-        }
-
-        body.day .slider-button:hover, body.day .slider-button:active {
-            background-color: #F39F9F;
-        }
-
-        body.day .slider-counter {
-            color: #000000;
-        }
-
-        body.night {
-            background-color: #333333;
-            color: #ffffff;
-        }
-
-        body.night .offline-message {
-            background-color: #d32f2f;
-            color: #ffffff;
-        }
-
-        body.night .nav-bar {
-            background-color: transparent;
-        }
-
-        body.night .nav-container {
-            background-color: #444444;
-        }
-
-        body.night .support-button {
-            background-color: #444444;
-            color: #ffffff;
-        }
-
-        body.night .support-button:hover, body.night .support-button:active {
-            background-color: #666666;
-            transform: scale(1.05);
-        }
-
-        body.night .nav svg {
-            stroke: #ffffff;
-        }
-
-        body.night .menu-buttons a, body.night .menu-buttons button {
-            background-color: #555555;
-            color: #ffffff;
-        }
-
-        body.night .menu-buttons a:hover, body.night .menu-buttons button:hover,
-        body.night .menu-buttons a:active, body.night .menu-buttons button:active {
-            background-color: #666666;
-            transform: scale(1.05);
-        }
-
-        body.night .section, body.night .os-box {
-            background-color: #444444;
-        }
-
-        body.night .os-box-header {
-            color: #ffffff;
-        }
-
-        body.night .os-box-header:hover, body.night .os-box-header:active {
-            background-color: #777777;
-            transform: scale(1.02);
-        }
-
-        body.night .os-box-content {
-            background-color: #333333;
-        }
-
-        body.night .os-box-content div {
-            background-color: #444444;
-            color: #ffffff;
-        }
-
-        body.night .os-box-content div:hover, body.night .os-box-content div:active {
-            background-color: #777777;
-            transform: scale(1.02);
-        }
-
-        body.night .slider-button {
-            background-color: #555555;
-        }
-
-        body.night .slider-button:hover, body.night .slider-button:active {
-            background-color: #666666;
-        }
-
-        body.night .slider-counter {
-            color: #ffffff;
-        }
-
-        .offline-message {
-            display: none;
-            position: fixed;
-            top: 60px;
-            right: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1003;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        body.offline .offline-message {
-            display: block;
-        }
-
-        .nav-bar {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            left: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1002;
-        }
-
-        .support-button {
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 16px;
-            text-align: center;
-            line-height: 1.5;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            width: 140px;
-            box-sizing: border-box;
-            display: block;
-            transform: scale(1);
-            will-change: transform, background-color;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .nav-container {
-            border-radius: 15px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: width 0.2s ease, height 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: width, height;
-            cursor: pointer;
-            color-profile: sRGB;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .nav-container.active {
-            width: 240px;
-            height: 40px;
-            border-radius: 12px;
-        }
-
-        .nav {
-            background: none;
-            width: 20px;
-            height: 20px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 5px;
-        }
-
-        .nav svg {
-            fill: none;
-            stroke-width: 15px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .nav svg use:nth-of-type(1) {
-            opacity: 1;
-            stroke-dashoffset: 221;
-            stroke-dasharray: 46 249;
-            transition: stroke-dashoffset .1s linear .15s, stroke-dasharray .1s linear .15s, opacity 0s linear .15s;
-        }
-
-        .nav svg use:nth-of-type(2) {
-            animation: stroke-animation-reverse 0.8s ease-out forwards;
-        }
-
-        .nav input {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-            cursor: pointer;
-            opacity: 0;
-        }
-
-        .nav input:checked + svg use:nth-of-type(1) {
-            stroke-dashoffset: 175;
-            stroke-dasharray: 0 295;
-            opacity: 0;
-            transition: stroke-dashoffset .05s linear .05s, stroke-dasharray .05s linear .05s, opacity 0s linear .1s;
-        }
-
-        .nav input:checked + svg use:nth-of-type(2) {
-            animation: stroke-animation 0.8s ease-out forwards;
-        }
-
-        @keyframes stroke-animation {
-            0% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
-            50% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-            65% { stroke-dashoffset: 59; stroke-dasharray: 59 236; }
-            100% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-        }
-
-        @keyframes stroke-animation-reverse {
-            0% { stroke-dashoffset: 68; stroke-dasharray: 59 236; }
-            50% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
-            65% { stroke-dashoffset: 295; stroke-dasharray: 25 270; }
-            100% { stroke-dashoffset: 290; stroke-dasharray: 25 270; }
-        }
-
-        .menu-buttons {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 10px;
-            width: 200px;
-            height: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu-buttons.active {
-            display: flex;
-        }
-
-        .menu-buttons a, .menu-buttons button {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            transform: scale(1);
-            will-change: transform, background-color;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .content {
-            position: relative;
-            top: 60px;
-            padding: 20px;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .section {
-            margin: 20px auto;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-            border-radius: 15px;
-            max-width: 600px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.3s ease;
-            will-change: opacity, transform;
-            color-profile: sRGB;
-            touch-action: manipulation;
-        }
-
-        .os-box {
-            margin: 20px auto;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-            border-radius: 15px;
-            max-width: 600px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.3s ease;
-            will-change: opacity, transform;
-            color-profile: sRGB;
-            touch-action: manipulation;
-        }
-
-        .os-box-header {
-            font-size: 18px;
-            text-align: center;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background-color;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
-            position: absolute;
-            left: 20px;
-            transition: transform 0.2s ease;
-        }
-
-        body.night .os-box-header::after {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
-        }
-
-        .os-box-header.active::after {
-            transform: rotate(180deg);
-        }
-
-        .os-box-content {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.3s ease;
-            will-change: opacity, transform;
-            color-profile: sRGB;
-        }
-
-        .os-box-content.active {
-            display: block;
-        }
-
-        .os-box-content div {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            will-change: transform, background-color;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .os-box-content a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .slider {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-            touch-action: pan-y;
-        }
-
-        .slider-images {
-            display: flex;
-            transition: transform 0.3s ease;
-            will-change: transform;
-        }
-
-        .slider-image {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .slider-counter {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 16px;
-            font-family: 'Vazirmatn', Arial, sans-serif;
-        }
-
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            z-index: 10;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.2s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .slider-button svg {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: #000000;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        body.night .slider-button svg {
-            stroke: #ffffff;
-        }
-
-        .slider-button.prev {
-            left: 10px;
-        }
-
-        .slider-button.next {
-            right: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .nav-bar {
-                top: 8px;
-                right: 8px;
-                left: 8px;
-            }
-
-            .support-button {
-                width: 40px;
-                font-size: 20px;
-                padding: 8px;
-                line-height: 1;
-            }
-
-            .nav-container {
-                width: 40px;
-                height: 40px;
-            }
-
-            .nav-container.active {
-                width: 200px;
-                height: 40px;
-                border-radius: 12px;
-            }
-
-            .menu-buttons a, .menu-buttons button {
-                width: 28px;
-                height: 28px;
-                font-size: 12px;
-            }
-
-            .section, .os-box {
-                max-width: 90%;
-                margin: 12px auto;
-            }
-
-            .os-box-header::after {
-                left: 15px;
-            }
-
-            .slider-image {
-                height: 200px;
-            }
-
-            .slider-button {
-                padding: 8px;
-                width: 32px;
-                height: 32px;
-            }
-
-            .slider-button svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            .slider-counter {
-                font-size: 14px;
-                margin-top: 8px;
-            }
-        }
-
-        @media (min-width: 601px) and (max-width: 1024px) {
-            .nav-bar {
-                top: 9px;
-                right: 9px;
-                left: 9px;
-            }
-
-            .support-button {
-                width: 140px;
-                font-size: 15px;
-                padding: 10px;
-            }
-
-            .nav-container {
-                width: 40px;
-                height: 40px;
-            }
-
-            .nav-container.active {
-                width: 220px;
-                height: 40px;
-                border-radius: 12px;
-            }
-
-            .section, .os-box {
-                max-width: 80%;
-                margin: 15px auto;
-            }
-
-            .slider-image {
-                height: 250px;
-            }
-
-            .slider-button {
-                padding: 9px;
-                width: 36px;
-                height: 36px;
-            }
-
-            .slider-button svg {
-                width: 24px;
-                height: 24px;
-            }
-
-            .slider-counter {
-                font-size: 15px;
-                margin-top: 9px;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .nav-bar {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-            }
-
-            .section, .os-box {
-                max-width: 600px;
-                margin: 20px auto;
-            }
-
-            .slider-button {
-                padding: 10px;
-                width: 40px;
-                height: 40px;
-            }
-
-            .slider-button svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .slider-counter {
-                font-size: 16px;
-                margin-top: 10px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>آموزش اتصال VPN و دانلود نرم‌افزار</title>
+  <style>
+    /* تنظیمات پایه */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      color: #333;
+      direction: rtl;
+    }
+
+    header {
+      background: #005f73;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      background: #0a9396;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #94d2bd;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    section {
+      background: white;
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+    }
+
+    h2 {
+      color: #005f73;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #0a9396;
+      padding-bottom: 8px;
+    }
+
+    /* دکمه‌های دانلود */
+    .btn-download {
+      background: #0a9396;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .btn-download:hover {
+      background: #005f73;
+    }
+
+    /* بخش آموزش */
+    .steps {
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps li {
+      margin-bottom: 15px;
+      background: #e0fbfc;
+      border-radius: 5px;
+      padding: 12px 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 16px;
+    }
+
+    /* سوالات متداول */
+    .faq-item {
+      margin-bottom: 15px;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      cursor: pointer;
+      padding: 12px;
+      background: #94d2bd;
+      border-radius: 5px;
+      color: #0a9396;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #79c99b;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: #d9f0ec;
+      padding: 0 12px;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .faq-answer.open {
+      max-height: 200px;
+      padding: 12px;
+    }
+
+    /* فوتر */
+    footer {
+      background: #005f73;
+      color: white;
+      text-align: center;
+      padding: 20px 15px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    /* ریسپانسیو */
+    @media (max-width: 600px) {
+      header {
+        font-size: 20px;
+        padding: 15px 10px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      main {
+        margin: 20px 10px;
+        padding: 0 10px;
+      }
+    }
+  </style>
 </head>
-<body class="day">
-    <div class="offline-message">شما آفلاین هستید!</div>
+<body>
 
-    <div class="nav-bar">
-        <div class="nav-container" id="nav-container" onclick="toggleMenu()">
-            <div class="nav">
-                <input type="checkbox" id="menu-toggle">
-                <svg style="height: 40px; width: 40px;">
-                    <use xlink:href="#menu"></use>
-                    <use xlink:href="#menu"></use>
-                </svg>
-            </div>
-            <div class="menu-buttons" id="menu-buttons">
-                <button onclick="toggleTheme()">🌞</button>
-                <a href="#android" onclick="closeMenu(); toggleOsBox('android')">🤖</a>
-                <a href="#iphone" onclick="closeMenu(); toggleOsBox('iphone')">🍎</a>
-                <a href="#windows" onclick="closeMenu(); toggleOsBox('windows')">🖥️</a>
-                <a href="https://t.me/FLOKI333" target="_blank" onclick="closeMenu()">📩</a>
-                <a href="https://github.com/your_username" target="_blank" onclick="closeMenu()">🐙</a>
-            </div>
-        </div>
-        <a href="https://t.me/FLOKI333" target="_blank" class="support-button">
-            <span class="support-text-desktop">ارتباط با پشتیبانی 👨🏻‍💻</span>
-            <span class="support-text-mobile">👨🏻‍💻</span>
-        </a>
+<header>
+  آموزش اتصال VPN و دانلود نرم‌افزار
+</header>
+
+<nav>
+  <a href="#intro">معرفی</a>
+  <a href="#tutorial">آموزش اتصال</a>
+  <a href="#download">دانلود نرم‌افزار</a>
+  <a href="#faq">سوالات متداول</a>
+</nav>
+
+<main>
+  <section id="intro">
+    <h2>معرفی VPN</h2>
+    <p>
+      VPN یا شبکه خصوصی مجازی ابزاری است که به شما اجازه می‌دهد با امنیت و حریم خصوصی بالا به اینترنت متصل شوید. 
+      در این سایت، آموزش‌های کامل برای اتصال به VPN و همچنین دانلود نرم‌افزارهای معتبر ارائه می‌شود.
+    </p>
+  </section>
+
+  <section id="tutorial">
+    <h2>آموزش اتصال به VPN</h2>
+    <ul class="steps">
+      <li>گام ۱: دانلود و نصب نرم‌افزار VPN مورد نظر از بخش دانلود.</li>
+      <li>گام ۲: اجرای نرم‌افزار و وارد کردن نام کاربری و رمز عبور (در صورت نیاز).</li>
+      <li>گام ۳: انتخاب سرور مناسب و اتصال به VPN.</li>
+      <li>گام ۴: بررسی اتصال با باز کردن سایت‌های مختلف و اطمینان از تغییر IP.</li>
+      <li>گام ۵: قطع اتصال پس از پایان استفاده.</li>
+    </ul>
+  </section>
+
+  <section id="download">
+    <h2>دانلود نرم‌افزارهای VPN</h2>
+    <p>لینک‌های زیر را برای دانلود نسخه‌های معتبر نرم‌افزارهای VPN استفاده کنید:</p>
+    <a href="https://example.com/vpn-windows.exe" class="btn-download" download>دانلود نسخه ویندوز</a><br/>
+    <a href="https://example.com/vpn-macos.dmg" class="btn-download" download>دانلود نسخه مک</a><br/>
+    <a href="https://example.com/vpn-android.apk" class="btn-download" download>دانلود نسخه اندروید</a><br/>
+    <a href="https://example.com/vpn-ios.ipa" class="btn-download" download>دانلود نسخه آیفون</a>
+  </section>
+
+  <section id="faq">
+    <h2>سوالات متداول</h2>
+    <div class="faq-item">
+      <div class="faq-question">VPN چیست و چرا باید استفاده کنم؟</div>
+      <div class="faq-answer">VPN یک ابزار برای افزایش امنیت و حفظ حریم خصوصی آنلاین است که ارتباط شما را رمزنگاری می‌کند.</div>
     </div>
-
-    <div class="content">
-        <div class="section" id="intro">
-            <h2>مقدمه</h2>
-            <p>این وب‌سایت آموزش‌هایی برای اتصال به نرم‌افزارها در سیستم‌عامل‌های مختلف ارائه می‌دهد.</p>
-        </div>
-
-        <div class="os-box android" id="android">
-            <div class="os-box-header" onclick="toggleOsBox('android')">اندروید</div>
-            <div class="os-box-content" id="android-content">
-                <div class="install-app" onclick="toggleInstallOptions('android')">نصب اپ</div>
-                <div class="install-options" id="android-install-options" style="display: none;">
-                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank"><div>v2rayNG</div></a>
-                </div>
-                <div class="video-tutorial" onclick="toggleVideo('android')">آموزش ویدیویی</div>
-                <div class="video-content" id="android-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/android_specific_video" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="image-tutorial" onclick="toggleSlider('android')">آموزش با تصاویر</div>
-                <div class="slider" id="android-slider" style="display: none;">
-                    <div class="slider-images" id="android-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+1" alt="تصویر اندروید 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+2" alt="تصویر اندروید 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+3" alt="تصویر اندروید 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+4" alt="تصویر اندروید 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+5" alt="تصویر اندروید 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+6" alt="تصویر اندروید 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+7" alt="تصویر اندروید 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+8" alt="تصویر اندروید 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+9" alt="تصویر اندروید 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+اندروید+10" alt="تصویر اندروید 10">
-                    </div>
-                    <button class="slider-button prev" onclick="moveSlider('android', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <button class="slider-button next" onclick="moveSlider('android', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-                    <div class="slider-counter" id="android-slider-counter">تصویر 1/10</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="os-box iphone" id="iphone">
-            <div class="os-box-header" onclick="toggleOsBox('iphone')">آیفون</div>
-            <div class="os-box-content" id="iphone-content">
-                <div class="install-app" onclick="toggleInstallOptions('iphone')">نصب اپ</div>
-                <div class="install-options" id="iphone-install-options" style="display: none;">
-                    <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank"><div>Streisand</div></a>
-                </div>
-                <div class="video-tutorial" onclick="toggleVideo('iphone')">آموزش ویدیویی</div>
-                <div class="video-content" id="iphone-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/iphone_specific_video" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="image-tutorial" onclick="toggleSlider('iphone')">آموزش با تصاویر</div>
-                <div class="slider" id="iphone-slider" style="display: none;">
-                    <div class="slider-images" id="iphone-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+1" alt="تصویر آیفون 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+2" alt="تصویر آیفون 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+3" alt="تصویر آیفون 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+4" alt="تصویر آیفون 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+5" alt="تصویر آیفون 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+6" alt="تصویر آیفون 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+7" alt="تصویر آیفون 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+8" alt="تصویر آیفون 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+9" alt="تصویر آیفون 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+آیفون+10" alt="تصویر آیفون 10">
-                    </div>
-                    <button class="slider-button prev" onclick="moveSlider('iphone', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <button class="slider-button next" onclick="moveSlider('iphone', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-                    <div class="slider-counter" id="iphone-slider-counter">تصویر 1/10</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="os-box windows" id="windows">
-            <div class="os-box-header" onclick="toggleOsBox('windows')">ویندوز</div>
-            <div class="os-box-content" id="windows-content">
-                <div class="install-app" onclick="toggleInstallOptions('windows')">نصب اپ</div>
-                <div class="install-options" id="windows-install-options" style="display: none;">
-                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank"><div>v2rayN</div></a>
-                </div>
-                <div class="video-tutorial" onclick="toggleVideo('windows')">آموزش ویدیویی</div>
-                <div class="video-content" id="windows-video-content" style="display: none;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/windows_specific_video" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="image-tutorial" onclick="toggleSlider('windows')">آموزش با تصاویر</div>
-                <div class="slider" id="windows-slider" style="display: none;">
-                    <div class="slider-images" id="windows-slider-images">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+1" alt="تصویر ویندوز 1">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+2" alt="تصویر ویندوز 2">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+3" alt="تصویر ویندوز 3">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+4" alt="تصویر ویندوز 4">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+5" alt="تصویر ویندوز 5">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+6" alt="تصویر ویندوز 6">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+7" alt="تصویر ویندوز 7">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+8" alt="تصویر ویندوز 8">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+9" alt="تصویر ویندوز 9">
-                        <img class="slider-image" src="https://via.placeholder.com/600x300?text=تصویر+ویندوز+10" alt="تصویر ویندوز 10">
-                    </div>
-                    <button class="slider-button prev" onclick="moveSlider('windows', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <button class="slider-button next" onclick="moveSlider('windows', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-                    <div class="slider-counter" id="windows-slider-counter">تصویر 1/10</div>
-                </div>
-            </div>
-        </div>
+    <div class="faq-item">
+      <div class="faq-question">آیا استفاده از VPN قانونی است؟</div>
+      <div class="faq-answer">در بیشتر کشورها بله، ولی برخی کشورها استفاده از VPN محدود شده است.</div>
     </div>
+    <div class="faq-item">
+      <div class="faq-question">چطور مطمئن شوم که VPN به درستی کار می‌کند؟</div>
+      <div class="faq-answer">با بررسی آی‌پی آدرس خود در سایت‌هایی مثل whatismyip.com می‌توانید وضعیت اتصال را مشاهده کنید.</div>
+    </div>
+  </section>
+</main>
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
-            <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4"/>
-        </symbol>
-    </svg>
+<footer>
+  &copy; 2025 تمام حقوق برای سایت آموزش VPN محفوظ است.
+</footer>
 
-    <style>
-        .support-text-desktop {
-            display: none;
-        }
+<script>
+  // اسکریپت باز و بسته کردن سوالات متداول
+  const faqs = document.querySelectorAll('.faq-question');
+  faqs.forEach(item => {
+    item.addEventListener('click', () => {
+      const answer = item.nextElementSibling;
+      answer.classList.toggle('open');
+    });
+  });
+</script>
 
-        .support-text-mobile {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .support-text-mobile {
-                display: inline;
-            }
-            .support-button {
-                width: 40px;
-                font-size: 20px;
-                padding: 8px;
-                line-height: 1;
-            }
-        }
-
-        @media (min-width: 601px) {
-            .support-text-desktop {
-                display: inline;
-            }
-            .support-button {
-                width: 140px;
-                font-size: 15px;
-                padding: 10px;
-            }
-        }
-    </style>
-
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggle = document.querySelector('.menu-buttons button');
-            if (body.classList.contains('day')) {
-                body.classList.remove('day');
-                body.classList.add('night');
-                themeToggle.textContent = '🌞';
-            } else {
-                body.classList.remove('night');
-                body.classList.add('day');
-                themeToggle.textContent = '🌙';
-            }
-        }
-
-        function toggleMenu() {
-            const menuButtons = document.getElementById('menu-buttons');
-            const navContainer = document.getElementById('nav-container');
-            const menuToggle = document.getElementById('menu-toggle');
-            menuButtons.classList.toggle('active');
-            navContainer.classList.toggle('active');
-            menuToggle.checked = menuButtons.classList.contains('active');
-        }
-
-        function closeMenu() {
-            const menuButtons = document.getElementById('menu-buttons');
-            const navContainer = document.getElementById('nav-container');
-            const menuToggle = document.getElementById('menu-toggle');
-            menuButtons.classList.remove('active');
-            navContainer.classList.remove('active');
-            menuToggle.checked = false;
-        }
-
-        function toggleOsBox(boxId) {
-            const boxes = ['android', 'iphone', 'windows'];
-            boxes.forEach(id => {
-                if (id !== boxId) {
-                    const content = document.getElementById(`${id}-content`);
-                    const header = document.querySelector(`#${id} .os-box-header`);
-                    content.classList.remove('active');
-                    content.style.display = 'none';
-                    header.classList.remove('active');
-                    document.getElementById(`${id}-install-options`).style.display = 'none';
-                    document.getElementById(`${id}-video-content`).style.display = 'none';
-                    document.getElementById(`${id}-slider`).style.display = 'none';
-                }
-            });
-            const content = document.getElementById(`${boxId}-content`);
-            const header = document.querySelector(`#${boxId} .os-box-header`);
-            content.classList.toggle('active');
-            header.classList.toggle('active');
-            content.style.display = content.classList.contains('active') ? 'block' : 'none';
-        }
-
-        function toggleInstallOptions(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            options.style.display = options.style.display === 'block' ? 'none' : 'block';
-            video.style.display = 'none';
-            slider.style.display = 'none';
-        }
-
-        function toggleVideo(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            video.style.display = video.style.display === 'block' ? 'none' : 'block';
-            options.style.display = 'none';
-            slider.style.display = 'none';
-        }
-
-        function toggleSlider(boxId) {
-            const options = document.getElementById(`${boxId}-install-options`);
-            const video = document.getElementById(`${boxId}-video-content`);
-            const slider = document.getElementById(`${boxId}-slider`);
-            slider.style.display = slider.style.display === 'block' ? 'none' : 'block';
-            options.style.display = 'none';
-            video.style.display = 'none';
-        }
-
-        let currentSlides = { android: 0, iphone: 0, windows: 0 };
-
-        function moveSlider(boxId, direction) {
-            const sliderImages = document.getElementById(`${boxId}-slider-images`);
-            const images = sliderImages.querySelectorAll('.slider-image');
-            const counter = document.getElementById(`${boxId}-slider-counter`);
-            currentSlides[boxId] = (currentSlides[boxId] + direction + images.length) % images.length;
-            sliderImages.style.transform = `translateX(-${currentSlides[boxId] * 100}%)`;
-            counter.textContent = `تصویر ${currentSlides[boxId] + 1}/10`;
-        }
-
-        document.querySelectorAll('.slider-images').forEach(slider => {
-            let isDragging = false, startX, scrollLeft;
-
-            slider.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('mouseleave', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                slider.scrollLeft = scrollLeft - walk;
-            });
-
-            slider.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                startX = e.touches[0].pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('touchend', () => {
-                isDragging = false;
-            });
-
-            slider.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                slider.scrollLeft = scrollLeft - walk;
-            });
-        });
-
-        window.addEventListener('online', () => {
-            document.body.classList.remove('offline');
-        });
-
-        window.addEventListener('offline', () => {
-            document.body.classList.add('offline');
-        });
-
-        document.addEventListener('click', function(event) {
-            const menuButtons = document.getElementById('menu-buttons');
-            const navContainer = document.getElementById('nav-container');
-            const supportButton = document.querySelector('.support-button');
-            const isClickInsideMenu = menuButtons.contains(event.target);
-            const isClickInsideNav = navContainer.contains(event.target);
-            const isClickInsideSupport = supportButton.contains(event.target);
-
-            if (!isClickInsideMenu && !isClickInsideNav && !isClickInsideSupport && menuButtons.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        document.addEventListener('touchstart', function(event) {
-            if (event.target.closest('.nav-container') || event.target.closest('.menu-buttons') || event.target.closest('.os-box-header') || event.target.closest('.os-box-content div') || event.target.closest('.slider-button') || event.target.closest('.support-button')) {
-                // اجازه عملکرد به المان‌های کلیک‌شدنی
-            } else {
-                if (document.getElementById('menu-buttons').classList.contains('active')) {
-                    closeMenu();
-                }
-            }
-        }, { passive: true });
-    </script>
 </body>
 </html>
