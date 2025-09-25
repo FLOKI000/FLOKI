@@ -10,7 +10,7 @@
     <link rel="manifest" href="data:application/manifest+json;base64,ew0KICAgICJuYW1lIjogIldlYnNpdGUgRmxva2kiLA0KICAgICJzaG9ydF9uYW1lIjogIkZsb2tpIiwNCiAgICAic3RhcnRfdXJsIjogIi4iLA0KICAgICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLA0KICAgICJpY29ucyI6IFsNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfSwNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI4Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWlzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjUxMng1MTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfQ0KICAgIF0sDQogICAgImJhY2tncm91bmRfY29sb3IiOiAiI0ZGRTZENCIiLA0KICAgICJ0aGVtZV9jb2xvciI6ICIjRkY4QzY4Ig0KfQ0K">
     
     <style>
-        /* CSS Variables for theming */
+        /* Force custom theme variables to override system dark mode */
         :root {
             --bg-color: #FFE6D4; /* Peach lightest */
             --surface-color: #FFD7C2; /* Peach lighter */
@@ -23,6 +23,7 @@
             --shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Modern shadow */
         }
 
+        /* Night theme variables */
         body.night {
             --bg-color: #2B2D42; /* Darkest gray */
             --surface-color: #3A3B5B; /* Slightly lighter gray */
@@ -31,6 +32,28 @@
             --secondary-accent: #5A5D8D; /* Subtle gray */
             --text-color: #FFFFFF; /* White for contrast */
             --glass-bg: rgba(74, 76, 116, 0.7); /* Derived from #4A4C74 */
+        }
+
+        /* Prevent system dark mode from overriding */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #FFE6D4;
+                --surface-color: #FFD7C2;
+                --primary-color: #FF8C68;
+                --accent-color: #FFAA8C;
+                --secondary-accent: #FFB99E;
+                --text-color: #000000;
+                --glass-bg: rgba(255, 199, 176, 0.7);
+            }
+            body.night {
+                --bg-color: #2B2D42;
+                --surface-color: #3A3B5B;
+                --primary-color: #6A6EA6;
+                --accent-color: #8A8ED8;
+                --secondary-accent: #5A5D8D;
+                --text-color: #FFFFFF;
+                --glass-bg: rgba(74, 76, 116, 0.7);
+            }
         }
 
         /* Base styles */
@@ -46,8 +69,8 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-color) !important;
+            color: var(--text-color) !important;
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             touch-action: manipulation;
@@ -265,7 +288,7 @@
             transform: rotateY(10deg) scale(0.95);
             transition: opacity 0.5s ease, transform 0.5s ease;
             loading: lazy;
-            background: var(--secondary-accent); /* Subtle peach/gray for image background */
+            background: var(--secondary-accent);
         }
 
         .slider-image.active {
@@ -393,7 +416,7 @@
         /* Responsive design */
         @media (max-width: 600px) {
             .content {
-               padding: 10px;
+                padding: 10px;
                 max-width: 321px;
             }
             .header {
@@ -433,10 +456,7 @@
 </head>
 <body class="day">
     <!-- هدر -->
-    <header class="header"style="
-    margin-top: 20px;
-    margin-bottom: 5px;
-">
+    <header class="header" style="margin-top: 20px; margin-bottom: 5px;">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6AAAADUlEQVQIHWNgYGD4DwABBAEAIk1rZgAAAABJRU5ErkJggg==" alt="لوگوی فلوکی">
         <h1>وب‌سایت فلوکی</h1>
         <nav>
@@ -457,9 +477,7 @@
     <!-- محتوای اصلی -->
     <main class="content">
         <!-- بخش نصب نرم‌افزار -->
-        <section class="install-section"style="
-    margin-top: 0px;
-">
+        <section class="install-section" style="margin-top: 0px;">
             <h2>نصب نرم‌افزار</h2>
             <div class="os-container">
                 <!-- Android Section -->
@@ -582,270 +600,282 @@
         <button class="close-zoom" aria-label="بستن تصویر">×</button>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // --- DOM Elements ---
-    const body = document.body;
-    const imageZoom = document.querySelector('.image-zoom');
-    const zoomImage = imageZoom.querySelector('img');
-    const closeZoomButton = imageZoom.querySelector('.close-zoom');
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- DOM Elements ---
+        const body = document.body;
+        const imageZoom = document.querySelector('.image-zoom');
+        const zoomImage = imageZoom.querySelector('img');
+        const closeZoomButton = imageZoom.querySelector('.close-zoom');
 
-    // --- Theme Management ---
-    const applyTheme = (theme) => {
-        body.className = theme;
-        if (theme === 'night') {
-            document.documentElement.style.setProperty('--surface-color-rgb', '74, 76, 116');
-        } else {
-            document.documentElement.style.setProperty('--surface-color-rgb', '255, 199, 176');
-        }
-    };
-
-    // Auto-switch theme based on time
-    const updateThemeByTime = () => {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const isNight = (hours >= 0 && hours < 5) || (hours === 5 && minutes === 0);
-        applyTheme(isNight ? 'night' : 'day');
-    };
-
-    // Update theme immediately and every minute
-    updateThemeByTime();
-    setInterval(updateThemeByTime, 60000);
-
-    // --- Close Active Box on Page Click ---
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.os-box, .slider-button, .app-button, .image-zoom, .slider-dot')) {
-            document.querySelectorAll('.os-box').forEach(box => {
-                box.classList.remove('active');
-                box.setAttribute('aria-expanded', 'false');
-            });
-        }
-    });
-
-    // --- Install Section Toggle ---
-    document.querySelectorAll('.install-section .os-box').forEach(box => {
-        box.addEventListener('click', (e) => {
-            if (e.target.closest('.app-button')) return;
-            document.querySelectorAll('.os-box').forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-expanded', 'false');
-            });
-            box.classList.add('active');
-            box.setAttribute('aria-expanded', 'true');
-        });
-    });
-
-    // --- Tutorial Section Toggle ---
-    document.querySelectorAll('.tutorial-section .os-box').forEach(box => {
-        box.addEventListener('click', (e) => {
-            if (e.target.closest('.slider-button, .slider-image, .slider-dot')) return;
-            document.querySelectorAll('.os-box').forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-expanded', 'false');
-            });
-            box.classList.add('active');
-            box.setAttribute('aria-expanded', 'true');
-        });
-    });
-
-    // --- Image Slider with Enhanced Animation and Dots ---
-    document.querySelectorAll('.slider').forEach(slider => {
-        const sliderImages = slider.querySelector('.slider-images');
-        const images = slider.querySelectorAll('.slider-image');
-        const prevButton = slider.querySelector('.slider-button.prev');
-        const nextButton = slider.querySelector('.slider-button.next');
-        const counter = slider.querySelector('.slider-counter');
-        const dotsContainer = slider.querySelector('.slider-dots');
-        let currentIndex = 0;
-        const totalImages = images.length;
-        let autoPlayInterval;
-
-        // Create dots
-        images.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('slider-dot');
-            dot.setAttribute('aria-label', `رفتن به تصویر ${index + 1}`);
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateSlider();
-                stopAutoPlay();
-            });
-            dotsContainer.appendChild(dot);
-        });
-
-        const updateSlider = () => {
-            images.forEach((img, index) => {
-                img.classList.remove('active');
-                if (index === currentIndex) {
-                    img.classList.add('active');
-                }
-            });
-            sliderImages.style.transform = `translateX(${-currentIndex * 100}%)`;
-            counter.textContent = `تصویر ${currentIndex + 1} / ${totalImages}`;
-            dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-                dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
-            });
+        // --- Theme Management ---
+        const applyTheme = (theme) => {
+            body.className = theme;
+            // Explicitly set CSS custom properties to ensure consistency
+            if (theme === 'night') {
+                document.documentElement.style.setProperty('--bg-color', '#2B2D42');
+                document.documentElement.style.setProperty('--surface-color', '#3A3B5B');
+                document.documentElement.style.setProperty('--primary-color', '#6A6EA6');
+                document.documentElement.style.setProperty('--accent-color', '#8A8ED8');
+                document.documentElement.style.setProperty('--secondary-accent', '#5A5D8D');
+                document.documentElement.style.setProperty('--text-color', '#FFFFFF');
+                document.documentElement.style.setProperty('--glass-bg', 'rgba(74, 76, 116, 0.7)');
+            } else {
+                document.documentElement.style.setProperty('--bg-color', '#FFE6D4');
+                document.documentElement.style.setProperty('--surface-color', '#FFD7C2');
+                document.documentElement.style.setProperty('--primary-color', '#FF8C68');
+                document.documentElement.style.setProperty('--accent-color', '#FFAA8C');
+                document.documentElement.style.setProperty('--secondary-accent', '#FFB99E');
+                document.documentElement.style.setProperty('--text-color', '#000000');
+                document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 199, 176, 0.7)');
+            }
         };
 
-        const startAutoPlay = () => {
-            autoPlayInterval = setInterval(() => {
-                currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
-                updateSlider();
-            }, 3000);
+        // Auto-switch theme based on time
+        const updateThemeByTime = () => {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const isNight = (hours >= 0 && hours < 5) || (hours === 5 && minutes === 0);
+            applyTheme(isNight ? 'night' : 'day');
         };
 
-        const stopAutoPlay = () => {
-            clearInterval(autoPlayInterval);
-        };
+        // Update theme immediately and every minute
+        updateThemeByTime();
+        setInterval(updateThemeByTime, 60000);
 
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalImages - 1;
-            updateSlider();
-            stopAutoPlay();
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
-            updateSlider();
-            stopAutoPlay();
-        });
-
-        // Touch functionality
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        sliderImages.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoPlay();
-        });
-
-        sliderImages.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        const handleSwipe = () => {
-            if (touchEndX < touchStartX - 50) nextButton.click();
-            if (touchEndX > touchStartX + 50) prevButton.click();
-        };
-
-        // Zoom functionality
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                zoomImage.src = img.src;
-                zoomImage.alt = img.alt;
-                imageZoom.classList.add('active');
-                stopAutoPlay();
-            });
-        });
-
-        // Keyboard navigation
-        slider.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft') {
-                prevButton.click();
-            } else if (e.key === 'ArrowRight') {
-                nextButton.click();
+        // --- Close Active Box on Page Click ---
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.os-box, .slider-button, .app-button, .image-zoom, .slider-dot')) {
+                document.querySelectorAll('.os-box').forEach(box => {
+                    box.classList.remove('active');
+                    box.setAttribute('aria-expanded', 'false');
+                });
             }
         });
 
-        // Auto-play on load
-        startAutoPlay();
-
-        // Stop auto-play on hover
-        slider.addEventListener('mouseenter', stopAutoPlay);
-        slider.addEventListener('mouseleave', startAutoPlay);
-
-        updateSlider();
-    });
-
-    // Close Zoom
-    closeZoomButton.addEventListener('click', () => {
-        imageZoom.classList.remove('active');
-    });
-
-    // Close Zoom on click outside image
-    imageZoom.addEventListener('click', (e) => {
-        if (e.target === imageZoom) {
-            imageZoom.classList.remove('active');
-        }
-    });
-
-    // --- PWA Service Worker Registration ---
-    if ('serviceWorker' in navigator) {
-        const swContent = `
-            const CACHE_NAME = 'floki-cache-v5';
-            const urlsToCache = [
-                '/',
-                'https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+1',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+2',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+3',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+4',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+5',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+6',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+7',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+8',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+9',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+10',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+1',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+2',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+3',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+4',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+5',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+6',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+7',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+8',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+9',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+10',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+1',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+2',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+3',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+4',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+5',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+6',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+7',
-                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+8',
-                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+9',
-                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+10'
-            ];
-            self.addEventListener('install', event => {
-                event.waitUntil(
-                    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-                );
+        // --- Install Section Toggle ---
+        document.querySelectorAll('.install-section .os-box').forEach(box => {
+            box.addEventListener('click', (e) => {
+                if (e.target.closest('.app-button')) return;
+                document.querySelectorAll('.os-box').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-expanded', 'false');
+                });
+                box.classList.add('active');
+                box.setAttribute('aria-expanded', 'true');
             });
-            self.addEventListener('fetch', event => {
-                event.respondWith(
-                    caches.match(event.request).then(response => {
-                        return response || fetch(event.request);
-                    })
-                );
-            });
-        `;
-        const blob = new Blob([swContent], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(blob);
-        navigator.serviceWorker.register(swUrl).then(reg => {
-            console.log('Service Worker registered successfully.');
-        }).catch(err => {
-            console.error('Service Worker registration failed:', err);
         });
-    }
 
-    // --- Offline/Online Status ---
-    const handleConnectionChange = () => {
-        if (navigator.onLine) {
-            body.classList.remove('offline');
-        } else {
-            body.classList.add('offline');
+        // --- Tutorial Section Toggle ---
+        document.querySelectorAll('.tutorial-section .os-box').forEach(box => {
+            box.addEventListener('click', (e) => {
+                if (e.target.closest('.slider-button, .slider-image, .slider-dot')) return;
+                document.querySelectorAll('.os-box').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-expanded', 'false');
+                });
+                box.classList.add('active');
+                box.setAttribute('aria-expanded', 'true');
+            });
+        });
+
+        // --- Image Slider with Enhanced Animation and Dots ---
+        document.querySelectorAll('.slider').forEach(slider => {
+            const sliderImages = slider.querySelector('.slider-images');
+            const images = slider.querySelectorAll('.slider-image');
+            const prevButton = slider.querySelector('.slider-button.prev');
+            const nextButton = slider.querySelector('.slider-button.next');
+            const counter = slider.querySelector('.slider-counter');
+            const dotsContainer = slider.querySelector('.slider-dots');
+            let currentIndex = 0;
+            const totalImages = images.length;
+            let autoPlayInterval;
+
+            // Create dots
+            images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                dot.setAttribute('aria-label', `رفتن به تصویر ${index + 1}`);
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                    stopAutoPlay();
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const updateSlider = () => {
+                images.forEach((img, index) => {
+                    img.classList.remove('active');
+                    if (index === currentIndex) {
+                        img.classList.add('active');
+                    }
+                });
+                sliderImages.style.transform = `translateX(${-currentIndex * 100}%)`;
+                counter.textContent = `تصویر ${currentIndex + 1} / ${totalImages}`;
+                dotsContainer.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                    dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+                });
+            };
+
+            const startAutoPlay = () => {
+                autoPlayInterval = setInterval(() => {
+                    currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
+                    updateSlider();
+                }, 3000);
+            };
+
+            const stopAutoPlay = () => {
+                clearInterval(autoPlayInterval);
+            };
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalImages - 1;
+                updateSlider();
+                stopAutoPlay();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex < totalImages - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+                stopAutoPlay();
+            });
+
+            // Touch functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            sliderImages.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoPlay();
+            });
+
+            sliderImages.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            const handleSwipe = () => {
+                if (touchEndX < touchStartX - 50) nextButton.click();
+                if (touchEndX > touchStartX + 50) prevButton.click();
+            };
+
+            // Zoom functionality
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    zoomImage.src = img.src;
+                    zoomImage.alt = img.alt;
+                    imageZoom.classList.add('active');
+                    stopAutoPlay();
+                });
+            });
+
+            // Keyboard navigation
+            slider.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                }
+            });
+
+            // Auto-play on load
+            startAutoPlay();
+
+            // Stop auto-play on hover
+            slider.addEventListener('mouseenter', stopAutoPlay);
+            slider.addEventListener('mouseleave', startAutoPlay);
+
+            updateSlider();
+        });
+
+        // Close Zoom
+        closeZoomButton.addEventListener('click', () => {
+            imageZoom.classList.remove('active');
+        });
+
+        // Close Zoom on click outside image
+        imageZoom.addEventListener('click', (e) => {
+            if (e.target === imageZoom) {
+                imageZoom.classList.remove('active');
+            }
+        });
+
+        // --- PWA Service Worker Registration ---
+        if ('serviceWorker' in navigator) {
+            const swContent = `
+                const CACHE_NAME = 'floki-cache-v5';
+                const urlsToCache = [
+                    '/',
+                    'https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+1',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+2',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+3',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+4',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+5',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+6',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+7',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+8',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+9',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+10',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+1',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+2',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+3',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+4',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+5',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+6',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+7',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+8',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+9',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+10',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+1',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+2',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+3',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+4',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+5',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+6',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+7',
+                    'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+8',
+                    'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+9',
+                    'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+10'
+                ];
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request).then(response => {
+                            return response || fetch(event.request);
+                        })
+                    );
+                });
+            `;
+            const blob = new Blob([swContent], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).then(reg => {
+                console.log('Service Worker registered successfully.');
+            }).catch(err => {
+                console.error('Service Worker registration failed:', err);
+            });
         }
-    };
-    window.addEventListener('online', handleConnectionChange);
-    window.addEventListener('offline', handleConnectionChange);
-    handleConnectionChange();
-});
-</script>
 
+        // --- Offline/Online Status ---
+        const handleConnectionChange = () => {
+            if (navigator.onLine) {
+                body.classList.remove('offline');
+            } else {
+                body.classList.add('offline');
+            }
+        };
+        window.addEventListener('online', handleConnectionChange);
+        window.addEventListener('offline', handleConnectionChange);
+        handleConnectionChange();
+    });
+    </script>
 </body>
 </html>
