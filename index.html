@@ -21,6 +21,7 @@
             --glass-bg: rgba(255, 199, 176, 0.7); /* Derived from #FFC8B0 */
             --border-radius: 16px; /* Modern rounded corners */
             --shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Modern shadow */
+            --container-width: 95%; /* Unified max-width for all containers */
         }
 
         body.night {
@@ -63,7 +64,7 @@
         .header {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            padding: 15px 20px;
+            padding: clamp(10px, 3vw, 15px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -73,13 +74,13 @@
             top: 0;
             z-index: 1000;
             border-radius: var(--border-radius);
-            max-width: 95%;
-            margin: 10px auto;
+            max-width: var(--container-width);
+            margin: clamp(10px, 2vw, 15px) auto;
         }
 
         .header img {
-            width: 40px;
-            height: 40px;
+            width: clamp(32px, 8vw, 40px);
+            height: clamp(32px, 8vw, 40px);
         }
 
         .header h1 {
@@ -95,7 +96,7 @@
         }
 
         .header nav a {
-            padding: 10px 20px;
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px);
             background: var(--primary-color);
             color: #FFFFFF;
             border-radius: var(--border-radius);
@@ -127,7 +128,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 12px 20px;
+            padding: clamp(10px, 3vw, 12px) clamp(15px, 4vw, 20px);
             border-radius: var(--border-radius);
             background-color: #EF4444;
             color: #FFFFFF;
@@ -144,7 +145,7 @@
         /* Main Content */
         .content {
             padding: clamp(10px, 5vw, 20px);
-            max-width: 95%;
+            max-width: var(--container-width);
             margin: 0 auto;
             text-align: center;
         }
@@ -157,7 +158,7 @@
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            max-width: 95%;
+            max-width: var(--container-width);
         }
 
         .install-section h2, .tutorial-section h2 {
@@ -411,11 +412,16 @@
                 width: clamp(28px, 8vw, 32px);
                 height: clamp(28px, 8vw, 32px);
             }
+            .header, .content, .install-section, .tutorial-section {
+                max-width: var(--container-width);
+                margin: clamp(8px, 2vw, 10px) auto;
+                padding: clamp(8px, 3vw, 10px);
+            }
         }
 
         @media (max-width: 480px) {
             .content, .install-section, .tutorial-section, .header {
-                max-width: 100%;
+                max-width: var(--container-width);
                 padding: clamp(8px, 3vw, 10px);
             }
             .os-box .os-title {
@@ -433,7 +439,7 @@
 </head>
 <body class="day">
     <!-- هدر -->
-    <header class="header" style="margin-top: 20px; margin-bottom: 5px;">
+    <header class="header">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6AAAADUlEQVQIHWNgYGD4DwABBAEAIk1rZgAAAABJRU5ErkJggg==" alt="لوگوی فلوکی">
         <h1>وب‌سایت فلوکی</h1>
         <nav>
@@ -454,7 +460,7 @@
     <!-- محتوای اصلی -->
     <main class="content">
         <!-- بخش نصب نرم‌افزار -->
-        <section class="install-section" style="margin-top: 0;">
+        <section class="install-section">
             <h2>نصب نرم‌افزار</h2>
             <div class="os-container">
                 <!-- Android Section -->
