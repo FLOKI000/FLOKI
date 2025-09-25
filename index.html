@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="وب‌سایت آموزشی فلوکی برای اتصال به سرویس‌ها در سیستم‌عامل‌های مختلف">
-    <meta name="theme-color" content="#10B981">
+    <meta name="theme-color" content="#FF8C68">
     <title>وب‌سایت فلوکی</title>
     <link rel="stylesheet" href="https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css">
-    <link rel="manifest" href="data:application/manifest+json;base64,ew0KICAgICJuYW1lIjogIldlYnNpdGUgRmxva2kiLA0KICAgICJzaG9ydF9uYW1lIjogIkZsb2tpIiwNCiAgICAic3RhcnRfdXJsIjogIi4iLA0KICAgICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLA0KICAgICJpY29ucyI6IFsNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfSwNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI4Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWlzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjUxMng1MTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfQ0KICAgIF0sDQogICAgImJhY2tncm91bmRfY29sb3IiOiAiI0YwRkRGQSIsDQogICAgInRoZW1lX2NvbG9yIjogIiMxMEI5ODEiDQp9DQo=">
+    <link rel="manifest" href="data:application/manifest+json;base64,ew0KICAgICJuYW1lIjogIldlYnNpdGUgRmxva2kiLA0KICAgICJzaG9ydF9uYW1lIjogIkZsb2tpIiwNCiAgICAic3RhcnRfdXJsIjogIi4iLA0KICAgICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLA0KICAgICJpY29ucyI6IFsNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfSwNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI4Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWlzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjUxMng1MTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfQ0KICAgIF0sDQogICAgImJhY2tncm91bmRfY29sb3IiOiAiI0ZGRTZENCIiLA0KICAgICJ0aGVtZV9jb2xvciI6ICIjRkY4QzY4Ig0KfQ0K">
     
     <style>
         /* CSS Variables for theming */
         :root {
-            --bg-color: #F0FDFA;
-            --surface-color: #E6F7FA;
-            --primary-color: #10B981;
-            --accent-color: #34D399;
-            --text-color: #064E3B;
-            --glass-bg: rgba(230, 247, 250, 0.7);
-            --border-radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --bg-color: #FFE6D4; /* Peach lightest */
+            --surface-color: #FFD7C2; /* Peach lighter */
+            --primary-color: #FF8C68; /* Vibrant peach */
+            --accent-color: #FFAA8C; /* Complementary peach */
+            --secondary-accent: #FFB99E; /* Subtle peach */
+            --text-color: #000000; /* Black for contrast */
+            --glass-bg: rgba(255, 199, 176, 0.7); /* Derived from #FFC8B0 */
+            --border-radius: 16px; /* Modern rounded corners */
+            --shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Modern shadow */
         }
 
         body.night {
-            --bg-color: #111827;
-            --surface-color: #1F2A44;
-            --primary-color: #3B82F6;
-            --accent-color: #60A5FA;
-            --text-color: #E0F2FE;
-            --glass-bg: rgba(31, 42, 68, 0.7);
+            --bg-color: #2B2D42; /* Darkest gray */
+            --surface-color: #3A3B5B; /* Slightly lighter gray */
+            --primary-color: #6A6EA6; /* Mid-tone gray */
+            --accent-color: #8A8ED8; /* Lightest gray */
+            --secondary-accent: #5A5D8D; /* Subtle gray */
+            --text-color: #FFFFFF; /* White for contrast */
+            --glass-bg: rgba(74, 76, 116, 0.7); /* Derived from #4A4C74 */
         }
 
         /* Base styles */
@@ -70,6 +72,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-radius: var(--border-radius);
+            max-width: 1060px;
+            margin: 10px auto;
         }
 
         .header img {
@@ -81,6 +86,38 @@
             font-size: 24px;
             font-weight: 700;
             margin: 0;
+            color: var(--text-color);
+        }
+
+        .header nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header nav a {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: #FFFFFF;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .header nav a:hover {
+            transform: scale(1.05);
+            background: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header nav a svg {
+            width: 16px;
+            height: 16px;
+            fill: #FFFFFF;
         }
 
         /* Offline Message */
@@ -91,7 +128,7 @@
             left: 50%;
             transform: translateX(-50%);
             padding: 12px 20px;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             background-color: #EF4444;
             color: #FFFFFF;
             z-index: 1005;
@@ -107,25 +144,27 @@
         /* Main Content */
         .content {
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
 
         /* Install and Tutorial Sections */
         .install-section, .tutorial-section {
-            margin: 15px 0;
+            margin: 20px 0;
             padding: 20px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            max-width: 1100px;
         }
 
         .install-section h2, .tutorial-section h2 {
             font-size: 26px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: var(--text-color);
         }
 
         .os-container {
@@ -160,6 +199,7 @@
             font-size: 20px;
             font-weight: 500;
             margin-bottom: 15px;
+            color: var(--text-color);
         }
 
         .os-box .os-title img {
@@ -173,11 +213,11 @@
             margin: 15px auto 0;
             padding: 12px 30px;
             border: none;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: var(--primary-color);
             color: #FFFFFF;
             border-radius: var(--border-radius);
             cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 18px;
             font-weight: 500;
@@ -187,7 +227,8 @@
 
         .app-button:hover {
             transform: scale(1.05);
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            background: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .os-box.active .app-button {
@@ -224,6 +265,7 @@
             transform: rotateY(10deg) scale(0.95);
             transition: opacity 0.5s ease, transform 0.5s ease;
             loading: lazy;
+            background: var(--secondary-accent); /* Subtle peach/gray for image background */
         }
 
         .slider-image.active {
@@ -246,11 +288,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background 0.2s;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
         }
 
         .slider-button:hover {
             background: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .slider-button svg {
@@ -285,11 +328,11 @@
         .slider-dot {
             width: 10px;
             height: 10px;
-            background: var(--text-color);
+            background: var(--secondary-accent);
             opacity: 0.5;
             border-radius: 50%;
             cursor: pointer;
-            transition: background 0.2s, opacity 0.2s;
+            transition: background 0.2s ease, opacity 0.2s ease;
         }
 
         .slider-dot.active {
@@ -320,6 +363,7 @@
             max-height: 90%;
             object-fit: contain;
             border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
 
         .image-zoom .close-zoom {
@@ -338,58 +382,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background 0.2s;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
         }
 
         .image-zoom .close-zoom:hover {
             background: var(--accent-color);
-        }
-
-        /* Footer Buttons */
-        .footer-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin: 20px 0;
-            padding: 0 20px;
-        }
-
-        .footer-buttons button, .footer-buttons a {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: #FFFFFF;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            text-align: center;
-            text-decoration: none;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .footer-buttons button:hover, .footer-buttons a:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-        }
-
-        .footer-buttons svg {
-            width: 16px;
-            height: 16px;
-            fill: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         /* Responsive design */
         @media (max-width: 600px) {
             .content {
-                padding: 20px 10px;
+                padding: 10px;
+                max-width: 296px;
+            }
+            .header {
+                margin: 10px;
+                max-width: 275px;
+            }
+            .install-section, .tutorial-section {
+                max-width: 296px;
             }
             .os-container {
                 flex-direction: column;
@@ -406,14 +418,9 @@
             .slider-image {
                 height: 300px;
             }
-            .footer-buttons {
-                flex-direction: row;
-                gap: 5px;
-                padding: 0 10px;
-            }
-            .footer-buttons button, .footer-buttons a {
-                padding: 6px;
-                font-size: 10px;
+            .header nav a {
+                padding: 8px 12px;
+                font-size: 12px;
             }
             .header h1 {
                 font-size: 20px;
@@ -427,9 +434,22 @@
 </head>
 <body class="day">
     <!-- هدر -->
-    <header class="header">
+    <header class="header"style="
+    margin-top: 20px;
+    margin-bottom: 5px;
+">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6AAAADUlEQVQIHWNgYGD4DwABBAEAIk1rZgAAAABJRU5ErkJggg==" alt="لوگوی فلوکی">
         <h1>وب‌سایت فلوکی</h1>
+        <nav>
+            <a href="https://t.me/FLOKI333" target="_blank" aria-label="کانال تلگرام ما">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 2.57a.75.75 0 00-.92-.59l-18 6.5a.75.75 0 00-.43 1.02c.14.36.46.62.85.67l4.75.69 2.25 7.5c.1.34.38.61.73.67h.05c.36.02.7-.2.82-.53l3-7.5 5.25 3.75c.3.22.7.24 1.01.05.32-.2.51-.55.47-.91l-1.5-14.25z"></path></svg>
+                کانال تلگرام ما
+            </a>
+            <a href="https://t.me/FLOKI333" target="_blank" aria-label="ارتباط با پشتیبانی">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 2.57a.75.75 0 00-.92-.59l-18 6.5a.75.75 0 00-.43 1.02c.14.36.46.62.85.67l4.75.69 2.25 7.5c.1.34.38.61.73.67h.05c.36.02.7-.2.82-.53l3-7.5 5.25 3.75c.3.22.7.24 1.01.05.32-.2.51-.55.47-.91l-1.5-14.25z"></path></svg>
+                ارتباط با پشتیبانی
+            </a>
+        </nav>
     </header>
 
     <!-- پیام آفلاین بودن -->
@@ -438,7 +458,9 @@
     <!-- محتوای اصلی -->
     <main class="content">
         <!-- بخش نصب نرم‌افزار -->
-        <section class="install-section">
+        <section class="install-section"style="
+    margin-top: 0px;
+">
             <h2>نصب نرم‌افزار</h2>
             <div class="os-container">
                 <!-- Android Section -->
@@ -482,16 +504,16 @@
                     </div>
                     <div class="slider">
                         <div class="slider-images">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+1" alt="تصویر اندروید ۱" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+2" alt="تصویر اندروید ۲" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+3" alt="تصویر اندروید ۳" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+4" alt="تصویر اندروید ۴" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+5" alt="تصویر اندروید ۵" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+6" alt="تصویر اندروید ۶" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+7" alt="تصویر اندروید ۷" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+8" alt="تصویر اندروید ۸" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+9" alt="تصویر اندروید ۹" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+10" alt="تصویر اندروید ۱۰" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+1" alt="تصویر اندروید ۱" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+2" alt="تصویر اندروید ۲" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+3" alt="تصویر اندروید ۳" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+4" alt="تصویر اندروید ۴" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+5" alt="تصویر اندروید ۵" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+6" alt="تصویر اندروید ۶" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+7" alt="تصویر اندروید ۷" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+8" alt="تصویر اندروید ۸" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+9" alt="تصویر اندروید ۹" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+10" alt="تصویر اندروید ۱۰" loading="lazy">
                         </div>
                         <button class="slider-button prev" aria-label="تصویر قبلی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                         <button class="slider-button next" aria-label="تصویر بعدی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -508,16 +530,16 @@
                     </div>
                     <div class="slider">
                         <div class="slider-images">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+1" alt="تصویر آیفون ۱" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+2" alt="تصویر آیفون ۲" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+3" alt="تصویر آیفون ۳" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+4" alt="تصویر آیفون ۴" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+5" alt="تصویر آیفون ۵" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+6" alt="تصویر آیفون ۶" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+7" alt="تصویر آیفون ۷" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+8" alt="تصویر آیفون ۸" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+9" alt="تصویر آیفون ۹" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+10" alt="تصویر آیفون ۱۰" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+1" alt="تصویر آیفون ۱" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+2" alt="تصویر آیفون ۲" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+3" alt="تصویر آیفون ۳" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+4" alt="تصویر آیفون ۴" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+5" alt="تصویر آیفون ۵" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+6" alt="تصویر آیفون ۶" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+7" alt="تصویر آیفون ۷" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+8" alt="تصویر آیفون ۸" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+9" alt="تصویر آیفون ۹" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+10" alt="تصویر آیفون ۱۰" loading="lazy">
                         </div>
                         <button class="slider-button prev" aria-label="تصویر قبلی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                         <button class="slider-button next" aria-label="تصویر بعدی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -534,16 +556,16 @@
                     </div>
                     <div class="slider">
                         <div class="slider-images">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+1" alt="تصویر ویندوز ۱" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+2" alt="تصویر ویندوز ۲" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+3" alt="تصویر ویندوز ۳" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+4" alt="تصویر ویندوز ۴" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+5" alt="تصویر ویندوز ۵" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+6" alt="تصویر ویندوز ۶" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+7" alt="تصویر ویندوز ۷" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+8" alt="تصویر ویندوز ۸" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+9" alt="تصویر ویندوز ۹" loading="lazy">
-                            <img class="slider-image" src="https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+10" alt="تصویر ویندوز ۱۰" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+1" alt="تصویر ویندوز ۱" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+2" alt="تصویر ویندوز ۲" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+3" alt="تصویر ویندوز ۳" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+4" alt="تصویر ویندوز ۴" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+5" alt="تصویر ویندوز ۵" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+6" alt="تصویر ویندوز ۶" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+7" alt="تصویر ویندوز ۷" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+8" alt="تصویر ویندوز ۸" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+9" alt="تصویر ویندوز ۹" loading="lazy">
+                            <img class="slider-image" src="https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+10" alt="تصویر ویندوز ۱۰" loading="lazy">
                         </div>
                         <button class="slider-button prev" aria-label="تصویر قبلی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                         <button class="slider-button next" aria-label="تصویر بعدی"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
@@ -553,22 +575,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- دکمه‌های فوتر -->
-        <footer class="footer-buttons">
-            <button id="theme-toggle" aria-label="تغییر تم">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                تم
-            </button>
-            <a href="https://t.me/FLOKI333" target="_blank" aria-label="کانال تلگرام ما">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 2.57a.75.75 0 00-.92-.59l-18 6.5a.75.75 0 00-.43 1.02c.14.36.46.62.85.67l4.75.69 2.25 7.5c.1.34.38.61.73.67h.05c.36.02.7-.2.82-.53l3-7.5 5.25 3.75c.3.22.7.24 1.01.05.32-.2.51-.55.47-.91l-1.5-14.25z"></path></svg>
-                کانال تلگرام ما
-            </a>
-            <a href="https://t.me/FLOKI333" target="_blank" aria-label="ارتباط با پشتیبانی">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 2.57a.75.75 0 00-.92-.59l-18 6.5a.75.75 0 00-.43 1.02c.14.36.46.62.85.67l4.75.69 2.25 7.5c.1.34.38.61.73.67h.05c.36.02.7-.2.82-.53l3-7.5 5.25 3.75c.3.22.7.24 1.01.05.32-.2.51-.55.47-.91l-1.5-14.25z"></path></svg>
-                ارتباط با پشتیبانی
-            </a>
-        </footer>
     </main>
 
     <!-- بزرگنمایی تصویر -->
@@ -581,7 +587,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Elements ---
     const body = document.body;
-    const themeToggleButton = document.getElementById('theme-toggle');
     const imageZoom = document.querySelector('.image-zoom');
     const zoomImage = imageZoom.querySelector('img');
     const closeZoomButton = imageZoom.querySelector('.close-zoom');
@@ -590,22 +595,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (theme) => {
         body.className = theme;
         if (theme === 'night') {
-            document.documentElement.style.setProperty('--surface-color-rgb', '31, 42, 68');
+            document.documentElement.style.setProperty('--surface-color-rgb', '74, 76, 116');
         } else {
-            document.documentElement.style.setProperty('--surface-color-rgb', '230, 247, 250');
+            document.documentElement.style.setProperty('--surface-color-rgb', '255, 199, 176');
         }
     };
 
-    // Load theme from localStorage or default to 'day'
-    const currentTheme = localStorage.getItem('theme') || 'day';
-    applyTheme(currentTheme);
+    // Auto-switch theme based on time
+    const updateThemeByTime = () => {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const isNight = (hours >= 0 && hours < 5) || (hours === 5 && minutes === 0);
+        applyTheme(isNight ? 'night' : 'day');
+    };
 
-    // Toggle theme on button click
-    themeToggleButton.addEventListener('click', () => {
-        const newTheme = body.classList.contains('day') ? 'night' : 'day';
-        applyTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
+    // Update theme immediately and every minute
+    updateThemeByTime();
+    setInterval(updateThemeByTime, 60000);
 
     // --- Close Active Box on Page Click ---
     document.addEventListener('click', (e) => {
@@ -770,40 +777,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- PWA Service Worker Registration ---
     if ('serviceWorker' in navigator) {
         const swContent = `
-            const CACHE_NAME = 'floki-cache-v4';
+            const CACHE_NAME = 'floki-cache-v5';
             const urlsToCache = [
                 '/',
                 'https://vazirmatn.github.io/Vazirmatn/fonts/webfonts/Vazirmatn.css',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+1',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+2',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+3',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+4',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+5',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+6',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+7',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+8',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Android+Step+9',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Android+Step+10',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+1',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+2',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+3',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+4',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+5',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+6',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+7',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+8',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=iPhone+Step+9',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=iPhone+Step+10',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+1',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+2',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+3',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+4',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+5',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+6',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+7',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+8',
-                'https://placehold.co/800x400/10B981/FFFFFF?text=Windows+Step+9',
-                'https://placehold.co/800x400/34D399/FFFFFF?text=Windows+Step+10'
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+1',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+2',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+3',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+4',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+5',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+6',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+7',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Android+Step+8',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Android+Step+9',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Android+Step+10',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+1',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+2',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+3',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+4',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+5',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+6',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+7',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=iPhone+Step+8',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=iPhone+Step+9',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=iPhone+Step+10',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+1',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+2',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+3',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+4',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+5',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+6',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+7',
+                'https://placehold.co/800x400/FFAA8C/FFFFFF?text=Windows+Step+8',
+                'https://placehold.co/800x400/FFB99E/FFFFFF?text=Windows+Step+9',
+                'https://placehold.co/800x400/FF8C68/FFFFFF?text=Windows+Step+10'
             ];
             self.addEventListener('install', event => {
                 event.waitUntil(
