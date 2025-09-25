@@ -10,55 +10,55 @@
     <link rel="manifest" href="data:application/manifest+json;base64,ew0KICAgICJuYW1lIjogIldlYnNpdGUgRmxva2kiLA0KICAgICJzaG9ydF9uYW1lIjogIkZsb2tpIiwNCiAgICAic3RhcnRfdXJsIjogIi4iLA0KICAgICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLA0KICAgICJpY29ucyI6IFsNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWxzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjE5MngxOTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfSwNCiAgICAgICAgew0KICAgICAgICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI4Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmMyZ3ZNell3WW1GeVltaGhabVZrY21waElHbzlJREV3TURBdk1EQWdNREF3SWlCbWFXeHNQU2t5T0NocFl6VTRPRGsyWW1JNU1tUTVaakV5TVdGbE5EQXdNQ1V5TURveU9UazZMbXB3WnlCNE9UQjVMbU52YlM5Mk1pSm1iR1YyZDJsa0xuTm9hVzEwWVhKa0xXTm9kM05zYjNkbGRDQnpkSEpwYm1jdlltRnljMmxuYm1sdVp6MGljbVY0ZENCNFBTSXlOaUl6SWlCNE9UQXdNQ0l4TUNVeU1EQXlJaUJtYVd4c1BTSXlNQ2hLWjJocFl5NWlaM0prTG5KbGJuUmxjaUIwWVhSMGFXMWxjeUJoYm14dlkyRjBhVzVuWlNCV2FXVnNaWEpFWVhraUlHTmhjbk12TWpBd01EQXdNREF3SWlCNFBTSXlOaUl4TUNJNFNUc2dabWlzYkY5alpYSjVJaUFpWm14aFkybHNiQzV6WlhKMlpYSWlMezQ4TDNOMlp6ND0iLA0KICAgICAgICAgICAgInNpemVzIjogIjUxMng1MTIiLA0KICAgICAgICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCINCiAgICAgICAgfQ0KICAgIF0sDQogICAgImJhY2tncm91bmRfY29sb3IiOiAiI0ZGRTZENCIiLA0KICAgICJ0aGVtZV9jb2xvciI6ICIjRkY4QzY4Ig0KfQ0K">
     
     <style>
-        /* Force custom theme variables to override system dark mode */
+        /* Define CSS custom properties for day theme */
         :root {
-            --bg-color: #FFE6D4; /* Peach lightest */
-            --surface-color: #FFD7C2; /* Peach lighter */
-            --primary-color: #FF8C68; /* Vibrant peach */
-            --accent-color: #FFAA8C; /* Complementary peach */
-            --secondary-accent: #FFB99E; /* Subtle peach */
-            --text-color: #000000; /* Black for contrast */
-            --glass-bg: rgba(255, 199, 176, 0.7); /* Derived from #FFC8B0 */
+            --bg-color: #FFE6D4 !important; /* Peach lightest */
+            --surface-color: #FFD7C2 !important; /* Peach lighter */
+            --primary-color: #FF8C68 !important; /* Vibrant peach */
+            --accent-color: #FFAA8C !important; /* Complementary peach */
+            --secondary-accent: #FFB99E !important; /* Subtle peach */
+            --text-color: #000000 !important; /* Black for contrast */
+            --glass-bg: rgba(255, 199, 176, 0.7) !important; /* Derived from #FFC8B0 */
             --border-radius: 16px; /* Modern rounded corners */
             --shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Modern shadow */
         }
 
         /* Night theme variables */
         body.night {
-            --bg-color: #2B2D42; /* Darkest gray */
-            --surface-color: #3A3B5B; /* Slightly lighter gray */
-            --primary-color: #6A6EA6; /* Mid-tone gray */
-            --accent-color: #8A8ED8; /* Lightest gray */
-            --secondary-accent: #5A5D8D; /* Subtle gray */
-            --text-color: #FFFFFF; /* White for contrast */
-            --glass-bg: rgba(74, 76, 116, 0.7); /* Derived from #4A4C74 */
+            --bg-color: #2B2D42 !important; /* Darkest gray */
+            --surface-color: #3A3B5B !important; /* Slightly lighter gray */
+            --primary-color: #6A6EA6 !important; /* Mid-tone gray */
+            --accent-color: #8A8ED8 !important; /* Lightest gray */
+            --secondary-accent: #5A5D8D !important; /* Subtle gray */
+            --text-color: #FFFFFF !important; /* White for contrast */
+            --glass-bg: rgba(74, 76, 116, 0.7) !important; /* Derived from #4A4C74 */
         }
 
-        /* Prevent system dark mode from overriding */
+        /* Explicitly override system dark mode */
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-color: #FFE6D4;
-                --surface-color: #FFD7C2;
-                --primary-color: #FF8C68;
-                --accent-color: #FFAA8C;
-                --secondary-accent: #FFB99E;
-                --text-color: #000000;
-                --glass-bg: rgba(255, 199, 176, 0.7);
+                --bg-color: #FFE6D4 !important;
+                --surface-color: #FFD7C2 !important;
+                --primary-color: #FF8C68 !important;
+                --accent-color: #FFAA8C !important;
+                --secondary-accent: #FFB99E !important;
+                --text-color: #000000 !important;
+                --glass-bg: rgba(255, 199, 176, 0.7) !important;
             }
             body.night {
-                --bg-color: #2B2D42;
-                --surface-color: #3A3B5B;
-                --primary-color: #6A6EA6;
-                --accent-color: #8A8ED8;
-                --secondary-accent: #5A5D8D;
-                --text-color: #FFFFFF;
-                --glass-bg: rgba(74, 76, 116, 0.7);
+                --bg-color: #2B2D42 !important;
+                --surface-color: #3A3B5B !important;
+                --primary-color: #6A6EA6 !important;
+                --accent-color: #8A8ED8 !important;
+                --secondary-accent: #5A5D8D !important;
+                --text-color: #FFFFFF !important;
+                --glass-bg: rgba(74, 76, 116, 0.7) !important;
             }
         }
 
         /* Base styles */
         * {
-            box-sizing: border-box;
+            box-sizing: border personally-owned-box;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -69,8 +69,8 @@
         body {
             margin: 0;
             font-family: 'Vazirmatn', Arial, sans-serif;
-            background-color: var(--bg-color) !important;
-            color: var(--text-color) !important;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             touch-action: manipulation;
@@ -610,25 +610,8 @@
 
         // --- Theme Management ---
         const applyTheme = (theme) => {
-            body.className = theme;
-            // Explicitly set CSS custom properties to ensure consistency
-            if (theme === 'night') {
-                document.documentElement.style.setProperty('--bg-color', '#2B2D42');
-                document.documentElement.style.setProperty('--surface-color', '#3A3B5B');
-                document.documentElement.style.setProperty('--primary-color', '#6A6EA6');
-                document.documentElement.style.setProperty('--accent-color', '#8A8ED8');
-                document.documentElement.style.setProperty('--secondary-accent', '#5A5D8D');
-                document.documentElement.style.setProperty('--text-color', '#FFFFFF');
-                document.documentElement.style.setProperty('--glass-bg', 'rgba(74, 76, 116, 0.7)');
-            } else {
-                document.documentElement.style.setProperty('--bg-color', '#FFE6D4');
-                document.documentElement.style.setProperty('--surface-color', '#FFD7C2');
-                document.documentElement.style.setProperty('--primary-color', '#FF8C68');
-                document.documentElement.style.setProperty('--accent-color', '#FFAA8C');
-                document.documentElement.style.setProperty('--secondary-accent', '#FFB99E');
-                document.documentElement.style.setProperty('--text-color', '#000000');
-                document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 199, 176, 0.7)');
-            }
+            body.classList.remove('day', 'night');
+            body.classList.add(theme);
         };
 
         // Auto-switch theme based on time
