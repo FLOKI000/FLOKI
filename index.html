@@ -1,52 +1,59 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نمایشگر کانفیگ</title>
-    <style>
-        body { font-family: Tahoma, sans-serif; direction: rtl; background: #f0f0f0; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
-        button { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px; }
-        h1 { color: #333; }
-        .status { margin-bottom: 15px; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سابسکریپشن Nova</title>
+  <style>
+    body { font-family: Tahoma; padding: 20px; background: #111; color: #0f0; }
+    h1 { text-align: center; }
+    pre { 
+      background: #1e1e1e; 
+      padding: 15px; 
+      border-radius: 8px; 
+      overflow-x: auto; 
+      white-space: pre-wrap;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #0f0;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>📡 محتوا از لینک مورد نظر</h1>
-    <button id="fetchBtn">بارگیری محتوا</button>
-    <div class="status" id="status"></div>
-    <pre id="output">برای مشاهده، دکمه را بزنید...</pre>
-</div>
+  <h1>سابسکریپشن VLESS - Nova</h1>
+  <button onclick="loadSub()">بارگذاری کانفیگ‌ها</button>
+  <br><br>
+  <pre id="output">دکمه بالا رو بزن...</pre>
 
-<script>
-    const url = "https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b";
+  <script>
+    const subUrl = "https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b";
 
-    document.getElementById("fetchBtn").addEventListener("click", async () => {
-        const statusDiv = document.getElementById("status");
-        const outputPre = document.getElementById("output");
+    async function loadSub() {
+      const output = document.getElementById('output');
+      output.textContent = "در حال بارگذاری...";
 
-        statusDiv.textContent = "⏳ در حال بارگیری...";
-        outputPre.textContent = "";
-
-        try {
-            const response = await fetch(url, {
-                method: "GET",
-                headers: { "Accept": "text/plain" }
-            });
-
-            if (!response.ok) throw new Error(`خطای HTTP: ${response.status}`);
-
-            const text = await response.text();
-            outputPre.textContent = text;
-            statusDiv.textContent = "✅ بارگیری کامل شد. تمام محتوا نمایش داده شده است.";
-        } catch (error) {
-            statusDiv.textContent = "❌ خطا در بارگیری";
-            outputPre.textContent = `خطا: ${error.message}\n\nتوجه: ممکن است سرور اجازه دسترسی از داخل صفحه را ندهد. می‌توانید از یک سرور میانی (proxy) استفاده کنید.`;
+      try {
+        const res = await fetch(subUrl);
+        const text = await res.text();
+        
+        if (text.includes("vless://")) {
+          output.textContent = text;
+        } else {
+          output.textContent = "خطا در دریافت سابسکریپشن";
         }
-    });
-</script>
+      } catch (err) {
+        output.textContent = "خطای اتصال: " + err.message;
+      }
+    }
+
+    // خودکار بارگذاری موقع باز شدن صفحه
+    window.onload = loadSub;
+  </script>
 </body>
 </html>
