@@ -1,212 +1,208 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xray Config Converter</title>
+    <title>لیست سرورها</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-            text-align: center;
-            padding: 50px;
+            font-family: 'Tahoma', 'Vazir', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             margin: 0;
-            color: white;
+            padding: 20px;
         }
         .container {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            color: #333;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        h1 {
-            color: #667eea;
-        }
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .header {
+            text-align: center;
             color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 10px;
+            margin-bottom: 30px;
+        }
+        .server-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.2s;
         }
-        button:hover {
+        .server-card:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
-        pre {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 20px;
+        .server-name {
+            font-weight: bold;
+            color: #4a5568;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .server-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            font-size: 0.9em;
+            color: #718096;
+        }
+        .detail-item {
+            background: #f7fafc;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .copy-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: #38a169;
+        }
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+        }
+        .error {
+            background: #fc8181;
+            color: white;
+            padding: 15px;
             border-radius: 10px;
-            overflow-x: auto;
-            text-align: left;
-            font-size: 12px;
-            max-height: 400px;
-            overflow-y: auto;
+            text-align: center;
         }
-        .status {
-            margin: 20px 0;
+        .stats {
+            background: rgba(255,255,255,0.2);
             padding: 10px;
-            border-radius: 8px;
-            background: #f0f0f0;
-        }
-        .download-btn {
-            background: #28a745;
-        }
-        .download-btn:hover {
-            background: #218838;
-        }
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🔄 تبدیل کننده کانفیگ Xray</h1>
-        <p>تغییر TLS از هر مقداری به none و ذخیره در فایل xray</p>
-        
-        <div>
-            <input type="text" id="urlInput" value="https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b" readonly style="background:#f5f5f5;">
-            <br>
-            <button id="fetchBtn">📥 دریافت و تبدیل کانفیگ</button>
-            <button id="downloadBtn" class="download-btn" style="display:none;">💾 دانلود فایل xray</button>
+        <div class="header">
+            <h1>📡 لیست سرورهای من</h1>
+            <p>در حال دریافت اطلاعات...</p>
         </div>
-        
-        <div id="status" class="status"></div>
-        <pre id="output"></pre>
+        <div id="content">
+            <div class="loading">⏳ در حال بارگذاری سرورها...</div>
+        </div>
     </div>
 
     <script>
-        async function fetchAndConvert() {
-            const url = document.getElementById('urlInput').value;
-            const statusDiv = document.getElementById('status');
-            const outputPre = document.getElementById('output');
-            const downloadBtn = document.getElementById('downloadBtn');
-            
-            statusDiv.innerHTML = '⏳ در حال دریافت کانفیگ از سرور...';
-            outputPre.textContent = '';
-            downloadBtn.style.display = 'none';
-            
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const targetUrl = 'https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b';
+        
+        async function fetchServers() {
             try {
-                // دریافت فایل سابسکریپشن
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
+                if (!response.ok) throw new Error('مشکل در دریافت اطلاعات');
                 
                 const text = await response.text();
-                statusDiv.innerHTML = '✅ فایل دریافت شد. در حال تبدیل...';
-                
-                // تغییر TLS به none در تمام کانفیگ‌ها
-                let convertedText = text;
-                
-                // روش اول: تغییر در لینک‌های VLESS
-                convertedText = convertedText.replace(/&tls=[^&]+/g, '&tls=none');
-                convertedText = convertedText.replace(/\?tls=[^&]+/g, '?tls=none');
-                convertedText = convertedText.replace(/security=tls/g, 'security=none');
-                convertedText = convertedText.replace(/tls=true/g, 'tls=none');
-                convertedText = convertedText.replace(/tls=1/g, 'tls=none');
-                convertedText = convertedText.replace(/tls=yes/g, 'tls=none');
-                convertedText = convertedText.replace(/tls=reality/g, 'tls=none');
-                
-                // روش دوم: تغییر در کانفیگ‌های base64 شده
-                try {
-                    // اگر محتوا base64 است، آن را دیکد کنید
-                    if (isBase64(convertedText)) {
-                        const decoded = atob(convertedText);
-                        let modifiedDecoded = decoded.replace(/&tls=[^&]+/g, '&tls=none');
-                        modifiedDecoded = modifiedDecoded.replace(/\?tls=[^&]+/g, '?tls=none');
-                        modifiedDecoded = modifiedDecoded.replace(/security=tls/g, 'security=none');
-                        modifiedDecoded = modifiedDecoded.replace(/tls=true/g, 'tls=none');
-                        modifiedDecoded = modifiedDecoded.replace(/tls=1/g, 'tls=none');
-                        modifiedDecoded = modifiedDecoded.replace(/tls=yes/g, 'tls=none');
-                        convertedText = btoa(modifiedDecoded);
-                    }
-                } catch(e) {
-                    console.log('Not base64 or error in decoding:', e);
-                }
-                
-                // روش سوم: تغییر در کانفیگ‌های JSON مانند
-                convertedText = convertedText.replace(/"tls":\s*"[^"]+"/g, '"tls":"none"');
-                convertedText = convertedText.replace(/"tls":\s*[^,}]+/g, '"tls":"none"');
-                convertedText = convertedText.replace(/"security":\s*"[^"]+"/g, '"security":"none"');
-                
-                statusDiv.innerHTML = '✅ تبدیل با موفقیت انجام شد! TLS به none تغییر کرد.';
-                outputPre.textContent = convertedText;
-                downloadBtn.style.display = 'inline-block';
-                
-                // ذخیره در localStorage به عنوان فایل xray
-                localStorage.setItem('xray_config', convertedText);
-                
-                return convertedText;
-                
+                const servers = parseV2RayLinks(text);
+                displayServers(servers);
             } catch (error) {
-                statusDiv.innerHTML = `❌ خطا: ${error.message}`;
-                console.error('Error:', error);
-                return null;
+                document.getElementById('content').innerHTML = 
+                    `<div class="error">❌ خطا: ${error.message}<br>بررسی اتصال اینترنت و لینک سابسکریپشن</div>`;
             }
         }
         
-        function isBase64(str) {
-            try {
-                return btoa(atob(str)) === str;
-            } catch (err) {
-                return false;
+        function parseV2RayLinks(text) {
+            const lines = text.split('\n').filter(line => line.trim().startsWith('vless://'));
+            const servers = [];
+            
+            for (let line of lines) {
+                try {
+                    // استخراج نام از انتهای لینک (بعد از #)
+                    let name = 'بدون نام';
+                    const hashIndex = line.indexOf('#');
+                    if (hashIndex !== -1) {
+                        name = decodeURIComponent(line.substring(hashIndex + 1));
+                    }
+                    
+                    // استخراج اطلاعات پایه
+                    let vlessPart = line;
+                    if (hashIndex !== -1) {
+                        vlessPart = line.substring(0, hashIndex);
+                    }
+                    
+                    const url = new URL(vlessPart);
+                    const serverIP = url.hostname;
+                    const port = url.port || 443;
+                    
+                    servers.push({
+                        name: name,
+                        fullLink: line,
+                        serverIP: serverIP,
+                        port: port,
+                        type: 'VLESS'
+                    });
+                } catch(e) {
+                    console.error('خطا در parsing:', e);
+                }
+            }
+            
+            return servers;
+        }
+        
+        function displayServers(servers) {
+            if (servers.length === 0) {
+                document.getElementById('content').innerHTML = 
+                    '<div class="error">⚠️ هیچ سروری یافت نشد</div>';
+                return;
+            }
+            
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `
+                <div class="stats">
+                    📊 تعداد کل سرورها: ${servers.length} | 🔒 پروتکل: VLESS
+                </div>
+                <div id="servers-list"></div>
+            `;
+            
+            const serversList = document.getElementById('servers-list');
+            
+            for (let server of servers) {
+                const card = document.createElement('div');
+                card.className = 'server-card';
+                card.innerHTML = `
+                    <div class="server-name">🖥️ ${escapeHtml(server.name)}</div>
+                    <div class="server-details">
+                        <div class="detail-item">📡 پروتکل: ${server.type}</div>
+                        <div class="detail-item">🌐 آدرس: ${server.serverIP}</div>
+                        <div class="detail-item">🔌 پورت: ${server.port}</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('${escapeHtml(server.fullLink).replace(/'/g, "\\'")}')">
+                        📋 کپی لینک کانفیگ
+                    </button>
+                `;
+                serversList.appendChild(card);
             }
         }
         
-        function downloadAsFile(content, filename) {
-            const blob = new Blob([content], { type: 'text/plain' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.href = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
         
-        // رویدادها
-        document.getElementById('fetchBtn').addEventListener('click', async () => {
-            const content = await fetchAndConvert();
-            if (content) {
-                // نمایش پیام ذخیره خودکار در حافظه مرورگر
-                const statusDiv = document.getElementById('status');
-                statusDiv.innerHTML += '<br>📁 فایل در حافظه مرورگر به عنوان "xray" ذخیره شد. برای دانلود دائم روی دکمه سبز کلیک کنید.';
-            }
-        });
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ لینک کانفیگ کپی شد!');
+            }).catch(() => {
+                alert('❌ خطا در کپی کردن');
+            });
+        }
         
-        document.getElementById('downloadBtn').addEventListener('click', () => {
-            const content = localStorage.getItem('xray_config');
-            if (content) {
-                downloadAsFile(content, 'xray');
-                const statusDiv = document.getElementById('status');
-                statusDiv.innerHTML += '<br>💾 فایل xray با موفقیت دانلود شد!';
-            } else {
-                alert('لطفا ابتدا روی دکمه "دریافت و تبدیل کانفیگ" کلیک کنید.');
-            }
-        });
-        
-        // بارگذاری خودکار در شروع
-        window.addEventListener('load', () => {
-            fetchAndConvert();
-        });
+        fetchServers();
     </script>
 </body>
 </html>
