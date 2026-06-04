@@ -1,9 +1,17 @@
-{
-  "type": "anytls",
-  "server": "43.160.227.163",
-  "server_port": 80,
-  "uuid": "c3b1de29-39f2-4b4c-8556-39e069990f89",
-  "security": "auto",
-  "sni": "appstorrent.ru",
-  "skip_cert_verify": true
-}
+proxies:
+  - name: "Anytls-Sg"
+    type: vmess
+    server: 43.160.227.163
+    port: 80
+    uuid: c3b1de29-39f2-4b4c-8556-39e069990f89
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    udp: true
+    network: tcp
+    servername: appstorrent.ru
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: ""
+    tls-utls: true
