@@ -1,17 +1,33 @@
 proxies:
-  - name: "Anytls-Sg"
-    type: vmess
+  - name: "proxy-global-2"
+    type: anytls
     server: 43.160.227.163
     port: 80
-    uuid: c3b1de29-39f2-4b4c-8556-39e069990f89
-    alterId: 0
-    cipher: auto
+    password: "c3b1de29-39f2-4b4c-8556-39e069990f89"
     tls: true
     skip-cert-verify: true
+    sni: appstorrent.ru
     udp: true
-    network: tcp
-    servername: appstorrent.ru
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: ""
-    tls-utls: true
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - proxy-global-2
+      - DIRECT
+
+rules:
+  - "MATCH,PROXY"
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 1.1.1.1
+
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - any:53
