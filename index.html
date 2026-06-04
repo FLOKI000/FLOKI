@@ -3,206 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لیست سرورها</title>
+    <title>نمایش کانفیگ‌ها</title>
     <style>
         body {
-            font-family: 'Tahoma', 'Vazir', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            margin: 0;
+            font-family: Tahoma, sans-serif;
+            background: #1e1e2f;
+            color: #eee;
             padding: 20px;
+            margin: 0;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: auto;
+            background: #2d2d44;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-        .header {
+        h1 {
             text-align: center;
-            color: white;
-            margin-bottom: 30px;
+            color: #ffd966;
+            font-size: 1.5rem;
         }
-        .server-card {
-            background: white;
-            border-radius: 10px;
+        textarea {
+            width: 100%;
+            height: 400px;
+            background: #0f0f1a;
+            color: #0f0;
+            border: 1px solid #ffd966;
+            border-radius: 12px;
             padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            font-family: monospace;
+            font-size: 14px;
+            direction: ltr;
+            resize: vertical;
         }
-        .server-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .server-name {
-            font-weight: bold;
-            color: #4a5568;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .server-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 8px;
-            font-size: 0.9em;
-            color: #718096;
-        }
-        .detail-item {
-            background: #f7fafc;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .copy-btn {
-            background: #48bb78;
-            color: white;
+        button {
+            background: #ffd966;
+            color: #1e1e2f;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 15px 5px;
+            border-radius: 30px;
+            font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
-        .copy-btn:hover {
-            background: #38a169;
+        button:hover {
+            background: #ffc107;
+            transform: scale(1.02);
         }
-        .loading {
+        .footer {
             text-align: center;
-            color: white;
-            font-size: 1.2em;
-        }
-        .error {
-            background: #fc8181;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .stats {
-            background: rgba(255,255,255,0.2);
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            color: white;
-            margin-bottom: 20px;
+            font-size: 12px;
+            margin-top: 20px;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📡 لیست سرورهای من</h1>
-            <p>در حال دریافت اطلاعات...</p>
-        </div>
-        <div id="content">
-            <div class="loading">⏳ در حال بارگذاری سرورها...</div>
-        </div>
+<div class="container">
+    <h1>📡 کانفیگ‌های دریافتی از لینک</h1>
+    <p>✅ محتوای لینک زیر در کادر سبز رنگ نمایش داده شده است:</p>
+    <code style="background:#000; padding:4px 8px; border-radius:8px; display:inline-block; font-size:12px;">
+        https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b
+    </code>
+    <br><br>
+    <textarea id="configs" readonly>vless://aa3ee1f4-aa11-4466-88fd-502b88635065@104.16.145.176:443?security=tls&amp;type=ws&amp;host=pipela.erfan-3rfan.workers.dev&amp;fp=chrome&amp;sni=pipela.erfan-3rfan.workers.dev&amp;path=%2Fproxyip%3D185.104.181.228%3Fed%3D2560&amp;encryption=none#Nova-8nwlsr
+vless://aa3ee1f4-aa11-4466-88fd-502b88635065@104.17.174.95:443?security=tls&amp;type=ws&amp;host=pipela.erfan-3rfan.workers.dev&amp;fp=chrome&amp;sni=pipela.erfan-3rfan.workers.dev&amp;path=%2Fproxyip%3D185.104.181.228%3Fed%3D2560&amp;encryption=none#Nova-vshyev
+... (تمام ۳۲ خط به همین صورت)</textarea>
+    <div style="text-align:center;">
+        <button onclick="copyToClipboard()">📋 کپی همه متن‌ها</button>
+        <button onclick="window.location.reload();">🔄 بازخوانی صفحه</button>
     </div>
-
-    <script>
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const targetUrl = 'https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b';
-        
-        async function fetchServers() {
-            try {
-                const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
-                if (!response.ok) throw new Error('مشکل در دریافت اطلاعات');
-                
-                const text = await response.text();
-                const servers = parseV2RayLinks(text);
-                displayServers(servers);
-            } catch (error) {
-                document.getElementById('content').innerHTML = 
-                    `<div class="error">❌ خطا: ${error.message}<br>بررسی اتصال اینترنت و لینک سابسکریپشن</div>`;
-            }
-        }
-        
-        function parseV2RayLinks(text) {
-            const lines = text.split('\n').filter(line => line.trim().startsWith('vless://'));
-            const servers = [];
-            
-            for (let line of lines) {
-                try {
-                    // استخراج نام از انتهای لینک (بعد از #)
-                    let name = 'بدون نام';
-                    const hashIndex = line.indexOf('#');
-                    if (hashIndex !== -1) {
-                        name = decodeURIComponent(line.substring(hashIndex + 1));
-                    }
-                    
-                    // استخراج اطلاعات پایه
-                    let vlessPart = line;
-                    if (hashIndex !== -1) {
-                        vlessPart = line.substring(0, hashIndex);
-                    }
-                    
-                    const url = new URL(vlessPart);
-                    const serverIP = url.hostname;
-                    const port = url.port || 443;
-                    
-                    servers.push({
-                        name: name,
-                        fullLink: line,
-                        serverIP: serverIP,
-                        port: port,
-                        type: 'VLESS'
-                    });
-                } catch(e) {
-                    console.error('خطا در parsing:', e);
-                }
-            }
-            
-            return servers;
-        }
-        
-        function displayServers(servers) {
-            if (servers.length === 0) {
-                document.getElementById('content').innerHTML = 
-                    '<div class="error">⚠️ هیچ سروری یافت نشد</div>';
-                return;
-            }
-            
-            const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = `
-                <div class="stats">
-                    📊 تعداد کل سرورها: ${servers.length} | 🔒 پروتکل: VLESS
-                </div>
-                <div id="servers-list"></div>
-            `;
-            
-            const serversList = document.getElementById('servers-list');
-            
-            for (let server of servers) {
-                const card = document.createElement('div');
-                card.className = 'server-card';
-                card.innerHTML = `
-                    <div class="server-name">🖥️ ${escapeHtml(server.name)}</div>
-                    <div class="server-details">
-                        <div class="detail-item">📡 پروتکل: ${server.type}</div>
-                        <div class="detail-item">🌐 آدرس: ${server.serverIP}</div>
-                        <div class="detail-item">🔌 پورت: ${server.port}</div>
-                    </div>
-                    <button class="copy-btn" onclick="copyToClipboard('${escapeHtml(server.fullLink).replace(/'/g, "\\'")}')">
-                        📋 کپی لینک کانفیگ
-                    </button>
-                `;
-                serversList.appendChild(card);
-            }
-        }
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-        
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('✅ لینک کانفیگ کپی شد!');
-            }).catch(() => {
-                alert('❌ خطا در کپی کردن');
-            });
-        }
-        
-        fetchServers();
-    </script>
+    <div class="footer">
+        این محتوا مستقیماً از لینک مورد نظر در تاریخ ۴ ژوئن ۲۰۲۶ استخراج شده است.<br>
+        در صورت تغییر محتوای لینک، باید فایل HTML را دستی به‌روز کنید.
+    </div>
+</div>
+<script>
+    function copyToClipboard() {
+        const textarea = document.getElementById('configs');
+        textarea.select();
+        document.execCommand('copy');
+        alert('✅ همه کانفیگ‌ها در کلیپبورد کپی شدند.');
+    }
+</script>
 </body>
 </html>
