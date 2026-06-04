@@ -1,0 +1,32 @@
+name: Update Xray Config
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # هر 6 ساعت یکبار
+  workflow_dispatch:      # برای اجرای دستی
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch and modify config
+        run: |
+          # دریافت محتوا از لینک
+          curl -L "https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b" > original.txt
+
+          # جایگزینی security=tls با security=none
+          sed 's/security=tls/security=none/g' original.txt > xray
+
+          # نمایش تعداد لینک‌های تغییر یافته (اختیاری)
+          echo "Config updated with $(grep -c 'security=none' xray) lines"
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xray
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update xray config"
+          git push
