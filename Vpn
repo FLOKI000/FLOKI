@@ -1,1 +1,9 @@
-YW55dGxzOi8vYzNiMWRlMjktMzlmMi00YjRjLTg1NTYtMzllMDY5OTkwZjg5QDQzLjE2MC4yMjcuMTYzOjgwLz9pbnNlY3VyZT0xJnNuaT1hcHBzdG9ycmVudC5ydSNBbnl0bHMtU2c=
+{
+  "type": "anytls",
+  "server": "43.160.227.163",
+  "server_port": 80,
+  "uuid": "c3b1de29-39f2-4b4c-8556-39e069990f89",
+  "security": "auto",
+  "sni": "appstorrent.ru",
+  "skip_cert_verify": true
+}
