@@ -1,93 +1,52 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نمایش کانفیگ‌ها</title>
+    <title>نمایشگر کانفیگ</title>
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #1e1e2f;
-            color: #eee;
-            padding: 20px;
-            margin: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #2d2d44;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        h1 {
-            text-align: center;
-            color: #ffd966;
-            font-size: 1.5rem;
-        }
-        textarea {
-            width: 100%;
-            height: 400px;
-            background: #0f0f1a;
-            color: #0f0;
-            border: 1px solid #ffd966;
-            border-radius: 12px;
-            padding: 15px;
-            font-family: monospace;
-            font-size: 14px;
-            direction: ltr;
-            resize: vertical;
-        }
-        button {
-            background: #ffd966;
-            color: #1e1e2f;
-            border: none;
-            padding: 10px 20px;
-            margin: 15px 5px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        button:hover {
-            background: #ffc107;
-            transform: scale(1.02);
-        }
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 20px;
-            color: #aaa;
-        }
+        body { font-family: Tahoma, sans-serif; direction: rtl; background: #f0f0f0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+        button { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        h1 { color: #333; }
+        .status { margin-bottom: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>📡 کانفیگ‌های دریافتی از لینک</h1>
-    <p>✅ محتوای لینک زیر در کادر سبز رنگ نمایش داده شده است:</p>
-    <code style="background:#000; padding:4px 8px; border-radius:8px; display:inline-block; font-size:12px;">
-        https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b
-    </code>
-    <br><br>
-    <textarea id="configs" readonly>vless://aa3ee1f4-aa11-4466-88fd-502b88635065@104.16.145.176:443?security=tls&amp;type=ws&amp;host=pipela.erfan-3rfan.workers.dev&amp;fp=chrome&amp;sni=pipela.erfan-3rfan.workers.dev&amp;path=%2Fproxyip%3D185.104.181.228%3Fed%3D2560&amp;encryption=none#Nova-8nwlsr
-vless://aa3ee1f4-aa11-4466-88fd-502b88635065@104.17.174.95:443?security=tls&amp;type=ws&amp;host=pipela.erfan-3rfan.workers.dev&amp;fp=chrome&amp;sni=pipela.erfan-3rfan.workers.dev&amp;path=%2Fproxyip%3D185.104.181.228%3Fed%3D2560&amp;encryption=none#Nova-vshyev
-... (تمام ۳۲ خط به همین صورت)</textarea>
-    <div style="text-align:center;">
-        <button onclick="copyToClipboard()">📋 کپی همه متن‌ها</button>
-        <button onclick="window.location.reload();">🔄 بازخوانی صفحه</button>
-    </div>
-    <div class="footer">
-        این محتوا مستقیماً از لینک مورد نظر در تاریخ ۴ ژوئن ۲۰۲۶ استخراج شده است.<br>
-        در صورت تغییر محتوای لینک، باید فایل HTML را دستی به‌روز کنید.
-    </div>
+    <h1>📡 محتوا از لینک مورد نظر</h1>
+    <button id="fetchBtn">بارگیری محتوا</button>
+    <div class="status" id="status"></div>
+    <pre id="output">برای مشاهده، دکمه را بزنید...</pre>
 </div>
+
 <script>
-    function copyToClipboard() {
-        const textarea = document.getElementById('configs');
-        textarea.select();
-        document.execCommand('copy');
-        alert('✅ همه کانفیگ‌ها در کلیپبورد کپی شدند.');
-    }
+    const url = "https://pipela.erfan-3rfan.workers.dev/sub?token=f642f37ade634760f6e7fea95ab0c94b";
+
+    document.getElementById("fetchBtn").addEventListener("click", async () => {
+        const statusDiv = document.getElementById("status");
+        const outputPre = document.getElementById("output");
+
+        statusDiv.textContent = "⏳ در حال بارگیری...";
+        outputPre.textContent = "";
+
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: { "Accept": "text/plain" }
+            });
+
+            if (!response.ok) throw new Error(`خطای HTTP: ${response.status}`);
+
+            const text = await response.text();
+            outputPre.textContent = text;
+            statusDiv.textContent = "✅ بارگیری کامل شد. تمام محتوا نمایش داده شده است.";
+        } catch (error) {
+            statusDiv.textContent = "❌ خطا در بارگیری";
+            outputPre.textContent = `خطا: ${error.message}\n\nتوجه: ممکن است سرور اجازه دسترسی از داخل صفحه را ندهد. می‌توانید از یک سرور میانی (proxy) استفاده کنید.`;
+        }
+    });
 </script>
 </body>
 </html>
