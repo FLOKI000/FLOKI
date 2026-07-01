@@ -1,11 +1,14 @@
 لیست فایل های css و js و غیره
 
+پوشه : CSS
+
 1 = https://unpkg.com/aos@2.3.1/dist/aos.css  -- AOS CSS (انیمیشن اسکرول)
 2 = https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css  -- Fancybox CSS (نمایش تصاویر)
 3 = https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css  -- Animate.css (انیمیشن‌های آماده)
 4 = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css  -- Font Awesome (آیکون‌ها)
 5 = https://blogix.ir/assets/css/theme/dastkhat/style.css?1.3  -- استایل اصلی قالب Blogix
 
+پوشه : JS
 
 11 = https://blogix.ir/assets/js/jquery-3.7.1.min.js  -- jQuery
 12 = https://blogix.ir/assets/js/theme/dastkhat/script.js?1.0  -- اسکریپت قالب Blogix
@@ -15,6 +18,7 @@
 16 = https://cdn.jsdelivr.net/npm/typed.js@2.0.12  -- Typed.js (متن تایپی)
 17 = https://cdn.jsdelivr.net/npm/sweetalert2@11  -- SweetAlert2 (پاپ‌آپ زیبا)
 
+...
 
 https://blogix.ir/assets/font/Vazir/Vazir-Regular.eot -- فونت Vazir Regular - EOT
 https://blogix.ir/assets/font/Vazir/Vazir-Regular.eot?#iefix -- فونت Vazir Regular - EOT (فیکس IE)
@@ -28,6 +32,7 @@ https://blogix.ir/assets/font/Vazir/Vazir-Bold.woff -- فونت Vazir Bold - WOF
 https://blogix.ir/assets/font/Vazir/Vazir-Bold.ttf -- فونت Vazir Bold - TTF
 https://blogix.ir/assets/font/Material-symbol/Round.woff2 -- Material Symbols Rounded
 
+...
 
 https://dl.blogix.ir/20260326223644808724.webp -- لوگو / تصویر سایت
 https://floch3.blogix.ir/rss -- فید RSS
