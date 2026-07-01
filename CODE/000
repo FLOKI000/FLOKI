@@ -7,13 +7,13 @@
 5 = https://blogix.ir/assets/css/theme/dastkhat/style.css?1.3  -- استایل اصلی قالب Blogix
 
 
-6 = https://blogix.ir/assets/js/jquery-3.7.1.min.js  -- jQuery
-7 = https://blogix.ir/assets/js/theme/dastkhat/script.js?1.0  -- اسکریپت قالب Blogix
-8 = https://unpkg.com/aos@2.3.1/dist/aos.js  -- AOS JS
-9 = https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js -- Fancybox JS
-10 = https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js  -- Lozad.js (لود تنبل تصاویر)
-11 = https://cdn.jsdelivr.net/npm/typed.js@2.0.12  -- Typed.js (متن تایپی)
-12 = https://cdn.jsdelivr.net/npm/sweetalert2@11  -- SweetAlert2 (پاپ‌آپ زیبا)
+11 = https://blogix.ir/assets/js/jquery-3.7.1.min.js  -- jQuery
+12 = https://blogix.ir/assets/js/theme/dastkhat/script.js?1.0  -- اسکریپت قالب Blogix
+13 = https://unpkg.com/aos@2.3.1/dist/aos.js  -- AOS JS
+14 = https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js -- Fancybox JS
+15 = https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js  -- Lozad.js (لود تنبل تصاویر)
+16 = https://cdn.jsdelivr.net/npm/typed.js@2.0.12  -- Typed.js (متن تایپی)
+17 = https://cdn.jsdelivr.net/npm/sweetalert2@11  -- SweetAlert2 (پاپ‌آپ زیبا)
 
 
 https://blogix.ir/assets/font/Vazir/Vazir-Regular.eot -- فونت Vazir Regular - EOT
